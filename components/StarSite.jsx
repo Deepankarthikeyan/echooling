@@ -15,6 +15,7 @@ import {
   terms,
   testimonials,
   trainingSteps,
+  youtubeVideos,
 } from "../lib/star-content";
 
 const navItems = [
@@ -1189,6 +1190,32 @@ function NotificationPage() {
   );
 }
 
+function YoutubePage() {
+  return (
+    <>
+      <Breadcrumb title="Our Recent Videos" />
+      <section className="star-youtube-page pt---100 pb---100">
+        <div className="container">
+          <div className="row">
+            {youtubeVideos.map((videoId) => (
+              <div className="col-md-6 col-xl-4" key={videoId}>
+                <div className="star-video-card">
+                  <iframe
+                    title={`Star Police Academy video ${videoId}`}
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function PageContent({ page }) {
   switch (page.type) {
     case "about":
@@ -1207,6 +1234,8 @@ function PageContent({ page }) {
       return <QuestionPapersPage />;
     case "notification":
       return <NotificationPage />;
+    case "youtube":
+      return <YoutubePage />;
     case "toppers":
       return <ToppersPage />;
     case "home":
