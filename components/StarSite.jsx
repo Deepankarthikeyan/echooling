@@ -17,11 +17,47 @@ import {
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Courses", href: "/courses" },
-  { label: "Toppers", href: "/toppers" },
-  { label: "FAQ", href: "/faq" },
+  {
+    label: "About",
+    href: "/about",
+    children: [{ label: "About Star Police Academy", href: "/about" }],
+  },
+  {
+    label: "Courses",
+    href: "/courses",
+    children: [
+      { label: "Tamilnadu Police Constable TNUSRB", href: "/tnusrb" },
+      { label: "Tamilnadu Police Sub Inspector", href: "/sub-inspector" },
+      { label: "Agnipath - Indian Army", href: "/indian-army" },
+      { label: "Agnipath - Indian Navy", href: "/indian-navy" },
+      { label: "Indian Air Force", href: "/indian-air-force" },
+      { label: "Railway Protection Force", href: "/rpf" },
+      { label: "CRPF,CISF,SSB,ITBF Course", href: "/capf" },
+    ],
+  },
+  {
+    label: "Notifications",
+    href: "/notification",
+    children: [
+      { label: "Current Affairs", href: "/notification" },
+      { label: "Youtube Channel", href: "/youtube" },
+      { label: "Test Batches", href: "/test-batch" },
+    ],
+  },
+  {
+    label: "Training",
+    href: "/training",
+    children: [
+      { label: "Toppers and Achievers", href: "/toppers" },
+      { label: "Training Materials", href: "/materials" },
+      { label: "Question papers", href: "/questions" },
+      { label: "Answer Keys", href: "/ansewrkey" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Blog", href: "/blog" },
+    ],
+  },
   { label: "Contact", href: "/contact" },
+  { label: "Register", href: "/register" },
 ];
 
 function SiteHead({ title }) {
@@ -50,6 +86,12 @@ function SiteHead({ title }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState("");
+
+  const closeNavigation = () => {
+    setOpen(false);
+    setOpenDropdown("");
+  };
 
   return (
     <header id="react-header" className="react-header star-header">
@@ -112,17 +154,44 @@ function Header() {
               <div className={`react-inner-menus star-nav-wrap ${open ? "is-open" : ""}`}>
                 <ul id="backmenu" className="react-menus home react-sub-shadow star-nav">
                   {navItems.map((item) => (
-                    <li key={item.href}>
-                      <Link href={item.href} onClick={() => setOpen(false)}>
-                        {item.label}
-                      </Link>
+                    <li
+                      className={item.children ? "has-dropdown" : ""}
+                      key={item.href}
+                      onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+                      onMouseLeave={() => item.children && setOpenDropdown("")}
+                    >
+                      <div className="star-nav-link-row">
+                        <Link href={item.href} onClick={closeNavigation}>
+                          {item.label}
+                        </Link>
+                        {item.children ? (
+                          <button
+                            aria-expanded={openDropdown === item.label}
+                            aria-label={`Toggle ${item.label} menu`}
+                            className="star-dropdown-toggle"
+                            type="button"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              setOpenDropdown((current) => (current === item.label ? "" : item.label));
+                            }}
+                          >
+                            <span className="arrow_carrot-down" />
+                          </button>
+                        ) : null}
+                      </div>
+                      {item.children ? (
+                        <ul className={`star-dropdown ${openDropdown === item.label ? "is-open" : ""}`}>
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <Link href={child.href} onClick={closeNavigation}>
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                     </li>
                   ))}
-                  <li>
-                    <Link href="/register" onClick={() => setOpen(false)}>
-                      Register
-                    </Link>
-                  </li>
                 </ul>
                 <div className="searchbar-part star-header-cta">
                   <Link href="/register" className="react-btn">
