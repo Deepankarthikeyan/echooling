@@ -938,6 +938,95 @@
   background: #f7f9fc;
 }
 
+.star-contact-screen {
+  background: #ffffff;
+}
+
+.star-contact-info-panel {
+  background: #f7f9fc;
+  border-radius: 8px;
+  padding: 36px 28px;
+}
+
+.star-contact-info-item {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 54px minmax(0, 1fr);
+}
+
+.star-contact-info-item + .star-contact-info-item {
+  margin-top: 34px;
+}
+
+.star-contact-info-item > span {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10px 26px rgba(15, 34, 57, 0.08);
+  color: #2d6cdf;
+  display: inline-flex;
+  font-size: 22px;
+  height: 54px;
+  justify-content: center;
+  width: 54px;
+}
+
+.star-contact-info-item h3 {
+  color: #0f2239;
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 0 8px;
+}
+
+.star-contact-info-item p {
+  color: #26384d;
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.star-contact-form-panel {
+  padding-left: 54px;
+}
+
+.star-contact-form-panel h2 {
+  color: #0f2239;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 34px;
+}
+
+.star-contact-form-panel .star-form input,
+.star-contact-form-panel .star-form textarea {
+  background: #f4f7fb;
+  border: 0;
+  border-radius: 2px;
+}
+
+.star-contact-form-panel .star-form textarea {
+  min-height: 150px;
+}
+
+.star-contact-form-panel .react-btn {
+  background: #2d6cdf;
+  border-radius: 3px;
+  min-width: 160px;
+}
+
+.star-contact-map {
+  height: 460px;
+  margin-top: 95px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.star-contact-map iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .star-form input,
 .star-form textarea,
 .star-form select {
@@ -1108,6 +1197,16 @@
     padding-top: 18px;
     text-align: left;
   }
+
+  .star-contact-form-panel {
+    margin-top: 48px;
+    padding-left: 0;
+  }
+
+  .star-contact-map {
+    height: 360px;
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -1158,6 +1257,24 @@
 
   .star-about-instructor {
     align-items: flex-start;
+  }
+
+  .star-contact-info-panel {
+    padding: 26px 20px;
+  }
+
+  .star-contact-info-item {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .star-contact-info-item > span {
+    font-size: 18px;
+    height: 44px;
+    width: 44px;
+  }
+
+  .star-contact-map {
+    height: 280px;
   }
 
   .star-detail-card {

@@ -873,23 +873,23 @@ function ContactForm() {
     >
       <div className="row">
         <div className="col-md-6">
-          <input required type="text" placeholder="Your Name *" />
+          <input required type="text" placeholder="Name" />
         </div>
         <div className="col-md-6">
-          <input required type="email" placeholder="Your Email *" />
+          <input required type="email" placeholder="Email" />
         </div>
         <div className="col-md-6">
-          <input required type="text" placeholder="Your Subject *" />
+          <input required type="text" placeholder="Subject" />
         </div>
         <div className="col-md-6">
-          <input type="tel" placeholder="Contact Number" />
+          <input type="tel" placeholder="Phone" />
         </div>
         <div className="col-12">
           <textarea required placeholder="Message *" rows={6} />
         </div>
         <div className="col-12">
           <button type="submit" className="react-btn">
-            Send Message
+            Send Message →
           </button>
           <FormMessage message={message} />
         </div>
@@ -901,30 +901,63 @@ function ContactForm() {
 function ContactPage() {
   return (
     <>
-      <Breadcrumb title="Contact Star Police Academy" />
-      <section className="star-contact pt---100 pb---100">
+      <Breadcrumb title="Contact Us" />
+      <section className="star-contact star-contact-screen pt---100 pb---100">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-7">
-              <SectionTitle title="Contact With Us" center={false} />
-              <ContactForm />
-            </div>
-            <div className="col-lg-5">
-              <div className="star-card star-contact-card">
-                <h2>Our contact detail</h2>
-                <p>Star Police Exam Coaching Center in Vellore. Write as some words about your question.</p>
-                <h3>Phone Number</h3>
-                <p>
-                  {contact.phonePrimary}
-                  <br />
-                  {contact.phoneSecondary}
-                </p>
-                <h3>Email Address</h3>
-                <p>{contact.email}</p>
-                <h3>Location</h3>
-                <p>{contact.address}</p>
+          <div className="row align-items-start">
+            <div className="col-lg-4">
+              <div className="star-contact-info-panel">
+                <div className="star-contact-info-item">
+                  <span>⌂</span>
+                  <div>
+                    <h3>Address</h3>
+                    <p>{contact.address}</p>
+                  </div>
+                </div>
+                <div className="star-contact-info-item">
+                  <span>☎</span>
+                  <div>
+                    <h3>Contact</h3>
+                    <p>
+                      Mobile: {contact.phonePrimary}
+                      <br />
+                      Office: {contact.phoneSecondary}
+                      <br />
+                      Mail: {contact.email}
+                    </p>
+                  </div>
+                </div>
+                <div className="star-contact-info-item">
+                  <span>◷</span>
+                  <div>
+                    <h3>Hour of operation</h3>
+                    <p>
+                      Monday - Saturday: 09:00 - 20:00
+                      <br />
+                      Sunday: Contact office for batch timings
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
+            <div className="col-lg-8">
+              <div className="star-contact-form-panel">
+                <h2>
+                  Questions?
+                  <br />
+                  Feel free to contact us.
+                </h2>
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+          <div className="star-contact-map">
+            <iframe
+              title="Star Police Academy location map"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(contact.address)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>
