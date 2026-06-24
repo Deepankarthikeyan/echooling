@@ -1,0 +1,29 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Next.js and Node migration of the Echooling static website.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deepankarthikeyan/echooling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deepankarthikeyan/echooling/issues"
+  },
+  "homepage": "https://github.com/Deepankarthikeyan/echooling#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  }
+}
