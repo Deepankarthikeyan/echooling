@@ -58,6 +58,44 @@ const navItems = [
   { label: "Register", href: "/register" },
 ];
 
+const aboutLearningCards = [
+  {
+    title: "Online/Offline Classes",
+    text: "Flexible police exam coaching with classroom and online support for TNUSRB, SI and defence aspirants.",
+  },
+  {
+    title: "Daily Online Exams",
+    text: "Regular practice tests and performance tracking help students prepare better for written examinations.",
+  },
+  {
+    title: "Toppers and Achievers",
+    text: "The outstanding success of our students are our proudest testimony and motivation.",
+  },
+];
+
+const aboutInstructors = [
+  {
+    name: academy.founder,
+    role: academy.founderRole,
+    image: "https://www.starpoliceacademy.in/img/avatar/avatar-01.jpg",
+  },
+  {
+    name: "Subject Expert Faculty",
+    role: "TNUSRB Written Exam",
+    image: "https://www.starpoliceacademy.in/img/content/about-02.png",
+  },
+  {
+    name: "Physical Training Team",
+    role: "Fitness & PET Training",
+    image: "https://www.starpoliceacademy.in/img/content/history-01.jpg",
+  },
+  {
+    name: "Mentoring Team",
+    role: "Interview & Guidance",
+    image: "https://www.starpoliceacademy.in/img/content/history-04.jpg",
+  },
+];
+
 function SiteHead({ title }) {
   const pageTitle = title ? `${title} | Star Police Academy` : academy.title;
 
@@ -580,13 +618,161 @@ function HomePage() {
   );
 }
 
+function AboutIntroPageSection() {
+  return (
+    <section className="about__area about__area_one p-relative pt---100 pb---100 star-about-screenshot">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-6">
+            <div className="star-about-collage">
+              <img
+                className="star-about-collage-main"
+                src="https://www.starpoliceacademy.in/img/content/history-info.jpg"
+                alt="Star Police Academy training"
+              />
+              <img
+                className="star-about-collage-card"
+                src="https://www.starpoliceacademy.in/img/content/about-01.jpg"
+                alt="Star Police Academy classroom"
+              />
+              <div className="star-about-award">
+                <strong>12+</strong>
+                <span>Years Experience</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="about__content star-about-copy">
+              <span className="star-eyebrow">//About Us</span>
+              <h2 className="about__title">About Star Police Academy</h2>
+              <p className="about__paragraph">{academy.aboutIntro}</p>
+              <p>
+                Star Police academy is an organisation engulfed with state of the art competence
+                to provide more relevant and comprehensive training for Police Exams coaching
+                centre in Vellore Deticated For TNUSRB PC, ARMY, NAVY, AIRFORCE SI & PC Exams.
+              </p>
+              <p>
+                Since its inception the Paraipatti police coaching centre has helped over 1000
+                students to enter the police department, Best police coaching centre in tamilnadu.
+              </p>
+              <ul className="star-about-actions">
+                <li>
+                  <Link href="/register" className="more-about">
+                    Register Now
+                  </Link>
+                </li>
+                <li className="last-li">
+                  <em>Get Support</em>
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutLearningSection() {
+  return (
+    <section className="star-about-learning pt---90 pb---70">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Police Exam Coaching"
+          title="Online Coaching Lessons For Remote Learning"
+          text="Star Police Academy supports students with flexible learning, regular exams and focused police career guidance."
+        />
+        <div className="row justify-content-center">
+          {aboutLearningCards.map((card, index) => (
+            <div className="col-lg-4 col-md-6" key={card.title}>
+              <div className="star-card star-about-service-card">
+                <span className="star-about-service-icon">{index + 1}</span>
+                <h4>{card.title}</h4>
+                <p>{card.text}</p>
+                <Link href="/courses">Learn More</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutInstructorsSection() {
+  return (
+    <section className="star-about-instructors pt---80 pb---80">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-4">
+            <div className="star-about-left-title">
+              <span className="star-eyebrow">Course Instructors</span>
+              <h2>Meet our Class Instructors</h2>
+              <p>
+                Star Police Academy is guided by experienced teaching and physical training
+                faculty around Tamilnadu.
+              </p>
+            </div>
+          </div>
+          <div className="col-lg-8">
+            <div className="row">
+              {aboutInstructors.map((instructor) => (
+                <div className="col-md-6" key={instructor.name}>
+                  <div className="star-about-instructor">
+                    <img src={instructor.image} alt={instructor.name} />
+                    <div>
+                      <h4>{instructor.name}</h4>
+                      <span>{instructor.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutFeedbackSection() {
+  return (
+    <section className="star-about-feedback pt---90 pb---80">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Student Testimonial"
+          title="Student Community Feedback"
+          text="What students say about Star Police Academy."
+        />
+        <div className="row">
+          {testimonials.slice(0, 3).map((item) => (
+            <div className="col-lg-4" key={item.name}>
+              <blockquote className="star-card star-about-feedback-card">
+                <div className="star-rating">★★★★★</div>
+                <p>{item.text}</p>
+                <footer>
+                  <strong>{item.name}</strong>
+                  <span>{item.role}</span>
+                </footer>
+              </blockquote>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AboutPage() {
   return (
     <>
       <Breadcrumb title="About Star Police Academy" />
-      <AboutBlock detailed />
+      <AboutIntroPageSection />
+      <AboutLearningSection />
+      <AboutInstructorsSection />
+      <AboutFeedbackSection />
       <StatsBlock />
-      <FAQList />
       <CTA />
     </>
   );
