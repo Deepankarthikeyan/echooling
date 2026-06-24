@@ -7,6 +7,7 @@ import {
   courses,
   faqs,
   features,
+  notificationItems,
   questionPapers,
   registrationCourses,
   socialLinks,
@@ -1101,6 +1102,93 @@ function QuestionPapersPage() {
   );
 }
 
+function NotificationPage() {
+  return (
+    <>
+      <Breadcrumb title="Recruitment Notification" />
+      <section className="star-notification pt---80 pb---100">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-9 mb-4 mb-lg-0">
+              <div className="star-notification-intro">
+                <div className="star-notification-video">
+                  <a
+                    aria-label="Watch Star Police Academy intro video"
+                    href="https://www.youtube.com/watch?v=1ppfH0p_UYM"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    ▶
+                  </a>
+                </div>
+                <div className="star-notification-copy">
+                  <p>
+                    Direct Recruitment of Sub-Inspectors of Police (Taluk, AR & TSP) - 2023.
+                    <br />
+                    <br />
+                    The TNUSRB SI notification 2023 Notification will be issued soon at the
+                    official website tnusrb.tn.gov.in.
+                    <br />
+                    <br />
+                    The online application process will be conducted from ? at the official
+                    website.
+                  </p>
+                  <div className="star-notification-support">
+                    <span>☏</span>
+                    <div>
+                      <h3>“Being With A WINNER", Make You A WINNER”.</h3>
+                      <strong>{contact.phonePrimary}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="star-notification-counter">
+                <h2>12</h2>
+                <h5>Years Of Experience</h5>
+                <p>
+                  1000+ Job Placement
+                  <br />
+                  Join US
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="star-schedule-frame">
+            <iframe
+              title="SPA Test Schedule"
+              src="https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf#toolbar=0"
+            />
+          </div>
+
+          <div className="star-notification-list">
+            {notificationItems.map((item) => (
+              <article className="star-notification-card" key={`${item.title}-${item.date}`}>
+                <div className="star-notification-main">
+                  <span>{item.category}</span>
+                  <h3>{item.title}</h3>
+                  <p className="star-notification-subtitle">{item.subtitle}</p>
+                  <p>{item.description}</p>
+                </div>
+                <div className="star-notification-download">
+                  <p>
+                    <strong>Date:</strong> {item.date}
+                  </p>
+                  <a href={item.href} target="_blank" rel="noreferrer">
+                    Download Now
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function PageContent({ page }) {
   switch (page.type) {
     case "about":
@@ -1117,6 +1205,8 @@ function PageContent({ page }) {
       return <FAQPage />;
     case "questions":
       return <QuestionPapersPage />;
+    case "notification":
+      return <NotificationPage />;
     case "toppers":
       return <ToppersPage />;
     case "home":

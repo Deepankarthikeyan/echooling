@@ -731,6 +731,204 @@
   color: #ffffff;
 }
 
+.star-notification {
+  background: #ffffff;
+}
+
+.star-notification-intro {
+  box-shadow: 0 16px 40px rgba(15, 34, 57, 0.12);
+  display: grid;
+  grid-template-columns: 38% 62%;
+  min-height: 330px;
+}
+
+.star-notification-video {
+  align-items: center;
+  background:
+    linear-gradient(rgba(15, 34, 57, 0.45), rgba(15, 34, 57, 0.45)),
+    url("https://www.starpoliceacademy.in/img/content/contact-info.jpg") center/cover;
+  display: flex;
+  justify-content: center;
+  min-height: 330px;
+}
+
+.star-notification-video a {
+  align-items: center;
+  background: #f7c948;
+  border-radius: 50%;
+  color: #0f2239;
+  display: inline-flex;
+  font-size: 24px;
+  height: 68px;
+  justify-content: center;
+  padding-left: 4px;
+  width: 68px;
+}
+
+.star-notification-copy {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 42px;
+}
+
+.star-notification-copy > p {
+  color: #526174;
+  font-size: 20px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+
+.star-notification-support {
+  align-items: flex-start;
+  display: flex;
+  gap: 22px;
+  width: 100%;
+}
+
+.star-notification-support > span {
+  color: #dba514;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.star-notification-support h3 {
+  color: #0f2239;
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.star-notification-support strong {
+  color: #0f2239;
+  font-size: 20px;
+}
+
+.star-notification-counter {
+  align-items: center;
+  background: #0b4eb3;
+  box-shadow: 0 16px 40px rgba(15, 34, 57, 0.12);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  min-height: 330px;
+  padding: 36px 24px;
+  text-align: center;
+}
+
+.star-notification-counter h2 {
+  color: #ffffff;
+  font-size: 70px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.star-notification-counter h5,
+.star-notification-counter p {
+  color: #ffffff;
+}
+
+.star-notification-counter p {
+  font-weight: 800;
+  margin: 18px 0 0;
+}
+
+.star-schedule-frame {
+  background: #f4f7fb;
+  border: 1px solid rgba(15, 34, 57, 0.08);
+  box-shadow: 0 14px 34px rgba(15, 34, 57, 0.08);
+  height: 760px;
+  margin: 70px 0 40px;
+  overflow: hidden;
+}
+
+.star-schedule-frame iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.star-notification-list {
+  margin: 0 auto;
+  max-width: 1050px;
+}
+
+.star-notification-card {
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(15, 34, 57, 0.1);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  margin-bottom: 24px;
+}
+
+.star-notification-main {
+  padding: 30px 38px;
+}
+
+.star-notification-main span {
+  color: #dba514;
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.star-notification-main h3 {
+  color: #0b4eb3;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.star-notification-subtitle {
+  color: #6d7685;
+  font-weight: 800;
+}
+
+.star-notification-main p {
+  margin-bottom: 8px;
+}
+
+.star-notification-download {
+  align-items: center;
+  border-left: 1px solid rgba(15, 34, 57, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.star-notification-download p {
+  color: #667486;
+  font-weight: 700;
+}
+
+.star-notification-download p strong {
+  color: #0b4eb3;
+}
+
+.star-notification-download a {
+  background: #0b4eb3;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  justify-content: center;
+  min-width: 150px;
+  padding: 13px 16px;
+  text-transform: uppercase;
+}
+
+.star-notification-download a:hover {
+  background: #0f2239;
+  color: #ffffff;
+}
+
 .star-course-card {
   padding: 0;
 }
@@ -1198,6 +1396,26 @@
     text-align: left;
   }
 
+  .star-notification-intro,
+  .star-notification-card {
+    grid-template-columns: 1fr;
+  }
+
+  .star-notification-counter {
+    min-height: 240px;
+  }
+
+  .star-schedule-frame {
+    height: 560px;
+  }
+
+  .star-notification-download {
+    align-items: flex-start;
+    border-left: 0;
+    border-top: 1px solid rgba(15, 34, 57, 0.08);
+    text-align: left;
+  }
+
   .star-contact-form-panel {
     margin-top: 48px;
     padding-left: 0;
@@ -1275,6 +1493,22 @@
 
   .star-contact-map {
     height: 280px;
+  }
+
+  .star-notification-copy {
+    padding: 28px 22px;
+  }
+
+  .star-notification-copy > p {
+    font-size: 17px;
+  }
+
+  .star-notification-main {
+    padding: 24px;
+  }
+
+  .star-schedule-frame {
+    height: 420px;
   }
 
   .star-detail-card {
