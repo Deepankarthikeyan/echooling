@@ -1,9 +1,22 @@
 .star-site {
+  --star-header-height: 132px;
   background: #ffffff;
+  padding-top: var(--star-header-height);
 }
 
 .star-site a {
   text-decoration: none;
+}
+
+.star-header {
+  background: #ffffff;
+  box-shadow: 0 8px 26px rgba(15, 34, 57, 0.08);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 .star-header .menu-part {
@@ -153,7 +166,7 @@
   transform: translateY(12px);
   transition: opacity 160ms ease, transform 160ms ease;
   visibility: hidden;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .star-dropdown li {
@@ -1279,6 +1292,10 @@
 }
 
 @media (max-width: 991px) {
+  .star-site {
+    --star-header-height: 118px;
+  }
+
   .star-header .react-main-menu nav {
     display: block;
   }
@@ -1428,6 +1445,10 @@
 }
 
 @media (max-width: 575px) {
+  .star-site {
+    --star-header-height: 108px;
+  }
+
   .star-logo img {
     max-height: 46px;
   }
