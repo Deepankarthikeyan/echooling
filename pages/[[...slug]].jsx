@@ -1,6 +1,5 @@
-import LegacyPage from "../components/LegacyPage";
-import { knownRouteAliases } from "../lib/legacy-routes";
-import { loadLegacyPage } from "../lib/legacy-page-loader";
+import StarSite from "../components/StarSite";
+import { resolveStarRoute } from "../lib/star-routes";
 
 function routeFromSlug(slug) {
   if (!slug || slug.length === 0) {
@@ -11,7 +10,7 @@ function routeFromSlug(slug) {
 }
 
 export async function getServerSideProps({ params }) {
-  const page = loadLegacyPage(routeFromSlug(params?.slug));
+  const page = resolveStarRoute(routeFromSlug(params?.slug));
 
   if (!page) {
     return {
@@ -21,12 +20,11 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: {
-      knownRouteAliases,
       page,
     },
   };
 }
 
-export default function CatchAllLegacyPage({ page, knownRouteAliases: aliases }) {
-  return <LegacyPage page={page} knownRouteAliases={aliases} />;
+export default function CatchAllStarPage({ page }) {
+  return <StarSite page={page} />;
 }

@@ -1,7 +1,7 @@
 {
   "name": "workspace",
   "version": "1.0.0",
-  "description": "Next.js and Node migration of the Echooling static website.",
+  "description": "Next.js and Node site for Star Police Academy using the migrated responsive design system.",
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
