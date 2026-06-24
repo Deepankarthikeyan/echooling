@@ -7,6 +7,7 @@ import {
   courses,
   faqs,
   features,
+  questionPapers,
   registrationCourses,
   socialLinks,
   stats,
@@ -1034,6 +1035,39 @@ function FAQPage() {
   );
 }
 
+function QuestionPapersPage() {
+  return (
+    <>
+      <Breadcrumb title="Questions Paper" />
+      <section className="star-question-papers pt---70 pb---100">
+        <div className="container">
+          <SectionTitle eyebrow="Question papers" title="Police Training Question papers" />
+          <div className="star-question-list">
+            {questionPapers.map((paper) => (
+              <article className="star-question-card" key={`${paper.title}-${paper.testNo}-${paper.date}`}>
+                <div className="star-question-main">
+                  <span className="star-question-category">{paper.category}</span>
+                  <h3>{paper.title}</h3>
+                  <strong>{paper.testNo}</strong>
+                  <p>{paper.description}</p>
+                </div>
+                <div className="star-question-action">
+                  <span>
+                    Date : <strong>{paper.date}</strong>
+                  </span>
+                  <a href={contact.whatsapp} target="_blank" rel="noreferrer">
+                    Download Now
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function PageContent({ page }) {
   switch (page.type) {
     case "about":
@@ -1048,6 +1082,8 @@ function PageContent({ page }) {
       return <ContactPage />;
     case "faq":
       return <FAQPage />;
+    case "questions":
+      return <QuestionPapersPage />;
     case "toppers":
       return <ToppersPage />;
     case "home":

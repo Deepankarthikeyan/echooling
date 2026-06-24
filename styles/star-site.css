@@ -620,6 +620,117 @@
   font-weight: 700;
 }
 
+.star-question-papers {
+  background: #f3f5f9;
+}
+
+.star-question-papers .star-section-title {
+  margin-bottom: 34px;
+}
+
+.star-question-papers .star-section-title h2 {
+  font-size: clamp(28px, 3vw, 38px);
+}
+
+.star-question-papers .star-section-title h2::after {
+  background: #0b4eb3;
+  border-radius: 999px;
+  content: "";
+  display: block;
+  height: 4px;
+  margin: 16px auto 0;
+  width: 38px;
+}
+
+.star-question-list {
+  margin: 0 auto;
+  max-width: 880px;
+}
+
+.star-question-card {
+  align-items: stretch;
+  background: #ffffff;
+  border: 1px solid rgba(15, 34, 57, 0.08);
+  box-shadow: 0 8px 24px rgba(15, 34, 57, 0.06);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  margin-bottom: 22px;
+  padding: 24px 28px;
+}
+
+.star-question-category {
+  background: #f01414;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.star-question-main h3 {
+  color: #0b4eb3;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.star-question-main strong {
+  color: #0f2239;
+  display: block;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.star-question-main p {
+  color: #667486;
+  font-size: 13px;
+  margin: 0;
+}
+
+.star-question-action {
+  align-items: flex-end;
+  border-left: 1px solid rgba(15, 34, 57, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 22px;
+  text-align: right;
+}
+
+.star-question-action span {
+  color: #526174;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.star-question-action span strong {
+  color: #0b4eb3;
+}
+
+.star-question-action a {
+  background: #0646a7;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 900;
+  justify-content: center;
+  line-height: 1;
+  min-width: 132px;
+  padding: 12px 14px;
+  text-transform: uppercase;
+}
+
+.star-question-action a:hover {
+  background: #0f2239;
+  color: #ffffff;
+}
+
 .star-course-card {
   padding: 0;
 }
@@ -983,6 +1094,19 @@
   .star-about-left-title {
     margin-bottom: 36px;
     padding-right: 0;
+  }
+
+  .star-question-card {
+    grid-template-columns: 1fr;
+  }
+
+  .star-question-action {
+    align-items: flex-start;
+    border-left: 0;
+    border-top: 1px solid rgba(15, 34, 57, 0.08);
+    padding-left: 0;
+    padding-top: 18px;
+    text-align: left;
   }
 }
 
