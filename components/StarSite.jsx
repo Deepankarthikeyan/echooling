@@ -52,8 +52,6 @@ const navItems = [
       { label: "Training Materials", href: "/materials" },
       { label: "Question papers", href: "/questions" },
       { label: "Answer Keys", href: "/ansewrkey" },
-      { label: "Gallery", href: "/gallery" },
-      { label: "Blog", href: "/blog" },
     ],
   },
   { label: "Contact", href: "/contact" },
