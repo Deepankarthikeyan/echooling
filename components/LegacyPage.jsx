@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
+import parse from "html-react-parser";
 
 const attrNameMap = {
   "accept-charset": "acceptCharset",
@@ -153,6 +154,8 @@ function LegacyRuntime({ bodyClassName, dir, lang, scripts }) {
 }
 
 export default function LegacyPage({ page, knownRouteAliases }) {
+  const bodyContent = useMemo(() => parse(page.bodyHtml), [page.bodyHtml]);
+
   return (
     <>
       <LegacyHead headTags={page.headTags} title={page.title} />
@@ -163,7 +166,7 @@ export default function LegacyPage({ page, knownRouteAliases }) {
         lang={page.lang}
         scripts={page.scripts}
       />
-      <div dangerouslySetInnerHTML={{ __html: page.bodyHtml }} suppressHydrationWarning />
+      {bodyContent}
     </>
   );
 }
