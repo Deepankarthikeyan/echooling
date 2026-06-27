@@ -4870,13 +4870,14 @@ body.star-site .react-footer-two .copyright > .container {
   width: 100%;
 }
 
-/* Echooling template layout: full-width sections, contained content columns */
+/* Echooling boxed layout — each section centered with side space (header/footer full width) */
 .exact-about-page,
 .exact-home-page {
   --exact-band-max: 1350px;
   --exact-content-gutter: 15px;
   --exact-content-max: 1340px;
   --exact-cta-max: 1300px;
+  --exact-section-max: calc(var(--exact-content-max) + (var(--exact-content-gutter) * 2));
   --exact-stats-max: 1280px;
 }
 
@@ -4884,20 +4885,37 @@ body.star-site .react-footer-two .copyright > .container {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.exact-home-page > *,
+.exact-about-page > *:not(.react-breadcrumbs) {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--exact-section-max);
+  overflow: hidden;
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+  width: 100%;
+}
+
 body.star-site .exact-about-page .container,
 body.star-site .exact-home-page .container {
   box-sizing: border-box;
   margin-left: auto !important;
   margin-right: auto !important;
-  max-width: var(--exact-content-max) !important;
-  padding-left: var(--exact-content-gutter) !important;
-  padding-right: var(--exact-content-gutter) !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   width: 100% !important;
 }
 
 body.star-site .exact-about-page .instructor__area .container,
 body.star-site .exact-home-page .instructor__area .container {
-  max-width: var(--exact-content-max) !important;
+  max-width: 100% !important;
+}
+
+.exact-home-page .hero3__area {
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
@@ -4910,17 +4928,15 @@ body.star-site .exact-home-page .instructor__area .container {
   width: 100%;
 }
 
-/* About coaching: full-width section, inset gray band + cards */
-.exact-about-page .react_populars_topics_about {
-  padding-left: var(--exact-content-gutter);
-  padding-right: var(--exact-content-gutter);
-}
-
 .exact-about-page .react_populars_topics_about .react__title__section-all {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--exact-band-max);
+  max-width: 100%;
+}
+
+body.star-site .exact-about-page .count__area2 .container {
+  max-width: var(--exact-stats-max) !important;
 }
 
 /* Footer CTA — inset card like Echooling reference */
@@ -5017,10 +5033,6 @@ body.star-site .react-footer-two .footer-top-cta {
 
 .exact-about-page .react_populars_topics_about .react-content p {
   flex: 1;
-}
-
-body.star-site .exact-about-page .count__area2 .container {
-  max-width: var(--exact-stats-max) !important;
 }
 
 @media (max-width: 991px) {

@@ -1088,7 +1088,7 @@ function ExactClients() {
           <h6 className="react__subtitle">Student Community Feedback</h6>
           <h2 className="react__tittle">What our clients say about</h2>
         </div>
-        <div className="container">
+        <div className="exact-client-slider-wrap">
           <div className="client-slider exact-client-slider">
             <button
               type="button"
