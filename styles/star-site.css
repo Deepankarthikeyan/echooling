@@ -4898,8 +4898,9 @@ body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .containe
   width: 100% !important;
 }
 
-/* Popular Topics — Echooling index-two uses a narrower 1200px column */
-body.star-site .exact-home-page .react_populars_topics > .container {
+/* Popular Topics + About — Echooling index-two uses a narrower 1200px column */
+body.star-site .exact-home-page .react_populars_topics > .container,
+body.star-site .exact-home-page .about2__area > .container {
   max-width: var(--exact-popular-topics-max) !important;
   padding-left: var(--exact-content-gutter) !important;
   padding-right: var(--exact-content-gutter) !important;
