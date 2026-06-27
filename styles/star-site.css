@@ -1576,7 +1576,7 @@
 .star-site {
   --star-header-height: 86px;
   color: #0f1b33;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .echooling-header {
@@ -4141,12 +4141,13 @@
 }
 
 .exact-home-header .react-menus > li > a {
-  color: #0f1f3d;
+  color: #0f1216;
   display: block;
-  font-size: 13px;
-  font-weight: 700;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1;
-  padding: 35px 4px;
+  padding: 32px 12px;
   white-space: nowrap;
 }
 
@@ -4179,10 +4180,11 @@
 }
 
 .exact-home-header .react-menus > li > ul a {
-  color: #0f1f3d;
+  color: #0f1216;
   display: block;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
   padding: 10px 20px;
   transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
@@ -4221,9 +4223,11 @@
 }
 
 .exact-home-header .phone-part a {
-  color: #0f1f3d;
-  font-size: 13px;
-  font-weight: 700;
+  color: #0f1216;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .exact-home-header .phone-part svg {
@@ -4232,13 +4236,15 @@
 }
 
 .exact-home-header .react-logins a {
-  background: #2b6cff;
-  border-radius: 3px;
+  background: #3270fc;
+  border-radius: 6px;
   color: #ffffff;
-  font-size: 13px;
-  font-weight: 800;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   min-height: 40px;
-  padding: 0 14px;
+  padding: 10px 26px;
 }
 
 .exact-home-header .react-logins svg {
@@ -4432,12 +4438,329 @@
   }
 
   .exact-home-header .react-menus > li > a {
-    font-size: 12px;
-    padding-left: 2px;
-    padding-right: 2px;
+    font-size: 14px;
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
   .exact-home-header .react-logins {
     display: none;
+  }
+}
+
+/* Exact Home Two typography — match index-two.html */
+.exact-home-page,
+.exact-home-header {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.exact-home-page .hero3__title {
+  color: #0f1216;
+  font-size: 70px;
+  font-weight: 600;
+  line-height: 74px;
+}
+
+.exact-home-page .hero3__title em {
+  color: #3270fc;
+  font-style: normal;
+}
+
+.exact-home-page .hero3__paragraph {
+  color: #00306e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.11px;
+}
+
+.exact-home-page .search-form .form-input,
+.exact-home-page .search-form [type="text"] {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+}
+
+.exact-home-page .hero3__area .about__content ul li .text h4 {
+  color: #0f1216;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+.exact-home-page .hero3__area .about__content ul li .text p {
+  color: #5b5f64;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.exact-home-page .react__title__section2 .react__tittle,
+.exact-home-page .react__title__section .react__tittle,
+.exact-home-page .react__title__section h2 {
+  color: #0f1216;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 54px;
+}
+
+.exact-home-page .react__subtitle,
+.exact-home-page .react__title__section h6 {
+  color: #d2093c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.exact-home-page .react_populars_topics .item__inner h3,
+.exact-home-page .react_populars_topics .react-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.exact-home-page .react_populars_topics .item__inner p {
+  color: #5b5f64;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.exact-home-page .react__title__section2 a {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.exact-home-page .about2__area .about__title {
+  color: #0f1216;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.exact-home-page .about2__area .about__title em {
+  color: #3270fc;
+  font-style: normal;
+}
+
+.exact-home-page .about2__area .about__paragraph {
+  color: #5b5f64;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.exact-home-page .about2__area ul li {
+  color: #0f1216;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.exact-home-page .about2__area .about__btn a {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.exact-home-page .react-course-filter .react__subtitle {
+  color: #5b5f64;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.exact-home-page .react-filter button {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.exact-home-page .case-title,
+.exact-home-page .case-title a {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.exact-home-page .meta-course li,
+.exact-home-page .react__user {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.exact-home-page .accordion__wrapper-1 h6 {
+  color: #d2093c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.exact-home-page .accordion__wrapper-1 h2 {
+  color: #0f1216;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 54px;
+}
+
+.exact-home-page .accordion__wrapper-1 p {
+  color: #5b5f64;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.exact-home-page .accordion__wrapper-1 .border-btns {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.exact-home-page .accordion-button {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.exact-home-page .accordion-body p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.exact-home-page .instructors_lefts h6 {
+  color: #d2093c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.exact-home-page .instructors_lefts h2 {
+  color: #0f1216;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 54px;
+}
+
+.exact-home-page .instructor__content-2 h4,
+.exact-home-page .instructor__content-2 h4 a {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.exact-home-page .instructor__content-2 p {
+  color: #5b5f64;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.exact-home-page .client-title {
+  color: #0f1216;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.exact-home-page .client-title em {
+  color: #5b5f64;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.exact-home-page .client-content p {
+  color: #5b5f64;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.exact-home-page .testimonial__ratings {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.exact-home-page .blog__card--title,
+.exact-home-page .blog__card--title a {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.exact-home-page .blog__card--date {
+  color: #d2093c;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.exact-home-page .blog__card--icon-1 span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.exact-home-page .b_date {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.react-footer-two .footer-top-cta h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.react-footer-two .footer-top-cta h3 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+.react-footer-two .footer-top-cta a {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.react-footer-two .footer-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.react-footer-two .footer-subtitle,
+.react-footer-two .footer-menu a,
+.react-footer-two .footer3__form p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+@media (max-width: 991px) {
+  .exact-home-page .hero3__title {
+    font-size: 46px;
+    line-height: 52px;
+  }
+
+  .exact-home-page .react__title__section2 .react__tittle,
+  .exact-home-page .react__title__section .react__tittle,
+  .exact-home-page .react__title__section h2,
+  .exact-home-page .about2__area .about__title,
+  .exact-home-page .accordion__wrapper-1 h2,
+  .exact-home-page .instructors_lefts h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .exact-home-page .hero3__area .about__content ul li .text h4 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .exact-home-page .hero3__title {
+    font-size: 38px;
+    line-height: 44px;
+  }
+
+  .react-footer-two .footer-top-cta h3 {
+    font-size: 32px;
+    line-height: 38px;
   }
 }
