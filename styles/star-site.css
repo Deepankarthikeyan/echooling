@@ -4913,6 +4913,50 @@ body.star-site .exact-home-page .react_populars_topics .item__inner {
   padding: 40px 35px 35px;
 }
 
+/* About page — same 1200px column, reduced side space on all sections */
+body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container,
+body.star-site .exact-about-page .about__area_one > .container,
+body.star-site .exact-about-page .react_populars_topics_about > .container,
+body.star-site .exact-about-page .instructor__area > .container,
+body.star-site .exact-about-page .student_satisfaction-section > .container,
+body.star-site .exact-about-page .count__area2 > .container {
+  max-width: var(--exact-popular-topics-max) !important;
+  padding-left: var(--exact-content-gutter) !important;
+  padding-right: var(--exact-content-gutter) !important;
+}
+
+.exact-about-page .react_populars_topics_about .react__title__section-all {
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--exact-popular-topics-max);
+}
+
+.exact-about-page .about__area_one.pt---100 {
+  padding-top: 80px;
+}
+
+.exact-about-page .about__area_one.pb---120,
+.exact-about-page .student_satisfaction-section.pb---120 {
+  padding-bottom: 80px;
+}
+
+.exact-about-page .react_populars_topics_about.pb---80 {
+  padding-bottom: 60px;
+}
+
+.exact-about-page .instructor__area.pb---110 {
+  padding-bottom: 80px;
+}
+
+.exact-about-page .student_satisfaction-section.pt---110 {
+  padding-top: 80px;
+}
+
+.exact-about-page .react_populars_topics_about .item__inner {
+  padding: 35px 30px 30px;
+}
+
 /* Full-width section backgrounds (hero, gray course band, about coaching, testimonials) */
 .exact-home-page > .hero3__area,
 .exact-home-page > .react-course-filter,
@@ -4925,23 +4969,6 @@ body.star-site .exact-home-page .react_populars_topics .item__inner {
   box-sizing: border-box;
   padding-left: var(--exact-content-gutter);
   padding-right: var(--exact-content-gutter);
-}
-
-.exact-about-page .react_populars_topics_about .react__title__section-all {
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--exact-band-max);
-}
-
-body.star-site .exact-about-page .count__area2 .container {
-  box-sizing: border-box;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  max-width: var(--exact-stats-max) !important;
-  padding-left: var(--exact-content-gutter) !important;
-  padding-right: var(--exact-content-gutter) !important;
-  width: 100% !important;
 }
 
 /* Footer CTA — overlapping card centered above dark footer (Echooling index-two) */
