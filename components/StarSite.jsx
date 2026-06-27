@@ -350,49 +350,45 @@ function Header() {
               <div className={`react-inner-menus exact-home-menus ${open ? "is-open" : ""}`}>
                 <ul id="backmenu" className="react-menus react-sub-shadow">
                   <li>
-                    <Link href="/">Home</Link>
-                    <ul>
-                      {["Home One", "Home Two", "Home Three", "Home Four", "Home Five", "Home Six", "Home Seven"].map((item) => (
-                        <li key={item}>
-                          <Link href="/" onClick={closeNavigation}>{item}</Link>
-                        </li>
-                      ))}
-                    </ul>
+                    <Link href="/" onClick={closeNavigation}>Home</Link>
                   </li>
                   <li>
-                    <Link href="/about">Pages</Link>
+                    <Link href="/about">About</Link>
                     <ul>
-                      <li><Link href="/about" onClick={closeNavigation}>About</Link></li>
-                      <li><Link href="/instructors" onClick={closeNavigation}>Instructor</Link></li>
-                      <li><Link href="/profile" onClick={closeNavigation}>Profile</Link></li>
-                      <li>
-                        <Link href="/events" onClick={closeNavigation}>Events</Link>
-                        <ul>
-                          <li><Link href="/events" onClick={closeNavigation}>Events</Link></li>
-                          <li><Link href="/events-right-sidebar" onClick={closeNavigation}>Events Sidebar</Link></li>
-                          <li><Link href="/events-single" onClick={closeNavigation}>Events Single</Link></li>
-                        </ul>
-                      </li>
-                      <li><Link href="/login" onClick={closeNavigation}>Login</Link></li>
-                      <li><Link href="/signup" onClick={closeNavigation}>Sign Up</Link></li>
+                      <li><Link href="/about" onClick={closeNavigation}>About Star Police Academy</Link></li>
                     </ul>
                   </li>
                   <li>
                     <Link href="/courses" onClick={closeNavigation}>Courses</Link>
                     <ul>
-                      <li><Link href="/courses" onClick={closeNavigation}>Courses</Link></li>
-                      <li><Link href="/coureses-right-sidebar" onClick={closeNavigation}>Right Sidebar</Link></li>
-                      <li><Link href="/coureses-list" onClick={closeNavigation}>Courses List</Link></li>
-                      <li><Link href="/coureses-single" onClick={closeNavigation}>Courses Single</Link></li>
+                      <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
+                      <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
+                      <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
+                      <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
+                      <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
+                      <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
+                      <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
                     </ul>
                   </li>
                   <li>
-                    <Link href="/blog" onClick={closeNavigation}>Blog</Link>
+                    <Link href="/notification" onClick={closeNavigation}>Notifications</Link>
                     <ul>
-                      <li><Link href="/blog" onClick={closeNavigation}>Blog</Link></li>
-                      <li><Link href="/blog-details" onClick={closeNavigation}>Blog Single</Link></li>
+                      <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
+                      <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
+                      <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
                     </ul>
                   </li>
+                  <li>
+                    <Link href="/training" onClick={closeNavigation}>Training</Link>
+                    <ul>
+                      <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
+                      <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
+                      <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
+                      <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
+                    </ul>
+                  </li>
+                  <li><Link href="/gallery" onClick={closeNavigation}>Gallery</Link></li>
+                  <li><Link href="/blog" onClick={closeNavigation}>Blog</Link></li>
                   <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
                 </ul>
                 <div className="searchbar-part">
