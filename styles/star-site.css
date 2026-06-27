@@ -4901,25 +4901,39 @@ body.star-site .react-footer-two {
   padding-top: 100px;
 }
 
-.exact-about-page .react_populars_topics_about .about-coaching-heading-row {
-  margin-bottom: 10px;
-  padding-top: 8px;
+.exact-about-page .react_populars_topics_about > .container {
+  max-width: 1350px;
 }
 
-.exact-about-page .react_populars_topics_about .about-coaching-heading-row h6 {
+.exact-about-page .react_populars_topics_about .about-coaching-heading {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+  padding-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.exact-about-page .react_populars_topics_about .about-coaching-heading h6 {
   color: #d2093c;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   margin: 0 0 12px;
+  text-align: center;
 }
 
-.exact-about-page .react_populars_topics_about .about-coaching-heading-row .react__tittle {
+.exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle {
   color: #0f1216;
   font-size: 44px;
   font-weight: 700;
   line-height: 54px;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.exact-about-page .react_populars_topics_about > .container > .row.pt---30 {
+  text-align: left;
 }
 
 .exact-about-page .react_populars_topics_about .icon img {
