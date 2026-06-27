@@ -249,6 +249,19 @@ function Header() {
 function Footer() {
   return (
     <footer id="react-footer" className="react-footer home-main star-footer">
+      <div className="container">
+        <div className="footer-top-cta">
+          <div className="row">
+            <div className="col-lg-8">
+              <h4>Ready to dive in?</h4>
+              <h3>Start your police exam coaching today.</h3>
+            </div>
+            <div className="col-lg-4 text-lg-end">
+              <Link href="/faq">Go to FAQ</Link>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="footer-top">
         <div className="container">
           <div className="row">
@@ -367,38 +380,196 @@ function Breadcrumb({ title }) {
   );
 }
 
-function Hero() {
+const homeTopicIcons = [
+  "/assets/images/topics/1.svg",
+  "/assets/images/topics/2.svg",
+  "/assets/images/topics/3.svg",
+  "/assets/images/topics/4.svg",
+];
+
+const homeHeroStats = [
+  { value: stats[1].value, label: stats[1].label, icon: "/assets/images/topics/icon.svg" },
+  { value: stats[0].value, label: stats[0].label, icon: "/assets/images/topics/icon2.svg" },
+  { value: stats[2].value, label: stats[2].label, icon: "/assets/images/topics/icon3.svg" },
+];
+
+const homeCourseFilters = [
+  { key: "all", label: "See all" },
+  { key: "tnusrb", label: "TNUSRB" },
+  { key: "defence", label: "Defence" },
+  { key: "capf", label: "CAPF" },
+  { key: "rpf", label: "RPF" },
+];
+
+const homeCourseGroups = {
+  all: courses.map((course) => course.key),
+  tnusrb: ["tnusrb", "sub-inspector"],
+  defence: ["indian-army", "indian-navy", "indian-air-force"],
+  capf: ["capf"],
+  rpf: ["rpf"],
+};
+
+function HomeHero() {
   return (
-    <section className="react-slider-part star-hero">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-7">
-            <span className="slider-pretitle">{academy.heroSlides[0].eyebrow}</span>
-            <h1 className="slider-title">
-              {academy.heroSlides[0].title}
-              <br />
-              <em>Star Police Academy</em>
-            </h1>
-            <p>{academy.heroSlides[0].text}</p>
-            <div className="star-hero-actions">
-              <Link href="/register" className="react-btn">
-                {academy.heroSlides[0].cta}
-              </Link>
-              <Link href="/courses" className="react-btn-border">
-                How IT Works
-              </Link>
+    <>
+      <section className="hero3__area p-relative">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="hero3__content">
+                <h1 className="hero3__title">
+                  {academy.heroSlides[0].title} <em>Star Police Academy</em>
+                </h1>
+                <form className="search-form" action="/courses" method="get">
+                  <input type="text" name="q" placeholder="Search police exam courses..." />
+                  <button type="submit" aria-label="Search courses">
+                    <span className="icon_search" />
+                  </button>
+                </form>
+                <p className="hero3__paragraph">
+                  {academy.heroSlides[0].text}{" "}
+                  <Link href="/register">Apply Now</Link>
+                </p>
+              </div>
+              <div className="about__content">
+                <ul>
+                  {homeHeroStats.map((item) => (
+                    <li key={item.label}>
+                      <div className="icon">
+                        <img src={item.icon} alt="" />
+                      </div>
+                      <div className="text">
+                        <h4>{item.value}</h4>
+                        <p>{item.label}</p>
+                      </div>
+                      <Link href="/about" aria-label={`Learn more about ${item.label}`}>
+                        <span className="arrow_carrot-right" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="col-lg-5">
-            <div className="star-hero-card">
-              <img src={academy.logo} alt="Star Police Academy" />
-              <h3>{academy.tagline}</h3>
-              <p>{academy.description}</p>
+        </div>
+        <div className="hero3__image">
+          <img
+            className="hero3__image-1"
+            src="https://www.starpoliceacademy.in/img/content/history-info.jpg"
+            alt="Star Police Academy students"
+          />
+          <img
+            className="hero3__image-2"
+            src="https://www.starpoliceacademy.in/img/content/about-01.jpg"
+            alt="Star Police Academy training"
+          />
+        </div>
+      </section>
+      <section className="category__area">
+        <div className="container category__width">
+          <div className="row">
+            {stats.slice(0, 4).map((item, index) => (
+              <div className="col-lg-3 col-md-6" key={item.label}>
+                <div className="category__inner">
+                  <div className={`category__wrapper category__wrapper${index === 1 ? "2" : index === 3 ? "6" : ""}`}>
+                    <img src={homeTopicIcons[index] || homeTopicIcons[0]} alt="" />
+                    <h4>
+                      <Link href="/about">{item.value}</Link>
+                    </h4>
+                  </div>
+                  <span className="star-category-label">{item.label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function HomePopularTopics() {
+  return (
+    <section className="react_populars_topics react_populars_topics2 pt---100 pb---70">
+      <div className="container">
+        <div className="row align-items-end mb---50">
+          <div className="col-lg-8">
+            <div className="react__title__section-all">
+              <h6>//Police Exam Training</h6>
+              <h2>Star Police Academy Coaching Topics</h2>
+            </div>
+          </div>
+          <div className="col-lg-4 text-lg-end">
+            <Link href="/courses" className="react-btn">
+              Browse all
+            </Link>
+          </div>
+        </div>
+        <div className="row">
+          {features.map((feature, index) => (
+            <div className="col-lg-3 col-md-6" key={feature.title}>
+              <div className="item__inner">
+                <div className="icon">
+                  <img src={homeTopicIcons[index] || homeTopicIcons[0]} alt="" />
+                </div>
+                <h3>
+                  <Link href="/about">{feature.title}</Link>
+                </h3>
+                <p>{feature.text}</p>
+                <Link href="/about">Learn More</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeAboutVideo() {
+  return (
+    <section className="about2__area about__area_one p-relative pt---100 pb---100">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-6">
+            <div className="about__image">
+              <img
+                src="https://www.starpoliceacademy.in/img/content/history-info.jpg"
+                alt="Star Police Academy training session"
+              />
+              <div className="event__video-btn--play">
+                <a
+                  className="event__video-btn--play-btn popup-videos"
+                  href="https://www.youtube.com/watch?v=1ppfH0p_UYM"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="icon_triangle-right" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="about__content">
+              <div className="react__title__section-all">
+                <h6>//About Us</h6>
+                <h2>
+                  Tamil Nadu&apos;s Leading <em>TNUSRB SI & Police</em> Coaching Centre
+                </h2>
+              </div>
+              <p className="about__paragraph">{academy.aboutIntro}</p>
               <ul>
-                <li>TNUSRB Police Constable</li>
-                <li>TNUSRB Sub Inspector</li>
-                <li>Army, Navy, Air Force, RPF and CAPF Courses</li>
+                {trainingSteps.map((step) => (
+                  <li key={step.number}>
+                    <span className="icon_check_alt2" /> {step.title}
+                  </li>
+                ))}
               </ul>
+              <div className="about__btn">
+                <Link href="/about" className="more-about">
+                  Read More
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -407,24 +578,246 @@ function Hero() {
   );
 }
 
-function FeatureCards() {
+function HomeCoursesFilter() {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const visibleCourses = courses.filter((course) =>
+    homeCourseGroups[activeFilter].includes(course.key),
+  );
+
   return (
-    <section className="react_popular_topics pt---100 pb---70">
+    <section className="react-course-filter pb---100 pt---100">
       <div className="container">
-        <SectionTitle
-          eyebrow="//Police Exam Training"
-          title="Star Police Academy"
-          text="We are one of the best training center for Police competitive exams over 15 years."
-        />
+        <div className="react__title__section text-center">
+          <h2>Most Popular Courses</h2>
+          <h6>Focused coaching for TNUSRB, Police, Defence and central force aspirants.</h6>
+        </div>
+        <div className="react-filter text-center">
+          {homeCourseFilters.map((filter) => (
+            <button
+              key={filter.key}
+              type="button"
+              className={activeFilter === filter.key ? "active" : ""}
+              onClick={() => setActiveFilter(filter.key)}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
         <div className="row">
-          {features.map((feature) => (
-            <div className="col-lg-3 col-md-6" key={feature.title}>
-              <div className="star-card star-feature-card">
-                <span className="star-card-icon">{feature.title.charAt(0)}</span>
-                <h4>{feature.title}</h4>
-                <p>{feature.text}</p>
-                <Link href="/about">Read More</Link>
+          {visibleCourses.slice(0, 6).map((course) => (
+            <div className="col-lg-4 col-md-6" key={course.key}>
+              <div className="single-studies">
+                <div className="inner-course">
+                  <div className="case-img">
+                    <img src={course.image} alt={course.shortTitle} />
+                    <Link href={`/${course.key}`}>Course</Link>
+                  </div>
+                  <div className="case-content">
+                    <ul className="react-ratings">
+                      <li>★★★★★</li>
+                      <li>1160+ Students</li>
+                    </ul>
+                    <h3 className="case-title">
+                      <Link href={`/${course.key}`}>{course.shortTitle}</Link>
+                    </h3>
+                    <div className="react__user">
+                      <img src={academy.logo} alt={academy.founder} />
+                      {academy.founder}
+                    </div>
+                    <ul className="react-ratings">
+                      <li>Expert Coaching</li>
+                      <li className="price">Apply</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeFAQ() {
+  const [openIndex, setOpenIndex] = useState(0);
+  const visibleFaqs = faqs.slice(0, 5);
+
+  return (
+    <section className="accordion__area pt---100 pb---100">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-5">
+            <div className="accordion__wrapper-1">
+              <h6>FAQ</h6>
+              <h2>Have any thought? Look here.</h2>
+              <p>Find answers about police exam coaching, training duration and admission at Star Police Academy.</p>
+              <Link href="/faq" className="border-btns">
+                Read More
+              </Link>
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <div className="accordion" id="starHomeFaq">
+              {visibleFaqs.map((item, index) => {
+                const headingId = `star-faq-heading-${index}`;
+                const collapseId = `star-faq-collapse-${index}`;
+                const isOpen = openIndex === index;
+
+                return (
+                  <div className="accordion-item" key={item.question}>
+                    <h2 className="accordion-header" id={headingId}>
+                      <button
+                        className={`accordion-button ${isOpen ? "" : "collapsed"}`}
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={collapseId}
+                        onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                      >
+                        {item.question}
+                      </button>
+                    </h2>
+                    <div
+                      id={collapseId}
+                      className={`accordion-collapse collapse ${isOpen ? "show" : ""}`}
+                      aria-labelledby={headingId}
+                    >
+                      <div className="accordion-body">
+                        <p>{item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeInstructors() {
+  return (
+    <section className="instructor__area pt---100 pb---100">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4">
+            <div className="instructors_lefts">
+              <h6>Course Instructors</h6>
+              <h2>Meet our Class Instructors</h2>
+            </div>
+          </div>
+          <div className="col-lg-8">
+            <div className="row">
+              {aboutInstructors.map((instructor) => (
+                <div className="col-lg-3 col-md-6" key={instructor.name}>
+                  <div className="instructor__content instructor__content-one">
+                    <div className="instructor__content-1">
+                      <img src={instructor.image} alt={instructor.name} />
+                    </div>
+                    <div className="instructor__content-2">
+                      <h4>
+                        <Link href="/about">{instructor.name}</Link>
+                      </h4>
+                      <p>{instructor.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeTestimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const visibleItems = testimonials.slice(activeIndex, activeIndex + 2);
+  const paddedItems =
+    visibleItems.length === 2
+      ? visibleItems
+      : [...visibleItems, testimonials[0]].slice(0, 2);
+
+  return (
+    <section className="react-clients home-testimonial pt---100 pb---100">
+      <div className="container">
+        <div className="react__title__section text-center">
+          <h2>What our clients say about</h2>
+        </div>
+        <div className="star-testimonial-slider">
+          <button
+            type="button"
+            className="star-testimonial-nav star-testimonial-prev"
+            aria-label="Previous testimonial"
+            onClick={() =>
+              setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length)
+            }
+          >
+            ‹
+          </button>
+          <ul className="client-slider">
+            {paddedItems.map((item) => (
+              <li className="single-client" key={`${item.name}-${item.text.slice(0, 12)}`}>
+                <div className="client-author">
+                  <img src={academy.logo} alt={item.name} />
+                </div>
+                <div className="client-content">
+                  <span className="client-title">
+                    {item.name} <em>{item.role}</em>
+                  </span>
+                  <p>{item.text}</p>
+                  <div className="testimonial__ratings">★★★★★</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            className="star-testimonial-nav star-testimonial-next"
+            aria-label="Next testimonial"
+            onClick={() => setActiveIndex((current) => (current + 1) % testimonials.length)}
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeBlog() {
+  return (
+    <section className="react-blog__area graybg-home blog__area pb---120 pt---100">
+      <div className="container">
+        <div className="react__title__section text-center">
+          <h6>Updates</h6>
+          <h2>Star Police Academy News and Notifications</h2>
+        </div>
+        <div className="row">
+          {notificationItems.slice(0, 4).map((item, index) => (
+            <div className="col-lg-3 col-md-6" key={item.title}>
+              <article className="blog__card">
+                <div className="blog__thumb">
+                  <div className="blog__thumb--image">
+                    <img src={courses[index]?.image || courses[0].image} alt={item.title} />
+                  </div>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <span className="blog__card--date">{item.category}</span>
+                  <h3 className="blog__card--title">
+                    <a href={item.href} target="_blank" rel="noreferrer">
+                      {item.title}
+                    </a>
+                  </h3>
+                  <a className="blog__card--link" href={item.href} target="_blank" rel="noreferrer">
+                    Read More
+                  </a>
+                </div>
+              </article>
             </div>
           ))}
         </div>
@@ -608,15 +1001,14 @@ function CTA() {
 function HomePage() {
   return (
     <>
-      <Hero />
-      <FeatureCards />
-      <AboutBlock />
-      <CourseGrid limit={6} />
-      <StatsBlock />
-      <TrainingSteps />
-      <Testimonials />
-      <FAQList limit={3} />
-      <CTA />
+      <HomeHero />
+      <HomePopularTopics />
+      <HomeAboutVideo />
+      <HomeCoursesFilter />
+      <HomeFAQ />
+      <HomeInstructors />
+      <HomeTestimonials />
+      <HomeBlog />
     </>
   );
 }
@@ -1257,7 +1649,7 @@ export default function StarSite({ page }) {
     <>
       <SiteHead title={title} />
       <Header />
-      <main className="react-wrapper star-main">
+      <main className={`react-wrapper star-main ${page?.type === "home" ? "star-home" : ""}`}>
         <PageContent page={page} />
       </main>
       <Footer />
