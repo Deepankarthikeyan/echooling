@@ -4859,7 +4859,7 @@ body.star-site .react-footer-two {
 }
 
 .exact-home-header .menu-part > .container,
-body.star-site .react-footer-two .footer-top > .container,
+body.star-site .react-footer-two .footer-top > .container:not(:first-child),
 body.star-site .react-footer-two .copyright > .container {
   box-sizing: border-box;
   margin-left: auto;
@@ -4944,34 +4944,31 @@ body.star-site .exact-about-page .count__area2 .container {
   width: 100% !important;
 }
 
-/* Footer CTA — overlapping card centered above dark footer (Echooling index-two) */
+/* Footer CTA — same 1200px column as blog section above, no overlap */
 body.star-site .react-footer.react-footer-two {
+  padding-top: 0 !important;
   position: relative;
 }
 
 body.star-site .react-footer-two .footer-top > .container:first-child {
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--exact-popular-topics-max);
-  padding-left: var(--exact-content-gutter);
-  padding-right: var(--exact-content-gutter);
-  pointer-events: none;
+  max-width: var(--exact-popular-topics-max) !important;
+  padding-left: var(--exact-content-gutter) !important;
+  padding-right: var(--exact-content-gutter) !important;
   position: static;
+  width: 100% !important;
 }
 
 body.star-site .react-footer-two .footer-top-cta {
   background: url(/assets/images/cta.jpg) center top / cover no-repeat;
   border-radius: 10px;
   box-sizing: border-box;
-  left: 50%;
-  margin: 0;
-  max-width: var(--exact-popular-topics-max);
+  margin: 0 0 70px;
+  max-width: 100%;
   padding: 50px 55px;
-  pointer-events: auto;
-  position: absolute;
-  top: -17%;
-  transform: translateX(-50%);
-  width: min(var(--exact-popular-topics-max), calc(100% - (var(--exact-content-gutter) * 2)));
+  position: relative;
+  width: 100%;
   z-index: 2;
 }
 
@@ -5059,17 +5056,8 @@ body.star-site .react-footer-two .footer-top-cta .row {
 
 @media (max-width: 991px) {
   body.star-site .react-footer-two .footer-top-cta {
-    left: auto;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 0;
-    transform: none;
-    width: 100%;
-  }
-
-  body.star-site .react-footer-two .footer-top > .container:first-child {
-    pointer-events: auto;
+    margin-bottom: 50px;
+    padding: 40px 30px;
   }
 
   .exact-about-page .about__area_one .about__content {
