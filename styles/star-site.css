@@ -4801,3 +4801,49 @@ body.star-site .react-footer-two {
   background: #3270fc;
   color: #ffffff;
 }
+
+/* Equal-height blog cards in News and Blogs section */
+.exact-home-page .react-blog__area .row {
+  align-items: stretch;
+}
+
+.exact-home-page .react-blog__area .row > [class*="col-"] {
+  display: flex;
+}
+
+.exact-home-page .react-blog__area .blog__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.exact-home-page .react-blog__area .blog__thumb img {
+  display: block;
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.exact-home-page .react-blog__area .blog__card--content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.exact-home-page .react-blog__area .blog__card--content-area {
+  flex: 1;
+}
+
+.exact-home-page .react-blog__area .blog__card--title {
+  display: -webkit-box;
+  margin-bottom: 16px;
+  min-height: 56px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.exact-home-page .react-blog__area .blog__card--icon {
+  margin-top: auto;
+}
