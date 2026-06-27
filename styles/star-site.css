@@ -1594,11 +1594,48 @@
     radial-gradient(circle at 85% 10%, rgba(50, 112, 252, 0.06), transparent 22%),
     #f3f4fa;
   margin-top: 0;
+  padding-bottom: 120px;
   padding-top: calc(var(--star-header-height) + 40px);
 }
 
-.star-home .hero3__content .hero3__title em {
+.star-home .hero3__area > .container {
   position: relative;
+  z-index: 3;
+}
+
+.star-home .hero3__content {
+  margin: 0 auto;
+  max-width: 760px;
+  position: relative;
+  z-index: 4;
+}
+
+.star-home .hero3__content .hero3__title {
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.08;
+}
+
+.star-home .hero3__image {
+  max-width: 420px;
+  pointer-events: none;
+  right: 4%;
+  top: calc(var(--star-header-height) + 80px);
+  z-index: 2;
+}
+
+.star-home .hero3__image-1,
+.star-home .hero3__image-2 {
+  border-radius: 50%;
+  height: 220px;
+  object-fit: cover;
+  width: 220px;
+}
+
+.star-home .hero3__image-2 {
+  bottom: 0;
+  position: absolute;
+  right: 40px;
+  top: auto;
 }
 
 .star-home .category__area {
