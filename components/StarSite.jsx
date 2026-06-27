@@ -706,54 +706,65 @@ function EchoolingHero() {
     <section className="echooling-hero">
       <div className="container">
         <div className="echooling-hero-stage">
-          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/banner2/shape/01.png" alt="" />
-          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/banner2/shape/02.png" alt="" />
-          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/banner2/shape/03.png" alt="" />
-          <div className="echooling-hero-copy">
-            <h1>
-              Learn Course Online
-              <br />
-              <span>New Today</span>
-            </h1>
-            <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="" />
-            <form
-              className="echooling-search"
-              onSubmit={(event) => {
-                event.preventDefault();
-              }}
-            >
-              <input type="search" placeholder="Search Course" aria-label="Search course" />
-              <button type="submit" aria-label="Search">
-                ⌕
-              </button>
-            </form>
-            <p className="echooling-hero-question">
-              Have questions? <Link href="/contact">Get Free Sample →</Link>
-            </p>
-          </div>
-          <div className="echooling-hero-stats-card">
-            <div>
-              <img src="/assets/images/banner2/bg.png" alt="" />
-              <strong>9.4k+</strong>
-              <span>
-                Total active students taking
-                <br />
-                gifted courses.
-              </span>
+          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/hero/04.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/hero/shape_03.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/hero/shape_05.png" alt="" />
+          <div className="row align-items-center">
+            <div className="col-lg-6">
+              <div className="echooling-hero-copy">
+                <h1>
+                  Learn Course Online
+                  <br />
+                  <span>New Today</span>
+                </h1>
+                <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="" />
+                <form
+                  className="echooling-search"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                  }}
+                >
+                  <input type="search" placeholder="Search Course" aria-label="Search course" />
+                  <button type="submit" aria-label="Search">
+                    ⌕
+                  </button>
+                </form>
+                <p className="echooling-hero-question">
+                  Have questions? <Link href="/contact">Get Free Sample →</Link>
+                </p>
+                <div className="echooling-hero-stats-inline">
+                  <div>
+                    <strong>9.4k+</strong>
+                    <span>Total active students taking gifted courses.</span>
+                  </div>
+                  <div>
+                    <strong>70+</strong>
+                    <span>Available field programs gifted courses.</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <img src="/assets/images/banner2/bg.png" alt="" />
-              <strong>70+</strong>
-              <span>
-                Available field programs
-                <br />
-                gifted courses.
-              </span>
+            <div className="col-lg-6">
+              <div className="echooling-hero-visual">
+                <div className="echooling-hero-circle" />
+                <img className="echooling-hero-person" src="/assets/images/hero/02.png" alt="Student learning online" />
+                <div className="echooling-floating-card echooling-floating-card-left">
+                  <small>Online Courses</small>
+                  <span>25K+</span>
+                  <p>Largest collection in every course.</p>
+                </div>
+                <div className="echooling-floating-card echooling-floating-card-right">
+                  <small>Congratulations</small>
+                  <span>Admission Completed</span>
+                  <p>Start learning today</p>
+                </div>
+                <div className="echooling-floating-card echooling-floating-card-bottom">
+                  <small>Total Students</small>
+                  <span>37K+</span>
+                  <p>Experts Instructor.</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="echooling-hero-visual">
-            <img className="echooling-hero-person" src="/assets/images/banner2/normal-image/01.png" alt="Online course student" />
-            <img className="echooling-floating-card-image" src="/assets/images/banner2/normal-image/02.png" alt="Course feature card" />
           </div>
         </div>
       </div>
