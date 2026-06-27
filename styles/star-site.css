@@ -4894,7 +4894,19 @@ body.star-site .react-footer-two {
   right: -35px;
 }
 
-.exact-about-page .react_populars_topics_about .react__title__section-all h6 {
+.exact-about-page .react_populars_topics_about .about-coaching-gray-band {
+  margin-bottom: 0;
+  min-height: 180px;
+  padding-bottom: 200px;
+  padding-top: 100px;
+}
+
+.exact-about-page .react_populars_topics_about .about-coaching-heading-row {
+  margin-bottom: 10px;
+  padding-top: 8px;
+}
+
+.exact-about-page .react_populars_topics_about .about-coaching-heading-row h6 {
   color: #d2093c;
   font-size: 16px;
   font-weight: 600;
@@ -4902,7 +4914,7 @@ body.star-site .react-footer-two {
   margin: 0 0 12px;
 }
 
-.exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
+.exact-about-page .react_populars_topics_about .about-coaching-heading-row .react__tittle {
   color: #0f1216;
   font-size: 44px;
   font-weight: 700;
