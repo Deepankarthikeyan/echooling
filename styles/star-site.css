@@ -4897,6 +4897,13 @@ body.star-site .react-footer-two .copyright > .container {
   width: 100%;
 }
 
+/* Popular Topics — wider section, less left/right empty space */
+.exact-home-page > .react_populars_topics {
+  max-width: min(100%, 1520px);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 body.star-site .exact-about-page .container,
 body.star-site .exact-home-page .container {
   box-sizing: border-box;
