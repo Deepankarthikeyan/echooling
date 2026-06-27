@@ -4898,11 +4898,12 @@ body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .containe
   width: 100% !important;
 }
 
-/* Popular Topics, About, Courses, FAQ — Echooling index-two 1200px column */
+/* Popular Topics, About, Courses, FAQ, Blog — Echooling index-two 1200px column */
 body.star-site .exact-home-page .react_populars_topics > .container,
 body.star-site .exact-home-page .about2__area > .container,
 body.star-site .exact-home-page .react-course-filter > .container,
-body.star-site .exact-home-page .accordion__area > .container {
+body.star-site .exact-home-page .accordion__area > .container,
+body.star-site .exact-home-page .react-blog__area > .container {
   max-width: var(--exact-popular-topics-max) !important;
   padding-left: var(--exact-content-gutter) !important;
   padding-right: var(--exact-content-gutter) !important;
