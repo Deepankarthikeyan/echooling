@@ -1650,13 +1650,28 @@ function AboutInstructorsSection() {
 
 function AboutFeedbackSection() {
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = Math.min(3, testimonials.length);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth <= 991) {
+        setVisibleCount(1);
+        return;
+      }
+
+      setVisibleCount(Math.min(3, testimonials.length));
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
 
   const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
     const item = testimonials[(startIndex + index) % testimonials.length];
     return {
       ...item,
-      image: aboutTestimonialImages[index % aboutTestimonialImages.length],
+      image: aboutTestimonialImages[(startIndex + index) % aboutTestimonialImages.length],
     };
   });
 

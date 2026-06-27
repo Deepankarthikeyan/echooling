@@ -4742,7 +4742,11 @@
   .exact-home-page .react__title__section h2,
   .exact-home-page .about2__area .about__title,
   .exact-home-page .accordion__wrapper-1 h2,
-  .exact-home-page .instructors_lefts h2 {
+  .exact-home-page .instructors_lefts h2,
+  .exact-about-page .about__area_one .about__title,
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle,
+  .exact-about-page .instructor__area .instructors_lefts h2,
+  .exact-about-page .student_satisfaction-section .react__tittle {
     font-size: 34px;
     line-height: 42px;
   }
@@ -4770,6 +4774,7 @@ html,
 body.star-site,
 body.star-site .exact-home-page,
 body.star-site .exact-home-header,
+body.star-site .exact-about-page,
 body.star-site .react-footer-two {
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -4963,8 +4968,59 @@ body.star-site .react-footer-two {
 }
 
 @media (max-width: 991px) {
+  .exact-about-page .about__area_one .about__content {
+    padding-left: 0;
+  }
+
+  .exact-about-page .about__area_one .about__title br,
+  .exact-about-page .about__area_one p br,
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle br,
+  .exact-about-page .instructor__area .instructors_lefts h2 br,
+  .exact-about-page .student_satisfaction-section .react__tittle br {
+    display: none;
+  }
+
+  .exact-about-page .about__area_one .about__image {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .exact-about-page .about__area_one .react__shape__ab {
+    display: none;
+  }
+
+  .exact-about-page .react_populars_topics_about .about-coaching-gray-band {
+    min-height: 120px;
+    padding-bottom: 120px;
+    padding-top: 60px;
+  }
+
+  .exact-about-page .react_populars_topics_about > .container {
+    margin-top: -120px;
+  }
+
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .exact-about-page .react_populars_topics_about .row > .col-md-4 {
+    margin-bottom: 24px;
+  }
+
+  .exact-about-page .instructor__area .instructors_lefts {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .exact-about-page .student_satisfaction-section.pb---120 {
+    padding-bottom: 0;
+  }
+
   .exact-about-page .exact-about-feedback-track {
     grid-template-columns: 1fr;
+    max-width: 540px;
+    margin: 0 auto;
   }
 
   .exact-about-page .exact-feedback-arrow {
@@ -4978,5 +5034,132 @@ body.star-site .react-footer-two {
 
   .exact-about-page .exact-feedback-next {
     right: 0;
+  }
+
+  .exact-about-page .count__area2 .container ul li {
+    padding-left: 16px;
+  }
+
+  .exact-about-page .count__area2 .container ul li:first-child {
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .exact-about-page .about__area_one.pt---100 {
+    padding-top: 80px;
+  }
+
+  .exact-about-page .about__area_one .about__title {
+    font-size: 34px;
+    line-height: 42px;
+    text-align: center;
+  }
+
+  .exact-about-page .about__area_one .about__content {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .exact-about-page .about__area_one ul {
+    display: block;
+  }
+
+  .exact-about-page .about__area_one ul li.last-li {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .exact-about-page .react_populars_topics_about .item__inner {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .exact-about-page .instructor__area .instructors_lefts h2 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .exact-about-page .student_satisfaction-section .react__tittle {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .exact-about-page .count__area2 .count__content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .exact-about-page .count__area2 .container ul li {
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .exact-about-page .about__area_one.pt---100 {
+    padding-top: 60px;
+  }
+
+  .exact-about-page .about__area_one.pb---120 {
+    padding-bottom: 60px;
+  }
+
+  .exact-about-page .react_populars_topics_about .about-coaching-gray-band {
+    min-height: 80px;
+    padding-bottom: 80px;
+    padding-top: 40px;
+  }
+
+  .exact-about-page .react_populars_topics_about > .container {
+    margin-top: -80px;
+  }
+
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .exact-about-page .react_populars_topics_about .item__inner {
+    padding: 30px 24px 28px;
+  }
+
+  .exact-about-page .student_satisfaction-section.pt---110 {
+    padding-top: 70px;
+  }
+
+  .exact-about-page .exact-feedback-arrow {
+    display: none;
+  }
+
+  .exact-about-page .count__area2 {
+    padding-top: 50px;
+  }
+
+  .exact-about-page .count__area2 .count__content .text span,
+  .exact-about-page .count__area2 .count__content .text em {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exact-about-page .react-breadcrumbs .breadcrumbs-title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .exact-about-page .about__area_one .about__title,
+  .exact-about-page .react_populars_topics_about .about-coaching-heading .react__tittle,
+  .exact-about-page .instructor__area .instructors_lefts h2,
+  .exact-about-page .student_satisfaction-section .react__tittle {
+    font-size: 28px;
+    line-height: 36px;
   }
 }
