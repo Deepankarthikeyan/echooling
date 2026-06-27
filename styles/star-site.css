@@ -4952,7 +4952,7 @@ body.star-site .react-footer.react-footer-two {
 body.star-site .react-footer-two .footer-top > .container:first-child {
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--exact-content-max);
+  max-width: var(--exact-popular-topics-max);
   padding-left: var(--exact-content-gutter);
   padding-right: var(--exact-content-gutter);
   pointer-events: none;
@@ -4965,13 +4965,13 @@ body.star-site .react-footer-two .footer-top-cta {
   box-sizing: border-box;
   left: 50%;
   margin: 0;
-  max-width: var(--exact-cta-max);
+  max-width: var(--exact-popular-topics-max);
   padding: 50px 55px;
   pointer-events: auto;
   position: absolute;
   top: -17%;
   transform: translateX(-50%);
-  width: min(var(--exact-cta-max), calc(100% - (var(--exact-content-gutter) * 2)));
+  width: min(var(--exact-popular-topics-max), calc(100% - (var(--exact-content-gutter) * 2)));
   z-index: 2;
 }
 
