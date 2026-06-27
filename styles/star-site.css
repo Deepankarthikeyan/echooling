@@ -4095,15 +4095,92 @@
   display: block;
 }
 
-.exact-client-grid {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.exact-client-slider {
+  margin: 0 auto;
+  max-width: 920px;
+  position: relative;
 }
 
-.exact-home-page .react-course-filter .inner-course img,
+.exact-home-page .react-course-filter .case-img > img,
 .exact-home-page .blog__thumb img {
   width: 100%;
+}
+
+.exact-home-page .react-course-filter .case-img > img {
+  border-radius: 4px 4px 0 0;
+  display: block;
+  height: 245px;
+  object-fit: cover;
+}
+
+.exact-home-page .react-course-filter .react__user img {
+  border-radius: 50%;
+  height: 34px;
+  object-fit: cover;
+  width: 34px;
+}
+
+.exact-client-slider .single-client {
+  animation: exactTestimonialFade 260ms ease;
+}
+
+.exact-client-arrow {
+  align-items: center;
+  background: #ffffff;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(15, 34, 57, 0.12);
+  color: #5f6c7b;
+  display: inline-flex;
+  font-size: 30px;
+  height: 44px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  z-index: 5;
+}
+
+.exact-client-prev {
+  left: -22px;
+}
+
+.exact-client-next {
+  right: -22px;
+}
+
+.exact-client-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.exact-client-dots button {
+  background: #cfd8eb;
+  border: 0;
+  border-radius: 999px;
+  height: 8px;
+  padding: 0;
+  width: 8px;
+}
+
+.exact-client-dots button.is-active {
+  background: #2b6cff;
+  width: 24px;
+}
+
+@keyframes exactTestimonialFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .exact-home-page .case-title a,
@@ -4122,7 +4199,7 @@
     padding: 18px;
   }
 
-  .exact-client-grid {
-    grid-template-columns: 1fr;
+  .exact-client-arrow {
+    display: none;
   }
 }

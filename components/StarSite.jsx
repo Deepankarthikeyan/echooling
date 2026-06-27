@@ -1105,6 +1105,32 @@ function ExactInstructors() {
 }
 
 function ExactClients() {
+  const testimonials = [
+    {
+      name: "Justin Case",
+      role: "Student",
+      text:
+        "Nulla porttitor accumsan tincidunt. vamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in.",
+    },
+    {
+      name: "Justin Case",
+      role: "Student",
+      text:
+        "Nulla porttitor accumsan tincidunt. vamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in.",
+    },
+  ];
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveTestimonial((current) => (current + 1) % testimonials.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [testimonials.length]);
+
+  const activeItem = testimonials[activeTestimonial];
+
   return (
     <div className="react-clients react-clientso pt---120 pb---120">
       <div className="container">
@@ -1113,31 +1139,52 @@ function ExactClients() {
           <h2 className="react__tittle">What our clients say about</h2>
         </div>
         <div className="container">
-          <div className="client-slider exact-client-grid">
-            {[0, 1].map((item) => (
-              <div className="single-client" key={item}>
-                <div className="client-bottom">
-                  <span className="client-author"><img src="/assets/images/testimonial/testimonial.png" alt="Testimonials" /></span>
-                </div>
-                <div className="client-content">
-                  <span className="client-title">Justin Case <em> Student</em></span>
-                  <p>
-                    Nulla porttitor accumsan tincidunt. vamus magna justo, lacinia eget consectetur sed,
-                    convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-                    Quisque velit nisi, pretium ut lacinia in.
-                  </p>
-                  <div className="testimonial__ratings">
-                    <em className="icon_star" />
-                    <em className="icon_star" />
-                    <em className="icon_star" />
-                    <em className="icon_star" />
-                    <em className="icon_star_alt" />
-                    <span><em>4.9</em> (14 Reviews)</span>
-                  </div>
-                  <img className="comma" src="/assets/images/testimonial/coma.png" alt="quote" />
-                </div>
+          <div className="client-slider owl-carousel exact-client-slider">
+            <button
+              type="button"
+              className="exact-client-arrow exact-client-prev"
+              aria-label="Previous testimonial"
+              onClick={() => setActiveTestimonial((current) => (current + testimonials.length - 1) % testimonials.length)}
+            >
+              ‹
+            </button>
+            <div className="single-client" key={activeTestimonial}>
+              <div className="client-bottom">
+                <span className="client-author"><img src="/assets/images/testimonial/testimonial.png" alt="Testimonials" /></span>
               </div>
-            ))}
+              <div className="client-content">
+                <span className="client-title">{activeItem.name} <em> {activeItem.role}</em></span>
+                <p>{activeItem.text}</p>
+                <div className="testimonial__ratings">
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star_alt" />
+                  <span><em>4.9</em> (14 Reviews)</span>
+                </div>
+                <img className="comma" src="/assets/images/testimonial/coma.png" alt="quote" />
+              </div>
+            </div>
+            <button
+              type="button"
+              className="exact-client-arrow exact-client-next"
+              aria-label="Next testimonial"
+              onClick={() => setActiveTestimonial((current) => (current + 1) % testimonials.length)}
+            >
+              ›
+            </button>
+            <div className="exact-client-dots" aria-label="Testimonial slides">
+              {testimonials.map((item, index) => (
+                <button
+                  type="button"
+                  key={`${item.name}-${index}`}
+                  aria-label={`Show testimonial ${index + 1}`}
+                  className={index === activeTestimonial ? "is-active" : ""}
+                  onClick={() => setActiveTestimonial(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
