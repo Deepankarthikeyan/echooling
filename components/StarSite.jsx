@@ -95,113 +95,135 @@ const echoolingNavItems = [
 ];
 
 const echoolingTopics = [
-  { title: "Web Design", courses: "46 Courses", icon: "/assets/images/topics/icon.svg" },
-  { title: "Programming", courses: "38 Courses", icon: "/assets/images/topics/icon2.svg" },
-  { title: "Accounting", courses: "21 Courses", icon: "/assets/images/topics/icon3.svg" },
+  { title: "Art & Design", courses: "15 Courses", icon: "/assets/images/topics/1.svg" },
+  { title: "Programming", courses: "38 Courses", icon: "/assets/images/topics/2.png" },
+  { title: "Accounting", courses: "24 Courses", icon: "/assets/images/topics/3.svg" },
   { title: "Content Writing", courses: "17 Courses", icon: "/assets/images/topics/4.svg" },
 ];
 
 const echoolingCourses = [
   {
-    title: "Fitness Development Strategy Buildup Laoreet",
+    title: "The Most Complete Design Thinking Course On The Market.",
+    category: "Web Design",
+    image: "/assets/images/course-filter/1.jpg",
+    lessons: "Lessones",
+    students: "44 Students",
+    review: "4.5 review",
+    author: "Justin Case",
+    price: "$34.00",
+  },
+  {
+    title: "Everything You Need to Know About Business.",
+    category: "Marketing",
+    image: "/assets/images/course-filter/2.jpg",
+    lessons: "9 Lessones",
+    students: "55 Students",
+    review: "3.5 review",
+    author: "Natasha Pawel",
+    price: "$89.00",
+  },
+  {
+    title: "Statistics Data Scince and Business Analysis",
     category: "Development",
-    image: "/assets/images/Home7/courses/1.png",
-    lessons: "6 Lessons",
-    students: "56 Students",
-    price: "$72.00",
+    image: "/assets/images/course-filter/3.jpg",
+    lessons: "8 Lessones",
+    students: "44 Students",
+    review: "3.8 review",
+    author: "Will Barrow",
+    price: "$39.00",
   },
   {
-    title: "Machine Learning A-Z: Hands-On Python and Java",
-    category: "Programming",
-    image: "/assets/images/Home7/courses/2.png",
-    lessons: "8 Lessons",
-    students: "72 Students",
-    price: "$84.00",
+    title: "Become a UI/UX Designer Everything You need To Know.",
+    category: "Beginner",
+    image: "/assets/images/course-filter/4.jpg",
+    lessons: "70 Lessones",
+    students: "49 Students",
+    review: "4.2 review",
+    author: "Justin Case",
+    price: "$34.00",
   },
   {
-    title: "Creative Writing for Business and Communication",
-    category: "Business",
-    image: "/assets/images/Home7/courses/3.png",
-    lessons: "5 Lessons",
-    students: "63 Students",
-    price: "$68.00",
+    title: "Learn Essentials of User Interface Design in Figma.",
+    category: "Audio & Music",
+    image: "/assets/images/course-filter/5.jpg",
+    lessons: "66 Lessones",
+    students: "46 Students",
+    review: "4.9 review",
+    author: "Penny Tool",
+    price: "$74.00",
   },
   {
-    title: "Music Theory Learn New Student and Fundamentals",
-    category: "Design",
-    image: "/assets/images/Home7/courses/4.png",
-    lessons: "7 Lessons",
-    students: "48 Students",
-    price: "$58.00",
-  },
-  {
-    title: "Cyber Security Basic to Advanced for Students",
-    category: "Technology",
-    image: "/assets/images/course/1.png",
-    lessons: "9 Lessons",
-    students: "95 Students",
-    price: "$96.00",
-  },
-  {
-    title: "Finance Analytics and Accounting Masterclass",
-    category: "Finance",
-    image: "/assets/images/course/2.png",
-    lessons: "4 Lessons",
-    students: "39 Students",
-    price: "$64.00",
+    title: "AWS Certified Solutions Architect Associate.",
+    category: "Mechanical",
+    image: "/assets/images/course-filter/6.jpg",
+    lessons: "7 Lessones",
+    students: "75 Students",
+    review: "4.8 review",
+    author: "Auston Ager",
+    price: "$94.00",
   },
 ];
 
 const echoolingInstructors = [
-  { name: "Jane Cooper", role: "Web Designer", image: "/assets/images/instructors/1.jpg" },
-  { name: "Arlene McCoy", role: "Developer", image: "/assets/images/instructors/2.jpg" },
-  { name: "Robert Fox", role: "UI Mentor", image: "/assets/images/instructors/3.jpg" },
-  { name: "Wade Warren", role: "Marketing", image: "/assets/images/instructors/4.jpg" },
+  { name: "Jason Response", role: "Education Assistant", image: "/assets/images/instructor/01.jpg" },
+  { name: "Jonquil Von", role: "Teaching Assistant", image: "/assets/images/instructor/02.jpg" },
+  { name: "Piff Jenkins", role: "Teacher", image: "/assets/images/instructor/03.jpg" },
+  { name: "Brian Cumin", role: "Lead Teacher", image: "/assets/images/instructor/04.jpg" },
+  { name: "Hanson Deck", role: "Teacher", image: "/assets/images/instructor/05.jpg" },
+  { name: "Alan Fresco", role: "Teacher", image: "/assets/images/instructor/06.jpg" },
 ];
 
 const echoolingBlogCards = [
   {
-    category: "Education",
-    title: "Students Complete Online Courses",
+    date: "April 12",
+    category: "Campaigns",
+    title: "Fostering future Schools & social Innovation",
     image: "/assets/images/blog/1.jpg",
+    author: "Nerte Gronw",
   },
   {
-    category: "Learning",
-    title: "How Learning Adapted Digitally",
+    date: "April 18",
+    category: "Education",
+    title: "The Surprising Reason College Tuition",
     image: "/assets/images/blog/2.jpg",
+    author: "Charlie Doyle",
   },
   {
-    category: "Course",
-    title: "Classroom Content for Hybrid Learning",
+    date: "June 16",
+    category: "Students",
+    title: "Those other College Expenses about",
     image: "/assets/images/blog/3.jpg",
+    author: "Owen Christ",
   },
   {
-    category: "Design",
+    date: "May 22",
+    category: "Strategy",
     title: "Creative Skills Improve Course Growth",
     image: "/assets/images/blog/4.png",
+    author: "Owen Christ",
   },
 ];
 
 const echoolingFaqs = [
   {
-    question: "What are the best courses for beginners?",
+    question: "How delete my account?",
     answer:
-      "Start with foundational courses in your chosen category, then progress into guided projects and mentor-led practice.",
+      "Lobortis, nisl id! Facere voluptates veritatis interdum ac, occaecat orci vero consequat excepteur nibh aspernatur suspendisse.",
   },
   {
-    question: "Can I learn online with live instructors?",
+    question: "You’ll have everything you’ll need?",
     answer:
-      "Yes. Echooling combines self-paced materials, live classes, assignments, and instructor feedback.",
+      "The bee's knees chimney pot William chap Jeffrey mush tinkety tonk old fruit cup of tea, bamboozled dropped a clanger.",
   },
   {
-    question: "How do I choose a course?",
+    question: "How delete my account?",
     answer:
-      "Use the course category, skill level, student count, and learning goals to select the best program.",
+      "The bee's knees chimney pot William chap Jeffrey mush tinkety tonk old fruit cup of tea, bamboozled dropped a clanger.",
   },
   {
-    question: "Will I receive a certificate?",
+    question: "Website & Mobile App Design?",
     answer:
-      "Certificates are available after completing eligible courses and passing the final assessment.",
+      "The bee's knees chimney pot William chap Jeffrey mush tinkety tonk old fruit cup of tea, bamboozled dropped a clanger.",
   },
 ];
 
@@ -299,12 +321,12 @@ function Header() {
               ))}
             </ul>
             <div className="echooling-header-actions">
-              <a className="echooling-phone" href="tel:+18002345678">
+              <a className="echooling-phone" href="tel:+40276244183">
                 <span>☎</span>
-                +1 (800) 234 5678
+                +(402) 762 441 83
               </a>
-              <Link href="/register" className="echooling-signin" onClick={closeNavigation}>
-                Sign In
+              <Link href="/contact" className="echooling-signin" onClick={closeNavigation}>
+                Book a visit →
               </Link>
             </div>
           </div>
@@ -683,63 +705,55 @@ function EchoolingHero() {
   return (
     <section className="echooling-hero">
       <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-6">
-            <div className="echooling-hero-copy">
-              <span className="echooling-hero-eyebrow">Online Learning Platform</span>
-              <h1>
-                Learn Course Online
+        <div className="echooling-hero-stage">
+          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/banner2/shape/01.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/banner2/shape/02.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/banner2/shape/03.png" alt="" />
+          <div className="echooling-hero-copy">
+            <h1>
+              Learn Course Online
+              <br />
+              <span>New Today</span>
+            </h1>
+            <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="" />
+            <form
+              className="echooling-search"
+              onSubmit={(event) => {
+                event.preventDefault();
+              }}
+            >
+              <input type="search" placeholder="Search Course" aria-label="Search course" />
+              <button type="submit" aria-label="Search">
+                ⌕
+              </button>
+            </form>
+            <p className="echooling-hero-question">
+              Have questions? <Link href="/contact">Get Free Sample →</Link>
+            </p>
+          </div>
+          <div className="echooling-hero-stats-card">
+            <div>
+              <img src="/assets/images/banner2/bg.png" alt="" />
+              <strong>9.4k+</strong>
+              <span>
+                Total active students taking
                 <br />
-                <span>New Today</span>
-              </h1>
-              <form
-                className="echooling-search"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                }}
-              >
-                <input type="search" placeholder="Search your course here" aria-label="Search course" />
-                <button type="submit">Search</button>
-              </form>
-              <div className="echooling-hero-stats">
-                <div>
-                  <strong>9.4k+</strong>
-                  <span>Online Courses</span>
-                </div>
-                <div>
-                  <strong>70+</strong>
-                  <span>Online Instructors</span>
-                </div>
-                <div>
-                  <strong>24/7</strong>
-                  <span>Live Support</span>
-                </div>
-              </div>
+                gifted courses.
+              </span>
+            </div>
+            <div>
+              <img src="/assets/images/banner2/bg.png" alt="" />
+              <strong>70+</strong>
+              <span>
+                Available field programs
+                <br />
+                gifted courses.
+              </span>
             </div>
           </div>
-          <div className="col-lg-6">
-            <div className="echooling-hero-visual">
-              <img className="echooling-hero-shape echooling-hero-shape-dots" src="/assets/images/hero/04.png" alt="" />
-              <img className="echooling-hero-shape echooling-hero-shape-spark" src="/assets/images/hero/shape_03.png" alt="" />
-              <img className="echooling-hero-shape echooling-hero-shape-loop" src="/assets/images/hero/shape_05.png" alt="" />
-              <div className="echooling-hero-circle" />
-              <img className="echooling-hero-person" src="/assets/images/hero/02.png" alt="Student learning online" />
-              <div className="echooling-floating-card echooling-floating-card-left">
-                <small>Online Courses</small>
-                <span>25K+</span>
-                <p>Learn from expert mentors</p>
-              </div>
-              <div className="echooling-floating-card echooling-floating-card-right">
-                <small>Congratulations</small>
-                <span>Admission Completed</span>
-                <p>Start learning today</p>
-              </div>
-              <div className="echooling-floating-card echooling-floating-card-bottom">
-                <small>Total Students</small>
-                <span>37K+</span>
-                <p>Trusted worldwide</p>
-              </div>
-            </div>
+          <div className="echooling-hero-visual">
+            <img className="echooling-hero-person" src="/assets/images/banner2/normal-image/01.png" alt="Online course student" />
+            <img className="echooling-floating-card-image" src="/assets/images/banner2/normal-image/02.png" alt="Course feature card" />
           </div>
         </div>
       </div>
@@ -768,8 +782,8 @@ function EchoolingTopics() {
     <section className="echooling-topics">
       <div className="container">
         <EchoolingSectionHeading
-          title="Popular Topic, Which are Most Favorite To Students"
-          action={{ label: "Explore All", href: "/courses" }}
+          title="Popular Topic, Which are Most Favourite To Students"
+          action={{ label: "Book a visit", href: "/contact" }}
         />
         <div className="row">
           {echoolingTopics.map((topic) => (
@@ -809,16 +823,15 @@ function EchoolingVideoBlock() {
                 <strong>Most Online Course</strong>
               </h2>
               <p>
-                Learn from experienced instructors with practical lessons, flexible classes,
-                guided resources, and support that keeps every student moving forward.
+                Why I say old chap that is spiffing in my flat such a fibber mufty mush,
+                porkies barney pukka only a quid a what a load of rubbish good time.
               </p>
               <ul>
-                <li>Get unlimited access to course materials</li>
-                <li>Learn at your own pace from any device</li>
-                <li>Practice with expert-led assignments</li>
+                <li>Access more then 100K online courses</li>
+                <li>Upskill your organization.</li>
               </ul>
               <Link href="/courses" className="echooling-btn">
-                View Courses
+                Read More
               </Link>
             </div>
           </div>
@@ -834,9 +847,12 @@ function EchoolingCourseGrid() {
       <div className="container">
         <div className="echooling-course-top">
           <EchoolingSectionHeading title="Most Popular Courses" />
+          <p className="echooling-course-subtitle">
+            Why I say old chap that is spiffing in my flat such a fibber mufty.
+          </p>
           <div className="echooling-course-tabs" aria-label="Course categories">
-            {["All", "Design", "Development", "Business"].map((item) => (
-              <button type="button" key={item} className={item === "All" ? "is-active" : ""}>
+            {["See All", "Trending", "Featured", "Popularity", "Web Design"].map((item) => (
+              <button type="button" key={item} className={item === "See All" ? "is-active" : ""}>
                 {item}
               </button>
             ))}
@@ -852,14 +868,15 @@ function EchoolingCourseGrid() {
                 </Link>
                 <div className="echooling-course-body">
                   <div className="echooling-course-meta">
-                    <span>{course.lessons}</span>
+                    <span>★ {course.review}</span>
                     <span>{course.students}</span>
                   </div>
                   <h3>
                     <Link href="/courses">{course.title}</Link>
                   </h3>
+                  <p className="echooling-course-author">{course.author}</p>
                   <div className="echooling-course-footer">
-                    <span className="echooling-rating">★★★★★</span>
+                    <span>{course.lessons}</span>
                     <strong>{course.price}</strong>
                   </div>
                 </div>
@@ -879,13 +896,19 @@ function EchoolingQuestionSection() {
         <div className="row align-items-center">
           <div className="col-lg-5">
             <div className="echooling-question-copy">
-              <span>Frequently Asked Question</span>
+              <span>Find Your Answers</span>
               <h2>
                 Have any thought?
                 <br />
                 Look here.
               </h2>
-              <p>Find quick answers about online classes, course support, and certificates.</p>
+              <p>
+                Completely plagiarize fully researched collaboration and
+                idea-sharing for covalent.
+              </p>
+              <Link href="/faq" className="echooling-outline-btn">
+                Read More →
+              </Link>
               <div className="echooling-question-decoration" aria-hidden="true">
                 <span />
                 <span />
@@ -897,7 +920,7 @@ function EchoolingQuestionSection() {
           <div className="col-lg-7">
             <div className="echooling-accordion">
               {echoolingFaqs.map((item, index) => (
-                <details key={item.question} open={index === 0}>
+                <details key={`${item.question}-${index}`} open={index === 0}>
                   <summary>{item.question}</summary>
                   <p>{item.answer}</p>
                 </details>
@@ -919,7 +942,6 @@ function EchoolingInstructors() {
             <div className="echooling-instructors-title">
               <span>Course Instructors</span>
               <h2>Meet our Class Instructors</h2>
-              <p>Our instructors support students with guided lessons and practical online learning.</p>
             </div>
           </div>
           <div className="col-lg-8">
@@ -943,7 +965,7 @@ function EchoolingTestimonials() {
   return (
     <section className="echooling-testimonials">
       <div className="container">
-        <EchoolingSectionHeading title="What our clients say about" />
+        <EchoolingSectionHeading eyebrow="Graat Words About Echooling." title="What our clients say about" />
         <div className="echooling-testimonial-wrap">
           <button type="button" className="echooling-slider-arrow echooling-slider-prev" aria-label="Previous testimonial">
             ‹
@@ -952,13 +974,13 @@ function EchoolingTestimonials() {
             <img src="/assets/images/testimonial/testimonial.png" alt="Student testimonial" />
             <div>
               <span className="echooling-quote-mark">"</span>
-              <h3>Excellent Education Theme</h3>
+              <h3>Justin Case <em>Student</em></h3>
               <p>
-                The course design is clean, friendly, and practical. Lessons are easy to follow,
-                instructors are supportive, and the platform makes online learning feel simple.
+                Nulla porttitor accumsan tincidunt. vamus magna justo, lacinia eget consectetur sed,
+                convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+                Quisque velit nisi, pretium ut lacinia in.
               </p>
-              <strong>Kristin Watson</strong>
-              <span className="echooling-rating">★★★★★</span>
+              <span className="echooling-rating">★★★★☆ <em>4.9</em> (14 Reviews)</span>
             </div>
           </div>
           <button type="button" className="echooling-slider-arrow echooling-slider-next" aria-label="Next testimonial">
@@ -969,8 +991,10 @@ function EchoolingTestimonials() {
           {echoolingBlogCards.map((item) => (
             <article key={item.title}>
               <img src={item.image} alt="" />
+              <div className="echooling-blog-date">{item.date}</div>
               <span>{item.category}</span>
               <h3>{item.title}</h3>
+              <p>{item.author}</p>
               <Link href="/blog">Read More</Link>
             </article>
           ))}
