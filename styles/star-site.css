@@ -4926,10 +4926,49 @@ body.star-site .exact-about-page .count__area2 > .container {
 }
 
 .exact-about-page .react_populars_topics_about .react__title__section-all {
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--exact-popular-topics-max);
+  background: #f2f4f9;
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  padding-bottom: 200px;
+  padding-top: 100px;
+  width: 100%;
+}
+
+body.star-site .exact-about-page .react_populars_topics_about .exact-about-coaching-head {
+  box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: var(--exact-popular-topics-max) !important;
+  padding-left: var(--exact-content-gutter) !important;
+  padding-right: var(--exact-content-gutter) !important;
+  width: 100% !important;
+}
+
+body.star-site .exact-about-page .react_populars_topics_about > .container {
+  margin-top: -200px;
+  position: relative;
+  z-index: 1;
+}
+
+.exact-about-page .react_populars_topics_about .react__title__section-all h6 {
+  color: #d2093c;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 54px;
+  margin: 0;
+  max-width: none;
+  text-align: center;
 }
 
 .exact-about-page .about__area_one.pt---100 {
@@ -4967,8 +5006,8 @@ body.star-site .exact-about-page .count__area2 > .container {
 
 .exact-about-page > .react_populars_topics_about {
   box-sizing: border-box;
-  padding-left: var(--exact-content-gutter);
-  padding-right: var(--exact-content-gutter);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Footer CTA — overlapping card centered above dark footer (Echooling index-two) */
@@ -5045,17 +5084,6 @@ body.star-site .react-footer-two .footer-top-cta .row {
 
 .exact-about-page .exact-feedback-next {
   right: -35px;
-}
-
-.exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 900px;
-  text-align: center;
-}
-
-.exact-about-page .react_populars_topics_about .react__title__section-all h6 {
-  text-align: center;
 }
 
 .exact-about-page .react_populars_topics_about .icon img {
