@@ -4928,22 +4928,39 @@ body.star-site .exact-about-page .count__area2 .container {
   width: 100% !important;
 }
 
-/* Footer CTA — inset card like Echooling reference */
-.react-footer-two .footer-top > .container:first-child {
+/* Footer CTA — overlapping card centered above dark footer (Echooling index-two) */
+body.star-site .react-footer.react-footer-two {
   position: relative;
 }
 
-body.star-site .react-footer-two .footer-top-cta {
-  left: 50%;
+body.star-site .react-footer-two .footer-top > .container:first-child {
   margin-left: auto;
   margin-right: auto;
+  max-width: var(--exact-content-max);
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+  pointer-events: none;
+  position: static;
+}
+
+body.star-site .react-footer-two .footer-top-cta {
+  background: url(/assets/images/cta.jpg) center top / cover no-repeat;
+  border-radius: 10px;
+  box-sizing: border-box;
+  left: 50%;
+  margin: 0;
   max-width: var(--exact-cta-max);
+  padding: 50px 55px;
+  pointer-events: auto;
   position: absolute;
-  right: auto;
   top: -17%;
   transform: translateX(-50%);
-  width: calc(100% - (var(--exact-content-gutter) * 2));
-  z-index: 1;
+  width: min(var(--exact-cta-max), calc(100% - (var(--exact-content-gutter) * 2)));
+  z-index: 2;
+}
+
+body.star-site .react-footer-two .footer-top-cta .row {
+  align-items: center;
 }
 
 .exact-about-page .feedreact-slider.exact-about-feedback-slider {
@@ -5026,10 +5043,17 @@ body.star-site .react-footer-two .footer-top-cta {
 
 @media (max-width: 991px) {
   body.star-site .react-footer-two .footer-top-cta {
+    left: auto;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     top: 0;
     transform: none;
     width: 100%;
+  }
+
+  body.star-site .react-footer-two .footer-top > .container:first-child {
+    pointer-events: auto;
   }
 
   .exact-about-page .about__area_one .about__content {
