@@ -1139,7 +1139,7 @@ function ExactClients() {
           <h2 className="react__tittle">What our clients say about</h2>
         </div>
         <div className="container">
-          <div className="client-slider owl-carousel exact-client-slider">
+          <div className="client-slider exact-client-slider">
             <button
               type="button"
               className="exact-client-arrow exact-client-prev"

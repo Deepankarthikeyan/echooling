@@ -4096,6 +4096,7 @@
 }
 
 .exact-client-slider {
+  display: block !important;
   margin: 0 auto;
   max-width: 920px;
   position: relative;
