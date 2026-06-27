@@ -1184,16 +1184,14 @@ function ExactBlog() {
 function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
-      <div className="exact-page-sections">
-        <ExactHomeHero />
-        <ExactPopularTopics />
-        <ExactAboutSection />
-        <ExactCourses />
-        <ExactAccordion />
-        <ExactInstructors />
-        <ExactClients />
-        <ExactBlog />
-      </div>
+      <ExactHomeHero />
+      <ExactPopularTopics />
+      <ExactAboutSection />
+      <ExactCourses />
+      <ExactAccordion />
+      <ExactInstructors />
+      <ExactClients />
+      <ExactBlog />
     </div>
   );
 }
@@ -1777,12 +1775,10 @@ function AboutPage() {
   return (
     <div className="react-wrapper-inner exact-about-page">
       <ExactBreadcrumb title="About Us" />
-      <div className="exact-page-sections">
-        <AboutIntroPageSection />
-        <AboutLearningSection />
-        <AboutInstructorsSection />
-        <AboutFeedbackSection />
-      </div>
+      <AboutIntroPageSection />
+      <AboutLearningSection />
+      <AboutInstructorsSection />
+      <AboutFeedbackSection />
     </div>
   );
 }
