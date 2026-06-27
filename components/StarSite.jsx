@@ -135,7 +135,7 @@ function Header() {
   return (
     <header id="react-header" className="react-header star-header">
       <div className="topbar-area style1">
-        <div className="container">
+        <div className="container-fluid star-header-inner">
           <div className="row align-items-center">
             <div className="col-lg-7">
               <div className="topbar-contact">
@@ -168,7 +168,7 @@ function Header() {
         </div>
       </div>
       <div className="menu-part">
-        <div className="container">
+        <div className="container-fluid star-header-inner">
           <div className="react-main-menu">
             <nav>
               <div className="menu-toggle">

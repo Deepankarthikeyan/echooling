@@ -19,6 +19,18 @@
   z-index: 9999;
 }
 
+.star-header .topbar-area.style1,
+.star-header .menu-part {
+  width: 100%;
+}
+
+.star-header .star-header-inner {
+  max-width: none;
+  padding-left: clamp(16px, 3vw, 40px);
+  padding-right: clamp(16px, 3vw, 40px);
+  width: 100%;
+}
+
 .star-header .menu-part {
   background: #ffffff;
 }
