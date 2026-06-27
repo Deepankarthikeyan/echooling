@@ -1,4 +1,8 @@
 .star-site {
+  --exact-band-max: 1350px;
+  --exact-content-gutter: clamp(16px, 4vw, 40px);
+  --exact-content-max: 1340px;
+  --exact-stats-max: 1280px;
   --star-header-height: 132px;
   background: #ffffff;
   padding-top: var(--star-header-height);
@@ -4853,11 +4857,19 @@ body.star-site .react-footer-two {
   margin-top: auto;
 }
 
+.exact-home-header .menu-part > .container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--exact-content-max);
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+}
+
 /* Echooling About page structure */
 .exact-about-page,
 .exact-home-page {
   --exact-band-max: 1350px;
-  --exact-content-gutter: 15px;
+  --exact-content-gutter: clamp(16px, 4vw, 40px);
   --exact-content-max: 1340px;
   --exact-stats-max: 1280px;
 }
@@ -4866,32 +4878,32 @@ body.star-site .react-footer-two {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-/* Shared content gutters for all main sections (header/footer stay full width) */
-.exact-about-page > .about__area_one,
-.exact-about-page > .instructor__area,
-.exact-about-page > .react_populars_topics_about,
-.exact-about-page > .student_satisfaction-section,
-.exact-home-page > .about__area,
-.exact-home-page > .accordion__area,
-.exact-home-page > .hero3__area,
-.exact-home-page > .instructor__area,
-.exact-home-page > .react-blog__area,
-.exact-home-page > .react-clients,
-.exact-home-page > .react-course-filter,
-.exact-home-page > .react_populars_topics {
-  padding-left: var(--exact-content-gutter);
-  padding-right: var(--exact-content-gutter);
-}
-
-.exact-about-page .container,
-.exact-home-page .container {
+/* One shared content shell — same left/right space as header/footer */
+.exact-page-sections {
+  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   max-width: var(--exact-content-max);
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+  width: 100%;
+}
+
+body.star-site .exact-page-sections .container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
 }
 
 .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--exact-content-max);
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
 }
 
 .exact-about-page .feedreact-slider.exact-about-feedback-slider {
@@ -4939,7 +4951,7 @@ body.star-site .react-footer-two {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--exact-band-max);
+  max-width: 100%;
 }
 
 .exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
@@ -4980,7 +4992,12 @@ body.star-site .react-footer-two {
 }
 
 .exact-about-page .count__area2 .container {
-  max-width: var(--exact-stats-max);
+  max-width: var(--exact-stats-max) !important;
+}
+
+.exact-home-page .hero3__area,
+.exact-home-page .accordion__area {
+  overflow: hidden;
 }
 
 @media (max-width: 991px) {
