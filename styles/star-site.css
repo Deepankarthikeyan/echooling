@@ -4925,25 +4925,16 @@ body.star-site .exact-about-page .count__area2 > .container {
   padding-right: var(--exact-content-gutter) !important;
 }
 
-.exact-about-page .react_populars_topics_about .react__title__section-all {
+.exact-about-page .react_populars_topics_about .react__title__section.react__title__section-all {
   background: #f2f4f9;
-  border-radius: 0;
-  margin-left: 0;
-  margin-right: 0;
-  max-width: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--exact-popular-topics-max);
   padding-bottom: 200px;
   padding-top: 100px;
   width: 100%;
-}
-
-body.star-site .exact-about-page .react_populars_topics_about .exact-about-coaching-head {
-  box-sizing: border-box;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  max-width: var(--exact-popular-topics-max) !important;
-  padding-left: var(--exact-content-gutter) !important;
-  padding-right: var(--exact-content-gutter) !important;
-  width: 100% !important;
 }
 
 body.star-site .exact-about-page .react_populars_topics_about > .container {
@@ -4963,11 +4954,11 @@ body.star-site .exact-about-page .react_populars_topics_about > .container {
 }
 
 .exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
+  color: #0f1216;
   font-size: 44px;
   font-weight: 700;
   line-height: 54px;
   margin: 0;
-  max-width: none;
   text-align: center;
 }
 
@@ -5006,8 +4997,8 @@ body.star-site .exact-about-page .react_populars_topics_about > .container {
 
 .exact-about-page > .react_populars_topics_about {
   box-sizing: border-box;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
 }
 
 /* Footer CTA — overlapping card centered above dark footer (Echooling index-two) */
