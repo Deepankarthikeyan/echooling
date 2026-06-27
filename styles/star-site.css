@@ -4877,6 +4877,7 @@ body.star-site .react-footer-two .copyright > .container {
   --exact-content-gutter: 15px;
   --exact-content-max: 1340px;
   --exact-cta-max: 1300px;
+  --exact-popular-topics-max: 1200px;
   --exact-stats-max: 1280px;
 }
 
@@ -4895,6 +4896,17 @@ body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .containe
   padding-left: var(--exact-content-gutter) !important;
   padding-right: var(--exact-content-gutter) !important;
   width: 100% !important;
+}
+
+/* Popular Topics — Echooling index-two uses a narrower 1200px column */
+body.star-site .exact-home-page .react_populars_topics > .container {
+  max-width: var(--exact-popular-topics-max) !important;
+  padding-left: var(--exact-content-gutter) !important;
+  padding-right: var(--exact-content-gutter) !important;
+}
+
+body.star-site .exact-home-page .react_populars_topics .item__inner {
+  padding: 40px 35px 35px;
 }
 
 /* Full-width section backgrounds (hero, gray course band, about coaching, testimonials) */
