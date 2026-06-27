@@ -17,6 +17,25 @@ import {
   youtubeVideos,
 } from "../lib/star-content";
 
+const aboutLearningIcons = [
+  "/assets/images/topics/icon.png",
+  "/assets/images/topics/icon2.png",
+  "/assets/images/topics/icon3.png",
+];
+
+const aboutCounterItems = [
+  { icon: "/assets/images/counter/1.png", value: stats[0].value, suffix: "+", label: stats[0].label },
+  { icon: "/assets/images/counter/2.png", value: stats[1].value.replace("+", ""), suffix: "+", label: stats[1].label },
+  { icon: "/assets/images/counter/3.png", value: stats[2].value.replace("+", ""), suffix: "+", label: stats[2].label },
+  { icon: "/assets/images/counter/4.png", value: stats[3].value.replace("+", ""), suffix: "+", label: stats[3].label },
+];
+
+const aboutTestimonialImages = [
+  "/assets/images/testimonial/1.png",
+  "/assets/images/testimonial/2.png",
+  "/assets/images/testimonial/3.png",
+];
+
 const aboutLearningCards = [
   {
     title: "Online/Offline Classes",
@@ -443,6 +462,32 @@ function SectionTitle({ eyebrow, title, text, center = true }) {
       {eyebrow ? <span className="star-eyebrow">{eyebrow}</span> : null}
       <h2>{title}</h2>
       {text ? <p>{text}</p> : null}
+    </div>
+  );
+}
+
+function ExactBreadcrumb({ title }) {
+  return (
+    <div className="react-breadcrumbs">
+      <div className="breadcrumbs-wrap">
+        <img className="desktop" src="/assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs" />
+        <img className="mobile" src="/assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs" />
+        <div className="breadcrumbs-inner">
+          <div className="container">
+            <div className="breadcrumbs-text">
+              <h1 className="breadcrumbs-title">{title}</h1>
+              <div className="back-nav">
+                <ul>
+                  <li>
+                    <Link href="/">Home</Link>
+                  </li>
+                  <li>{title}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -1489,45 +1534,33 @@ function HomePage() {
 
 function AboutIntroPageSection() {
   return (
-    <section className="about__area about__area_one p-relative pt---100 pb---100 star-about-screenshot">
+    <div className="about__area about__area_one p-relative pt---100 pb---120">
       <div className="container">
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col-lg-6">
-            <div className="star-about-collage">
-              <img
-                className="star-about-collage-main"
-                src="https://www.starpoliceacademy.in/img/content/history-info.jpg"
-                alt="Star Police Academy training"
-              />
-              <img
-                className="star-about-collage-card"
-                src="https://www.starpoliceacademy.in/img/content/about-01.jpg"
-                alt="Star Police Academy classroom"
-              />
-              <div className="star-about-award">
-                <strong>12+</strong>
-                <span>Years Experience</span>
-              </div>
+            <div className="about__image">
+              <img src="/assets/images/about/ab.png" alt="Star Police Academy" />
+              <img className="react__shape__ab" src="/assets/images/about/badge.png" alt="Best Academy badge" />
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about__content star-about-copy">
-              <span className="star-eyebrow">//About Us</span>
-              <h2 className="about__title">About Star Police Academy</h2>
+            <div className="about__content">
+              <h2 className="about__title">
+                Welcome to <br /> <em>Star Police Academy</em>
+              </h2>
               <p className="about__paragraph">{academy.aboutIntro}</p>
-              <p>
-                Star Police academy is an organisation engulfed with state of the art competence
-                to provide more relevant and comprehensive training for Police Exams coaching
-                centre in Vellore Deticated For TNUSRB PC, ARMY, NAVY, AIRFORCE SI & PC Exams.
+              <p className="about__paragraph2">
+                Have questions? <Link href="/contact">Get Free Guide</Link>
               </p>
               <p>
-                Since its inception the Paraipatti police coaching centre has helped over 1000
-                students to enter the police department, Best police coaching centre in tamilnadu.
+                Star Police Academy is an organisation with state of the art competence to provide relevant and
+                comprehensive training for Police Exams coaching in Vellore, dedicated for TNUSRB PC, Army, Navy,
+                Air Force, SI and PC exams.
               </p>
-              <ul className="star-about-actions">
+              <ul>
                 <li>
-                  <Link href="/register" className="more-about">
-                    Register Now
+                  <Link href="/courses" className="more-about">
+                    Read More <ArrowIcon />
                   </Link>
                 </li>
                 <li className="last-li">
@@ -1539,111 +1572,199 @@ function AboutIntroPageSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 function AboutLearningSection() {
   return (
-    <section className="star-about-learning pt---90 pb---70">
+    <div className="react_populars_topics react_populars_topics2 react_populars_topics_about pb---80">
+      <div className="react__title__section react__title__section-all">
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <h6>Star Police Academy available courses</h6>
+            <h2 className="react__tittle">
+              Online Coaching Lessons For <br /> Remote Learning
+            </h2>
+          </div>
+        </div>
+      </div>
       <div className="container">
-        <SectionTitle
-          eyebrow="Police Exam Coaching"
-          title="Online Coaching Lessons For Remote Learning"
-          text="Star Police Academy supports students with flexible learning, regular exams and focused police career guidance."
-        />
-        <div className="row justify-content-center">
+        <div className="row pt---30">
           {aboutLearningCards.map((card, index) => (
-            <div className="col-lg-4 col-md-6" key={card.title}>
-              <div className="star-card star-about-service-card">
-                <span className="star-about-service-icon">{index + 1}</span>
-                <h4>{card.title}</h4>
-                <p>{card.text}</p>
-                <Link href="/courses">Learn More</Link>
+            <div className="col-md-4" key={card.title}>
+              <div className="item__inner">
+                <div className="icon">
+                  <img src={aboutLearningIcons[index]} alt={card.title} />
+                </div>
+                <div className="react-content">
+                  <h3 className="react-title">
+                    <Link href="/courses">{card.title}</Link>
+                  </h3>
+                  <p>{card.text}</p>
+                  <Link href="/courses">
+                    Learn More <ArrowIcon />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 function AboutInstructorsSection() {
   return (
-    <section className="star-about-instructors pt---80 pb---80">
+    <div className="instructor__area pt---0 pb---110 text-center">
       <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-4">
-            <div className="star-about-left-title">
-              <span className="star-eyebrow">Course Instructors</span>
-              <h2>Meet our Class Instructors</h2>
-              <p>
-                Star Police Academy is guided by experienced teaching and physical training
-                faculty around Tamilnadu.
-              </p>
-            </div>
-          </div>
-          <div className="col-lg-8">
-            <div className="row">
-              {aboutInstructors.map((instructor) => (
-                <div className="col-md-6" key={instructor.name}>
-                  <div className="star-about-instructor">
-                    <img src={instructor.image} alt={instructor.name} />
-                    <div>
-                      <h4>{instructor.name}</h4>
-                      <span>{instructor.role}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AboutFeedbackSection() {
-  return (
-    <section className="star-about-feedback pt---90 pb---80">
-      <div className="container">
-        <SectionTitle
-          eyebrow="Student Testimonial"
-          title="Student Community Feedback"
-          text="What students say about Star Police Academy."
-        />
         <div className="row">
-          {testimonials.slice(0, 3).map((item) => (
-            <div className="col-lg-4" key={item.name}>
-              <blockquote className="star-card star-about-feedback-card">
-                <div className="star-rating">★★★★★</div>
-                <p>{item.text}</p>
-                <footer>
-                  <strong>{item.name}</strong>
-                  <span>{item.role}</span>
-                </footer>
-              </blockquote>
+          <div className="col-lg-6 col-md-4 col-sm-6">
+            <div className="instructor__content instructor__content-one">
+              <div className="instructors_lefts">
+                <h6>Course Instructors</h6>
+                <h2>
+                  Meet our <br /> Class Instructors
+                </h2>
+              </div>
+            </div>
+          </div>
+          {homeInstructors.map((instructor) => (
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
+              <div className="instructor__content">
+                <div className="instructor__content-1">
+                  <img src={instructor.image} alt={instructor.name} />
+                </div>
+                <div className="instructor__content-2">
+                  <h4>
+                    <Link href="/about">{instructor.name}</Link>
+                  </h4>
+                  <p>{instructor.role}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+function AboutFeedbackSection() {
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleCount = Math.min(3, testimonials.length);
+
+  const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
+    const item = testimonials[(startIndex + index) % testimonials.length];
+    return {
+      ...item,
+      image: aboutTestimonialImages[index % aboutTestimonialImages.length],
+    };
+  });
+
+  const showPrevious = () => {
+    setStartIndex((current) => (current + testimonials.length - 1) % testimonials.length);
+  };
+
+  const showNext = () => {
+    setStartIndex((current) => (current + 1) % testimonials.length);
+  };
+
+  return (
+    <div className="student_satisfaction-section pt---110 pb---120">
+      <div className="container">
+        <div className="react__title__section-all pb---30">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h6>Student Satisfaction</h6>
+              <h2 className="react__tittle">
+                Student Community <br />Feedback
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div className="feedreact-slider exact-about-feedback-slider">
+          <button
+            type="button"
+            className="exact-feedback-arrow exact-feedback-prev"
+            aria-label="Previous testimonial"
+            onClick={showPrevious}
+          >
+            ‹
+          </button>
+          <div className="exact-about-feedback-track">
+            {visibleItems.map((item, index) => (
+              <div className="event__card" key={`${item.name}-${startIndex}-${index}`}>
+                <div className="event__card--content">
+                  <div className="event__card--content-area">
+                    <div className="testimonial__ratings">
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star_alt" />
+                      <span> (14 Reviews) </span>
+                    </div>
+                    <div className="parag">{item.text}</div>
+                  </div>
+                  <img className="poly" src="/assets/images/testimonial/poly.png" alt="" />
+                </div>
+                <div className="author-sec">
+                  <div className="icon">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="text">
+                    <h4>{item.name}</h4>
+                    <p>{item.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="exact-feedback-arrow exact-feedback-next"
+            aria-label="Next testimonial"
+            onClick={showNext}
+          >
+            ›
+          </button>
+        </div>
+      </div>
+      <div className="count__area2 pb---100">
+        <div className="container">
+          <ul className="row">
+            {aboutCounterItems.map((item) => (
+              <li className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6" key={item.label}>
+                <div className="count__content">
+                  <div className="icon">
+                    <img src={item.icon} alt={item.label} />
+                  </div>
+                  <div className="text">
+                    <span className="count__content-title counter">{item.value}</span>
+                    <em>{item.suffix}</em>
+                    <p className="count__content">{item.label}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
 function AboutPage() {
   return (
-    <>
-      <Breadcrumb title="About Star Police Academy" />
+    <div className="react-wrapper-inner exact-about-page">
+      <ExactBreadcrumb title="About Us" />
       <AboutIntroPageSection />
       <AboutLearningSection />
       <AboutInstructorsSection />
       <AboutFeedbackSection />
-      <StatsBlock />
-      <CTA />
-    </>
+    </div>
   );
 }
 
