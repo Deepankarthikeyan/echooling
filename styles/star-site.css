@@ -4091,12 +4091,63 @@
   z-index: 999;
 }
 
+.exact-home-header .react-main-menu nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 84px;
+}
+
+.exact-home-header .menu-toggle {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  margin-right: 24px;
+}
+
+.exact-home-header .logo img {
+  max-height: 42px;
+  max-width: 155px;
+  object-fit: contain;
+  width: auto;
+}
+
+.exact-home-menus {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.exact-home-header .react-menus {
+  align-items: center;
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
 .exact-home-menus.is-open {
   display: block;
 }
 
 .exact-home-header .react-menus > li {
+  margin: 0 5px;
+  padding: 0;
   position: relative;
+}
+
+.exact-home-header .react-menus > li > a {
+  color: #0f1f3d;
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 35px 4px;
+  white-space: nowrap;
 }
 
 .exact-home-header .react-menus > li > ul {
@@ -4150,6 +4201,49 @@
 
 .exact-home-header .react-menus > li:hover > a {
   color: #2b6cff;
+}
+
+.exact-home-header .searchbar-part {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-left: 14px;
+}
+
+.exact-home-header .phone-part a,
+.exact-home-header .react-logins a {
+  align-items: center;
+  display: inline-flex;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.exact-home-header .phone-part a {
+  color: #0f1f3d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.exact-home-header .phone-part svg {
+  height: 16px;
+  width: 16px;
+}
+
+.exact-home-header .react-logins a {
+  background: #2b6cff;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+.exact-home-header .react-logins svg {
+  height: 16px;
+  width: 16px;
 }
 
 .exact-client-slider {
@@ -4247,14 +4341,41 @@
 }
 
 @media (max-width: 991px) {
+  .exact-home-header .react-main-menu nav {
+    display: block;
+    min-height: 76px;
+  }
+
+  .exact-home-header .menu-toggle {
+    justify-content: space-between;
+    margin-right: 0;
+    min-height: 76px;
+    width: 100%;
+  }
+
   .exact-home-menus {
     display: none;
   }
 
   .exact-home-menus.is-open {
     background: #ffffff;
+    display: block;
     box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
     padding: 18px;
+  }
+
+  .exact-home-header .react-menus {
+    align-items: stretch;
+    display: block !important;
+  }
+
+  .exact-home-header .react-menus > li {
+    display: block;
+    margin: 0;
+  }
+
+  .exact-home-header .react-menus > li > a {
+    padding: 13px 0;
   }
 
   .exact-home-header .react-menus > li > ul {
@@ -4276,7 +4397,47 @@
     white-space: normal;
   }
 
+  .exact-home-header .searchbar-part {
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 16px 0 0;
+  }
+
   .exact-client-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 1399px) {
+  .exact-home-header .phone-part {
+    display: none;
+  }
+
+  .exact-home-header .react-menus > li {
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .exact-home-header .logo img {
+    max-width: 130px;
+  }
+
+  .exact-home-header .menu-toggle {
+    margin-right: 14px;
+  }
+
+  .exact-home-header .react-menus > li {
+    margin: 0 3px;
+  }
+
+  .exact-home-header .react-menus > li > a {
+    font-size: 12px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .exact-home-header .react-logins {
     display: none;
   }
 }
