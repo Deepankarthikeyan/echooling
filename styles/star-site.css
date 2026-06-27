@@ -2,7 +2,7 @@
   --exact-band-max: 1350px;
   --exact-content-gutter: 15px;
   --exact-content-max: 1340px;
-  --exact-cta-max: 1300px;
+  --exact-cta-max: 1340px;
   --exact-stats-max: 1280px;
   --star-header-height: 132px;
   background: #ffffff;
@@ -4876,7 +4876,7 @@ body.star-site .react-footer-two .copyright > .container {
   --exact-band-max: 1350px;
   --exact-content-gutter: 15px;
   --exact-content-max: 1340px;
-  --exact-cta-max: 1300px;
+  --exact-cta-max: 1340px;
   --exact-popular-topics-max: 1200px;
   --exact-stats-max: 1280px;
 }
@@ -4966,12 +4966,12 @@ body.star-site .react-footer-two .footer-top-cta {
   left: 50%;
   margin: 0;
   max-width: var(--exact-cta-max);
-  padding: 50px 55px;
+  padding: 55px 70px;
   pointer-events: auto;
   position: absolute;
   top: -17%;
   transform: translateX(-50%);
-  width: min(var(--exact-cta-max), calc(100% - (var(--exact-content-gutter) * 2)));
+  width: min(var(--exact-cta-max), calc(100% - 20px));
   z-index: 2;
 }
 
