@@ -159,6 +159,29 @@ const echoolingInstructors = [
   { name: "Wade Warren", role: "Marketing", image: "/assets/images/instructors/4.png" },
 ];
 
+const echoolingBlogCards = [
+  {
+    category: "Education",
+    title: "Students Complete Online Courses",
+    image: "/assets/images/blog/1.jpg",
+  },
+  {
+    category: "Learning",
+    title: "How Learning Adapted Digitally",
+    image: "/assets/images/blog/2.jpg",
+  },
+  {
+    category: "Course",
+    title: "Classroom Content for Hybrid Learning",
+    image: "/assets/images/blog/3.jpg",
+  },
+  {
+    category: "Design",
+    title: "Creative Skills Improve Course Growth",
+    image: "/assets/images/blog/4.png",
+  },
+];
+
 const echoolingFaqs = [
   {
     question: "What are the best courses for beginners?",
@@ -696,19 +719,25 @@ function EchoolingHero() {
           </div>
           <div className="col-lg-6">
             <div className="echooling-hero-visual">
+              <img className="echooling-hero-shape echooling-hero-shape-dots" src="/assets/images/hero/04.png" alt="" />
+              <img className="echooling-hero-shape echooling-hero-shape-spark" src="/assets/images/hero/shape_03.png" alt="" />
+              <img className="echooling-hero-shape echooling-hero-shape-loop" src="/assets/images/hero/shape_05.png" alt="" />
               <div className="echooling-hero-circle" />
               <img className="echooling-hero-person" src="/assets/images/hero/02.png" alt="Student learning online" />
               <div className="echooling-floating-card echooling-floating-card-left">
-                <span>2k+</span>
-                <p>Video Lessons</p>
+                <small>Online Courses</small>
+                <span>25K+</span>
+                <p>Learn from expert mentors</p>
               </div>
               <div className="echooling-floating-card echooling-floating-card-right">
-                <span>15K+</span>
-                <p>Active Students</p>
+                <small>Congratulations</small>
+                <span>Admission Completed</span>
+                <p>Start learning today</p>
               </div>
               <div className="echooling-floating-card echooling-floating-card-bottom">
-                <span>99%</span>
-                <p>Satisfaction Rate</p>
+                <small>Total Students</small>
+                <span>37K+</span>
+                <p>Trusted worldwide</p>
               </div>
             </div>
           </div>
@@ -857,7 +886,12 @@ function EchoolingQuestionSection() {
                 Look here.
               </h2>
               <p>Find quick answers about online classes, course support, and certificates.</p>
-              <img src="/assets/images/Home7/qna/1.png" alt="Student taking an online lesson" />
+              <div className="echooling-question-decoration" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
             </div>
           </div>
           <div className="col-lg-7">
@@ -880,17 +914,25 @@ function EchoolingInstructors() {
   return (
     <section className="echooling-instructors">
       <div className="container">
-        <EchoolingSectionHeading title="Meet our Class Instructors" />
-        <div className="row justify-content-center">
-          {echoolingInstructors.map((instructor) => (
-            <div className="col-lg-3 col-sm-6" key={instructor.name}>
-              <div className="echooling-instructor-card">
+        <div className="row align-items-center">
+          <div className="col-lg-4">
+            <div className="echooling-instructors-title">
+              <span>Course Instructors</span>
+              <h2>Meet our Class Instructors</h2>
+              <p>Our instructors support students with guided lessons and practical online learning.</p>
+            </div>
+          </div>
+          <div className="col-lg-8">
+            <div className="echooling-instructor-orbit">
+              {echoolingInstructors.map((instructor, index) => (
+                <div className={`echooling-instructor-card echooling-instructor-${index + 1}`} key={instructor.name}>
                 <img src={instructor.image} alt={instructor.name} />
                 <h3>{instructor.name}</h3>
                 <p>{instructor.role}</p>
               </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
@@ -902,29 +944,33 @@ function EchoolingTestimonials() {
     <section className="echooling-testimonials">
       <div className="container">
         <EchoolingSectionHeading title="What our clients say about" />
-        <div className="echooling-testimonial-card">
-          <img src="/assets/images/testimonial/testimonial.png" alt="Student testimonial" />
-          <div>
-            <span className="echooling-quote-mark">"</span>
-            <h3>Excellent Education Theme</h3>
-            <p>
-              The course design is clean, friendly, and practical. Lessons are easy to follow,
-              instructors are supportive, and the platform makes online learning feel simple.
-            </p>
-            <strong>Kristin Watson</strong>
-            <span className="echooling-rating">★★★★★</span>
+        <div className="echooling-testimonial-wrap">
+          <button type="button" className="echooling-slider-arrow echooling-slider-prev" aria-label="Previous testimonial">
+            ‹
+          </button>
+          <div className="echooling-testimonial-card">
+            <img src="/assets/images/testimonial/testimonial.png" alt="Student testimonial" />
+            <div>
+              <span className="echooling-quote-mark">"</span>
+              <h3>Excellent Education Theme</h3>
+              <p>
+                The course design is clean, friendly, and practical. Lessons are easy to follow,
+                instructors are supportive, and the platform makes online learning feel simple.
+              </p>
+              <strong>Kristin Watson</strong>
+              <span className="echooling-rating">★★★★★</span>
+            </div>
           </div>
+          <button type="button" className="echooling-slider-arrow echooling-slider-next" aria-label="Next testimonial">
+            ›
+          </button>
         </div>
         <div className="echooling-blog-strip">
-          {[
-            "Students Complete Online Courses",
-            "How Learning Adapted Digitally",
-            "Classroom Content for Hybrid Learning",
-            "Creative Skills Improve Course Growth",
-          ].map((item, index) => (
-            <article key={item}>
-              <span>{index === 0 ? "Education" : index === 1 ? "Learning" : "Course"}</span>
-              <h3>{item}</h3>
+          {echoolingBlogCards.map((item) => (
+            <article key={item.title}>
+              <img src={item.image} alt="" />
+              <span>{item.category}</span>
+              <h3>{item.title}</h3>
               <Link href="/blog">Read More</Link>
             </article>
           ))}
