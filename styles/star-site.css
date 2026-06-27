@@ -4894,6 +4894,28 @@ body.star-site .react-footer-two {
   right: -35px;
 }
 
+.exact-about-page .react_populars_topics_about .react__title__section-all h6 {
+  color: #d2093c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 0 12px;
+}
+
+.exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
+  color: #0f1216;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 54px;
+  margin: 0;
+}
+
+.exact-about-page .react_populars_topics_about .icon img {
+  height: 80px;
+  object-fit: contain;
+  width: 80px;
+}
+
 .exact-about-page .react_populars_topics_about .item__inner {
   display: flex;
   flex-direction: column;
