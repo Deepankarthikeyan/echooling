@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
+    "prebuild": "node scripts/prepare-public.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "next build"
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
