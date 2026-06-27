@@ -4870,7 +4870,7 @@ body.star-site .react-footer-two .copyright > .container {
   width: 100%;
 }
 
-/* Echooling template layout: full-width sections, contained content columns */
+/* Echooling layout — uniform left/right padding on all page content */
 .exact-about-page,
 .exact-home-page {
   --exact-band-max: 1350px;
@@ -4884,8 +4884,10 @@ body.star-site .react-footer-two .copyright > .container {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-body.star-site .exact-about-page .container,
-body.star-site .exact-home-page .container {
+/* Home + About: every section container gets the same inset padding */
+body.star-site .exact-home-page > * > .container,
+body.star-site .exact-about-page > * > .container,
+body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
   box-sizing: border-box;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -4895,32 +4897,16 @@ body.star-site .exact-home-page .container {
   width: 100% !important;
 }
 
-/* Popular Topics — full content width, minimal side margin (matches Echooling index-two) */
-body.star-site .exact-home-page .react_populars_topics .container {
-  max-width: var(--exact-content-max) !important;
-  padding-left: var(--exact-content-gutter) !important;
-  padding-right: var(--exact-content-gutter) !important;
-}
-
-body.star-site .exact-about-page .instructor__area .container,
-body.star-site .exact-home-page .instructor__area .container {
-  max-width: 1590px !important;
-  padding-left: var(--exact-content-gutter) !important;
-  padding-right: var(--exact-content-gutter) !important;
-}
-
-.exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--exact-content-max);
-  padding-left: var(--exact-content-gutter);
-  padding-right: var(--exact-content-gutter);
+/* Full-width section backgrounds (hero, gray course band, about coaching, testimonials) */
+.exact-home-page > .hero3__area,
+.exact-home-page > .react-course-filter,
+.exact-about-page > .react_populars_topics_about,
+.exact-about-page > .student_satisfaction-section {
   width: 100%;
 }
 
-/* About coaching: full-width section, inset gray band + cards */
-.exact-about-page .react_populars_topics_about {
+.exact-about-page > .react_populars_topics_about {
+  box-sizing: border-box;
   padding-left: var(--exact-content-gutter);
   padding-right: var(--exact-content-gutter);
 }
@@ -4933,7 +4919,13 @@ body.star-site .exact-home-page .instructor__area .container {
 }
 
 body.star-site .exact-about-page .count__area2 .container {
+  box-sizing: border-box;
+  margin-left: auto !important;
+  margin-right: auto !important;
   max-width: var(--exact-stats-max) !important;
+  padding-left: var(--exact-content-gutter) !important;
+  padding-right: var(--exact-content-gutter) !important;
+  width: 100% !important;
 }
 
 /* Footer CTA — inset card like Echooling reference */
