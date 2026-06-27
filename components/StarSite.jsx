@@ -61,6 +61,23 @@ const homeTopics = features.map((feature, index) => ({
   icon: `/assets/images/topics/${index + 1}.svg`,
 }));
 
+const homeCourseFilterTags = [
+  ["filter2", "filter3"],
+  ["filter5", "filter1"],
+  ["filter3", "filter2"],
+  ["filter4", "filter6"],
+  ["filter6", "filter3"],
+  ["filter5", "filter2"],
+];
+
+const courseFilterTabs = [
+  { label: "See All", value: "*" },
+  { label: "Trending", value: "filter1" },
+  { label: "Featured", value: "filter2" },
+  { label: "Popularity", value: "filter3" },
+  { label: "Web Design", value: "filter4" },
+];
+
 const homeCourses = courses.slice(0, 6).map((course, index) => ({
   key: course.key,
   title: course.summary,
@@ -71,6 +88,7 @@ const homeCourses = courses.slice(0, 6).map((course, index) => ({
   review: "4.8 review",
   author: academy.founder,
   price: "Apply",
+  filters: homeCourseFilterTags[index] || ["filter1"],
 }));
 
 const homeHeroStats = [
@@ -110,6 +128,12 @@ function SiteHead({ title }) {
       <meta name="description" content={academy.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="shortcut icon" type="image/x-icon" href={academy.logo} />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet"
+      />
       <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/menus.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/animate.css" />
@@ -814,7 +838,7 @@ function ExactCourseCard({ course, index }) {
   const smallImages = [1, 5, 2, 3, 4, 5];
 
   return (
-    <div className="single-studies col-lg-4 grid-item filter2 filter3">
+    <div className={`single-studies col-lg-4 grid-item ${course.filters.join(" ")}`}>
       <div className="inner-course">
         <div className="case-img">
           <Link href={`/${course.key}`} className="cate-w">{course.category}</Link>
@@ -842,6 +866,16 @@ function ExactCourseCard({ course, index }) {
 }
 
 function ExactCourses() {
+  const [activeFilter, setActiveFilter] = useState("*");
+
+  const visibleCourses = homeCourses.filter((course) => {
+    if (activeFilter === "*") {
+      return true;
+    }
+
+    return course.filters.includes(activeFilter);
+  });
+
   return (
     <div className="react-course-filter pb---100 pt---120">
       <div className="container">
@@ -854,15 +888,23 @@ function ExactCourses() {
           </div>
           <div className="col-lg-7 text-right">
             <div className="react-filter">
-              {["See All", "Trending", "Featured", "Popularity", "Web Design"].map((item, index) => (
-                <button className={index === 0 ? "active" : ""} type="button" key={item}>{item}</button>
+              {courseFilterTabs.map((tab) => (
+                <button
+                  className={activeFilter === tab.value ? "active" : ""}
+                  data-filter={tab.value === "*" ? "*" : `.${tab.value}`}
+                  type="button"
+                  key={tab.label}
+                  onClick={() => setActiveFilter(tab.value)}
+                >
+                  {tab.label}
+                </button>
               ))}
             </div>
           </div>
         </div>
         <div className="row react-grid">
-          {homeCourses.map((course, index) => (
-            <ExactCourseCard course={course} index={index} key={course.title} />
+          {visibleCourses.map((course, index) => (
+            <ExactCourseCard course={course} index={index} key={course.key} />
           ))}
         </div>
       </div>
@@ -871,6 +913,14 @@ function ExactCourses() {
 }
 
 function ExactAccordion() {
+  const [openIndex, setOpenIndex] = useState(0);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 4);
+
+  const toggleFaq = (index) => {
+    setOpenIndex((current) => (current === index ? -1 : index));
+  };
+
   return (
     <div className="accordion__area p-relative pt---110">
       <div className="accordion__shape">
@@ -887,21 +937,43 @@ function ExactAccordion() {
                   Have any thought? <br />Look here.
                 </h2>
                 <p>{academy.description}</p>
-                <Link href="/faq" className="border-btns">Read More <ArrowIcon /></Link>
+                {showAllFaqs ? (
+                  <Link href="/faq" className="border-btns">
+                    View All FAQs <ArrowIcon />
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="border-btns exact-read-more-btn"
+                    onClick={() => {
+                      setShowAllFaqs(true);
+                      if (faqs.length > 4) {
+                        setOpenIndex(4);
+                      }
+                    }}
+                  >
+                    Read More <ArrowIcon />
+                  </button>
+                )}
               </div>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="accordion__wrapper1">
               <div className="accordion" id="accordionExample">
-                {faqs.slice(0, 4).map((item, index) => (
+                {visibleFaqs.map((item, index) => (
                   <div className="accordion-item" key={`${item.question}-${index}`}>
                     <h2 className="accordion-header">
-                      <button className={`accordion-button ${index === 0 ? "" : "collapsed"}`} type="button">
+                      <button
+                        className={`accordion-button ${openIndex === index ? "" : "collapsed"}`}
+                        type="button"
+                        aria-expanded={openIndex === index}
+                        onClick={() => toggleFaq(index)}
+                      >
                         {item.question}
                       </button>
                     </h2>
-                    <div className={`accordion-collapse collapse ${index === 0 ? "show" : ""}`}>
+                    <div className={`accordion-collapse collapse ${openIndex === index ? "show" : ""}`}>
                       <div className="accordion-body">
                         <p>{item.answer}</p>
                       </div>

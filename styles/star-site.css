@@ -4764,3 +4764,40 @@
     line-height: 38px;
   }
 }
+
+/* Source Sans Pro — enforce template font over Bootstrap defaults */
+html,
+body.star-site,
+body.star-site .exact-home-page,
+body.star-site .exact-home-header,
+body.star-site .react-footer-two {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.exact-home-page button,
+.exact-home-header button,
+.exact-home-page input,
+.exact-home-page textarea {
+  font-family: inherit;
+}
+
+.exact-home-page .accordion__wrapper-1 .exact-read-more-btn {
+  background: transparent;
+  cursor: pointer;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.exact-home-page .accordion__wrapper-1 .exact-read-more-btn:hover {
+  background: #3270fc;
+  border-color: #3270fc;
+  color: #ffffff;
+}
+
+.exact-home-page .react-grid .single-studies {
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.exact-home-page .react-filter button.active {
+  background: #3270fc;
+  color: #ffffff;
+}
