@@ -251,86 +251,166 @@ function SiteHead({ title }) {
   );
 }
 
+function ArrowIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
+function UserIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function FileTextIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState("");
 
   const closeNavigation = () => {
     setOpen(false);
-    setOpenDropdown("");
   };
 
   return (
-    <header className="echooling-header">
-      <div className="container">
-        <nav className="echooling-header-inner" aria-label="Main navigation">
-          <Link href="/" className="echooling-logo" onClick={closeNavigation}>
-            <img src="/assets/images/logo.png" alt="Echooling" />
-          </Link>
-          <button
-            type="button"
-            className={`echooling-menu-button ${open ? "is-open" : ""}`}
-            aria-label="Toggle navigation"
-            aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-          <div className={`echooling-nav-panel ${open ? "is-open" : ""}`}>
-            <ul className="echooling-nav">
-              {echoolingNavItems.map((item) => (
-                <li
-                  className={item.children ? "has-dropdown" : ""}
-                  key={item.label}
-                  onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-                  onMouseLeave={() => item.children && setOpenDropdown("")}
+    <header id="react-header" className="react-header react-header-two exact-home-header">
+      <div className="menu-part">
+        <div className="container">
+          <div className="react-main-menu">
+            <nav>
+              <div className="menu-toggle">
+                <div className="logo">
+                  <Link href="/" className="logo-text" onClick={closeNavigation}>
+                    <img src="/assets/images/logo2.png" alt="logo" />
+                  </Link>
+                </div>
+                <button
+                  type="button"
+                  id="menu-btn"
+                  className={open ? "back__close" : ""}
+                  aria-label="Toggle navigation"
+                  aria-expanded={open}
+                  onClick={() => setOpen((value) => !value)}
                 >
-                  <div className="echooling-nav-link-row">
-                    <Link href={item.href} onClick={closeNavigation}>
-                      {item.label}
-                    </Link>
-                    {item.children ? (
-                      <button
-                        aria-expanded={openDropdown === item.label}
-                        aria-label={`Toggle ${item.label} menu`}
-                        className="echooling-dropdown-toggle"
-                        type="button"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          setOpenDropdown((current) => (current === item.label ? "" : item.label));
-                        }}
-                      >
-                        <span>⌄</span>
-                      </button>
-                    ) : null}
-                  </div>
-                  {item.children ? (
-                    <ul className={`echooling-dropdown ${openDropdown === item.label ? "is-open" : ""}`}>
-                      {item.children.map((child) => (
-                        <li key={`${item.label}-${child.label}`}>
-                          <Link href={child.href} onClick={closeNavigation}>
-                            {child.label}
-                          </Link>
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
+                </button>
+              </div>
+              <div className={`react-inner-menus exact-home-menus ${open ? "is-open" : ""}`}>
+                <ul id="backmenu" className="react-menus react-sub-shadow">
+                  <li>
+                    <Link href="/">Home</Link>
+                    <ul>
+                      {["Home One", "Home Two", "Home Three", "Home Four", "Home Five", "Home Six", "Home Seven"].map((item) => (
+                        <li key={item}>
+                          <Link href="/" onClick={closeNavigation}>{item}</Link>
                         </li>
                       ))}
                     </ul>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-            <div className="echooling-header-actions">
-              <a className="echooling-phone" href="tel:+40276244183">
-                <span>☎</span>
-                +(402) 762 441 83
-              </a>
-              <Link href="/contact" className="echooling-signin" onClick={closeNavigation}>
-                Book a visit →
-              </Link>
-            </div>
+                  </li>
+                  <li>
+                    <Link href="/about">Pages</Link>
+                    <ul>
+                      <li><Link href="/about" onClick={closeNavigation}>About</Link></li>
+                      <li><Link href="/instructors" onClick={closeNavigation}>Instructor</Link></li>
+                      <li><Link href="/profile" onClick={closeNavigation}>Profile</Link></li>
+                      <li>
+                        <Link href="/events" onClick={closeNavigation}>Events</Link>
+                        <ul>
+                          <li><Link href="/events" onClick={closeNavigation}>Events</Link></li>
+                          <li><Link href="/events-right-sidebar" onClick={closeNavigation}>Events Sidebar</Link></li>
+                          <li><Link href="/events-single" onClick={closeNavigation}>Events Single</Link></li>
+                        </ul>
+                      </li>
+                      <li><Link href="/login" onClick={closeNavigation}>Login</Link></li>
+                      <li><Link href="/signup" onClick={closeNavigation}>Sign Up</Link></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link href="/courses" onClick={closeNavigation}>Courses</Link>
+                    <ul>
+                      <li><Link href="/courses" onClick={closeNavigation}>Courses</Link></li>
+                      <li><Link href="/coureses-right-sidebar" onClick={closeNavigation}>Right Sidebar</Link></li>
+                      <li><Link href="/coureses-list" onClick={closeNavigation}>Courses List</Link></li>
+                      <li><Link href="/coureses-single" onClick={closeNavigation}>Courses Single</Link></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link href="/blog" onClick={closeNavigation}>Blog</Link>
+                    <ul>
+                      <li><Link href="/blog" onClick={closeNavigation}>Blog</Link></li>
+                      <li><Link href="/blog-details" onClick={closeNavigation}>Blog Single</Link></li>
+                    </ul>
+                  </li>
+                  <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
+                </ul>
+                <div className="searchbar-part">
+                  <div className="phone-part">
+                    <a href="tel:+40276244183">
+                      <PhoneIcon /> +(402) 762 441 83
+                    </a>
+                  </div>
+                  <div className="react-logins">
+                    <Link href="/contact" onClick={closeNavigation}>
+                      Book a visit <ArrowIcon />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
@@ -338,91 +418,130 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="echooling-footer">
-      <div className="echooling-footer-top">
+    <footer id="react-footer" className="react-footer react-footer-two pt---120">
+      <div className="footer-top">
+        <div className="container">
+          <div className="footer-top-cta">
+            <div className="row">
+              <div className="col-lg-7">
+                <h4>Free Online Course</h4>
+                <h3>
+                  Ready to dive in? <br /> Start your free Course today.
+                </h3>
+              </div>
+              <div className="col-lg-5 text-right">
+                <Link href="/faq">
+                  Go To FAQ <ArrowIcon />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6">
-              <div className="echooling-footer-widget echooling-footer-brand">
-                <Link href="/">
-                  <img src="/assets/images/footer-logo.png" alt="Echooling" />
-                </Link>
-                <p>
-                  There are course and event custom post types so you can build and manage
-                  learning content with a clean education layout.
-                </p>
-                <ul className="echooling-footer-contact">
+            <div className="col-lg-3 md-mb-30">
+              <div className="footer-widget footer-widget-1">
+                <div className="footer-logo white">
+                  <Link href="/" className="logo-text">
+                    <img src="/assets/images/footer-logo2.png" alt="logo" />
+                  </Link>
+                </div>
+                <h5 className="footer-subtitle">
+                  There are course and event custom <br />
+                  post types so you can easily create and
+                  <br /> manage course, events.
+                </h5>
+                <ul className="footer-address">
                   <li>
-                    <span>☎</span>
-                    <a href="tel:+18002345678">+1 (800) 234 5678</a>
+                    <PhoneIcon />
+                    <a href="tel:+40276244183"> +(402) 762 441 83 </a>
                   </li>
                   <li>
-                    <span>✉</span>
-                    <a href="mailto:support@echooling.com">support@echooling.com</a>
+                    <MailIcon />
+                    <a href="mailto:info@echooling.com"> info@echooling.com </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className="col-lg-2 col-md-6">
-              <div className="echooling-footer-widget">
-                <h3>About Us</h3>
-                <ul>
-                  {["About", "Courses", "Events", "Career", "Become a Teacher"].map((item) => (
-                    <li key={item}>
-                      <Link href={item === "About" ? "/about" : "/courses"}>{item}</Link>
-                    </li>
-                  ))}
-                </ul>
+            <div className="col-lg-3 md-mb-30">
+              <div className="footer-widget footer-widget-2">
+                <h3 className="footer-title">About Us</h3>
+                <div className="footer-menu">
+                  <ul>
+                    <li><Link href="/about">About</Link></li>
+                    <li><Link href="/courses">Courses</Link></li>
+                    <li><Link href="/events">Events</Link></li>
+                    <li><Link href="/profile">Career</Link></li>
+                    <li><Link href="/profile">Become a Teacher</Link></li>
+                    <li><Link href="/contact">Contact</Link></li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className="col-lg-2 col-md-6">
-              <div className="echooling-footer-widget">
-                <h3>Useful Links</h3>
-                <ul>
-                  {["Browse Library", "Library", "Partners", "News & Blog", "FAQ"].map((item) => (
-                    <li key={item}>
-                      <Link href={item === "FAQ" ? "/faq" : "/courses"}>{item}</Link>
-                    </li>
-                  ))}
-                </ul>
+            <div className="col-lg-3 md-mb-30">
+              <div className="footer-widget footer-widget-3">
+                <h3 className="footer-title">Useful Links</h3>
+                <div className="footer-menu">
+                  <ul>
+                    <li><Link href="/courses">Browse Library</Link></li>
+                    <li><Link href="/courses">Library</Link></li>
+                    <li><Link href="/about">Partners</Link></li>
+                    <li><Link href="/blog">News & Blog</Link></li>
+                    <li><Link href="/faq">FAQ</Link></li>
+                    <li><Link href="/courses">Tutorials</Link></li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="echooling-footer-widget">
-                <h3>Newsletter</h3>
-                <p>Get the latest Echooling news, course updates, and learning resources.</p>
-                <form
-                  className="echooling-newsletter"
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                  }}
-                >
-                  <input type="email" placeholder="Enter your email" aria-label="Email address" />
-                  <button type="submit">Subscribe</button>
-                </form>
-                <div className="echooling-social-links">
-                  {["f", "t", "in", "ig"].map((item) => (
-                    <a href="/" key={item} aria-label={`Follow on ${item}`}>
-                      {item}
-                    </a>
-                  ))}
+            <div className="col-lg-3">
+              <div className="footer-widget footer-widget-4">
+                <h3 className="footer-title">Newsletter</h3>
+                <div className="footer3__form">
+                  <p>
+                    Get the latest Echooling news <br />
+                    delivered to you inbox
+                  </p>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                    }}
+                  >
+                    <input type="email" placeholder="Enter your email" />
+                    <button className="footer3__form-1" type="submit">
+                      <i className="arrow_right" />
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="echooling-footer-bottom">
+      <div className="copyright">
         <div className="container">
-          <p>© {new Date().getFullYear()} Echooling. All Rights Reserved</p>
-          <ul>
-            <li>
-              <Link href="/contact">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/contact">Terms & Conditions</Link>
-            </li>
-          </ul>
+          <div className="react-copy-left">
+            © {new Date().getFullYear()} <Link href="/">Echooling.</Link> All Rights Reserved
+          </div>
+          <div className="react-copy-right">
+            <ul className="social-links">
+              <li className="follow">Follow us</li>
+              <li>
+                <a href="#" aria-label="Facebook">
+                  <span aria-hidden="true" className="social_facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="Twitter">
+                  <span aria-hidden="true" className="social_twitter" />
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="LinkedIn">
+                  <span aria-hidden="true" className="social_linkedin" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
@@ -698,6 +817,385 @@ function CTA() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ExactHomeHero() {
+  return (
+    <div className="hero3__area p-relative">
+      <div className="hero3__shape">
+        <img className="hero3__shape-1" src="/assets/images/banner2/shape/01.png" alt="Banner shape" />
+        <img className="hero3__shape-2" src="/assets/images/banner2/shape/02.png" alt="Banner shape" />
+        <img className="hero3__shape-3" src="/assets/images/banner2/shape/03.png" alt="Banner shape" />
+      </div>
+      <div className="container p-relative">
+        <div className="hero3__content">
+          <h1 className="hero3__title">
+            Learn Course Online <br /> <em>New Today</em>
+          </h1>
+          <img src="/assets/images/banner2/line_01.png" alt="line" />
+          <form
+            className="search-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+            }}
+          >
+            <input type="text" className="form-input" placeholder="Search Course" />
+            <button type="submit" className="form-button" aria-label="Search">
+              <SearchIcon />
+            </button>
+          </form>
+          <p className="hero3__paragraph">
+            Have questions? <Link href="/contact">Get Free Sample <ArrowIcon /></Link>
+          </p>
+        </div>
+        <div className="about__content">
+          <ul>
+            <li>
+              <div className="icon">
+                <img src="/assets/images/banner2/bg.png" alt="image" />
+              </div>
+              <div className="text">
+                <h4>9.4k+</h4>
+                <p>
+                  Total active students taking <br /> gifted courses.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div className="icon">
+                <img src="/assets/images/banner2/bg11.png" alt="image" />
+              </div>
+              <div className="text">
+                <h4>70+</h4>
+                <p>
+                  Available field programs <br /> gifted courses.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="hero3__image">
+          <img className="hero3__image-1" src="/assets/images/banner2/normal-image/01.png" alt="student" />
+          <img className="hero3__image-2" src="/assets/images/banner2/normal-image/02.png" alt="course highlights" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactPopularTopics() {
+  return (
+    <div className="react_populars_topics pt---120 pb---120">
+      <div className="container">
+        <div className="react__title__section react__title__section2">
+          <div className="row align-v">
+            <div className="col-md-8">
+              <h2 className="react__tittle">
+                Popular Topic, Which are Most <br /> Favourite To Students
+              </h2>
+            </div>
+            <div className="col-md-4 text-right">
+              <Link href="/contact">Book a visit <ArrowIcon /></Link>
+            </div>
+          </div>
+        </div>
+        <div className="row pt---30">
+          {echoolingTopics.map((topic) => (
+            <div className="col-md-3" key={topic.title}>
+              <div className="item__inner">
+                <div className="icon">
+                  <img src={topic.icon} alt="Icon" />
+                </div>
+                <div className="react-content">
+                  <h3 className="react-title"><Link href="/courses">{topic.title}</Link></h3>
+                  <p>{topic.courses}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactAboutSection() {
+  return (
+    <div className="about__area about2__area p-relative pb---120">
+      <div className="container about__area-width">
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="about__image">
+              <img className="react__shape__11" src="/assets/images/about/dot.png" alt="Shape" />
+              <img className="react__shape__1" src="/assets/images/about/shape_02.png" alt="Shape" />
+              <img src="/assets/images/about/about22.png" alt="About" />
+              <img className="react__shape__2" src="/assets/images/about/shape_01.png" alt="Shape" />
+              <img className="react__shape__33" src="/assets/images/about/shape_03.png" alt="Shape" />
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="about__content">
+              <h2 className="about__title">
+                One of The Largest, <br /> <em>Most Online Course</em>
+              </h2>
+              <p className="about__paragraph">
+                Why I say old chap that is spiffing in my flat such a fibber
+                <br /> mufty mush, porkies barney pukka only a quid a what a
+                <br /> load of rubbish good time.
+              </p>
+              <ul>
+                <li><i className="icon_check" /> Access more then 100K online courses</li>
+                <li><i className="icon_check" /> Upskill your organization. </li>
+              </ul>
+              <div className="about__btn">
+                <Link href="/about">Read More <ArrowIcon /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactCourseCard({ course, index }) {
+  const smallImages = [1, 5, 2, 3, 4, 5];
+
+  return (
+    <div className="single-studies col-lg-4 grid-item filter2 filter3">
+      <div className="inner-course">
+        <div className="case-img">
+          <Link href="/courses" className="cate-w">{course.category}</Link>
+          <img src={course.image} alt="Course" />
+        </div>
+        <div className="case-content">
+          <ul className="meta-course">
+            <li><StarIcon /> {course.review}</li>
+            <li><UserIcon /> {course.students}</li>
+          </ul>
+          <h4 className="case-title">
+            <Link href="/courses">{course.title}</Link>
+          </h4>
+          <div className="react__user">
+            <img src={`/assets/images/course/small-image/${smallImages[index]}.png`} alt="user" /> {course.author}
+          </div>
+          <ul className="react-ratings">
+            <li className="react-book"><FileTextIcon /> {course.lessons}</li>
+            <li className="price">{course.price}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactCourses() {
+  return (
+    <div className="react-course-filter pb---100 pt---120">
+      <div className="container">
+        <div className="row d-flex align-items-end">
+          <div className="col-lg-5">
+            <div className="react__title__section text-left">
+              <h2 className="react__tittle">Most Popular Courses</h2>
+              <h6 className="react__subtitle">Why I say old chap that is spiffing in my flat such a fibber mufty.</h6>
+            </div>
+          </div>
+          <div className="col-lg-7 text-right">
+            <div className="react-filter">
+              {["See All", "Trending", "Featured", "Popularity", "Web Design"].map((item, index) => (
+                <button className={index === 0 ? "active" : ""} type="button" key={item}>{item}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="row react-grid">
+          {echoolingCourses.map((course, index) => (
+            <ExactCourseCard course={course} index={index} key={course.title} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactAccordion() {
+  return (
+    <div className="accordion__area p-relative pt---110">
+      <div className="accordion__shape">
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="accordion__wrapper">
+              <div className="accordion__wrapper-1">
+                <h6>Find Your Answers</h6>
+                <h2>
+                  Have any thought? <br />Look here.
+                </h2>
+                <p>
+                  Completely plagiarize fully researched collaboration and <br /> idea-sharing for covalent.
+                </p>
+                <Link href="/faq" className="border-btns">Read More <ArrowIcon /></Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="accordion__wrapper1">
+              <div className="accordion" id="accordionExample">
+                {echoolingFaqs.map((item, index) => (
+                  <div className="accordion-item" key={`${item.question}-${index}`}>
+                    <h2 className="accordion-header">
+                      <button className={`accordion-button ${index === 0 ? "" : "collapsed"}`} type="button">
+                        {item.question}
+                      </button>
+                    </h2>
+                    <div className={`accordion-collapse collapse ${index === 0 ? "show" : ""}`}>
+                      <div className="accordion-body">
+                        <p>{item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactInstructors() {
+  const instructorImages = ["03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg"];
+
+  return (
+    <div className="instructor__area pt---115 pb---85 text-center">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 col-md-4 col-sm-6">
+            <div className="instructor__content instructor__content-one">
+              <div className="instructors_lefts">
+                <h6>Course Instructors</h6>
+                <h2>
+                  Meet our <br /> Class Instructors
+                </h2>
+              </div>
+            </div>
+          </div>
+          {echoolingInstructors.map((instructor, index) => (
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
+              <div className="instructor__content">
+                <div className="instructor__content-1">
+                  <img src={`/assets/images/instructor/${instructorImages[index]}`} alt="course instructor" />
+                </div>
+                <div className="instructor__content-2">
+                  <h4><Link href="/profile">{instructor.name}</Link></h4>
+                  <p>{instructor.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactClients() {
+  return (
+    <div className="react-clients react-clientso pt---120 pb---120">
+      <div className="container">
+        <div className="react__title__section text-center">
+          <h6 className="react__subtitle">Graat Words About Echooling.</h6>
+          <h2 className="react__tittle">What our clients say about</h2>
+        </div>
+        <div className="container">
+          <div className="client-slider exact-client-grid">
+            {[0, 1].map((item) => (
+              <div className="single-client" key={item}>
+                <div className="client-bottom">
+                  <span className="client-author"><img src="/assets/images/testimonial/testimonial.png" alt="Testimonials" /></span>
+                </div>
+                <div className="client-content">
+                  <span className="client-title">Justin Case <em> Student</em></span>
+                  <p>
+                    Nulla porttitor accumsan tincidunt. vamus magna justo, lacinia eget consectetur sed,
+                    convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+                    Quisque velit nisi, pretium ut lacinia in.
+                  </p>
+                  <div className="testimonial__ratings">
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star_alt" />
+                    <span><em>4.9</em> (14 Reviews)</span>
+                  </div>
+                  <img className="comma" src="/assets/images/testimonial/coma.png" alt="quote" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactBlog() {
+  return (
+    <div className="react-blog__area blog__area pt---90 pb---120">
+      <div className="container blog__width pb---120">
+        <div className="react__title__section text-center">
+          <h6 className="react__subtitle">Recent News.</h6>
+          <h2 className="react__tittle">Echooling News and Blogs</h2>
+        </div>
+        <div className="row">
+          {echoolingBlogCards.map((item) => (
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" key={item.title}>
+              <div className="blog__card mb-50">
+                <div className="blog__thumb w-img p-relative">
+                  <Link className="blog__thumb--image" href="/blog-details">
+                    <img src={item.image} alt="blog" />
+                  </Link>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <div className="blog__card--content-area mb-25">
+                    <span className="blog__card--date">{item.category}</span>
+                    <h3 className="blog__card--title"><Link href="/blog-details">{item.title}</Link></h3>
+                  </div>
+                  <div className="blog__card--icon d-flex align-items-center">
+                    <div className="blog__card--icon-1">
+                      <UserIcon />
+                      <span>{item.author}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExactHomePage() {
+  return (
+    <div className="react-wrapper-inner exact-home-page">
+      <ExactHomeHero />
+      <ExactPopularTopics />
+      <ExactAboutSection />
+      <ExactCourses />
+      <ExactAccordion />
+      <ExactInstructors />
+      <ExactClients />
+      <ExactBlog />
+    </div>
   );
 }
 
@@ -1034,18 +1532,7 @@ function EchoolingCta() {
 }
 
 function HomePage() {
-  return (
-    <>
-      <EchoolingHero />
-      <EchoolingTopics />
-      <EchoolingVideoBlock />
-      <EchoolingCourseGrid />
-      <EchoolingQuestionSection />
-      <EchoolingInstructors />
-      <EchoolingTestimonials />
-      <EchoolingCta />
-    </>
-  );
+  return <ExactHomePage />;
 }
 
 function AboutIntroPageSection() {
