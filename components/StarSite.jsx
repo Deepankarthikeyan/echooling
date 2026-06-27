@@ -1579,14 +1579,17 @@ function AboutIntroPageSection() {
 function AboutLearningSection() {
   return (
     <div className="react_populars_topics react_populars_topics2 react_populars_topics_about pb---80">
-      <div className="react__title__section react__title__section-all about-coaching-gray-band" />
-      <div className="container">
-        <div className="react__title__section about-coaching-heading text-center">
-          <h6>Police Exam Coaching Programs</h6>
-          <h2 className="react__tittle">
-            Star Police Academy Coaching For <br /> TNUSRB, SI &amp; Defence Exams
-          </h2>
+      <div className="react__title__section react__title__section-all">
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <h6>Police Exam Coaching Programs</h6>
+            <h2 className="react__tittle">
+              Star Police Academy Coaching For <br /> TNUSRB, SI &amp; Defence Exams
+            </h2>
+          </div>
         </div>
+      </div>
+      <div className="container">
         <div className="row pt---30">
           {aboutLearningCards.map((card, index) => (
             <div className="col-md-4" key={card.title}>
