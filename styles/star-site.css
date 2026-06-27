@@ -4854,8 +4854,44 @@ body.star-site .react-footer-two {
 }
 
 /* Echooling About page structure */
+.exact-about-page,
+.exact-home-page {
+  --exact-band-max: 1350px;
+  --exact-content-gutter: 15px;
+  --exact-content-max: 1340px;
+  --exact-stats-max: 1280px;
+}
+
 .exact-about-page {
   font-family: "Source Sans Pro", sans-serif;
+}
+
+/* Shared content gutters for all main sections (header/footer stay full width) */
+.exact-about-page > .about__area_one,
+.exact-about-page > .instructor__area,
+.exact-about-page > .react_populars_topics_about,
+.exact-about-page > .student_satisfaction-section,
+.exact-home-page > .about__area,
+.exact-home-page > .accordion__area,
+.exact-home-page > .hero3__area,
+.exact-home-page > .instructor__area,
+.exact-home-page > .react-blog__area,
+.exact-home-page > .react-clients,
+.exact-home-page > .react-course-filter,
+.exact-home-page > .react_populars_topics {
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+}
+
+.exact-about-page .container,
+.exact-home-page .container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--exact-content-max);
+}
+
+.exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
+  max-width: var(--exact-content-max);
 }
 
 .exact-about-page .feedreact-slider.exact-about-feedback-slider {
@@ -4899,16 +4935,11 @@ body.star-site .react-footer-two {
   right: -35px;
 }
 
-.exact-about-page .react_populars_topics_about {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 .exact-about-page .react_populars_topics_about .react__title__section-all {
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1350px;
+  max-width: var(--exact-band-max);
 }
 
 .exact-about-page .react_populars_topics_about .react__title__section-all .react__tittle {
@@ -4949,13 +4980,7 @@ body.star-site .react-footer-two {
 }
 
 .exact-about-page .count__area2 .container {
-  max-width: 1280px;
-}
-
-.exact-about-page .student_satisfaction-section > .container,
-.exact-about-page .about__area_one > .container,
-.exact-about-page .instructor__area > .container {
-  max-width: 1340px;
+  max-width: var(--exact-stats-max);
 }
 
 @media (max-width: 991px) {
