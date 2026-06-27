@@ -156,7 +156,7 @@ const echoolingInstructors = [
   { name: "Jane Cooper", role: "Web Designer", image: "/assets/images/instructors/1.jpg" },
   { name: "Arlene McCoy", role: "Developer", image: "/assets/images/instructors/2.jpg" },
   { name: "Robert Fox", role: "UI Mentor", image: "/assets/images/instructors/3.jpg" },
-  { name: "Wade Warren", role: "Marketing", image: "/assets/images/instructors/4.png" },
+  { name: "Wade Warren", role: "Marketing", image: "/assets/images/instructors/4.jpg" },
 ];
 
 const echoolingBlogCards = [
@@ -287,7 +287,7 @@ function Header() {
                   {item.children ? (
                     <ul className={`echooling-dropdown ${openDropdown === item.label ? "is-open" : ""}`}>
                       {item.children.map((child) => (
-                        <li key={child.href}>
+                        <li key={`${item.label}-${child.label}`}>
                           <Link href={child.href} onClick={closeNavigation}>
                             {child.label}
                           </Link>
