@@ -233,6 +233,26 @@ function FileTextIcon() {
   );
 }
 
+function MenuChevronDownIcon() {
+  return (
+    <svg
+      className="exact-menu-arrow"
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -271,14 +291,13 @@ function Header() {
                     <Link href="/" onClick={closeNavigation}>Home</Link>
                   </li>
                   <li>
-                    <Link href="/about">About</Link>
-                    <ul>
-                      <li><Link href="/about" onClick={closeNavigation}>About Star Police Academy</Link></li>
-                    </ul>
+                    <Link href="/about" onClick={closeNavigation}>About</Link>
                   </li>
-                  <li>
-                    <Link href="/courses" onClick={closeNavigation}>Courses</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/courses" onClick={closeNavigation}>
+                      Courses <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
                       <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
                       <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
@@ -288,17 +307,21 @@ function Header() {
                       <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
                     </ul>
                   </li>
-                  <li>
-                    <Link href="/notification" onClick={closeNavigation}>Notifications</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/notification" onClick={closeNavigation}>
+                      Notifications <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
                       <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
                       <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
                     </ul>
                   </li>
-                  <li>
-                    <Link href="/training" onClick={closeNavigation}>Training</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/training" onClick={closeNavigation}>
+                      Training <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
                       <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
                       <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
