@@ -5220,6 +5220,29 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   line-height: 20px;
 }
 
+body.star-site .spa-instructor-avatar {
+  align-items: center;
+  background: linear-gradient(
+    145deg,
+    var(--spa-primary-light, #6c82d1) 0%,
+    var(--spa-primary, #3a57b8) 55%,
+    var(--spa-primary-dark, #031552) 100%
+  );
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(15, 18, 22, 0.1);
+  display: inline-flex;
+  height: 120px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 120px;
+}
+
+body.star-site .spa-instructor-avatar .material-symbols-outlined {
+  color: #ffffff;
+  font-size: 52px;
+}
+
 .exact-home-page .client-title {
   color: #0f1216;
   font-size: 20px;
