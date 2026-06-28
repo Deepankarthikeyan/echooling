@@ -49,7 +49,7 @@ const aboutLearningCards = [
     title: "Toppers and Achievers",
     text: "The outstanding success of our students are our proudest testimony and motivation.",
   },
-];
+]; 
 
 const aboutInstructors = [
   {
