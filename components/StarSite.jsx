@@ -249,7 +249,7 @@ function Header() {
               <div className="menu-toggle">
                 <div className="logo">
                   <Link href="/" className="logo-text" onClick={closeNavigation}>
-                    <img src={academy.logo} alt="Star Police Academy logo" />
+                    <img className="star-brand-logo" src={academy.logo} alt="Star Police Academy logo" />
                   </Link>
                 </div>
                 <button
@@ -356,7 +356,7 @@ function Footer() {
               <div className="footer-widget footer-widget-1">
                 <div className="footer-logo white">
                   <Link href="/" className="logo-text">
-                    <img src={academy.footerLogo} alt="Star Police Academy" />
+                    <img className="star-brand-logo" src={academy.footerLogo} alt="Star Police Academy" />
                   </Link>
                 </div>
                 <h5 className="footer-subtitle">{academy.aboutIntro}</h5>

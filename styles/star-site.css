@@ -4111,9 +4111,19 @@ body.star-site .exact-home-header .menu-part {
   margin-right: 24px;
 }
 
-.exact-home-header .logo img {
-  max-height: 42px;
-  max-width: 155px;
+.exact-home-header .logo img,
+.exact-home-header .logo .star-brand-logo {
+  max-height: 72px;
+  max-width: 240px;
+  object-fit: contain;
+  width: auto;
+}
+
+body.star-site .react-footer-two .footer-logo img,
+body.star-site .react-footer-two .footer-logo .star-brand-logo {
+  display: block;
+  max-height: 96px;
+  max-width: 260px;
   object-fit: contain;
   width: auto;
 }
@@ -4431,8 +4441,10 @@ body.star-site .exact-home-header .menu-part {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-  .exact-home-header .logo img {
-    max-width: 130px;
+  .exact-home-header .logo img,
+  .exact-home-header .logo .star-brand-logo {
+    max-height: 64px;
+    max-width: 200px;
   }
 
   .exact-home-header .menu-toggle {
