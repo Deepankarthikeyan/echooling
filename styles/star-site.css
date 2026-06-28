@@ -4545,6 +4545,37 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
+.exact-home-page .exact-spa-hero__register-btn {
+  align-items: center;
+  background: var(--spa-secondary, #cc0000);
+  border: 2px solid var(--spa-secondary, #cc0000);
+  border-radius: 6px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.03em;
+  margin-top: 28px;
+  min-height: 52px;
+  padding: 0 32px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.exact-home-page .exact-spa-hero__register-btn:hover {
+  background: var(--spa-secondary-dark, #990000) !important;
+  border-color: var(--spa-secondary-dark, #990000) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.exact-home-page .exact-spa-hero__register-btn svg {
+  height: 18px;
+  width: 18px;
+}
+
 .exact-home-page .hero3__title {
   color: #0f1216;
   font-size: 70px;

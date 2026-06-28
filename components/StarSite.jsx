@@ -812,6 +812,9 @@ function ExactHomeHero() {
       <div className="container p-relative">
         <div className="hero3__content exact-spa-hero__content">
           <h1 className="hero3__title exact-spa-hero__title">{academy.heroTitle}</h1>
+          <Link className="exact-spa-hero__register-btn" href="/register">
+            Register <ArrowIcon />
+          </Link>
         </div>
       </div>
     </div>
