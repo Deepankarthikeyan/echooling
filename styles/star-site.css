@@ -4898,9 +4898,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-page .spa-winner-carousel__stage {
+  box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1248px;
-  padding: 0 24px;
+  max-width: calc(var(--exact-popular-topics-max) + (var(--exact-content-gutter) * 2));
+  padding-left: var(--exact-content-gutter);
+  padding-right: var(--exact-content-gutter);
+  width: 100%;
 }
 
 .exact-home-page .spa-winner-carousel__viewport {
@@ -5539,7 +5542,17 @@ body.star-site .react-footer-two {
   margin-top: auto;
 }
 
-.exact-home-header .menu-part > .container,
+/* Header stays full-width — section column padding does not apply here */
+.exact-home-header .menu-part > .container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding-left: clamp(16px, 2.5vw, 32px);
+  padding-right: clamp(16px, 2.5vw, 32px);
+  width: 100%;
+}
+
 body.star-site .react-footer-two .footer-top > .container,
 body.star-site .react-footer-two .copyright > .container {
   box-sizing: border-box;
@@ -5566,7 +5579,7 @@ body.star-site .react-footer-two .copyright > .container {
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
-/* Home + About: every section container gets the same inset padding */
+/* Home + About: every section container gets the same inset padding (not header) */
 body.star-site .exact-home-page > * > .container,
 body.star-site .exact-about-page > * > .container,
 body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container {
@@ -5579,11 +5592,17 @@ body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .containe
   width: 100% !important;
 }
 
-/* Popular Topics, About, Courses, FAQ, Blog — Echooling index-two 1200px column */
+/* All homepage sections — 1200px column with side padding (header excluded above) */
+body.star-site .exact-home-page .hero3__area.exact-spa-hero > .container,
+body.star-site .exact-home-page .spa-home-about > .container,
+body.star-site .exact-home-page .spa-winner-carousel > .container,
+body.star-site .exact-home-page .spa-winner-carousel__stage,
 body.star-site .exact-home-page .react_populars_topics > .container,
 body.star-site .exact-home-page .about2__area > .container,
 body.star-site .exact-home-page .react-course-filter > .container,
 body.star-site .exact-home-page .accordion__area > .container,
+body.star-site .exact-home-page .instructor__area > .container,
+body.star-site .exact-home-page .react-clients > .container,
 body.star-site .exact-home-page .react-blog__area > .container {
   max-width: var(--exact-popular-topics-max) !important;
   padding-left: var(--exact-content-gutter) !important;
