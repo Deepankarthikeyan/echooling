@@ -401,9 +401,15 @@ function Footer() {
           <div className="row">
             <div className="col-lg-3 md-mb-30">
               <div className="footer-widget footer-widget-1">
-                <div className="footer-logo white">
+                <div className="footer-logo">
                   <Link href="/" className="logo-text">
-                    <img className="star-brand-logo" src={academy.footerLogo} alt="Star Police Academy" />
+                    <img
+                      className="star-brand-logo star-footer-logo"
+                      src={academy.footerLogo}
+                      alt="Star Police Academy"
+                      width={420}
+                      height={113}
+                    />
                   </Link>
                 </div>
                 <h5 className="footer-subtitle">{academy.aboutIntro}</h5>

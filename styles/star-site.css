@@ -4122,10 +4122,12 @@ body.star-site .exact-home-header .menu-part {
 }
 
 body.star-site .react-footer-two .footer-logo img,
-body.star-site .react-footer-two .footer-logo .star-brand-logo {
+body.star-site .react-footer-two .footer-logo .star-brand-logo,
+body.star-site .react-footer-two .footer-logo .star-footer-logo {
   display: block;
-  max-height: 96px;
-  max-width: 260px;
+  height: auto;
+  max-height: 72px;
+  max-width: 280px;
   object-fit: contain;
   width: auto;
 }
