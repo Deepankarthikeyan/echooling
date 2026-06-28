@@ -84,10 +84,10 @@ body.star-site .hero3__area.exact-spa-hero .hero3__title {
 
 body.star-site .exact-spa-hero__overlay {
   background: linear-gradient(
-    90deg,
-    rgba(3, 21, 82, 0.88) 0%,
-    rgba(4, 28, 107, 0.62) 55%,
-    rgba(2, 15, 58, 0.4) 100%
+    180deg,
+    rgba(3, 21, 82, 0.82) 0%,
+    rgba(4, 28, 107, 0.68) 50%,
+    rgba(2, 15, 58, 0.82) 100%
   ) !important;
 }
 

@@ -4510,10 +4510,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-page .exact-spa-hero__overlay {
   background: linear-gradient(
-    90deg,
-    rgba(3, 21, 82, 0.88) 0%,
-    rgba(4, 28, 107, 0.62) 55%,
-    rgba(2, 15, 58, 0.4) 100%
+    180deg,
+    rgba(3, 21, 82, 0.82) 0%,
+    rgba(4, 28, 107, 0.68) 50%,
+    rgba(2, 15, 58, 0.82) 100%
   );
   inset: 0;
   position: absolute;
@@ -4521,12 +4521,17 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-page .exact-spa-hero .container {
+  display: flex;
+  justify-content: center;
   position: relative;
+  text-align: center;
   z-index: 1;
 }
 
 .exact-home-page .exact-spa-hero__content {
+  margin: 0 auto;
   max-width: 920px;
+  text-align: center;
 }
 
 .exact-home-page .exact-spa-hero__title,
@@ -4535,7 +4540,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   font-size: clamp(34px, 4.2vw, 56px);
   font-weight: 700;
   line-height: 1.25;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
