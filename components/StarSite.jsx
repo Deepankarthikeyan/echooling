@@ -145,7 +145,11 @@ function SiteHead({ title }) {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
         rel="stylesheet"
       />
       <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
@@ -160,6 +164,7 @@ function SiteHead({ title }) {
       <link rel="stylesheet" type="text/css" href="/assets/css/custom-spacing.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/header-sticky.css" />
+      <link rel="stylesheet" type="text/css" href="/assets/css/brand-theme.css" />
     </Head>
   );
 }

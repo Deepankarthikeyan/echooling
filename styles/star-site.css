@@ -6,6 +6,8 @@
   --exact-stats-max: 1280px;
   --star-header-height: 132px;
   background: #ffffff;
+  color: var(--spa-text, #191919);
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   padding-top: var(--star-header-height);
 }
 
@@ -1581,7 +1583,7 @@
 .star-site {
   --star-header-height: 86px;
   color: #0f1b33;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
 .echooling-header {
@@ -4159,7 +4161,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 .exact-home-header .react-menus > li > a {
   color: #0f1216;
   display: block;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
@@ -4215,7 +4217,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 .exact-home-header .react-menus > li > ul a {
   color: #0f1216;
   display: block;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.35;
@@ -4257,7 +4259,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-header .phone-part a {
   color: #0f1216;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -4272,7 +4274,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: #3270fc;
   border-radius: 6px;
   color: #ffffff;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
@@ -4491,7 +4493,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 /* Exact Home Two typography — match index-two.html */
 .exact-home-page,
 .exact-home-header {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
 .exact-home-page .hero3__area.exact-spa-hero {
@@ -4507,7 +4509,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-page .exact-spa-hero__overlay {
-  background: linear-gradient(90deg, rgba(6, 27, 51, 0.78) 0%, rgba(6, 27, 51, 0.45) 55%, rgba(6, 27, 51, 0.25) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(3, 21, 82, 0.88) 0%,
+    rgba(4, 28, 107, 0.62) 55%,
+    rgba(2, 15, 58, 0.4) 100%
+  );
   inset: 0;
   position: absolute;
   z-index: 0;
@@ -4553,7 +4560,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-page .search-form .form-input,
 .exact-home-page .search-form [type="text"] {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 14px;
 }
 
@@ -4646,7 +4653,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-page .react-filter button {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 400;
 }
@@ -4692,7 +4699,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-page .accordion-button {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 18px;
   font-weight: 600;
 }
@@ -4858,14 +4865,14 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 }
 
-/* Source Sans Pro — enforce template font over Bootstrap defaults */
+/* Brand fonts — Livvic headlines, Montserrat body (see brand-theme.css) */
 html,
 body.star-site,
 body.star-site .exact-home-page,
 body.star-site .exact-home-header,
 body.star-site .exact-about-page,
 body.star-site .react-footer-two {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
 .exact-home-page button,
@@ -4878,7 +4885,7 @@ body.star-site .react-footer-two {
 .exact-home-page .accordion__wrapper-1 .exact-read-more-btn {
   background: transparent;
   cursor: pointer;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
 .exact-home-page .accordion__wrapper-1 .exact-read-more-btn:hover {
@@ -4966,7 +4973,7 @@ body.star-site .react-footer-two .copyright > .container {
 }
 
 .exact-about-page {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
 /* Home + About: every section container gets the same inset padding */
