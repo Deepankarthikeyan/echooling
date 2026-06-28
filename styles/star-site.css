@@ -4822,6 +4822,154 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 }
 
+/* Homepage WINNER carousel — horizontal scroll toppers / courses */
+.exact-home-page .spa-winner-carousel {
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.exact-home-page .spa-winner-carousel__container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.exact-home-page .spa-winner-carousel__title {
+  color: var(--spa-text-alt, #1a1a1a);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 auto 48px;
+  max-width: 900px;
+}
+
+.exact-home-page .spa-winner-carousel__title span {
+  color: var(--spa-primary-dark, #031552);
+}
+
+.exact-home-page .spa-winner-carousel__viewport {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 0 8px;
+}
+
+.exact-home-page .spa-winner-carousel__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 4px max(24px, calc((100% - 1200px) / 2 + 24px)) 20px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.exact-home-page .spa-winner-carousel__track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.exact-home-page .spa-winner-carousel__track::-webkit-scrollbar-thumb {
+  background: var(--spa-primary-light, #6c82d1);
+  border-radius: 999px;
+}
+
+.exact-home-page .spa-winner-carousel__track::-webkit-scrollbar-track {
+  background: var(--spa-bg-light, #f5f5f5);
+  border-radius: 999px;
+}
+
+.exact-home-page .spa-winner-carousel__card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(3, 21, 82, 0.1);
+  display: flex;
+  flex: 0 0 340px;
+  flex-direction: column;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.exact-home-page .spa-winner-carousel__poster {
+  background: #f5f5f5;
+  line-height: 0;
+}
+
+.exact-home-page .spa-winner-carousel__poster img {
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.exact-home-page .spa-winner-carousel__info {
+  background: var(--spa-primary-dark, #031552);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 190px;
+  padding: 22px 22px 20px;
+}
+
+.exact-home-page .spa-winner-carousel__card-title {
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+
+.exact-home-page .spa-winner-carousel__card-title a {
+  color: #ffffff !important;
+}
+
+.exact-home-page .spa-winner-carousel__card-title a:hover {
+  color: var(--spa-accent-gold, #ffc300) !important;
+}
+
+.exact-home-page .spa-winner-carousel__card-text {
+  color: rgba(255, 255, 255, 0.78);
+  flex: 1;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.exact-home-page .spa-winner-carousel__read-more {
+  align-items: center;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.exact-home-page .spa-winner-carousel__read-more:hover {
+  color: var(--spa-accent-gold, #ffc300) !important;
+}
+
+.exact-home-page .spa-winner-carousel__read-more svg {
+  height: 16px;
+  width: 16px;
+}
+
+@media (max-width: 767px) {
+  .exact-home-page .spa-winner-carousel__card {
+    flex-basis: 300px;
+  }
+
+  .exact-home-page .spa-winner-carousel__track {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 .exact-home-page .search-form .form-input,
 .exact-home-page .search-form [type="text"] {
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -5370,7 +5518,7 @@ body.star-site
 /* Full-width section backgrounds (hero, gray course band, about coaching, testimonials) */
 .exact-home-page > .hero3__area,
 .exact-home-page > .spa-home-about,
-.exact-home-page > .react-course-filter,
+.exact-home-page > .spa-winner-carousel,
 .exact-about-page > .react_populars_topics_about,
 .exact-about-page > .student_satisfaction-section {
   width: 100%;

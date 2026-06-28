@@ -14,6 +14,7 @@ import {
   terms,
   testimonials,
   trainingSteps,
+  winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
 
@@ -961,50 +962,35 @@ function ExactCourseCard({ course, index }) {
   );
 }
 
-function ExactCourses() {
-  const [activeFilter, setActiveFilter] = useState("*");
-
-  const visibleCourses = homeCourses.filter((course) => {
-    if (activeFilter === "*") {
-      return true;
-    }
-
-    return course.filters.includes(activeFilter);
-  });
-
+function ExactWinnerCarousel() {
   return (
-    <div className="react-course-filter pb---100 pt---120">
-      <div className="container">
-        <div className="row d-flex align-items-end">
-          <div className="col-lg-5">
-            <div className="react__title__section text-left">
-              <h2 className="react__tittle">Most Popular Courses</h2>
-              <h6 className="react__subtitle">{academy.description}</h6>
-            </div>
-          </div>
-          <div className="col-lg-7 text-right">
-            <div className="react-filter">
-              {courseFilterTabs.map((tab) => (
-                <button
-                  className={activeFilter === tab.value ? "active" : ""}
-                  data-filter={tab.value === "*" ? "*" : `.${tab.value}`}
-                  type="button"
-                  key={tab.label}
-                  onClick={() => setActiveFilter(tab.value)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="row react-grid">
-          {visibleCourses.map((course, index) => (
-            <ExactCourseCard course={course} index={index} key={course.key} />
+    <section className="spa-winner-carousel pt---120 pb---100">
+      <div className="container spa-winner-carousel__container">
+        <h2 className="spa-winner-carousel__title">
+          &ldquo;Being With A <span>WINNER</span>, Make You A <span>WINNER</span>.&rdquo;
+        </h2>
+      </div>
+      <div className="spa-winner-carousel__viewport">
+        <div className="spa-winner-carousel__track">
+          {winnerCarouselItems.map((item) => (
+            <article className="spa-winner-carousel__card" key={item.key}>
+              <div className="spa-winner-carousel__poster">
+                <img src={item.poster} alt={item.title} />
+              </div>
+              <div className="spa-winner-carousel__info">
+                <h3 className="spa-winner-carousel__card-title">
+                  <Link href={item.href}>{item.title}</Link>
+                </h3>
+                <p className="spa-winner-carousel__card-text">{item.description}</p>
+                <Link className="spa-winner-carousel__read-more" href={item.href}>
+                  Read More <ArrowIcon />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -1237,7 +1223,7 @@ function ExactHomePage() {
     <div className="react-wrapper-inner exact-home-page">
       <ExactHomeHero />
       <ExactHomeAboutSection />
-      <ExactCourses />
+      <ExactWinnerCarousel />
       <ExactAccordion />
       <ExactInstructors />
       <ExactClients />
