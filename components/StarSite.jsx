@@ -31,12 +31,6 @@ const aboutCounterItems = [
   { icon: "/assets/images/counter/4.png", value: stats[3].value.replace("+", ""), suffix: "+", label: stats[3].label },
 ];
 
-const aboutTestimonialImages = [
-  "/assets/images/testimonial/1.png",
-  "/assets/images/testimonial/2.png",
-  "/assets/images/testimonial/3.png",
-];
-
 const aboutLearningCards = [
   {
     title: "Online/Offline Classes",
@@ -225,7 +219,7 @@ function UserIcon() {
 function InstructorPortrait({ instructor }) {
   if (instructor.avatarIcon) {
     return (
-      <div className="spa-instructor-avatar" aria-label={instructor.name}>
+      <div className="spa-user-avatar spa-user-avatar--instructor" aria-label={instructor.name}>
         <span aria-hidden="true" className="material-symbols-outlined">
           {instructor.avatarIcon}
         </span>
@@ -234,6 +228,21 @@ function InstructorPortrait({ instructor }) {
   }
 
   return <img src={instructor.image} alt={instructor.name} />;
+}
+
+function TestimonialAvatar({ name, size = "lg" }) {
+  const initial = name.trim().charAt(0).toUpperCase();
+
+  return (
+    <span className={`spa-user-avatar spa-user-avatar--${size}`} aria-label={name}>
+      <span aria-hidden="true" className="material-symbols-outlined">
+        person
+      </span>
+      <span aria-hidden="true" className="spa-user-avatar__initial">
+        {initial}
+      </span>
+    </span>
+  );
 }
 
 function FileTextIcon() {
@@ -1227,7 +1236,9 @@ function ExactClients() {
             </button>
             <div className="single-client" key={activeTestimonial}>
               <div className="client-bottom">
-                <span className="client-author"><img src="/assets/images/testimonial/testimonial.png" alt="Testimonials" /></span>
+                <span className="client-author">
+                  <TestimonialAvatar name={activeItem.name} size="lg" />
+                </span>
               </div>
               <div className="client-content">
                 <span className="client-title">{activeItem.name} <em> {activeItem.role}</em></span>
@@ -1800,10 +1811,7 @@ function AboutFeedbackSection() {
 
   const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
     const item = testimonials[(startIndex + index) % testimonials.length];
-    return {
-      ...item,
-      image: aboutTestimonialImages[(startIndex + index) % aboutTestimonialImages.length],
-    };
+    return item;
   });
 
   const showPrevious = () => {
@@ -1855,7 +1863,7 @@ function AboutFeedbackSection() {
                 </div>
                 <div className="author-sec">
                   <div className="icon">
-                    <img src={item.image} alt={item.name} />
+                    <TestimonialAvatar name={item.name} size="sm" />
                   </div>
                   <div className="text">
                     <h4>{item.name}</h4>
