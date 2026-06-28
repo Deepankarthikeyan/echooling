@@ -5615,7 +5615,12 @@ body.star-site .react-footer-two .footer-top > .container:first-child {
 }
 
 body.star-site .react-footer-two .footer-top-cta {
-  background: url(/assets/images/cta.jpg) center top / cover no-repeat;
+  background: linear-gradient(
+    135deg,
+    var(--spa-secondary-bright, #ff4d4d) 0%,
+    var(--spa-secondary, #cc0000) 55%,
+    var(--spa-secondary-dark, #990000) 100%
+  );
   border-radius: 10px;
   box-sizing: border-box;
   left: 50%;

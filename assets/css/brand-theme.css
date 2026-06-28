@@ -122,20 +122,24 @@ body.star-site .exact-home-page .accordion__wrapper-1 .exact-read-more-btn:hover
 body.star-site .campus_sec .more-about:hover,
 body.star-site .about__area.about__area_one ul li .more-about:hover,
 body.star-site .popular__course__area .view-courses:hover,
-body.star-site .react-upcoming__event .event__card .event__card--link:hover,
-body.star-site .react-footer-two .footer-top-cta {
+body.star-site .react-upcoming__event .event__card .event__card--link:hover {
   background: var(--spa-primary) !important;
   border-color: var(--spa-primary) !important;
   color: #ffffff !important;
 }
 
 body.star-site .react-btn:hover,
-body.star-site .exact-home-header .react-logins a:hover,
-body.star-site .react-footer-two .footer-top-cta a:hover {
+body.star-site .exact-home-header .react-logins a:hover {
   background: var(--spa-primary-dark) !important;
   border-color: var(--spa-primary-dark) !important;
   color: #ffffff !important;
   opacity: 1 !important;
+}
+
+body.star-site .react-footer-two .footer-top-cta a:hover {
+  background: var(--spa-accent-gold, #ffc300) !important;
+  border-color: var(--spa-accent-gold, #ffc300) !important;
+  color: var(--spa-primary-dark, #031552) !important;
 }
 
 body.star-site .react-btn-border:hover {
@@ -151,7 +155,6 @@ body.star-site .exact-home-page .accordion__wrapper-1 h6,
 body.star-site .exact-home-page .instructors_lefts h6,
 body.star-site .exact-about-page .exact-coaching-eyebrow,
 body.star-site .exact-about-page .react__title__section-all h6,
-body.star-site .react-footer-two .footer-top-cta h4,
 body.star-site .react__title__section-all h6,
 body.star-site .about2__area .about__content h6,
 body.star-site .about__area h2 em,
@@ -233,10 +236,28 @@ body.star-site .react-footer-two {
 
 body.star-site .react-footer-two .footer-top-cta {
   background: linear-gradient(
-      rgba(3, 21, 82, 0.82),
-      rgba(3, 21, 82, 0.82)
-    ),
-    url(/assets/images/cta.jpg) center top / cover no-repeat !important;
+    135deg,
+    var(--spa-secondary-bright, #ff4d4d) 0%,
+    var(--spa-secondary, #cc0000) 55%,
+    var(--spa-secondary-dark, #990000) 100%
+  ) !important;
+  border: 0 !important;
+}
+
+body.star-site .react-footer-two .footer-top-cta h4,
+body.star-site .react-footer-two .footer-top-cta h3 {
+  color: #ffffff !important;
+}
+
+body.star-site .react-footer-two .footer-top-cta h4 {
+  color: var(--spa-accent-gold, #ffc300) !important;
+}
+
+body.star-site .react-footer-two .footer-top-cta a,
+body.star-site .react-footer-two .footer-top-cta .col-lg-5 a {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: var(--spa-secondary-dark, #990000) !important;
 }
 
 body.star-site .react-footer-two .copyright {
