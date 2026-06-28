@@ -4822,10 +4822,27 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 }
 
-/* Homepage WINNER carousel — horizontal scroll toppers / courses */
+/* Homepage WINNER carousel — auto-slide toppers / courses */
 .exact-home-page .spa-winner-carousel {
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
   overflow: hidden;
+  position: relative;
+}
+
+.exact-home-page .spa-winner-carousel::before {
+  background: radial-gradient(circle at 15% 20%, rgba(58, 87, 184, 0.08), transparent 42%),
+    radial-gradient(circle at 85% 80%, rgba(204, 0, 0, 0.06), transparent 38%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.exact-home-page .spa-winner-carousel__container,
+.exact-home-page .spa-winner-carousel__stage {
+  position: relative;
+  z-index: 1;
 }
 
 .exact-home-page .spa-winner-carousel__container {
@@ -4841,7 +4858,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 700;
   line-height: 1.25;
-  margin: 0 auto 48px;
+  margin: 0 auto 40px;
   max-width: 900px;
 }
 
@@ -4849,71 +4866,92 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   color: var(--spa-primary-dark, #031552);
 }
 
-.exact-home-page .spa-winner-carousel__viewport {
+.exact-home-page .spa-winner-carousel__stage {
   margin: 0 auto;
-  max-width: 100%;
-  padding: 0 0 8px;
+  max-width: 1248px;
+  padding: 0 24px;
+}
+
+.exact-home-page .spa-winner-carousel__viewport {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  overflow: hidden;
+  padding: 10px 0 6px;
 }
 
 .exact-home-page .spa-winner-carousel__track {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding: 4px max(24px, calc((100% - 1200px) / 2 + 24px)) 20px;
   scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .exact-home-page .spa-winner-carousel__track::-webkit-scrollbar {
-  height: 8px;
-}
-
-.exact-home-page .spa-winner-carousel__track::-webkit-scrollbar-thumb {
-  background: var(--spa-primary-light, #6c82d1);
-  border-radius: 999px;
-}
-
-.exact-home-page .spa-winner-carousel__track::-webkit-scrollbar-track {
-  background: var(--spa-bg-light, #f5f5f5);
-  border-radius: 999px;
+  display: none;
 }
 
 .exact-home-page .spa-winner-carousel__card {
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 12px 36px rgba(3, 21, 82, 0.1);
+  border: 1px solid rgba(58, 87, 184, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(3, 21, 82, 0.08);
   display: flex;
-  flex: 0 0 340px;
+  flex: 0 0 calc((100% - ((var(--spa-cards-per-view) - 1) * 24px)) / var(--spa-cards-per-view));
   flex-direction: column;
   overflow: hidden;
-  scroll-snap-align: start;
+  transform: scale(0.97);
+  transition: box-shadow 0.45s ease, transform 0.45s ease, border-color 0.45s ease;
+}
+
+.exact-home-page .spa-winner-carousel__card.is-active {
+  border-color: rgba(58, 87, 184, 0.28);
+  box-shadow: 0 18px 42px rgba(3, 21, 82, 0.16);
+  transform: scale(1);
 }
 
 .exact-home-page .spa-winner-carousel__poster {
   background: #f5f5f5;
   line-height: 0;
+  overflow: hidden;
 }
 
 .exact-home-page .spa-winner-carousel__poster img {
   display: block;
   height: auto;
   object-fit: cover;
+  transition: transform 0.6s ease;
   width: 100%;
 }
 
+.exact-home-page .spa-winner-carousel__card.is-active .spa-winner-carousel__poster img {
+  transform: scale(1.03);
+}
+
 .exact-home-page .spa-winner-carousel__info {
-  background: var(--spa-primary-dark, #031552);
+  background: linear-gradient(160deg, var(--spa-primary-dark, #031552) 0%, var(--spa-primary-mid, #041c6b) 100%);
   display: flex;
   flex: 1;
   flex-direction: column;
   min-height: 190px;
   padding: 22px 22px 20px;
+  position: relative;
+}
+
+.exact-home-page .spa-winner-carousel__info::before {
+  background: linear-gradient(90deg, var(--spa-accent-gold, #ffc300), transparent);
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .exact-home-page .spa-winner-carousel__card-title {
   font-family: var(--spa-headline-font, "Livvic", sans-serif);
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 700;
   line-height: 1.25;
   margin: 0 0 10px;
@@ -4959,14 +4997,47 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: 16px;
 }
 
+.exact-home-page .spa-winner-carousel__dots {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.exact-home-page .spa-winner-carousel__dots button {
+  background: rgba(58, 87, 184, 0.25);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 10px;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+  width: 10px;
+}
+
+.exact-home-page .spa-winner-carousel__dots button.is-active {
+  background: var(--spa-primary, #3a57b8);
+  transform: scale(1.05);
+  width: 28px;
+}
+
 @media (max-width: 767px) {
-  .exact-home-page .spa-winner-carousel__card {
-    flex-basis: 300px;
+  .exact-home-page .spa-winner-carousel__stage {
+    padding: 0 16px;
   }
 
   .exact-home-page .spa-winner-carousel__track {
-    padding-left: 16px;
-    padding-right: 16px;
+    gap: 16px;
+  }
+
+  .exact-home-page .spa-winner-carousel__card {
+    flex-basis: calc(100% - 8px);
+  }
+
+  .exact-home-page .spa-winner-carousel__viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 

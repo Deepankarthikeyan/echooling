@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   academy,
   contact,
@@ -963,6 +963,61 @@ function ExactCourseCard({ course, index }) {
 }
 
 function ExactWinnerCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const trackRef = useRef(null);
+
+  const slideCount = winnerCarouselItems.length;
+  const maxIndex = Math.max(0, slideCount - cardsPerView);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      const width = window.innerWidth;
+
+      if (width < 768) {
+        setCardsPerView(1);
+      } else if (width < 1200) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(3);
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex((current) => Math.min(current, maxIndex));
+  }, [maxIndex]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+
+    const card = track.children[activeIndex];
+    if (card instanceof HTMLElement) {
+      track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    }
+  }, [activeIndex, cardsPerView]);
+
+  useEffect(() => {
+    if (isPaused) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1));
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused, maxIndex]);
+
   return (
     <section className="spa-winner-carousel pt---120 pb---100">
       <div className="container spa-winner-carousel__container">
@@ -970,23 +1025,44 @@ function ExactWinnerCarousel() {
           &ldquo;Being With A <span>WINNER</span>, Make You A <span>WINNER</span>.&rdquo;
         </h2>
       </div>
-      <div className="spa-winner-carousel__viewport">
-        <div className="spa-winner-carousel__track">
-          {winnerCarouselItems.map((item) => (
-            <article className="spa-winner-carousel__card" key={item.key}>
-              <div className="spa-winner-carousel__poster">
-                <img src={item.poster} alt={item.title} />
-              </div>
-              <div className="spa-winner-carousel__info">
-                <h3 className="spa-winner-carousel__card-title">
-                  <Link href={item.href}>{item.title}</Link>
-                </h3>
-                <p className="spa-winner-carousel__card-text">{item.description}</p>
-                <Link className="spa-winner-carousel__read-more" href={item.href}>
-                  Read More <ArrowIcon />
-                </Link>
-              </div>
-            </article>
+      <div
+        className="spa-winner-carousel__stage"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="spa-winner-carousel__viewport" style={{ "--spa-cards-per-view": cardsPerView }}>
+          <div className="spa-winner-carousel__track" ref={trackRef}>
+            {winnerCarouselItems.map((item, index) => (
+              <article
+                className={`spa-winner-carousel__card${index === activeIndex ? " is-active" : ""}`}
+                key={item.key}
+              >
+                <div className="spa-winner-carousel__poster">
+                  <img src={item.poster} alt={item.title} />
+                </div>
+                <div className="spa-winner-carousel__info">
+                  <h3 className="spa-winner-carousel__card-title">
+                    <Link href={item.href}>{item.title}</Link>
+                  </h3>
+                  <p className="spa-winner-carousel__card-text">{item.description}</p>
+                  <Link className="spa-winner-carousel__read-more" href={item.href}>
+                    Read More <ArrowIcon />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="spa-winner-carousel__dots" aria-label="Carousel pagination">
+          {Array.from({ length: maxIndex + 1 }, (_, index) => (
+            <button
+              aria-label={`Show slide ${index + 1}`}
+              aria-pressed={activeIndex === index}
+              className={activeIndex === index ? "is-active" : ""}
+              key={`winner-dot-${index}`}
+              onClick={() => setActiveIndex(index)}
+              type="button"
+            />
           ))}
         </div>
       </div>
