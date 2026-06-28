@@ -164,6 +164,7 @@ function SiteHead({ title }) {
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/custom-spacing.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css" />
+      <link rel="stylesheet" type="text/css" href="/assets/css/header-sticky.css" />
     </Head>
   );
 }

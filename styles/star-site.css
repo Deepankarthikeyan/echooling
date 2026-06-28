@@ -4086,17 +4086,11 @@
   }
 }
 
-/* Exact Home Two template compatibility */
-.star-site {
-  padding-top: 0;
-}
+/* Exact Home Two template compatibility — header offset handled in header-sticky.css */
 
 body.star-site .react-header.exact-home-header {
   background: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 14, 32, 0.06);
-  position: sticky;
-  top: 0;
-  z-index: 9999;
 }
 
 body.star-site .exact-home-header .menu-part {
