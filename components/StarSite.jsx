@@ -794,6 +794,70 @@ function ExactHomeHero() {
   );
 }
 
+function ExactHomeAboutSection() {
+  return (
+    <section className="spa-home-about pt---120 pb---120">
+      <div className="container spa-home-about__container">
+        <div className="row align-items-center g-4">
+          <div className="col-lg-6">
+            <div className="spa-home-about__visual">
+              <div className="spa-home-about__photo-wrap">
+                <img
+                  className="spa-home-about__photo"
+                  src="/assets/images/about/home/classroom.jpg"
+                  alt="Star Police Academy students in classroom"
+                />
+              </div>
+              <div className="spa-home-about__badge">
+                <img className="spa-home-about__badge-logo" src={academy.logo} alt="Star Police Academy crest" />
+                <strong className="spa-home-about__badge-title">STAR POLICE ACADEMY</strong>
+                <span className="spa-home-about__badge-tagline">NO. 1 POLICE ACADEMY IN TAMIL NADU</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="spa-home-about__content">
+              <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
+              <h2 className="spa-home-about__title">
+                Tamil Nadu&apos;s Leading
+                <br />
+                <em>TNUSRB SI &amp; Police Coaching Centre</em>
+              </h2>
+              <p className="spa-home-about__text">{academy.aboutIntro}</p>
+              <div className="spa-home-about__features">
+                <div className="spa-home-about__feature">
+                  <span aria-hidden="true" className="material-symbols-outlined spa-home-about__feature-icon">
+                    emoji_events
+                  </span>
+                  <strong>Experts Around Tamilnadu</strong>
+                </div>
+                <div className="spa-home-about__feature">
+                  <span aria-hidden="true" className="material-symbols-outlined spa-home-about__feature-icon">
+                    schedule
+                  </span>
+                  <strong>Best Coaching Centres</strong>
+                </div>
+              </div>
+              <div className="spa-home-about__footer">
+                <Link className="spa-home-about__location-btn" href="/contact">
+                  → OUR LOCATION
+                </Link>
+                <div className="spa-home-about__founder">
+                  <img src="/assets/images/about/home/founder.jpg" alt={academy.founder} />
+                  <div>
+                    <strong>{academy.founder}</strong>
+                    <span>{academy.founderRole}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ExactPopularTopics() {
   return (
     <div className="react_populars_topics pt---120 pb---120">
@@ -1172,8 +1236,7 @@ function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
       <ExactHomeHero />
-      <ExactPopularTopics />
-      <ExactAboutSection />
+      <ExactHomeAboutSection />
       <ExactCourses />
       <ExactAccordion />
       <ExactInstructors />
