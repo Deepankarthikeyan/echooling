@@ -110,11 +110,6 @@ const homeCourses = courses.slice(0, 6).map((course, index) => ({
   filters: homeCourseFilterTags[index] || ["filter1"],
 }));
 
-const homeHeroStats = [
-  { value: stats[1].value, label: stats[1].label, icon: "/assets/images/banner2/bg.png" },
-  { value: stats[3].value, label: stats[3].label, icon: "/assets/images/banner2/bg11.png" },
-];
-
 const homeInstructors = [
   ...aboutInstructors,
   {
@@ -780,51 +775,14 @@ function CTA() {
 
 function ExactHomeHero() {
   return (
-    <div className="hero3__area p-relative">
-      <div className="hero3__shape">
-        <img className="hero3__shape-1" src="/assets/images/banner2/shape/01.png" alt="Banner shape" />
-        <img className="hero3__shape-2" src="/assets/images/banner2/shape/02.png" alt="Banner shape" />
-        <img className="hero3__shape-3" src="/assets/images/banner2/shape/03.png" alt="Banner shape" />
-      </div>
+    <div
+      className="hero3__area exact-spa-hero p-relative"
+      style={{ backgroundImage: `url(${academy.heroBackground})` }}
+    >
+      <div className="exact-spa-hero__overlay" />
       <div className="container p-relative">
-        <div className="hero3__content">
-          <h1 className="hero3__title">
-            Learn Course Online <br /> <em>New Today</em>
-          </h1>
-          <img src="/assets/images/banner2/line_01.png" alt="line" />
-          <form
-            className="search-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-            }}
-          >
-            <input type="text" className="form-input" placeholder="Search Course" />
-            <button type="submit" className="form-button" aria-label="Search">
-              <SearchIcon />
-            </button>
-          </form>
-          <p className="hero3__paragraph">
-            Have questions? <Link href="/contact">Get Free Sample <ArrowIcon /></Link>
-          </p>
-        </div>
-        <div className="about__content">
-          <ul>
-            {homeHeroStats.map((item) => (
-              <li key={item.label}>
-                <div className="icon">
-                  <img src={item.icon} alt="" />
-                </div>
-                <div className="text">
-                  <h4>{item.value}</h4>
-                  <p>{item.label}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="hero3__image">
-          <img className="hero3__image-1" src="/assets/images/banner2/normal-image/01.png" alt="student" />
-          <img className="hero3__image-2" src="/assets/images/banner2/normal-image/02.png" alt="course highlights" />
+        <div className="hero3__content exact-spa-hero__content">
+          <h1 className="hero3__title exact-spa-hero__title">{academy.heroTitle}</h1>
         </div>
       </div>
     </div>

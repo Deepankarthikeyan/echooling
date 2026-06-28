@@ -4494,6 +4494,44 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.exact-home-page .hero3__area.exact-spa-hero {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  min-height: 560px;
+  overflow: hidden;
+  padding: 140px 0 120px;
+  position: relative;
+}
+
+.exact-home-page .exact-spa-hero__overlay {
+  background: linear-gradient(90deg, rgba(6, 27, 51, 0.78) 0%, rgba(6, 27, 51, 0.45) 55%, rgba(6, 27, 51, 0.25) 100%);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.exact-home-page .exact-spa-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.exact-home-page .exact-spa-hero__content {
+  max-width: 920px;
+}
+
+.exact-home-page .exact-spa-hero__title,
+.exact-home-page .hero3__area.exact-spa-hero .hero3__title {
+  color: #ffffff;
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
 .exact-home-page .hero3__title {
   color: #0f1216;
   font-size: 70px;
@@ -4772,6 +4810,17 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 @media (max-width: 991px) {
+  .exact-home-page .hero3__area.exact-spa-hero {
+    min-height: 460px;
+    padding: 120px 0 90px;
+  }
+
+  .exact-home-page .exact-spa-hero__title,
+  .exact-home-page .hero3__area.exact-spa-hero .hero3__title {
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.3;
+  }
+
   .exact-home-page .hero3__title {
     font-size: 46px;
     line-height: 52px;
