@@ -4091,9 +4091,16 @@
   padding-top: 0;
 }
 
-.exact-home-header {
-  position: relative;
-  z-index: 999;
+body.star-site .react-header.exact-home-header {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 14, 32, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+body.star-site .exact-home-header .menu-part {
+  background: #ffffff;
 }
 
 .exact-home-header .react-main-menu nav {
