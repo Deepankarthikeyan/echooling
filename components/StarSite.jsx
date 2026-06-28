@@ -116,12 +116,12 @@ const homeInstructors = [
   {
     name: "Interview Panel Team",
     role: "Mentoring Team",
-    image: "/assets/images/instructors/spa/team-03.jpg",
+    image: "/assets/images/instructors/spa/interview-panel.jpg",
   },
   {
     name: "Admissions Team",
     role: "Counseling Support",
-    image: "/assets/images/instructors/spa/team-08.jpg",
+    image: "/assets/images/instructors/spa/admissions-team.jpg",
   },
 ];
 
