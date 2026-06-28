@@ -116,12 +116,12 @@ const homeInstructors = [
   {
     name: "Interview Panel Team",
     role: "Mentoring Team",
-    image: "/assets/images/instructors/spa/interview-panel.jpg",
+    avatarIcon: "groups",
   },
   {
     name: "Admissions Team",
     role: "Counseling Support",
-    image: "/assets/images/instructors/spa/admissions-team.jpg",
+    avatarIcon: "support_agent",
   },
 ];
 
@@ -220,6 +220,20 @@ function UserIcon() {
       <circle cx="12" cy="7" r="4" />
     </svg>
   );
+}
+
+function InstructorPortrait({ instructor }) {
+  if (instructor.avatarIcon) {
+    return (
+      <div className="spa-instructor-avatar" aria-label={instructor.name}>
+        <span aria-hidden="true" className="material-symbols-outlined">
+          {instructor.avatarIcon}
+        </span>
+      </div>
+    );
+  }
+
+  return <img src={instructor.image} alt={instructor.name} />;
 }
 
 function FileTextIcon() {
@@ -1166,7 +1180,7 @@ function ExactInstructors() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
               <div className="instructor__content">
                 <div className="instructor__content-1">
-                  <img src={instructor.image} alt={instructor.name} />
+                  <InstructorPortrait instructor={instructor} />
                 </div>
                 <div className="instructor__content-2">
                   <h4><Link href="/about">{instructor.name}</Link></h4>
@@ -1566,7 +1580,7 @@ function EchoolingInstructors() {
             <div className="echooling-instructor-orbit">
               {homeInstructors.map((instructor, index) => (
                 <div className={`echooling-instructor-card echooling-instructor-${index + 1}`} key={instructor.name}>
-                <img src={instructor.image} alt={instructor.name} />
+                <InstructorPortrait instructor={instructor} />
                 <h3>{instructor.name}</h3>
                 <p>{instructor.role}</p>
               </div>
@@ -1748,7 +1762,7 @@ function AboutInstructorsSection() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
               <div className="instructor__content">
                 <div className="instructor__content-1">
-                  <img src={instructor.image} alt={instructor.name} />
+                  <InstructorPortrait instructor={instructor} />
                 </div>
                 <div className="instructor__content-2">
                   <h4>
