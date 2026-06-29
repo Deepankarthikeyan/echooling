@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   academy,
   contact,
@@ -14,6 +14,7 @@ import {
   terms,
   testimonials,
   trainingSteps,
+  winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
 
@@ -30,12 +31,6 @@ const aboutCounterItems = [
   { icon: "/assets/images/counter/4.png", value: stats[3].value.replace("+", ""), suffix: "+", label: stats[3].label },
 ];
 
-const aboutTestimonialImages = [
-  "/assets/images/testimonial/1.png",
-  "/assets/images/testimonial/2.png",
-  "/assets/images/testimonial/3.png",
-];
-
 const aboutLearningCards = [
   {
     title: "Online/Offline Classes",
@@ -49,7 +44,7 @@ const aboutLearningCards = [
     title: "Toppers and Achievers",
     text: "The outstanding success of our students are our proudest testimony and motivation.",
   },
-]; 
+];
 
 const aboutInstructors = [
   {
@@ -110,22 +105,17 @@ const homeCourses = courses.slice(0, 6).map((course, index) => ({
   filters: homeCourseFilterTags[index] || ["filter1"],
 }));
 
-const homeHeroStats = [
-  { value: stats[1].value, label: stats[1].label, icon: "/assets/images/banner2/bg.png" },
-  { value: stats[3].value, label: stats[3].label, icon: "/assets/images/banner2/bg11.png" },
-];
-
 const homeInstructors = [
   ...aboutInstructors,
   {
     name: "Interview Panel Team",
     role: "Mentoring Team",
-    image: "/assets/images/instructor/05.jpg",
+    avatarIcon: "groups",
   },
   {
     name: "Admissions Team",
     role: "Counseling Support",
-    image: "/assets/images/instructor/06.jpg",
+    avatarIcon: "support_agent",
   },
 ];
 
@@ -150,7 +140,11 @@ function SiteHead({ title }) {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap"
         rel="stylesheet"
       />
       <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" />
@@ -164,6 +158,8 @@ function SiteHead({ title }) {
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/custom-spacing.css" />
       <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css" />
+      <link rel="stylesheet" type="text/css" href="/assets/css/header-sticky.css" />
+      <link rel="stylesheet" type="text/css" href="/assets/css/brand-theme.css" />
     </Head>
   );
 }
@@ -220,6 +216,35 @@ function UserIcon() {
   );
 }
 
+function InstructorPortrait({ instructor }) {
+  if (instructor.avatarIcon) {
+    return (
+      <div className="spa-user-avatar spa-user-avatar--instructor" aria-label={instructor.name}>
+        <span aria-hidden="true" className="material-symbols-outlined">
+          {instructor.avatarIcon}
+        </span>
+      </div>
+    );
+  }
+
+  return <img src={instructor.image} alt={instructor.name} />;
+}
+
+function TestimonialAvatar({ name, size = "lg" }) {
+  const initial = name.trim().charAt(0).toUpperCase();
+
+  return (
+    <span className={`spa-user-avatar spa-user-avatar--${size}`} aria-label={name}>
+      <span aria-hidden="true" className="material-symbols-outlined">
+        person
+      </span>
+      <span aria-hidden="true" className="spa-user-avatar__initial">
+        {initial}
+      </span>
+    </span>
+  );
+}
+
 function FileTextIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -228,6 +253,26 @@ function FileTextIcon() {
       <line x1="16" y1="13" x2="8" y2="13" />
       <line x1="16" y1="17" x2="8" y2="17" />
       <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+
+function MenuChevronDownIcon() {
+  return (
+    <svg
+      className="exact-menu-arrow"
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }
@@ -248,7 +293,7 @@ function Header() {
               <div className="menu-toggle">
                 <div className="logo">
                   <Link href="/" className="logo-text" onClick={closeNavigation}>
-                    <img src={academy.logo} alt="Star Police Academy logo" />
+                    <img className="star-brand-logo" src={academy.logo} alt="Star Police Academy logo" />
                   </Link>
                 </div>
                 <button
@@ -270,14 +315,13 @@ function Header() {
                     <Link href="/" onClick={closeNavigation}>Home</Link>
                   </li>
                   <li>
-                    <Link href="/about">About</Link>
-                    <ul>
-                      <li><Link href="/about" onClick={closeNavigation}>About Star Police Academy</Link></li>
-                    </ul>
+                    <Link href="/about" onClick={closeNavigation}>About</Link>
                   </li>
-                  <li>
-                    <Link href="/courses" onClick={closeNavigation}>Courses</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/courses" onClick={closeNavigation}>
+                      Courses <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
                       <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
                       <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
@@ -287,17 +331,21 @@ function Header() {
                       <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
                     </ul>
                   </li>
-                  <li>
-                    <Link href="/notification" onClick={closeNavigation}>Notifications</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/notification" onClick={closeNavigation}>
+                      Notifications <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
                       <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
                       <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
                     </ul>
                   </li>
-                  <li>
-                    <Link href="/training" onClick={closeNavigation}>Training</Link>
-                    <ul>
+                  <li className="exact-menu-has-dropdown">
+                    <Link href="/training" onClick={closeNavigation}>
+                      Training <MenuChevronDownIcon />
+                    </Link>
+                    <ul className="sub-menu">
                       <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
                       <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
                       <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
@@ -355,7 +403,7 @@ function Footer() {
               <div className="footer-widget footer-widget-1">
                 <div className="footer-logo white">
                   <Link href="/" className="logo-text">
-                    <img src={academy.footerLogo} alt="Star Police Academy" />
+                    <img className="star-brand-logo" src={academy.footerLogo} alt="Star Police Academy" />
                   </Link>
                 </div>
                 <h5 className="footer-subtitle">{academy.aboutIntro}</h5>
@@ -756,54 +804,84 @@ function CTA() {
 
 function ExactHomeHero() {
   return (
-    <div className="hero3__area p-relative">
-      <div className="hero3__shape">
-        <img className="hero3__shape-1" src="/assets/images/banner2/shape/01.png" alt="Banner shape" />
-        <img className="hero3__shape-2" src="/assets/images/banner2/shape/02.png" alt="Banner shape" />
-        <img className="hero3__shape-3" src="/assets/images/banner2/shape/03.png" alt="Banner shape" />
-      </div>
+    <div
+      className="hero3__area exact-spa-hero p-relative"
+      style={{ backgroundImage: `url(${academy.heroBackground})` }}
+    >
+      <div className="exact-spa-hero__overlay" />
       <div className="container p-relative">
-        <div className="hero3__content">
-          <h1 className="hero3__title">
-            Learn Course Online <br /> <em>New Today</em>
-          </h1>
-          <img src="/assets/images/banner2/line_01.png" alt="line" />
-          <form
-            className="search-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-            }}
-          >
-            <input type="text" className="form-input" placeholder="Search Course" />
-            <button type="submit" className="form-button" aria-label="Search">
-              <SearchIcon />
-            </button>
-          </form>
-          <p className="hero3__paragraph">
-            Have questions? <Link href="/contact">Get Free Sample <ArrowIcon /></Link>
-          </p>
-        </div>
-        <div className="about__content">
-          <ul>
-            {homeHeroStats.map((item) => (
-              <li key={item.label}>
-                <div className="icon">
-                  <img src={item.icon} alt="" />
-                </div>
-                <div className="text">
-                  <h4>{item.value}</h4>
-                  <p>{item.label}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="hero3__image">
-          <img className="hero3__image-1" src="/assets/images/banner2/normal-image/01.png" alt="student" />
-          <img className="hero3__image-2" src="/assets/images/banner2/normal-image/02.png" alt="course highlights" />
+        <div className="hero3__content exact-spa-hero__content">
+          <h1 className="hero3__title exact-spa-hero__title">{academy.heroTitle}</h1>
+          <Link className="exact-spa-hero__register-btn" href="/register">
+            Register <ArrowIcon />
+          </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+function ExactHomeAboutSection() {
+  return (
+    <section className="spa-home-about pt---120 pb---120">
+      <div className="container spa-home-about__container">
+        <div className="row align-items-center g-4">
+          <div className="col-lg-6">
+            <div className="spa-home-about__visual">
+              <div className="spa-home-about__photo-wrap">
+                <img
+                  className="spa-home-about__photo"
+                  src="/assets/images/about/home/classroom.jpg"
+                  alt="Star Police Academy students in classroom"
+                />
+              </div>
+              <div className="spa-home-about__badge">
+                <img className="spa-home-about__badge-logo" src={academy.logo} alt="Star Police Academy crest" />
+                <strong className="spa-home-about__badge-title">STAR POLICE ACADEMY</strong>
+                <span className="spa-home-about__badge-tagline">NO. 1 POLICE ACADEMY IN TAMIL NADU</span>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="spa-home-about__content">
+              <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
+              <h2 className="spa-home-about__title">
+                Tamil Nadu&apos;s Leading
+                <br />
+                <em>TNUSRB SI &amp; Police Coaching Centre</em>
+              </h2>
+              <p className="spa-home-about__text">{academy.aboutIntro}</p>
+              <div className="spa-home-about__features">
+                <div className="spa-home-about__feature">
+                  <span aria-hidden="true" className="material-symbols-outlined spa-home-about__feature-icon">
+                    emoji_events
+                  </span>
+                  <strong>Experts Around Tamilnadu</strong>
+                </div>
+                <div className="spa-home-about__feature">
+                  <span aria-hidden="true" className="material-symbols-outlined spa-home-about__feature-icon">
+                    schedule
+                  </span>
+                  <strong>Best Coaching Centres</strong>
+                </div>
+              </div>
+              <div className="spa-home-about__footer">
+                <Link className="spa-home-about__location-btn" href="/contact">
+                  → OUR LOCATION
+                </Link>
+                <div className="spa-home-about__founder">
+                  <img src="/assets/images/about/home/founder.jpg" alt={academy.founder} />
+                  <div>
+                    <strong>{academy.founder}</strong>
+                    <span>{academy.founderRole}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -910,50 +988,111 @@ function ExactCourseCard({ course, index }) {
   );
 }
 
-function ExactCourses() {
-  const [activeFilter, setActiveFilter] = useState("*");
+function ExactWinnerCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const trackRef = useRef(null);
 
-  const visibleCourses = homeCourses.filter((course) => {
-    if (activeFilter === "*") {
-      return true;
+  const slideCount = winnerCarouselItems.length;
+  const maxIndex = Math.max(0, slideCount - cardsPerView);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      const width = window.innerWidth;
+
+      if (width < 768) {
+        setCardsPerView(1);
+      } else if (width < 1200) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(3);
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex((current) => Math.min(current, maxIndex));
+  }, [maxIndex]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
     }
 
-    return course.filters.includes(activeFilter);
-  });
+    const card = track.children[activeIndex];
+    if (card instanceof HTMLElement) {
+      track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    }
+  }, [activeIndex, cardsPerView]);
+
+  useEffect(() => {
+    if (isPaused) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1));
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused, maxIndex]);
 
   return (
-    <div className="react-course-filter pb---100 pt---120">
-      <div className="container">
-        <div className="row d-flex align-items-end">
-          <div className="col-lg-5">
-            <div className="react__title__section text-left">
-              <h2 className="react__tittle">Most Popular Courses</h2>
-              <h6 className="react__subtitle">{academy.description}</h6>
-            </div>
-          </div>
-          <div className="col-lg-7 text-right">
-            <div className="react-filter">
-              {courseFilterTabs.map((tab) => (
-                <button
-                  className={activeFilter === tab.value ? "active" : ""}
-                  data-filter={tab.value === "*" ? "*" : `.${tab.value}`}
-                  type="button"
-                  key={tab.label}
-                  onClick={() => setActiveFilter(tab.value)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+    <section className="spa-winner-carousel pt---120 pb---100">
+      <div className="container spa-winner-carousel__container">
+        <h2 className="spa-winner-carousel__title">
+          &ldquo;Being With A <span>WINNER</span>, Make You A <span>WINNER</span>.&rdquo;
+        </h2>
+      </div>
+      <div
+        className="spa-winner-carousel__stage"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="spa-winner-carousel__viewport" style={{ "--spa-cards-per-view": cardsPerView }}>
+          <div className="spa-winner-carousel__track" ref={trackRef}>
+            {winnerCarouselItems.map((item, index) => (
+              <article
+                className={`spa-winner-carousel__card${index === activeIndex ? " is-active" : ""}`}
+                key={item.key}
+              >
+                <div className="spa-winner-carousel__poster">
+                  <img src={item.poster} alt={item.title} />
+                </div>
+                <div className="spa-winner-carousel__info">
+                  <h3 className="spa-winner-carousel__card-title">
+                    <Link href={item.href}>{item.title}</Link>
+                  </h3>
+                  <p className="spa-winner-carousel__card-text">{item.description}</p>
+                  <Link className="spa-winner-carousel__read-more" href={item.href}>
+                    Read More <ArrowIcon />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
-        <div className="row react-grid">
-          {visibleCourses.map((course, index) => (
-            <ExactCourseCard course={course} index={index} key={course.key} />
+        <div className="spa-winner-carousel__dots" aria-label="Carousel pagination">
+          {Array.from({ length: maxIndex + 1 }, (_, index) => (
+            <button
+              aria-label={`Show slide ${index + 1}`}
+              aria-pressed={activeIndex === index}
+              className={activeIndex === index ? "is-active" : ""}
+              key={`winner-dot-${index}`}
+              onClick={() => setActiveIndex(index)}
+              type="button"
+            />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -1053,7 +1192,7 @@ function ExactInstructors() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
               <div className="instructor__content">
                 <div className="instructor__content-1">
-                  <img src={instructor.image} alt={instructor.name} />
+                  <InstructorPortrait instructor={instructor} />
                 </div>
                 <div className="instructor__content-2">
                   <h4><Link href="/about">{instructor.name}</Link></h4>
@@ -1100,7 +1239,9 @@ function ExactClients() {
             </button>
             <div className="single-client" key={activeTestimonial}>
               <div className="client-bottom">
-                <span className="client-author"><img src="/assets/images/testimonial/testimonial.png" alt="Testimonials" /></span>
+                <span className="client-author">
+                  <TestimonialAvatar name={activeItem.name} size="lg" />
+                </span>
               </div>
               <div className="client-content">
                 <span className="client-title">{activeItem.name} <em> {activeItem.role}</em></span>
@@ -1185,9 +1326,8 @@ function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
       <ExactHomeHero />
-      <ExactPopularTopics />
-      <ExactAboutSection />
-      <ExactCourses />
+      <ExactHomeAboutSection />
+      <ExactWinnerCarousel />
       <ExactAccordion />
       <ExactInstructors />
       <ExactClients />
@@ -1454,7 +1594,7 @@ function EchoolingInstructors() {
             <div className="echooling-instructor-orbit">
               {homeInstructors.map((instructor, index) => (
                 <div className={`echooling-instructor-card echooling-instructor-${index + 1}`} key={instructor.name}>
-                <img src={instructor.image} alt={instructor.name} />
+                <InstructorPortrait instructor={instructor} />
                 <h3>{instructor.name}</h3>
                 <p>{instructor.role}</p>
               </div>
@@ -1636,7 +1776,7 @@ function AboutInstructorsSection() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6" key={instructor.name}>
               <div className="instructor__content">
                 <div className="instructor__content-1">
-                  <img src={instructor.image} alt={instructor.name} />
+                  <InstructorPortrait instructor={instructor} />
                 </div>
                 <div className="instructor__content-2">
                   <h4>
@@ -1674,10 +1814,7 @@ function AboutFeedbackSection() {
 
   const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
     const item = testimonials[(startIndex + index) % testimonials.length];
-    return {
-      ...item,
-      image: aboutTestimonialImages[(startIndex + index) % aboutTestimonialImages.length],
-    };
+    return item;
   });
 
   const showPrevious = () => {
@@ -1729,7 +1866,7 @@ function AboutFeedbackSection() {
                 </div>
                 <div className="author-sec">
                   <div className="icon">
-                    <img src={item.image} alt={item.name} />
+                    <TestimonialAvatar name={item.name} size="sm" />
                   </div>
                   <div className="text">
                     <h4>{item.name}</h4>
