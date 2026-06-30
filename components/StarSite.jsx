@@ -1179,11 +1179,28 @@ function SpaFacilitiesSliderSection() {
         </div>
         <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
           <div className="spa-facilities-slider__content" key={`content-${activeIndex}`}>
-            <span className="spa-facilities-slider__index">
-              {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
-            </span>
+            <div className="spa-facilities-slider__meta">
+              <span className="spa-facilities-slider__index">
+                {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
+              </span>
+              <span className="spa-facilities-slider__icon" aria-hidden="true">
+                <span className="material-symbols-outlined">{activeFacility.icon}</span>
+              </span>
+            </div>
             <h3>{activeFacility.title}</h3>
-            <p>{activeFacility.text}</p>
+            <p className="spa-facilities-slider__lead">{activeFacility.text}</p>
+            <p className="spa-facilities-slider__details">{activeFacility.details}</p>
+            <ul className="spa-facilities-slider__highlights">
+              {activeFacility.highlights.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link className="spa-facilities-slider__cta" href="/contact">
+              Book a Campus Visit <ArrowIcon />
+            </Link>
           </div>
           <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
             <img src={activeFacility.image} alt={activeFacility.title} />

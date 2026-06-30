@@ -6823,18 +6823,96 @@ body.star-site .react-footer-two .footer-top-cta .row {
   letter-spacing: 0.06em;
 }
 
+.exact-home-page .spa-facilities-slider__meta {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.exact-home-page .spa-facilities-slider__icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-radius: 14px;
+  color: #ffffff;
+  display: inline-flex;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+
+.exact-home-page .spa-facilities-slider__icon .material-symbols-outlined {
+  font-size: 26px;
+}
+
 .exact-home-page .spa-facilities-slider__content h3 {
   color: var(--spa-primary-dark, #031552);
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 700;
-  margin: 12px 0 16px;
+  margin: 0 0 14px;
 }
 
-.exact-home-page .spa-facilities-slider__content p {
+.exact-home-page .spa-facilities-slider__lead {
+  color: var(--spa-text-alt, #1a1a1a);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+
+.exact-home-page .spa-facilities-slider__details {
   color: var(--spa-text-muted, #5b5f64);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.75;
-  margin: 0;
+  margin: 0 0 20px;
+}
+
+.exact-home-page .spa-facilities-slider__highlights {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.exact-home-page .spa-facilities-slider__highlights li {
+  align-items: flex-start;
+  color: var(--spa-text-alt, #1a1a1a);
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.exact-home-page .spa-facilities-slider__highlights .material-symbols-outlined {
+  color: var(--spa-secondary, #cc0000);
+  flex-shrink: 0;
+  font-size: 18px;
+  margin-top: 1px;
+}
+
+.exact-home-page .spa-facilities-slider__cta {
+  align-items: center;
+  background: var(--spa-primary-dark, #031552);
+  border-radius: 6px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.03em;
+  min-height: 46px;
+  padding: 0 22px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.exact-home-page .spa-facilities-slider__cta:hover {
+  background: var(--spa-primary, #3a57b8);
+  color: #ffffff !important;
+  transform: translateY(-2px);
 }
 
 .exact-home-page .spa-facilities-slider__visual img {
@@ -7115,6 +7193,10 @@ body.star-site .react-footer-two .footer-top-cta .row {
 
   .exact-home-page .spa-facilities-slider__visual img {
     height: 280px;
+  }
+
+  .exact-home-page .spa-facilities-slider__highlights {
+    grid-template-columns: 1fr;
   }
 }
 
