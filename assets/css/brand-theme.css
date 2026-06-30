@@ -192,7 +192,12 @@ body.star-site .exact-home-page .about__paragraph,
 body.star-site .exact-home-page p,
 body.star-site .react-footer-two .footer-subtitle,
 body.star-site .react-footer-two .footer-menu a {
-  color: var(--spa-text-muted);
+  color: #e0e0e0 !important;
+}
+
+body.star-site .react-footer-two .footer-menu a:hover,
+body.star-site .react-footer-two .footer-menu a:focus {
+  color: var(--spa-accent-gold, #ffc300) !important;
 }
 
 /* Accent highlights — teal/gold for special emphasis */
