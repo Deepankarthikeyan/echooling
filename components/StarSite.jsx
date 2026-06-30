@@ -934,7 +934,6 @@ function SpaWhyChooseSection() {
       <div className="container">
         <div className="row align-items-center g-5">
           <div className="col-lg-5">
-            <span className="spa-section-eyebrow">Section 1</span>
             <h2 className="spa-section-title">Why Choose Star Police Academy</h2>
             <p className="spa-section-text">
               Star Police Academy has been guiding police aspirants for over a decade with
@@ -971,7 +970,7 @@ function SpaCoursesHeroSection() {
       <div className="spa-hero-band__overlay" />
       <div className="container p-relative">
         <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow spa-section-eyebrow--light">Section 2</span>
+          <span className="spa-section-eyebrow spa-section-eyebrow--light">Star Police Academy</span>
           <h2 className="spa-section-title spa-section-title--light">Our Police Coaching Courses</h2>
           <p className="spa-section-text spa-section-text--light">
             Complete TNUSRB, SI, Constable, Defence and Central Force coaching under one roof.

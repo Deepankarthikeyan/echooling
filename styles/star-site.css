@@ -6208,7 +6208,11 @@ body.star-site .react-footer-two .footer-top-cta .row {
 }
 
 .exact-home-page .spa-section-text--light {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+}
+
+body.star-site .exact-home-page .spa-section-text--light {
+  color: #ffffff;
 }
 
 .exact-home-page .spa-section-link {
