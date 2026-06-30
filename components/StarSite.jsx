@@ -1240,7 +1240,6 @@ function SpaFacilitiesSliderSection() {
     <section className="spa-facilities-slider pt---100 pb---100">
       <div className="container">
         <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Section 6</span>
           <h2 className="spa-section-title">Our Facilities</h2>
         </div>
         <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
@@ -1292,14 +1291,13 @@ function SpaRecruitmentBlogSection() {
   const cards = recruitmentUpdates.map((item, index) => ({
     ...item,
     author: academy.name,
-    image: item.image || `/assets/images/blog/${index + 1}.jpg`,
+    image: courses[index]?.image || item.image,
   }));
 
   return (
     <div className="react-blog__area blog__area spa-recruitment-blog pt---90 pb---120">
       <div className="container blog__width pb---120">
         <div className="react__title__section text-center">
-          <h6 className="react__subtitle">Section 7 — TNUSRB Updates</h6>
           <h2 className="react__tittle">Latest TNUSRB Recruitment Updates</h2>
         </div>
         <div className="row">
@@ -1403,9 +1401,10 @@ function SpaFaqExpandedSection() {
 }
 
 function SpaLatestBlogSection() {
-  const cards = latestBlogArticles.map((item) => ({
+  const cards = latestBlogArticles.map((item, index) => ({
     ...item,
     author: academy.name,
+    image: courses[index % courses.length]?.image || item.image,
   }));
 
   return (
