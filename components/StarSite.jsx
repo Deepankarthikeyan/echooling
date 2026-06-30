@@ -1036,21 +1036,11 @@ function SpaPhysicalGallerySection() {
 
 function SpaTestimonialsCardsSection() {
   const [startIndex, setStartIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth <= 991) {
-        setVisibleCount(1);
-        return;
-      }
-
-      if (window.innerWidth <= 1199) {
-        setVisibleCount(2);
-        return;
-      }
-
-      setVisibleCount(Math.min(3, testimonials.length));
+      setVisibleCount(window.innerWidth <= 991 ? 1 : 2);
     };
 
     updateVisibleCount();
@@ -1080,7 +1070,7 @@ function SpaTestimonialsCardsSection() {
   };
 
   return (
-    <section className="student_satisfaction-section spa-testimonials-cards pt---110 pb---120">
+    <section className="spa-testimonials-cards pt---110 pb---120">
       <div className="container">
         <div className="react__title__section-all pb---30">
           <div className="row">
@@ -1090,47 +1080,43 @@ function SpaTestimonialsCardsSection() {
             </div>
           </div>
         </div>
-        <div className="feedreact-slider exact-about-feedback-slider">
+        <div className="spa-testimonials-cards__slider">
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-prev"
+            className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--prev"
             aria-label="Previous testimonial"
             onClick={showPrevious}
           >
             ‹
           </button>
-          <div className="exact-about-feedback-track">
+          <div className="spa-testimonials-cards__track">
             {visibleItems.map((item, index) => (
-              <div className="event__card" key={`${item.name}-${startIndex}-${index}`}>
-                <div className="event__card--content">
-                  <div className="event__card--content-area">
-                    <div className="testimonial__ratings">
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star_alt" />
-                      <span> (14 Reviews) </span>
-                    </div>
-                    <div className="parag">{item.text}</div>
-                  </div>
-                  <img className="poly" src="/assets/images/testimonial/poly.png" alt="" />
-                </div>
-                <div className="author-sec">
-                  <div className="icon">
-                    <TestimonialAvatar name={item.name} size="sm" />
-                  </div>
-                  <div className="text">
-                    <h4>{item.name}</h4>
-                    <p>{item.role}</p>
+              <article className="spa-testimonial-card" key={`${item.name}-${startIndex}-${index}`}>
+                <div className="spa-testimonial-card__top">
+                  <span className="spa-testimonial-card__quote" aria-hidden="true">“</span>
+                  <div className="testimonial__ratings">
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star_alt" />
+                    <span>4.9 Rating</span>
                   </div>
                 </div>
-              </div>
+                <p className="spa-testimonial-card__text">{item.text}</p>
+                <div className="spa-testimonial-card__author">
+                  <TestimonialAvatar name={item.name} size="sm" />
+                  <div>
+                    <strong>{item.name}</strong>
+                    <span>{item.role}</span>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-next"
+            className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--next"
             aria-label="Next testimonial"
             onClick={showNext}
           >
