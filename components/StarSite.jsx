@@ -1002,7 +1002,6 @@ function SpaSelectionProcessSection() {
     <section className="spa-lizard-process pt---120 pb---120">
       <div className="container">
         <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Section 3</span>
           <h2 className="spa-section-title">TNUSRB Selection Process</h2>
           <p className="spa-section-text">
             Understand every stage of the recruitment journey with our step-by-step guide.
