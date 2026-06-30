@@ -984,7 +984,9 @@ function SpaCoursesHeroSection() {
                 <div className="spa-course-hero-card__body">
                   <h3>{course.shortTitle}</h3>
                   <p>{course.summary}</p>
-                  <Link href={`/${course.key}`}>Explore Course <ArrowIcon /></Link>
+                  <Link className="spa-course-hero-card__btn" href={`/${course.key}`}>
+                    Explore Course <ArrowIcon />
+                  </Link>
                 </div>
               </article>
             </div>
