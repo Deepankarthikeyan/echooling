@@ -6270,34 +6270,44 @@ body.star-site .react-footer-two .footer-top-cta .row {
 }
 
 body.star-site .exact-home-page .spa-main-hero__text {
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 1.55;
-  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 0 20px;
   max-width: 560px;
 }
 
 .exact-home-page .spa-main-hero__highlights {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
   display: grid;
-  gap: 6px 16px;
+  gap: 8px 10px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
   margin: 0 0 18px;
-  padding: 0;
+  padding: 14px;
 }
 
 .exact-home-page .spa-main-hero__highlights li {
   align-items: center;
+  background: rgba(3, 21, 82, 0.42);
+  border-radius: 8px;
   color: #ffffff;
   display: flex;
-  font-size: 13px;
-  font-weight: 500;
-  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 8px;
+  line-height: 1.3;
+  padding: 9px 10px;
 }
 
 .exact-home-page .spa-main-hero__highlights .material-symbols-outlined {
   color: var(--spa-accent-gold, #ffc300);
-  font-size: 18px;
+  flex-shrink: 0;
+  font-size: 17px;
 }
 
 .exact-home-page .spa-main-hero__actions .exact-spa-hero__register-btn {
@@ -7416,16 +7426,20 @@ body.star-site .exact-home-page .spa-main-hero__text {
 
   body.star-site .exact-home-page .spa-main-hero__text {
     font-size: 15px;
-    line-height: 1.65;
-    margin-bottom: 20px;
+    line-height: 1.7;
+    margin-bottom: 22px;
   }
 
   .exact-home-page .spa-main-hero__highlights {
     margin-bottom: 22px;
+    padding: 12px;
   }
 
   .exact-home-page .spa-main-hero__highlights li {
-    font-size: 14px;
+    font-size: 13px;
+    justify-content: center;
+    padding: 10px 12px;
+    text-align: left;
   }
 
   .exact-home-page .spa-main-hero__text {
