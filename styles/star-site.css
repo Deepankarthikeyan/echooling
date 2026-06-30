@@ -6239,6 +6239,29 @@ body.star-site .react-footer-two .footer-top-cta .row {
   text-align: left;
 }
 
+.exact-home-page .spa-main-hero__row {
+  align-items: stretch;
+}
+
+.exact-home-page .spa-main-hero__col {
+  display: flex;
+}
+
+.exact-home-page .spa-main-hero__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+.exact-home-page .spa-main-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
 .exact-home-page .spa-main-hero__eyebrow {
   color: var(--spa-accent-gold, #ffc300);
   display: block;
@@ -6290,12 +6313,6 @@ body.star-site .exact-home-page .spa-main-hero__text {
   font-size: 20px;
 }
 
-.exact-home-page .spa-main-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .exact-home-page .spa-main-hero__btn-outline,
 .exact-home-page .spa-main-hero__btn-whatsapp {
   align-items: center;
@@ -6329,6 +6346,10 @@ body.star-site .exact-home-page .spa-main-hero__text {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
   padding: 32px 28px;
   text-align: center;
 }
@@ -6355,6 +6376,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(2, 1fr);
+  margin-top: auto;
 }
 
 .exact-home-page .spa-main-hero__stats strong {
