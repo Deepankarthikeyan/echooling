@@ -6259,8 +6259,8 @@ body.star-site .react-footer-two .footer-top-cta .row {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.exact-home-page .spa-main-hero__text {
-  color: rgba(255, 255, 255, 0.88);
+body.star-site .exact-home-page .spa-main-hero__text {
+  color: #ffffff;
   font-size: 16px;
   line-height: 1.7;
   margin: 0 0 24px;
