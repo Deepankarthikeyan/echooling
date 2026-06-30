@@ -206,12 +206,8 @@
 }
 
 .star-main {
-
-  overflow: hidden;
- 
   overflow-x: hidden;
   overflow-y: visible;
-
 }
 
 .star-hero {
@@ -4120,18 +4116,12 @@ body.star-site .exact-home-header .menu-part {
 
 .exact-home-header .logo img,
 .exact-home-header .logo .star-brand-logo {
-
   background: transparent;
-
   max-height: 72px;
   max-width: 240px;
   object-fit: contain;
   width: auto;
 }
-
-
-body.star-site .react-footer-two .footer-logo img,
-body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 body.star-site .star-brand-logo,
 body.star-site .react-footer-two .footer-logo img,
@@ -4144,13 +4134,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: auto;
 }
 
-
-
 .exact-home-page .spa-main-hero__card img,
 .exact-home-page .spa-home-about__badge-logo {
   background: transparent;
 }
-
 
 .exact-home-menus {
   align-items: center;
@@ -4180,12 +4167,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   position: relative;
 }
 
-
-.exact-home-header .react-menus > li > a {
-
 .exact-home-header .react-menus > li > a,
 .exact-home-header .react-menus > li > .exact-menu-link-row > a {
-
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -4196,26 +4179,19 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   white-space: nowrap;
 }
 
-
-.exact-home-header .exact-menu-has-dropdown > a {
-
 .exact-home-header .exact-menu-link-row {
   display: inline-flex;
 }
 
 .exact-home-header .exact-menu-link-row > a {
-
   align-items: center;
   display: inline-flex;
   gap: 4px;
 }
 
-
-
 .exact-home-header .exact-menu-dropdown-toggle {
   display: none;
 }
-
 
 .exact-home-header .exact-menu-arrow {
   flex-shrink: 0;
@@ -4230,36 +4206,22 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: #ffffff;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 18px 45px rgba(15, 34, 57, 0.14);
-
-
   box-sizing: border-box;
-
   display: block;
   left: 0;
   list-style: none;
   margin: 0;
-
-  min-width: 285px;
-  opacity: 0;
-  padding: 12px 0;
-
   max-width: 340px;
   min-width: 300px;
   opacity: 0;
   overflow: hidden;
   padding: 10px 0;
-
   pointer-events: none;
   position: absolute;
   top: 100%;
   transform: translateY(14px);
   transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
   visibility: hidden;
-
-  z-index: 1000;
-}
-
-
   width: max-content;
   z-index: 1000;
 }
@@ -4272,7 +4234,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: 100% !important;
 }
 
-
 .exact-home-header .react-menus > li:hover > ul,
 .exact-home-header .react-menus > li:focus-within > ul,
 .exact-home-header .react-menus > li:hover > ul.sub-menu,
@@ -4284,20 +4245,11 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > ul a {
-
   box-sizing: border-box;
-
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 14px;
-
-  font-weight: 600;
-  line-height: 1.35;
-  padding: 10px 20px;
-  transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
-  white-space: nowrap;
-
   font-weight: 700;
   line-height: 1.45;
   max-width: 100%;
@@ -4305,7 +4257,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
   white-space: normal;
   word-break: break-word;
-
 }
 
 .exact-home-header .react-menus > li > ul a:hover {
@@ -4313,13 +4264,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   color: #2b6cff;
   padding-left: 26px;
 }
-
-
-.exact-home-header .react-menus > li > a {
-  transition: color 180ms ease;
-}
-
-.exact-home-header .react-menus > li:hover > a {
 
 @media (min-width: 992px) {
   .exact-home-header .react-menus > li.exact-menu-has-dropdown:nth-last-child(-n+4) > ul.sub-menu {
@@ -4369,16 +4313,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-logins a {
-
-  background: #3270fc;
-  border-radius: 6px;
-  color: #ffffff;
-
   background: var(--spa-secondary, #cc0000);
   border: 2px solid var(--spa-secondary, #cc0000);
   border-radius: 6px;
   color: #ffffff !important;
-
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 600;
@@ -4387,13 +4325,11 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   padding: 10px 26px;
 }
 
-
 .exact-home-header .react-logins a:hover {
   background: var(--spa-secondary-dark, #990000) !important;
   border-color: var(--spa-secondary-dark, #990000) !important;
   color: #ffffff !important;
 }
-
 
 .exact-home-header .react-logins svg {
   height: 16px;
@@ -4498,22 +4434,13 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-main-menu nav {
     display: block;
     min-height: 76px;
-
     position: relative;
-
   }
 
   .exact-home-header .menu-toggle {
     justify-content: space-between;
     margin-right: 0;
     min-height: 76px;
-
-    width: 100%;
-  }
-
-  .exact-home-menus {
-    display: none;
-
     position: relative;
     width: 100%;
     z-index: 100002;
@@ -4563,15 +4490,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     display: none !important;
     pointer-events: none;
     visibility: hidden;
-
   }
 
   .exact-home-menus.is-open {
     background: #ffffff;
-
-    display: block;
-    box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
-    padding: 18px;
     border-radius: 0 0 16px 16px;
     box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
     display: block !important;
@@ -4592,11 +4514,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-menus {
     align-items: stretch;
     display: block !important;
-
-  }
-
-  .exact-home-header .react-menus > li {
-
     margin-bottom: 0;
     position: static !important;
     width: 100% !important;
@@ -4604,18 +4521,9 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
   .exact-home-header .react-menus > li {
     border-bottom: 1px solid #edf1f7;
-
     display: block;
     margin: 0;
   }
-
-
-  .exact-home-header .react-menus > li > a {
-    padding: 13px 0;
-  }
-
-  .exact-home-header .exact-menu-has-dropdown > a {
-    display: inline-flex;
 
   .exact-home-header .react-menus > li:last-child {
     border-bottom: 0;
@@ -4659,7 +4567,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
   .exact-home-header .exact-menu-expanded .exact-menu-dropdown-toggle .exact-menu-arrow {
     transform: rotate(180deg);
-
   }
 
   .exact-home-header .react-menus > li > ul,
@@ -4667,16 +4574,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     background: #f6f9ff;
     border-radius: 8px;
     box-shadow: none;
-
-    display: block;
-    margin: 0 0 10px;
-    min-width: 0;
-    opacity: 1;
-    padding: 6px 0;
-    pointer-events: auto;
-    position: static;
-    transform: none;
-
     display: none !important;
     margin: 0 0 12px;
     min-width: 0;
@@ -4692,20 +4589,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-menus > li.exact-menu-expanded > ul.sub-menu {
     display: block !important;
     pointer-events: auto;
-
     visibility: visible;
   }
 
   .exact-home-header .react-menus > li > ul a {
-
-    white-space: normal;
-  }
-
-  .exact-home-header .searchbar-part {
-    align-items: flex-start;
-    flex-direction: column;
-    margin: 16px 0 0;
-
     font-weight: 700;
     line-height: 1.45;
     padding: 11px 16px;
@@ -4744,7 +4631,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   body.star-site .exact-home-header .react-logins a {
     justify-content: center;
     width: 100%;
-
   }
 
   .exact-client-arrow {
@@ -4777,12 +4663,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     margin: 0 3px;
   }
 
-
-  .exact-home-header .react-menus > li > a {
-
   .exact-home-header .react-menus > li > a,
   .exact-home-header .react-menus > li > .exact-menu-link-row > a {
-
     font-size: 14px;
     padding-left: 6px;
     padding-right: 6px;
@@ -6049,7 +5931,6 @@ body.star-site .react-footer-two .footer-top-cta .row {
   align-items: center;
 }
 
-
 body.star-site .react-footer.react-footer-two {
   margin-top: 100px;
   padding-top: 180px !important;
@@ -6066,7 +5947,6 @@ body.star-site .react-footer-two .footer-top {
 body.star-site .react-footer-two .footer-top > .container + .container {
   margin-top: 24px;
 }
-
 
 .exact-about-page .feedreact-slider.exact-about-feedback-slider {
   position: relative;
@@ -6136,12 +6016,6 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 }
 
 @media (max-width: 991px) {
-
-  body.star-site .react-footer-two .footer-top-cta {
-    left: auto;
-    margin-left: auto;
-    margin-right: auto;
-
   body.star-site .react-footer.react-footer-two {
     margin-top: 72px;
     padding-top: 72px !important;
@@ -6158,7 +6032,6 @@ body.star-site .react-footer-two .footer-top > .container + .container {
     transform: none;
     width: 100%;
   }
-
 
   body.star-site .react-footer-two .footer-top {
     padding-top: 0;
@@ -6367,7 +6240,6 @@ body.star-site .react-footer-two .footer-top > .container + .container {
     line-height: 36px;
   }
 }
-
 
 /* ── SPA Home Page — 11 Section Layout ───────────────────────────── */
 
@@ -6644,7 +6516,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
 .exact-home-page .spa-main-hero__stats strong {
   color: var(--spa-secondary, #cc0000);
   display: block;
-  font-size: 50px;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -7875,4 +7747,3 @@ body.star-site .spa-gallery-lightbox__caption p {
     width: 100%;
   }
 }
-

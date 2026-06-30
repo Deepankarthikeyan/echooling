@@ -1,25 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-
-
 import { createPortal } from "react-dom";
-
 import {
   academy,
   contact,
   courses,
   faqs,
   features,
-
-  notificationItems,
-  questionPapers,
-  registrationCourses,
-  stats,
-  terms,
-  testimonials,
-  trainingSteps,
-
   facilitiesItems,
   heroHighlights,
   latestBlogArticles,
@@ -35,10 +23,37 @@ import {
   testimonials,
   trainingSteps,
   whyChooseFeatures,
-
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
+
+function SiteLink({ href = "/", onClick, children, className, ...rest }) {
+  const target = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
+  const isHome = target === "/";
+
+  if (isHome) {
+    return (
+      <Link href="/" onClick={onClick} className={className} {...rest}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href="#"
+      className={className}
+      aria-disabled="true"
+      onClick={(event) => {
+        event.preventDefault();
+        onClick?.(event);
+      }}
+      {...rest}
+    >
+      {children}
+    </a>
+  );
+}
 
 const aboutLearningIcons = [
   "/assets/images/topics/icon.png",
@@ -299,27 +314,16 @@ function MenuChevronDownIcon() {
   );
 }
 
-
-function Header() {
-  const [open, setOpen] = useState(false);
-
-  const closeNavigation = () => {
-    setOpen(false);
-  };
-
-  return (
-    <header id="react-header" className="react-header react-header-two exact-home-header">
-
 function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
   const isExpanded = expandedMenu === menuKey;
 
   return (
     <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
       <div className="exact-menu-link-row">
-        <Link href={href} onClick={onClose}>
+        <SiteLink href={href} onClick={onClose}>
           {label}
           <MenuChevronDownIcon />
-        </Link>
+        </SiteLink>
         <button
           type="button"
           className="exact-menu-dropdown-toggle"
@@ -338,7 +342,7 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, ch
     </li>
   );
 }
-  </header>
+
 function Header() {
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
@@ -365,7 +369,6 @@ function Header() {
     };
   }, [open]);
 
-
   return (
     <header id="react-header" className="react-header react-header-two exact-home-header">
       {open ? (
@@ -376,16 +379,15 @@ function Header() {
           onClick={closeNavigation}
         />
       ) : null}
-
       <div className="menu-part">
         <div className="container">
           <div className="react-main-menu">
             <nav>
               <div className="menu-toggle">
                 <div className="logo">
-                  <Link href="/" className="logo-text" onClick={closeNavigation}>
+                  <SiteLink href="/" className="logo-text" onClick={closeNavigation}>
                     <img className="star-brand-logo" src={academy.logo} alt="Star Police Academy logo" />
-                  </Link>
+                  </SiteLink>
                 </div>
                 <button
                   type="button"
@@ -403,48 +405,11 @@ function Header() {
               <div className={`react-inner-menus exact-home-menus ${open ? "is-open" : ""}`}>
                 <ul id="backmenu" className="react-menus react-sub-shadow">
                   <li>
-                    <Link href="/" onClick={closeNavigation}>Home</Link>
+                    <SiteLink href="/" onClick={closeNavigation}>Home</SiteLink>
                   </li>
                   <li>
-                    <Link href="/about" onClick={closeNavigation}>About</Link>
+                    <SiteLink href="/about" onClick={closeNavigation}>About</SiteLink>
                   </li>
-
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/courses" onClick={closeNavigation}>
-                      Courses <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
-                      <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
-                      <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
-                      <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
-                      <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
-                      <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
-                      <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
-                    </ul>
-                  </li>
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/notification" onClick={closeNavigation}>
-                      Notifications <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
-                      <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
-                      <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
-                    </ul>
-                  </li>
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/training" onClick={closeNavigation}>
-                      Training <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
-                      <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
-                      <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
-                      <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
-                    </ul>
-                  </li>
-
                   <NavDropdown
                     label="Courses"
                     href="/courses"
@@ -453,13 +418,13 @@ function Header() {
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                   >
-                    <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
-                    <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
-                    <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
-                    <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
-                    <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
-                    <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
-                    <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
+                    <li><SiteLink href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</SiteLink></li>
+                    <li><SiteLink href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</SiteLink></li>
+                    <li><SiteLink href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</SiteLink></li>
+                    <li><SiteLink href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</SiteLink></li>
+                    <li><SiteLink href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</SiteLink></li>
+                    <li><SiteLink href="/rpf" onClick={closeNavigation}>Railway Protection Force</SiteLink></li>
+                    <li><SiteLink href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</SiteLink></li>
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
@@ -469,9 +434,9 @@ function Header() {
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                   >
-                    <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
-                    <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
-                    <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
+                    <li><SiteLink href="/notification" onClick={closeNavigation}>Current Affairs</SiteLink></li>
+                    <li><SiteLink href="/youtube" onClick={closeNavigation}>Youtube Channel</SiteLink></li>
+                    <li><SiteLink href="/test-batch" onClick={closeNavigation}>Test Batches</SiteLink></li>
                   </NavDropdown>
                   <NavDropdown
                     label="Training"
@@ -481,14 +446,13 @@ function Header() {
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                   >
-                    <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
-                    <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
-                    <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
-                    <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
+                    <li><SiteLink href="/toppers" onClick={closeNavigation}>Toppers and Achievers</SiteLink></li>
+                    <li><SiteLink href="/materials" onClick={closeNavigation}>Training Materials</SiteLink></li>
+                    <li><SiteLink href="/questions" onClick={closeNavigation}>Question papers</SiteLink></li>
+                    <li><SiteLink href="/ansewrkey" onClick={closeNavigation}>Answer Keys</SiteLink></li>
                   </NavDropdown>
-
-                  <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
-                  <li><Link href="/register" onClick={closeNavigation}>Register</Link></li>
+                  <li><SiteLink href="/contact" onClick={closeNavigation}>Contact</SiteLink></li>
+                  <li><SiteLink href="/register" onClick={closeNavigation}>Register</SiteLink></li>
                 </ul>
                 <div className="searchbar-part">
                   <div className="phone-part">
@@ -497,9 +461,9 @@ function Header() {
                     </a>
                   </div>
                   <div className="react-logins">
-                    <Link href="/register" onClick={closeNavigation}>
+                    <SiteLink href="/register" onClick={closeNavigation}>
                       Apply Now <ArrowIcon />
-                    </Link>
+                    </SiteLink>
                   </div>
                 </div>
               </div>
@@ -525,9 +489,9 @@ function Footer() {
                 </h3>
               </div>
               <div className="col-lg-5 text-right">
-                <Link href="/register">
+                <SiteLink href="/register">
                   Apply Now <ArrowIcon />
-                </Link>
+                </SiteLink>
               </div>
             </div>
           </div>
@@ -537,9 +501,9 @@ function Footer() {
             <div className="col-lg-3 md-mb-30">
               <div className="footer-widget footer-widget-1">
                 <div className="footer-logo white">
-                  <Link href="/" className="logo-text">
+                  <SiteLink href="/" className="logo-text">
                     <img className="star-brand-logo" src={academy.footerLogo} alt="Star Police Academy" />
-                  </Link>
+                  </SiteLink>
                 </div>
                 <h5 className="footer-subtitle">{academy.aboutIntro}</h5>
                 <ul className="footer-address">
@@ -559,12 +523,12 @@ function Footer() {
                 <h3 className="footer-title">About Us</h3>
                 <div className="footer-menu">
                   <ul>
-                    <li><Link href="/about">About</Link></li>
-                    <li><Link href="/courses">Courses</Link></li>
-                    <li><Link href="/notification">Notifications</Link></li>
-                    <li><Link href="/toppers">Toppers</Link></li>
-                    <li><Link href="/training">Training</Link></li>
-                    <li><Link href="/contact">Contact</Link></li>
+                    <li><SiteLink href="/about">About</SiteLink></li>
+                    <li><SiteLink href="/courses">Courses</SiteLink></li>
+                    <li><SiteLink href="/notification">Notifications</SiteLink></li>
+                    <li><SiteLink href="/toppers">Toppers</SiteLink></li>
+                    <li><SiteLink href="/training">Training</SiteLink></li>
+                    <li><SiteLink href="/contact">Contact</SiteLink></li>
                   </ul>
                 </div>
               </div>
@@ -574,12 +538,12 @@ function Footer() {
                 <h3 className="footer-title">Useful Links</h3>
                 <div className="footer-menu">
                   <ul>
-                    <li><Link href="/tnusrb">TNUSRB Constable</Link></li>
-                    <li><Link href="/sub-inspector">Sub Inspector</Link></li>
-                    <li><Link href="/materials">Training Materials</Link></li>
-                    <li><Link href="/notification">News & Updates</Link></li>
-                    <li><Link href="/faq">FAQ</Link></li>
-                    <li><Link href="/register">Register</Link></li>
+                    <li><SiteLink href="/tnusrb">TNUSRB Constable</SiteLink></li>
+                    <li><SiteLink href="/sub-inspector">Sub Inspector</SiteLink></li>
+                    <li><SiteLink href="/materials">Training Materials</SiteLink></li>
+                    <li><SiteLink href="/notification">News & Updates</SiteLink></li>
+                    <li><SiteLink href="/faq">FAQ</SiteLink></li>
+                    <li><SiteLink href="/register">Register</SiteLink></li>
                   </ul>
                 </div>
               </div>
@@ -611,7 +575,7 @@ function Footer() {
       <div className="copyright">
         <div className="container">
           <div className="react-copy-left">
-            © {new Date().getFullYear()} <Link href="/">Star Police Academy.</Link> All Rights Reserved
+            © {new Date().getFullYear()} <SiteLink href="/">Star Police Academy.</SiteLink> All Rights Reserved
           </div>
           <div className="react-copy-right">
             <ul className="social-links">
@@ -662,7 +626,7 @@ function ExactBreadcrumb({ title }) {
               <div className="back-nav">
                 <ul>
                   <li>
-                    <Link href="/">Home</Link>
+                    <SiteLink href="/">Home</SiteLink>
                   </li>
                   <li>{title}</li>
                 </ul>
@@ -686,7 +650,7 @@ function Breadcrumb({ title }) {
               <div className="back-nav">
                 <ul>
                   <li>
-                    <Link href="/">Home</Link>
+                    <SiteLink href="/">Home</SiteLink>
                   </li>
                   <li>{title}</li>
                 </ul>
@@ -713,12 +677,12 @@ function Hero() {
             </h1>
             <p>{academy.heroSlides[0].text}</p>
             <div className="star-hero-actions">
-              <Link href="/register" className="react-btn">
+              <SiteLink href="/register" className="react-btn">
                 {academy.heroSlides[0].cta}
-              </Link>
-              <Link href="/courses" className="react-btn-border">
+              </SiteLink>
+              <SiteLink href="/courses" className="react-btn-border">
                 How IT Works
-              </Link>
+              </SiteLink>
             </div>
           </div>
           <div className="col-lg-5">
@@ -755,7 +719,7 @@ function FeatureCards() {
                 <span className="star-card-icon">{feature.title.charAt(0)}</span>
                 <h4>{feature.title}</h4>
                 <p>{feature.text}</p>
-                <Link href="/about">Read More</Link>
+                <SiteLink href="/about">Read More</SiteLink>
               </div>
             </div>
           ))}
@@ -821,7 +785,7 @@ function CourseGrid({ limit }) {
                 <div className="star-course-card-content">
                   <h3>{course.shortTitle}</h3>
                   <p>{course.summary}</p>
-                  <Link href={`/${course.key}`}>Read More</Link>
+                  <SiteLink href={`/${course.key}`}>Read More</SiteLink>
                 </div>
               </article>
             </div>
@@ -924,9 +888,9 @@ function CTA() {
         <div className="star-cta-inner">
           <h2>Ready to Serve and Protect? Join Our Star Police Academy Today!</h2>
           <div>
-            <Link href="/register" className="react-btn">
+            <SiteLink href="/register" className="react-btn">
               Register
-            </Link>
+            </SiteLink>
             <a href={contact.whatsapp} className="react-btn-border" target="_blank" rel="noreferrer">
               WhatsApp
             </a>
@@ -936,7 +900,6 @@ function CTA() {
     </section>
   );
 }
-
 
 function SpaMainHero() {
   return (
@@ -967,9 +930,9 @@ function SpaMainHero() {
               ))}
             </ul>
             <div className="spa-main-hero__actions">
-              <Link className="exact-spa-hero__register-btn" href="/register">
+              <SiteLink className="exact-spa-hero__register-btn" href="/register">
                 Apply Now <ArrowIcon />
-              </Link>
+              </SiteLink>
             </div>
             </div>
           </div>
@@ -1007,9 +970,9 @@ function SpaWhyChooseSection() {
               Our mission is to prepare every student for every stage of the Tamil Nadu Uniformed
               Services Recruitment Board (TNUSRB) selection process.
             </p>
-            <Link className="spa-section-link" href="/about">
+            <SiteLink className="spa-section-link" href="/about">
               Learn More <ArrowIcon />
-            </Link>
+            </SiteLink>
           </div>
           <div className="col-lg-7">
             <div className="spa-feature-grid">
@@ -1050,9 +1013,9 @@ function SpaCoursesHeroSection() {
                 <div className="spa-course-hero-card__body">
                   <h3>{course.shortTitle}</h3>
                   <p>{course.summary}</p>
-                  <Link className="spa-course-hero-card__btn" href={`/${course.key}`}>
+                  <SiteLink className="spa-course-hero-card__btn" href={`/${course.key}`}>
                     Explore Course <ArrowIcon />
-                  </Link>
+                  </SiteLink>
                 </div>
               </article>
             </div>
@@ -1401,9 +1364,9 @@ function SpaFacilitiesSliderSection() {
                 </li>
               ))}
             </ul>
-            <Link className="spa-facilities-slider__cta" href="/contact">
+            <SiteLink className="spa-facilities-slider__cta" href="/contact">
               Book a Campus Visit <ArrowIcon />
-            </Link>
+            </SiteLink>
           </div>
           <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
             <img src={activeFacility.image} alt={activeFacility.title} loading="lazy" />
@@ -1443,15 +1406,15 @@ function SpaRecruitmentBlogSection() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" key={item.title}>
               <div className="blog__card mb-50">
                 <div className="blog__thumb w-img p-relative">
-                  <Link className="blog__thumb--image" href={item.href}>
+                  <SiteLink className="blog__thumb--image" href={item.href}>
                     <img src={item.image} alt={item.title} />
-                  </Link>
+                  </SiteLink>
                   <em className="b_date">{item.date}</em>
                 </div>
                 <div className="blog__card--content">
                   <div className="blog__card--content-area mb-25">
                     <span className="blog__card--date">{item.category}</span>
-                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                    <h3 className="blog__card--title"><SiteLink href={item.href}>{item.title}</SiteLink></h3>
                   </div>
                   <div className="blog__card--icon d-flex align-items-center">
                     <div className="blog__card--icon-1">
@@ -1465,9 +1428,9 @@ function SpaRecruitmentBlogSection() {
           ))}
         </div>
         <div className="text-center">
-          <Link href="/notification" className="spa-section-link">
+          <SiteLink href="/notification" className="spa-section-link">
             View All Updates <ArrowIcon />
-          </Link>
+          </SiteLink>
         </div>
       </div>
     </div>
@@ -1517,9 +1480,9 @@ function SpaFaqExpandedSection() {
                 Frequently Asked <br />Questions
               </h2>
               <p>{academy.description}</p>
-              <Link href="/faq" className="border-btns">
+              <SiteLink href="/faq" className="border-btns">
                 View FAQ Page <ArrowIcon />
-              </Link>
+              </SiteLink>
             </div>
           </aside>
           <div className="spa-faq-expanded__scroll" tabIndex={0} aria-label="FAQ answers">
@@ -1556,15 +1519,15 @@ function SpaLatestBlogSection() {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" key={item.title}>
               <div className="blog__card mb-50">
                 <div className="blog__thumb w-img p-relative">
-                  <Link className="blog__thumb--image" href={item.href}>
+                  <SiteLink className="blog__thumb--image" href={item.href}>
                     <img src={item.image} alt={item.title} />
-                  </Link>
+                  </SiteLink>
                   <em className="b_date">{item.date}</em>
                 </div>
                 <div className="blog__card--content">
                   <div className="blog__card--content-area mb-25">
                     <span className="blog__card--date">{item.category}</span>
-                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                    <h3 className="blog__card--title"><SiteLink href={item.href}>{item.title}</SiteLink></h3>
                   </div>
                   <div className="blog__card--icon d-flex align-items-center">
                     <div className="blog__card--icon-1">
@@ -1582,7 +1545,6 @@ function SpaLatestBlogSection() {
   );
 }
 
-
 function ExactHomeHero() {
   return (
     <div
@@ -1593,9 +1555,9 @@ function ExactHomeHero() {
       <div className="container p-relative">
         <div className="hero3__content exact-spa-hero__content">
           <h1 className="hero3__title exact-spa-hero__title">{academy.heroTitle}</h1>
-          <Link className="exact-spa-hero__register-btn" href="/register">
+          <SiteLink className="exact-spa-hero__register-btn" href="/register">
             Register <ArrowIcon />
-          </Link>
+          </SiteLink>
         </div>
       </div>
     </div>
@@ -1625,11 +1587,7 @@ function ExactHomeAboutSection() {
           </div>
           <div className="col-lg-6">
             <div className="spa-home-about__content">
-
-              <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
-
               <h6 className="spa-home-about__eyebrow">ABOUT US</h6>
-88d
               <h2 className="spa-home-about__title">
                 Tamil Nadu&apos;s Leading
                 <br />
@@ -1651,9 +1609,9 @@ function ExactHomeAboutSection() {
                 </div>
               </div>
               <div className="spa-home-about__footer">
-                <Link className="spa-home-about__location-btn" href="/contact">
+                <SiteLink className="spa-home-about__location-btn" href="/contact">
                   → OUR LOCATION
-                </Link>
+                </SiteLink>
                 <div className="spa-home-about__founder">
                   <img src="/assets/images/about/home/founder.jpg" alt={academy.founder} />
                   <div>
@@ -1682,7 +1640,7 @@ function ExactPopularTopics() {
               </h2>
             </div>
             <div className="col-md-4 text-right">
-              <Link href="/contact">Book a visit <ArrowIcon /></Link>
+              <SiteLink href="/contact">Book a visit <ArrowIcon /></SiteLink>
             </div>
           </div>
         </div>
@@ -1694,7 +1652,7 @@ function ExactPopularTopics() {
                   <img src={topic.icon} alt="Icon" />
                 </div>
                 <div className="react-content">
-                  <h3 className="react-title"><Link href="/courses">{topic.title}</Link></h3>
+                  <h3 className="react-title"><SiteLink href="/courses">{topic.title}</SiteLink></h3>
                   <p>{topic.courses}</p>
                 </div>
               </div>
@@ -1732,7 +1690,7 @@ function ExactAboutSection() {
                 ))}
               </ul>
               <div className="about__btn">
-                <Link href="/about">Read More <ArrowIcon /></Link>
+                <SiteLink href="/about">Read More <ArrowIcon /></SiteLink>
               </div>
             </div>
           </div>
@@ -1749,7 +1707,7 @@ function ExactCourseCard({ course, index }) {
     <div className={`single-studies col-lg-4 grid-item ${course.filters.join(" ")}`}>
       <div className="inner-course">
         <div className="case-img">
-          <Link href={`/${course.key}`} className="cate-w">{course.category}</Link>
+          <SiteLink href={`/${course.key}`} className="cate-w">{course.category}</SiteLink>
           <img src={course.image} alt={course.category} />
         </div>
         <div className="case-content">
@@ -1758,7 +1716,7 @@ function ExactCourseCard({ course, index }) {
             <li><UserIcon /> {course.students}</li>
           </ul>
           <h4 className="case-title">
-            <Link href={`/${course.key}`}>{course.title}</Link>
+            <SiteLink href={`/${course.key}`}>{course.title}</SiteLink>
           </h4>
           <div className="react__user">
             <img src={`/assets/images/course/small-image/${smallImages[index]}.png`} alt={course.author} /> {course.author}
@@ -1853,12 +1811,12 @@ function ExactWinnerCarousel() {
                 </div>
                 <div className="spa-winner-carousel__info">
                   <h3 className="spa-winner-carousel__card-title">
-                    <Link href={item.href}>{item.title}</Link>
+                    <SiteLink href={item.href}>{item.title}</SiteLink>
                   </h3>
                   <p className="spa-winner-carousel__card-text">{item.description}</p>
-                  <Link className="spa-winner-carousel__read-more" href={item.href}>
+                  <SiteLink className="spa-winner-carousel__read-more" href={item.href}>
                     Read More <ArrowIcon />
-                  </Link>
+                  </SiteLink>
                 </div>
               </article>
             ))}
@@ -1907,9 +1865,9 @@ function ExactAccordion() {
                 </h2>
                 <p>{academy.description}</p>
                 {showAllFaqs ? (
-                  <Link href="/faq" className="border-btns">
+                  <SiteLink href="/faq" className="border-btns">
                     View All FAQs <ArrowIcon />
-                  </Link>
+                  </SiteLink>
                 ) : (
                   <button
                     type="button"
@@ -1980,7 +1938,7 @@ function ExactInstructors() {
                   <InstructorPortrait instructor={instructor} />
                 </div>
                 <div className="instructor__content-2">
-                  <h4><Link href="/about">{instructor.name}</Link></h4>
+                  <h4><SiteLink href="/about">{instructor.name}</SiteLink></h4>
                   <p>{instructor.role}</p>
                 </div>
               </div>
@@ -2081,15 +2039,15 @@ function ExactBlog() {
             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" key={item.title}>
               <div className="blog__card mb-50">
                 <div className="blog__thumb w-img p-relative">
-                  <Link className="blog__thumb--image" href={item.href}>
+                  <SiteLink className="blog__thumb--image" href={item.href}>
                     <img src={item.image} alt={item.title} />
-                  </Link>
+                  </SiteLink>
                   <em className="b_date">{item.date}</em>
                 </div>
                 <div className="blog__card--content">
                   <div className="blog__card--content-area mb-25">
                     <span className="blog__card--date">{item.category}</span>
-                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                    <h3 className="blog__card--title"><SiteLink href={item.href}>{item.title}</SiteLink></h3>
                   </div>
                   <div className="blog__card--icon d-flex align-items-center">
                     <div className="blog__card--icon-1">
@@ -2110,15 +2068,6 @@ function ExactBlog() {
 function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
-
-      <ExactHomeHero />
-      <ExactHomeAboutSection />
-      <ExactWinnerCarousel />
-      <ExactAccordion />
-      <ExactInstructors />
-      <ExactClients />
-      <ExactBlog />
-
       <SpaMainHero />
       <SpaWhyChooseSection />
       <SpaCoursesHeroSection />
@@ -2131,7 +2080,6 @@ function ExactHomePage() {
       <ExactHomeAboutSection />
       <SpaFaqExpandedSection />
       <SpaLatestBlogSection />
-
     </div>
   );
 }
@@ -2165,7 +2113,7 @@ function EchoolingHero() {
                   </button>
                 </form>
                 <p className="echooling-hero-question">
-                  Have questions? <Link href="/contact">Get Free Sample →</Link>
+                  Have questions? <SiteLink href="/contact">Get Free Sample →</SiteLink>
                 </p>
                 <div className="echooling-hero-stats-inline">
                   <div>
@@ -2215,9 +2163,9 @@ function EchoolingSectionHeading({ eyebrow, title, action }) {
         <h2>{title}</h2>
       </div>
       {action ? (
-        <Link href={action.href} className="echooling-small-button">
+        <SiteLink href={action.href} className="echooling-small-button">
           {action.label}
-        </Link>
+        </SiteLink>
       ) : null}
     </div>
   );
@@ -2234,11 +2182,11 @@ function EchoolingTopics() {
         <div className="row">
           {homeTopics.map((topic) => (
             <div className="col-lg-3 col-sm-6" key={topic.title}>
-              <Link href="/courses" className="echooling-topic-card">
+              <SiteLink href="/courses" className="echooling-topic-card">
                 <img src={topic.icon} alt="" />
                 <h3>{topic.title}</h3>
                 <p>{topic.courses}</p>
-              </Link>
+              </SiteLink>
             </div>
           ))}
         </div>
@@ -2276,9 +2224,9 @@ function EchoolingVideoBlock() {
                 <li>Access more then 100K online courses</li>
                 <li>Upskill your organization.</li>
               </ul>
-              <Link href="/courses" className="echooling-btn">
+              <SiteLink href="/courses" className="echooling-btn">
                 Read More
-              </Link>
+              </SiteLink>
             </div>
           </div>
         </div>
@@ -2308,17 +2256,17 @@ function EchoolingCourseGrid() {
           {homeCourses.map((course) => (
             <div className="col-lg-4 col-md-6" key={course.title}>
               <article className="echooling-course-card">
-                <Link href="/courses" className="echooling-course-image">
+                <SiteLink href="/courses" className="echooling-course-image">
                   <img src={course.image} alt={course.title} />
                   <span>{course.category}</span>
-                </Link>
+                </SiteLink>
                 <div className="echooling-course-body">
                   <div className="echooling-course-meta">
                     <span>★ {course.review}</span>
                     <span>{course.students}</span>
                   </div>
                   <h3>
-                    <Link href="/courses">{course.title}</Link>
+                    <SiteLink href="/courses">{course.title}</SiteLink>
                   </h3>
                   <p className="echooling-course-author">{course.author}</p>
                   <div className="echooling-course-footer">
@@ -2352,9 +2300,9 @@ function EchoolingQuestionSection() {
                 Completely plagiarize fully researched collaboration and
                 idea-sharing for covalent.
               </p>
-              <Link href="/faq" className="echooling-outline-btn">
+              <SiteLink href="/faq" className="echooling-outline-btn">
                 Read More →
-              </Link>
+              </SiteLink>
               <div className="echooling-question-decoration" aria-hidden="true">
                 <span />
                 <span />
@@ -2441,7 +2389,7 @@ function EchoolingTestimonials() {
               <span>{item.category}</span>
               <h3>{item.title}</h3>
               <p>{item.author}</p>
-              <Link href="/blog">Read More</Link>
+              <SiteLink href="/blog">Read More</SiteLink>
             </article>
           ))}
         </div>
@@ -2459,9 +2407,9 @@ function EchoolingCta() {
             <span>Join our course today</span>
             <h2>Ready to dive in? Start your free Course today.</h2>
           </div>
-          <Link href="/register" className="echooling-white-button">
+          <SiteLink href="/register" className="echooling-white-button">
             Get Started
-          </Link>
+          </SiteLink>
         </div>
       </div>
     </section>
@@ -2490,7 +2438,7 @@ function AboutIntroPageSection() {
               </h2>
               <p className="about__paragraph">{academy.aboutIntro}</p>
               <p className="about__paragraph2">
-                Have questions? <Link href="/contact">Get Free Guide</Link>
+                Have questions? <SiteLink href="/contact">Get Free Guide</SiteLink>
               </p>
               <p>
                 Star Police Academy is an organisation with state of the art competence to provide relevant and
@@ -2499,9 +2447,9 @@ function AboutIntroPageSection() {
               </p>
               <ul>
                 <li>
-                  <Link href="/courses" className="more-about">
+                  <SiteLink href="/courses" className="more-about">
                     Read More <ArrowIcon />
-                  </Link>
+                  </SiteLink>
                 </li>
                 <li className="last-li">
                   <em>Get Support</em>
@@ -2541,12 +2489,12 @@ function AboutLearningSection() {
                 </div>
                 <div className="react-content">
                   <h3 className="react-title">
-                    <Link href="/courses">{card.title}</Link>
+                    <SiteLink href="/courses">{card.title}</SiteLink>
                   </h3>
                   <p>{card.text}</p>
-                  <Link href="/courses">
+                  <SiteLink href="/courses">
                     Learn More <ArrowIcon />
-                  </Link>
+                  </SiteLink>
                 </div>
               </div>
             </div>
@@ -2580,7 +2528,7 @@ function AboutInstructorsSection() {
                 </div>
                 <div className="instructor__content-2">
                   <h4>
-                    <Link href="/about">{instructor.name}</Link>
+                    <SiteLink href="/about">{instructor.name}</SiteLink>
                   </h4>
                   <p>{instructor.role}</p>
                 </div>
@@ -2771,13 +2719,13 @@ function CourseDetailPage({ courseKey }) {
                 <ul>
                   {courses.map((item) => (
                     <li key={item.key}>
-                      <Link href={`/${item.key}`}>{item.shortTitle}</Link>
+                      <SiteLink href={`/${item.key}`}>{item.shortTitle}</SiteLink>
                     </li>
                   ))}
                 </ul>
-                <Link href="/register" className="react-btn">
+                <SiteLink href="/register" className="react-btn">
                   Register
-                </Link>
+                </SiteLink>
               </aside>
             </div>
           </div>
