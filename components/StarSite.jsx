@@ -1343,7 +1343,6 @@ function SpaStudentResultsSection() {
     <section className="spa-student-results pt---100 pb---100">
       <div className="container">
         <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Section 8</span>
           <h2 className="spa-section-title">Student Results</h2>
           <p className="spa-section-text">Year-wise selection across police departments.</p>
         </div>
