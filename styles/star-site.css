@@ -4198,20 +4198,32 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: #ffffff;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 18px 45px rgba(15, 34, 57, 0.14);
+  box-sizing: border-box;
   display: block;
   left: 0;
   list-style: none;
   margin: 0;
-  min-width: 285px;
+  max-width: 340px;
+  min-width: 300px;
   opacity: 0;
-  padding: 12px 0;
+  overflow: hidden;
+  padding: 10px 0;
   pointer-events: none;
   position: absolute;
   top: 100%;
   transform: translateY(14px);
   transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
   visibility: hidden;
+  width: max-content;
   z-index: 1000;
+}
+
+.exact-home-header .react-menus > li > ul.sub-menu > li {
+  display: block;
+  float: none;
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
 }
 
 .exact-home-header .react-menus > li:hover > ul,
@@ -4225,21 +4237,31 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > ul a {
+  box-sizing: border-box;
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 14px;
-  font-weight: 600;
-  line-height: 1.35;
-  padding: 10px 20px;
+  font-weight: 700;
+  line-height: 1.45;
+  max-width: 100%;
+  padding: 11px 22px;
   transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .exact-home-header .react-menus > li > ul a:hover {
   background: rgba(43, 108, 255, 0.08);
   color: #2b6cff;
   padding-left: 26px;
+}
+
+@media (min-width: 992px) {
+  .exact-home-header .react-menus > li.exact-menu-has-dropdown:nth-last-child(-n+4) > ul.sub-menu {
+    left: auto;
+    right: 0;
+  }
 }
 
 .exact-home-header .react-menus > li > a,
@@ -4556,8 +4578,15 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 
   .exact-home-header .react-menus > li > ul a {
+    font-weight: 700;
+    line-height: 1.45;
     padding: 11px 16px;
     white-space: normal;
+    word-break: break-word;
+  }
+
+  .exact-home-header .react-menus > li > ul.sub-menu > li {
+    width: 100% !important;
   }
 
   body.star-site .exact-home-header .searchbar-part {
