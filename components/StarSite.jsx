@@ -1268,22 +1268,20 @@ function SpaFaqExpandedSection() {
         <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
       </div>
       <div className="container">
-        <div className="row">
-          <div className="col-lg-5">
-            <div className="accordion__wrapper spa-faq-expanded__sidebar">
-              <div className="accordion__wrapper-1">
-                <h6>Section 10</h6>
-                <h2>
-                  Frequently Asked <br />Questions
-                </h2>
-                <p>{academy.description}</p>
-                <Link href="/faq" className="border-btns">
-                  View FAQ Page <ArrowIcon />
-                </Link>
-              </div>
+        <div className="spa-faq-expanded__layout">
+          <aside className="spa-faq-expanded__sidebar">
+            <div className="accordion__wrapper-1">
+              <h6>Section 10</h6>
+              <h2>
+                Frequently Asked <br />Questions
+              </h2>
+              <p>{academy.description}</p>
+              <Link href="/faq" className="border-btns">
+                View FAQ Page <ArrowIcon />
+              </Link>
             </div>
-          </div>
-          <div className="col-lg-7">
+          </aside>
+          <div className="spa-faq-expanded__scroll">
             <div className="spa-faq-expanded__list">
               {faqs.map((item, index) => (
                 <article className="spa-faq-expanded__item" key={`${item.question}-${index}`}>

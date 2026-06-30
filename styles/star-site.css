@@ -6902,15 +6902,41 @@ body.star-site .react-footer-two .footer-top-cta .row {
 }
 
 /* Section 10 — FAQ Expanded */
+.exact-home-page .spa-faq-expanded {
+  overflow: visible;
+}
+
+.exact-home-page .spa-faq-expanded__layout {
+  align-items: flex-start;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: minmax(280px, 5fr) minmax(0, 7fr);
+}
+
 .exact-home-page .spa-faq-expanded__sidebar {
   position: sticky;
-  top: 110px;
-  align-self: flex-start;
+  top: 100px;
+  align-self: start;
   z-index: 2;
 }
 
-.exact-home-page .spa-faq-expanded .row {
-  align-items: flex-start;
+.exact-home-page .spa-faq-expanded__scroll {
+  max-height: calc(100vh - 120px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 8px;
+  scrollbar-color: rgba(58, 87, 184, 0.35) transparent;
+  scrollbar-width: thin;
+}
+
+.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb {
+  background: rgba(58, 87, 184, 0.35);
+  border-radius: 999px;
 }
 
 .exact-home-page .spa-faq-expanded__list {
@@ -6963,9 +6989,19 @@ body.star-site .react-footer-two .footer-top-cta .row {
     grid-template-columns: 1fr;
   }
 
+  .exact-home-page .spa-faq-expanded__layout {
+    grid-template-columns: 1fr;
+  }
+
   .exact-home-page .spa-faq-expanded__sidebar {
     position: static;
-    margin-bottom: 32px;
+    margin-bottom: 8px;
+  }
+
+  .exact-home-page .spa-faq-expanded__scroll {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .exact-home-page .spa-lizard-process__step.is-left,
