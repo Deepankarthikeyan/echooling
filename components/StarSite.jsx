@@ -285,15 +285,71 @@ function MenuChevronDownIcon() {
   );
 }
 
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
+  const isExpanded = expandedMenu === menuKey;
+
+  return (
+    <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
+      <div className="exact-menu-link-row">
+        <Link href={href} onClick={onClose}>
+          {label}
+          <MenuChevronDownIcon />
+        </Link>
+        <button
+          type="button"
+          className="exact-menu-dropdown-toggle"
+          aria-label={`Toggle ${label} submenu`}
+          aria-expanded={isExpanded}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onToggle(menuKey);
+          }}
+        >
+          <MenuChevronDownIcon />
+        </button>
+      </div>
+      <ul className="sub-menu">{children}</ul>
+    </li>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState(null);
 
   const closeNavigation = () => {
     setOpen(false);
+    setExpandedMenu(null);
   };
+
+  const toggleSubmenu = (menuKey) => {
+    setExpandedMenu((current) => (current === menuKey ? null : menuKey));
+  };
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   return (
     <header id="react-header" className="react-header react-header-two exact-home-header">
+      {open ? (
+        <button
+          type="button"
+          className="exact-home-header__backdrop"
+          aria-label="Close navigation"
+          onClick={closeNavigation}
+        />
+      ) : null}
       <div className="menu-part">
         <div className="container">
           <div className="react-main-menu">
@@ -325,41 +381,47 @@ function Header() {
                   <li>
                     <Link href="/about" onClick={closeNavigation}>About</Link>
                   </li>
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/courses" onClick={closeNavigation}>
-                      Courses <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
-                      <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
-                      <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
-                      <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
-                      <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
-                      <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
-                      <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
-                    </ul>
-                  </li>
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/notification" onClick={closeNavigation}>
-                      Notifications <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
-                      <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
-                      <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
-                    </ul>
-                  </li>
-                  <li className="exact-menu-has-dropdown">
-                    <Link href="/training" onClick={closeNavigation}>
-                      Training <MenuChevronDownIcon />
-                    </Link>
-                    <ul className="sub-menu">
-                      <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
-                      <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
-                      <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
-                      <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
-                    </ul>
-                  </li>
+                  <NavDropdown
+                    label="Courses"
+                    href="/courses"
+                    menuKey="courses"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
+                    <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
+                    <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
+                    <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
+                    <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
+                    <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
+                    <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
+                  </NavDropdown>
+                  <NavDropdown
+                    label="Notifications"
+                    href="/notification"
+                    menuKey="notifications"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
+                    <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
+                    <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
+                  </NavDropdown>
+                  <NavDropdown
+                    label="Training"
+                    href="/training"
+                    menuKey="training"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
+                    <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
+                    <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
+                    <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
+                  </NavDropdown>
                   <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
                   <li><Link href="/register" onClick={closeNavigation}>Register</Link></li>
                 </ul>

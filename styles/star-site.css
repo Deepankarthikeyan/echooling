@@ -4159,7 +4159,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   position: relative;
 }
 
-.exact-home-header .react-menus > li > a {
+.exact-home-header .react-menus > li > a,
+.exact-home-header .react-menus > li > .exact-menu-link-row > a {
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -4170,10 +4171,18 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   white-space: nowrap;
 }
 
-.exact-home-header .exact-menu-has-dropdown > a {
+.exact-home-header .exact-menu-link-row {
+  display: inline-flex;
+}
+
+.exact-home-header .exact-menu-link-row > a {
   align-items: center;
   display: inline-flex;
   gap: 4px;
+}
+
+.exact-home-header .exact-menu-dropdown-toggle {
+  display: none;
 }
 
 .exact-home-header .exact-menu-arrow {
@@ -4233,11 +4242,13 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   padding-left: 26px;
 }
 
-.exact-home-header .react-menus > li > a {
+.exact-home-header .react-menus > li > a,
+.exact-home-header .react-menus > li > .exact-menu-link-row > a {
   transition: color 180ms ease;
 }
 
-.exact-home-header .react-menus > li:hover > a {
+.exact-home-header .react-menus > li:hover > a,
+.exact-home-header .react-menus > li:hover > .exact-menu-link-row > a {
   color: #2b6cff;
 }
 
@@ -4386,42 +4397,139 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-main-menu nav {
     display: block;
     min-height: 76px;
+    position: relative;
   }
 
   .exact-home-header .menu-toggle {
     justify-content: space-between;
     margin-right: 0;
     min-height: 76px;
+    position: relative;
     width: 100%;
+    z-index: 100002;
+  }
+
+  .exact-home-header .menu-toggle #menu-btn {
+    background: #3270fc;
+    border: 0;
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin: 10px 0;
+    padding: 10px;
+    position: relative;
+    z-index: 100003;
+  }
+
+  .exact-home-header .menu-toggle .icon-bar {
+    background-color: #ffffff !important;
+    margin: 5px 0;
+  }
+
+  .exact-home-header #menu-btn.back__close .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+    width: 25px !important;
+  }
+
+  .exact-home-header #menu-btn.back__close .icon-bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+
+  .exact-home-header #menu-btn.back__close .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+    width: 25px !important;
+  }
+
+  .exact-home-header__backdrop {
+    background: rgba(6, 20, 48, 0.45);
+    border: 0;
+    cursor: pointer;
+    inset: var(--exact-header-height) 0 0;
+    position: fixed;
+    z-index: 100000;
   }
 
   .exact-home-menus {
-    display: none;
+    display: none !important;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .exact-home-menus.is-open {
     background: #ffffff;
-    display: block;
+    border-radius: 0 0 16px 16px;
     box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
-    padding: 18px;
+    display: block !important;
+    left: 0;
+    max-height: calc(100vh - var(--exact-header-height));
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 12px 18px 20px;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    visibility: visible;
+    z-index: 100001;
+    -webkit-overflow-scrolling: touch;
   }
 
   .exact-home-header .react-menus {
     align-items: stretch;
     display: block !important;
+    margin-bottom: 0;
+    position: static !important;
+    width: 100% !important;
   }
 
   .exact-home-header .react-menus > li {
+    border-bottom: 1px solid #edf1f7;
     display: block;
     margin: 0;
   }
 
-  .exact-home-header .react-menus > li > a {
-    padding: 13px 0;
+  .exact-home-header .react-menus > li:last-child {
+    border-bottom: 0;
   }
 
-  .exact-home-header .exact-menu-has-dropdown > a {
+  .exact-home-header .react-menus > li > a {
+    display: block;
+    padding: 14px 0;
+  }
+
+  .exact-home-header .exact-menu-link-row {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .exact-home-header .exact-menu-link-row > a {
+    display: block;
+    flex: 1;
+    padding: 14px 0;
+  }
+
+  .exact-home-header .exact-menu-link-row > a .exact-menu-arrow {
+    display: none;
+  }
+
+  .exact-home-header .exact-menu-dropdown-toggle {
+    align-items: center;
+    background: #f3f6fc;
+    border: 0;
+    border-radius: 8px;
+    color: #0f1216;
+    cursor: pointer;
     display: inline-flex;
+    flex-shrink: 0;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+
+  .exact-home-header .exact-menu-expanded .exact-menu-dropdown-toggle .exact-menu-arrow {
+    transform: rotate(180deg);
   }
 
   .exact-home-header .react-menus > li > ul,
@@ -4429,25 +4537,56 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     background: #f6f9ff;
     border-radius: 8px;
     box-shadow: none;
-    display: block;
-    margin: 0 0 10px;
+    display: none !important;
+    margin: 0 0 12px;
     min-width: 0;
     opacity: 1;
     padding: 6px 0;
-    pointer-events: auto;
+    pointer-events: none;
     position: static;
     transform: none;
+    visibility: hidden;
+  }
+
+  .exact-home-header .react-menus > li.exact-menu-expanded > ul,
+  .exact-home-header .react-menus > li.exact-menu-expanded > ul.sub-menu {
+    display: block !important;
+    pointer-events: auto;
     visibility: visible;
   }
 
   .exact-home-header .react-menus > li > ul a {
+    padding: 11px 16px;
     white-space: normal;
   }
 
-  .exact-home-header .searchbar-part {
-    align-items: flex-start;
+  body.star-site .exact-home-header .searchbar-part {
+    align-items: stretch;
+    display: flex !important;
     flex-direction: column;
+    gap: 12px;
     margin: 16px 0 0;
+    width: 100%;
+  }
+
+  body.star-site .exact-home-header .phone-part {
+    display: block;
+  }
+
+  body.star-site .exact-home-header .phone-part a {
+    font-size: 16px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  body.star-site .exact-home-header .react-logins {
+    display: block;
+    width: 100%;
+  }
+
+  body.star-site .exact-home-header .react-logins a {
+    justify-content: center;
+    width: 100%;
   }
 
   .exact-client-arrow {
@@ -4480,7 +4619,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     margin: 0 3px;
   }
 
-  .exact-home-header .react-menus > li > a {
+  .exact-home-header .react-menus > li > a,
+  .exact-home-header .react-menus > li > .exact-menu-link-row > a {
     font-size: 14px;
     padding-left: 6px;
     padding-right: 6px;
