@@ -903,15 +903,6 @@ function SpaMainHero() {
               <Link className="exact-spa-hero__register-btn" href="/register">
                 Apply Now <ArrowIcon />
               </Link>
-              <a className="spa-main-hero__btn-outline" href="/assets/images/cta.jpg" download>
-                Download Prospectus
-              </a>
-              <a className="spa-main-hero__btn-outline" href={`tel:${contact.phonePrimary.replace(/\s/g, "")}`}>
-                Call Now
-              </a>
-              <a className="spa-main-hero__btn-whatsapp" href={contact.whatsapp} target="_blank" rel="noreferrer">
-                WhatsApp Admission
-              </a>
             </div>
           </div>
           <div className="col-lg-5">
