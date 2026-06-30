@@ -6642,11 +6642,16 @@ body.star-site .exact-home-page .spa-course-hero-card__body p {
 }
 
 .exact-home-page .spa-physical-gallery__head .spa-section-title {
+  color: var(--spa-secondary, #cc0000);
   margin-bottom: 10px;
 }
 
-.exact-home-page .spa-physical-gallery__subtitle {
+body.star-site .exact-home-page .spa-physical-gallery__head .spa-section-title {
   color: var(--spa-secondary, #cc0000);
+}
+
+.exact-home-page .spa-physical-gallery__subtitle {
+  color: #1a1a1a;
   font-family: var(--spa-headline-font, "Livvic", sans-serif);
   font-size: 15px;
   font-weight: 600;
@@ -6656,7 +6661,7 @@ body.star-site .exact-home-page .spa-course-hero-card__body p {
 }
 
 body.star-site .exact-home-page .spa-physical-gallery__subtitle {
-  color: var(--spa-secondary, #cc0000);
+  color: #1a1a1a;
 }
 
 .exact-home-page .spa-physical-gallery__grid {

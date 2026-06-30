@@ -1378,7 +1378,6 @@ function SpaFaqExpandedSection() {
         <div className="spa-faq-expanded__layout">
           <aside className="spa-faq-expanded__sidebar">
             <div className="accordion__wrapper-1">
-              <h6>Section 10</h6>
               <h2>
                 Frequently Asked <br />Questions
               </h2>
