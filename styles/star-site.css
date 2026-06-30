@@ -4313,15 +4313,22 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-logins a {
-  background: #3270fc;
+  background: var(--spa-secondary, #cc0000);
+  border: 2px solid var(--spa-secondary, #cc0000);
   border-radius: 6px;
-  color: #ffffff;
+  color: #ffffff !important;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   min-height: 40px;
   padding: 10px 26px;
+}
+
+.exact-home-header .react-logins a:hover {
+  background: var(--spa-secondary-dark, #990000) !important;
+  border-color: var(--spa-secondary-dark, #990000) !important;
+  color: #ffffff !important;
 }
 
 .exact-home-header .react-logins svg {
@@ -6525,7 +6532,7 @@ body.star-site .exact-home-page .spa-course-hero-card__body h3 {
 }
 
 body.star-site .exact-home-page .spa-course-hero-card__body p {
-  color: var(--spa-primary, #3a57b8);
+  color: var(--spa-primary, #3a57b8) !important;
 }
 
 .exact-home-page .spa-course-hero-card__body p {

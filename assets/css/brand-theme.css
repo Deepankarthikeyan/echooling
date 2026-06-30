@@ -114,7 +114,6 @@ body.star-site .react-btn,
 body.star-site .echooling-white-button,
 body.star-site .react__title__section a,
 body.star-site .react__title__section2 a,
-body.star-site .exact-home-header .react-logins a,
 body.star-site .react-footer-two .footer-top-cta a,
 body.star-site .react-footer-two .footer-top-cta .col-lg-5 a,
 body.star-site .exact-home-page .react-filter button.active,
@@ -128,10 +127,16 @@ body.star-site .react-upcoming__event .event__card .event__card--link:hover {
   color: #ffffff !important;
 }
 
+body.star-site .exact-home-header .react-logins a {
+  background: var(--spa-secondary, #cc0000) !important;
+  border-color: var(--spa-secondary, #cc0000) !important;
+  color: #ffffff !important;
+}
+
 body.star-site .react-btn:hover,
 body.star-site .exact-home-header .react-logins a:hover {
-  background: var(--spa-primary-dark) !important;
-  border-color: var(--spa-primary-dark) !important;
+  background: var(--spa-secondary-dark, #990000) !important;
+  border-color: var(--spa-secondary-dark, #990000) !important;
   color: #ffffff !important;
   opacity: 1 !important;
 }
@@ -187,9 +192,6 @@ body.star-site .about2__area h2 {
 }
 
 /* Body copy */
-body.star-site .exact-home-page .hero3__paragraph,
-body.star-site .exact-home-page .about__paragraph,
-body.star-site .exact-home-page p,
 body.star-site .react-footer-two .footer-subtitle,
 body.star-site .react-footer-two .footer-menu a {
   color: #e0e0e0 !important;
