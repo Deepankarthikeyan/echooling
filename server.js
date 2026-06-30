@@ -3,7 +3,11 @@ const next = require("next");
 const path = require("path");
 
 const dev = process.env.NODE_ENV !== "production";
+<<<<<<< HEAD
 const hostname = process.env.HOST || "localhost";
+=======
+const hostname = process.env.HOST || "0.0.0.0";
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
 const port = Number(process.env.PORT) || 3000;
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();

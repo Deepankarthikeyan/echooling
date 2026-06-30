@@ -1,12 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+<<<<<<< HEAD
+=======
+import { createPortal } from "react-dom";
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
 import {
   academy,
   contact,
   courses,
   faqs,
   features,
+<<<<<<< HEAD
   notificationItems,
   questionPapers,
   registrationCourses,
@@ -14,6 +19,23 @@ import {
   terms,
   testimonials,
   trainingSteps,
+=======
+  facilitiesItems,
+  heroHighlights,
+  latestBlogArticles,
+  notificationItems,
+  physicalTrainingItems,
+  questionPapers,
+  recruitmentUpdates,
+  registrationCourses,
+  selectionProcessSteps,
+  stats,
+  studentResults,
+  terms,
+  testimonials,
+  trainingSteps,
+  whyChooseFeatures,
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
@@ -277,6 +299,7 @@ function MenuChevronDownIcon() {
   );
 }
 
+<<<<<<< HEAD
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -286,6 +309,73 @@ function Header() {
 
   return (
     <header id="react-header" className="react-header react-header-two exact-home-header">
+=======
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
+  const isExpanded = expandedMenu === menuKey;
+
+  return (
+    <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
+      <div className="exact-menu-link-row">
+        <Link href={href} onClick={onClose}>
+          {label}
+          <MenuChevronDownIcon />
+        </Link>
+        <button
+          type="button"
+          className="exact-menu-dropdown-toggle"
+          aria-label={`Toggle ${label} submenu`}
+          aria-expanded={isExpanded}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            onToggle(menuKey);
+          }}
+        >
+          <MenuChevronDownIcon />
+        </button>
+      </div>
+      <ul className="sub-menu">{children}</ul>
+    </li>
+  );
+}
+
+function Header() {
+  const [open, setOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState(null);
+
+  const closeNavigation = () => {
+    setOpen(false);
+    setExpandedMenu(null);
+  };
+
+  const toggleSubmenu = (menuKey) => {
+    setExpandedMenu((current) => (current === menuKey ? null : menuKey));
+  };
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  return (
+    <header id="react-header" className="react-header react-header-two exact-home-header">
+      {open ? (
+        <button
+          type="button"
+          className="exact-home-header__backdrop"
+          aria-label="Close navigation"
+          onClick={closeNavigation}
+        />
+      ) : null}
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
       <div className="menu-part">
         <div className="container">
           <div className="react-main-menu">
@@ -317,6 +407,7 @@ function Header() {
                   <li>
                     <Link href="/about" onClick={closeNavigation}>About</Link>
                   </li>
+<<<<<<< HEAD
                   <li className="exact-menu-has-dropdown">
                     <Link href="/courses" onClick={closeNavigation}>
                       Courses <MenuChevronDownIcon />
@@ -352,6 +443,49 @@ function Header() {
                       <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
                     </ul>
                   </li>
+=======
+                  <NavDropdown
+                    label="Courses"
+                    href="/courses"
+                    menuKey="courses"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</Link></li>
+                    <li><Link href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</Link></li>
+                    <li><Link href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</Link></li>
+                    <li><Link href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</Link></li>
+                    <li><Link href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</Link></li>
+                    <li><Link href="/rpf" onClick={closeNavigation}>Railway Protection Force</Link></li>
+                    <li><Link href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</Link></li>
+                  </NavDropdown>
+                  <NavDropdown
+                    label="Notifications"
+                    href="/notification"
+                    menuKey="notifications"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/notification" onClick={closeNavigation}>Current Affairs</Link></li>
+                    <li><Link href="/youtube" onClick={closeNavigation}>Youtube Channel</Link></li>
+                    <li><Link href="/test-batch" onClick={closeNavigation}>Test Batches</Link></li>
+                  </NavDropdown>
+                  <NavDropdown
+                    label="Training"
+                    href="/training"
+                    menuKey="training"
+                    expandedMenu={expandedMenu}
+                    onToggle={toggleSubmenu}
+                    onClose={closeNavigation}
+                  >
+                    <li><Link href="/toppers" onClick={closeNavigation}>Toppers and Achievers</Link></li>
+                    <li><Link href="/materials" onClick={closeNavigation}>Training Materials</Link></li>
+                    <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
+                    <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
+                  </NavDropdown>
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
                   <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
                   <li><Link href="/register" onClick={closeNavigation}>Register</Link></li>
                 </ul>
@@ -802,6 +936,653 @@ function CTA() {
   );
 }
 
+<<<<<<< HEAD
+=======
+function SpaMainHero() {
+  return (
+    <section
+      className="hero3__area exact-spa-hero spa-main-hero p-relative"
+      style={{ backgroundImage: `url(${academy.heroBackground})` }}
+    >
+      <div className="exact-spa-hero__overlay" />
+      <div className="container p-relative">
+        <div className="row g-4 spa-main-hero__row">
+          <div className="col-lg-7 spa-main-hero__col">
+            <div className="spa-main-hero__content">
+            <span className="spa-main-hero__eyebrow">Best Police Coaching Centre in Tamil Nadu</span>
+            <h1 className="spa-main-hero__title">
+              Become a Tamil Nadu Police Officer with Expert TNUSRB Coaching
+            </h1>
+            <p className="spa-main-hero__text">
+              Join Star Police Academy – Trusted by Thousands of Police Aspirants Since 2012.
+              We provide complete classroom coaching, physical training, hostel facilities, study
+              materials and mock tests to help you succeed in TNUSRB recruitment.
+            </p>
+            <ul className="spa-main-hero__highlights">
+              {heroHighlights.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="spa-main-hero__actions">
+              <Link className="exact-spa-hero__register-btn" href="/register">
+                Apply Now <ArrowIcon />
+              </Link>
+            </div>
+            </div>
+          </div>
+          <div className="col-lg-5 spa-main-hero__col">
+            <div className="spa-main-hero__card">
+              <img src={academy.logo} alt="Star Police Academy" />
+              <h3>{academy.tagline}</h3>
+              <p>{academy.aboutIntro}</p>
+              <div className="spa-main-hero__stats">
+                {stats.slice(0, 4).map((item) => (
+                  <div key={item.label}>
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaWhyChooseSection() {
+  return (
+    <section className="spa-hero-band spa-hero-band--why pt---100 pb---100">
+      <div className="container">
+        <div className="row align-items-center g-5">
+          <div className="col-lg-5">
+            <h2 className="spa-section-title">Why Choose Star Police Academy</h2>
+            <p className="spa-section-text">
+              Star Police Academy has been guiding police aspirants for over a decade with
+              structured classroom coaching, expert trainers, and dedicated physical preparation.
+              Our mission is to prepare every student for every stage of the Tamil Nadu Uniformed
+              Services Recruitment Board (TNUSRB) selection process.
+            </p>
+            <Link className="spa-section-link" href="/about">
+              Learn More <ArrowIcon />
+            </Link>
+          </div>
+          <div className="col-lg-7">
+            <div className="spa-feature-grid">
+              {whyChooseFeatures.map((feature) => (
+                <div className="spa-feature-grid__item" key={feature.label}>
+                  <span aria-hidden="true" className="material-symbols-outlined">{feature.icon}</span>
+                  <strong>{feature.label}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaCoursesHeroSection() {
+  return (
+    <section
+      className="spa-hero-band spa-hero-band--courses pt---100 pb---100"
+      style={{ backgroundImage: "url(/assets/images/breadcrumbs/1.jpg)" }}
+    >
+      <div className="spa-hero-band__overlay" />
+      <div className="container p-relative">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow spa-section-eyebrow--light">Star Police Academy</span>
+          <h2 className="spa-section-title spa-section-title--light">Our Police Coaching Courses</h2>
+          <p className="spa-section-text spa-section-text--light">
+            Complete TNUSRB, SI, Constable, Defence and Central Force coaching under one roof.
+          </p>
+        </div>
+        <div className="row g-4 pt---30">
+          {courses.map((course) => (
+            <div className="col-lg-4 col-md-6" key={course.key}>
+              <article className="spa-course-hero-card">
+                <img src={course.image} alt={course.shortTitle} />
+                <div className="spa-course-hero-card__body">
+                  <h3>{course.shortTitle}</h3>
+                  <p>{course.summary}</p>
+                  <Link className="spa-course-hero-card__btn" href={`/${course.key}`}>
+                    Explore Course <ArrowIcon />
+                  </Link>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaSelectionProcessSection() {
+  return (
+    <section className="spa-lizard-process pt---120 pb---120">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <h2 className="spa-section-title">TNUSRB Selection Process</h2>
+          <p className="spa-section-text">
+            Understand every stage of the recruitment journey with our step-by-step guide.
+          </p>
+        </div>
+        <div className="spa-lizard-process__track">
+          {selectionProcessSteps.map((step, index) => (
+            <article
+              className={`spa-lizard-process__step${index % 2 === 1 ? " is-right" : " is-left"}`}
+              key={step.step}
+            >
+              <div className="spa-lizard-process__node">
+                <span aria-hidden="true" className="material-symbols-outlined">{step.icon}</span>
+                <em>{step.step}</em>
+              </div>
+              <div className="spa-lizard-process__card">
+                <span className="spa-lizard-process__step-label">Step {step.step}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaPhysicalGallerySection() {
+  const [previewIndex, setPreviewIndex] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const previewItem = previewIndex !== null ? physicalTrainingItems[previewIndex] : null;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (previewIndex === null) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setPreviewIndex(null);
+      }
+      if (event.key === "ArrowLeft") {
+        setPreviewIndex((current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length);
+      }
+      if (event.key === "ArrowRight") {
+        setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [previewIndex]);
+
+  const showPrevious = () => {
+    setPreviewIndex((current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length);
+  };
+
+  const showNext = () => {
+    setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+  };
+
+  const lightbox = previewItem && isMounted
+    ? createPortal(
+      <div
+        className="spa-gallery-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Gallery preview: ${previewItem.title}`}
+        onClick={() => setPreviewIndex(null)}
+      >
+        <button
+          type="button"
+          className="spa-gallery-lightbox__nav spa-gallery-lightbox__nav--prev"
+          aria-label="Previous image"
+          onClick={(event) => {
+            event.stopPropagation();
+            showPrevious();
+          }}
+        >
+          ‹
+        </button>
+        <div className="spa-gallery-lightbox__panel" onClick={(event) => event.stopPropagation()}>
+          <button
+            className="spa-gallery-lightbox__close"
+            type="button"
+            aria-label="Close preview"
+            onClick={() => setPreviewIndex(null)}
+          >
+            ×
+          </button>
+          <div className="spa-gallery-lightbox__image-wrap">
+            <img src={previewItem.image} alt={previewItem.title} />
+          </div>
+          <div className="spa-gallery-lightbox__caption">
+            <span className="spa-gallery-lightbox__counter">
+              {previewIndex + 1} / {physicalTrainingItems.length}
+            </span>
+            <h3>{previewItem.title}</h3>
+            <p>{previewItem.description}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="spa-gallery-lightbox__nav spa-gallery-lightbox__nav--next"
+          aria-label="Next image"
+          onClick={(event) => {
+            event.stopPropagation();
+            showNext();
+          }}
+        >
+          ›
+        </button>
+      </div>,
+      document.body,
+    )
+    : null;
+
+  return (
+    <section className="spa-physical-gallery pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center spa-physical-gallery__head">
+          <h2 className="spa-section-title">Our gallery</h2>
+          <p className="spa-physical-gallery__subtitle">Police Physical Training</p>
+        </div>
+        <div className="spa-physical-gallery__grid">
+          {physicalTrainingItems.map((item, index) => (
+            <button
+              className="spa-physical-gallery__item"
+              key={item.title}
+              type="button"
+              onClick={() => setPreviewIndex(index)}
+            >
+              <img src={item.image} alt={item.title} />
+              <div className="spa-physical-gallery__overlay">
+                <span aria-hidden="true" className="material-symbols-outlined">zoom_in</span>
+                <strong>{item.title}</strong>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+      {lightbox}
+    </section>
+  );
+}
+
+function SpaTestimonialsCardsSection() {
+  const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      setVisibleCount(window.innerWidth <= 991 ? 1 : 2);
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setStartIndex((current) => (current + 1) % testimonials.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
+    const item = testimonials[(startIndex + index) % testimonials.length];
+    return item;
+  });
+
+  const showPrevious = () => {
+    setStartIndex((current) => (current + testimonials.length - 1) % testimonials.length);
+  };
+
+  const showNext = () => {
+    setStartIndex((current) => (current + 1) % testimonials.length);
+  };
+
+  return (
+    <section className="spa-testimonials-cards pt---110 pb---120">
+      <div className="container">
+        <div className="react__title__section-all pb---30">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h2 className="react__tittle">Testimonials</h2>
+            </div>
+          </div>
+        </div>
+        <div className="spa-testimonials-cards__slider">
+          <button
+            type="button"
+            className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--prev"
+            aria-label="Previous testimonial"
+            onClick={showPrevious}
+          >
+            ‹
+          </button>
+          <div className="spa-testimonials-cards__track">
+            {visibleItems.map((item, index) => (
+              <article className="spa-testimonial-card" key={`${item.name}-${startIndex}-${index}`}>
+                <div className="spa-testimonial-card__top">
+                  <span className="spa-testimonial-card__quote" aria-hidden="true">“</span>
+                  <div className="testimonial__ratings">
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star_alt" />
+                    <span>4.9 Rating</span>
+                  </div>
+                </div>
+                <p className="spa-testimonial-card__text">{item.text}</p>
+                <div className="spa-testimonial-card__author">
+                  <TestimonialAvatar name={item.name} size="sm" />
+                  <div>
+                    <strong>{item.name}</strong>
+                    <span>{item.role}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--next"
+            aria-label="Next testimonial"
+            onClick={showNext}
+          >
+            ›
+          </button>
+        </div>
+        <div className="spa-testimonials-cards__dots" aria-label="Testimonial slides">
+          {testimonials.map((item, index) => (
+            <button
+              key={item.name}
+              type="button"
+              aria-label={`Show testimonial ${index + 1}`}
+              className={index === startIndex ? "is-active" : ""}
+              onClick={() => setStartIndex(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaFacilitiesSliderSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const activeIndexRef = useRef(0);
+  const isTransitioningRef = useRef(false);
+  const transitionRef = useRef(null);
+
+  const changeFacility = (nextIndex) => {
+    if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
+      return;
+    }
+
+    isTransitioningRef.current = true;
+    setIsTransitioning(true);
+
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
+
+    transitionRef.current = window.setTimeout(() => {
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+      transitionRef.current = window.setTimeout(() => {
+        isTransitioningRef.current = false;
+        setIsTransitioning(false);
+      }, 500);
+    }, 450);
+  };
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      changeFacility((activeIndexRef.current + 1) % facilitiesItems.length);
+    }, 5000);
+
+    return () => {
+      window.clearInterval(timer);
+      if (transitionRef.current) {
+        window.clearTimeout(transitionRef.current);
+      }
+    };
+  }, []);
+
+  const activeFacility = facilitiesItems[activeIndex];
+
+  return (
+    <section className="spa-facilities-slider pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <h2 className="spa-section-title">Our Facilities</h2>
+        </div>
+        <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
+          <div className="spa-facilities-slider__content" key={`content-${activeIndex}`}>
+            <div className="spa-facilities-slider__meta">
+              <span className="spa-facilities-slider__index">
+                {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
+              </span>
+              <span className="spa-facilities-slider__icon" aria-hidden="true">
+                <span className="material-symbols-outlined">{activeFacility.icon}</span>
+              </span>
+            </div>
+            <h3>{activeFacility.title}</h3>
+            <p className="spa-facilities-slider__lead">{activeFacility.text}</p>
+            <p className="spa-facilities-slider__details">{activeFacility.details}</p>
+            <ul className="spa-facilities-slider__highlights">
+              {activeFacility.highlights.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link className="spa-facilities-slider__cta" href="/contact">
+              Book a Campus Visit <ArrowIcon />
+            </Link>
+          </div>
+          <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
+            <img src={activeFacility.image} alt={activeFacility.title} loading="lazy" />
+          </div>
+        </div>
+        <div className="spa-facilities-slider__progress" aria-hidden="true">
+          {facilitiesItems.map((item, index) => (
+            <button
+              key={`progress-${item.title}`}
+              type="button"
+              className={index === activeIndex ? "is-active" : ""}
+              aria-label={`Go to ${item.title}`}
+              onClick={() => changeFacility(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaRecruitmentBlogSection() {
+  const cards = recruitmentUpdates.map((item, index) => ({
+    ...item,
+    author: academy.name,
+    image: courses[index]?.image || item.image,
+  }));
+
+  return (
+    <div className="react-blog__area blog__area spa-recruitment-blog pt---90 pb---120">
+      <div className="container blog__width pb---120">
+        <div className="react__title__section text-center">
+          <h2 className="react__tittle">Latest TNUSRB Recruitment Updates</h2>
+        </div>
+        <div className="row">
+          {cards.map((item) => (
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" key={item.title}>
+              <div className="blog__card mb-50">
+                <div className="blog__thumb w-img p-relative">
+                  <Link className="blog__thumb--image" href={item.href}>
+                    <img src={item.image} alt={item.title} />
+                  </Link>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <div className="blog__card--content-area mb-25">
+                    <span className="blog__card--date">{item.category}</span>
+                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                  </div>
+                  <div className="blog__card--icon d-flex align-items-center">
+                    <div className="blog__card--icon-1">
+                      <UserIcon />
+                      <span>{item.author}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center">
+          <Link href="/notification" className="spa-section-link">
+            View All Updates <ArrowIcon />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpaStudentResultsSection() {
+  return (
+    <section className="spa-student-results pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <h2 className="spa-section-title">Student Results</h2>
+          <p className="spa-section-text">Year-wise selection across police departments.</p>
+        </div>
+        <div className="spa-student-results__grid">
+          {studentResults.map((result) => (
+            <article className="spa-student-results__card" key={`${result.year}-${result.department}`}>
+              <span className="spa-student-results__year">{result.year}</span>
+              <strong className="spa-student-results__count">{result.count}</strong>
+              <h3>{result.department}</h3>
+              <span className="spa-student-results__badge">Selected</span>
+            </article>
+          ))}
+        </div>
+        <div className="spa-student-results__departments">
+          {["Police Constable", "Sub Inspector", "Armed Reserve", "Jail Warder"].map((dept) => (
+            <span key={dept}>{dept}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaFaqExpandedSection() {
+  return (
+    <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
+      <div className="accordion__shape">
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
+      </div>
+      <div className="container">
+        <div className="spa-faq-expanded__layout">
+          <aside className="spa-faq-expanded__sidebar">
+            <div className="accordion__wrapper-1">
+              <h2>
+                Frequently Asked <br />Questions
+              </h2>
+              <p>{academy.description}</p>
+              <Link href="/faq" className="border-btns">
+                View FAQ Page <ArrowIcon />
+              </Link>
+            </div>
+          </aside>
+          <div className="spa-faq-expanded__scroll" tabIndex={0} aria-label="FAQ answers">
+            <div className="spa-faq-expanded__list">
+              {faqs.map((item, index) => (
+                <article className="spa-faq-expanded__item" key={`${item.question}-${index}`}>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpaLatestBlogSection() {
+  const cards = latestBlogArticles.map((item, index) => ({
+    ...item,
+    author: academy.name,
+    image: courses[index % courses.length]?.image || item.image,
+  }));
+
+  return (
+    <div className="react-blog__area blog__area spa-latest-blog graybg-home pt---90 pb---120">
+      <div className="container blog__width pb---120">
+        <div className="react__title__section text-center">
+          <h2 className="react__tittle">Latest Blog Articles</h2>
+        </div>
+        <div className="row">
+          {cards.map((item) => (
+            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" key={item.title}>
+              <div className="blog__card mb-50">
+                <div className="blog__thumb w-img p-relative">
+                  <Link className="blog__thumb--image" href={item.href}>
+                    <img src={item.image} alt={item.title} />
+                  </Link>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <div className="blog__card--content-area mb-25">
+                    <span className="blog__card--date">{item.category}</span>
+                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                  </div>
+                  <div className="blog__card--icon d-flex align-items-center">
+                    <div className="blog__card--icon-1">
+                      <UserIcon />
+                      <span>{item.author}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
 function ExactHomeHero() {
   return (
     <div
@@ -844,7 +1625,11 @@ function ExactHomeAboutSection() {
           </div>
           <div className="col-lg-6">
             <div className="spa-home-about__content">
+<<<<<<< HEAD
               <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
+=======
+              <h6 className="spa-home-about__eyebrow">ABOUT US</h6>
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
               <h2 className="spa-home-about__title">
                 Tamil Nadu&apos;s Leading
                 <br />
@@ -1325,6 +2110,7 @@ function ExactBlog() {
 function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
+<<<<<<< HEAD
       <ExactHomeHero />
       <ExactHomeAboutSection />
       <ExactWinnerCarousel />
@@ -1332,6 +2118,20 @@ function ExactHomePage() {
       <ExactInstructors />
       <ExactClients />
       <ExactBlog />
+=======
+      <SpaMainHero />
+      <SpaWhyChooseSection />
+      <SpaCoursesHeroSection />
+      <SpaSelectionProcessSection />
+      <SpaPhysicalGallerySection />
+      <SpaTestimonialsCardsSection />
+      <SpaFacilitiesSliderSection />
+      <SpaRecruitmentBlogSection />
+      <SpaStudentResultsSection />
+      <ExactHomeAboutSection />
+      <SpaFaqExpandedSection />
+      <SpaLatestBlogSection />
+>>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
     </div>
   );
 }
