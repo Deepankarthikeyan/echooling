@@ -880,8 +880,8 @@ function SpaMainHero() {
     >
       <div className="exact-spa-hero__overlay" />
       <div className="container p-relative">
-        <div className="row align-items-stretch g-4 spa-main-hero__row">
-          <div className="col-lg-7 spa-main-hero__col">
+        <div className="row align-items-center g-4 spa-main-hero__row">
+          <div className="col-lg-7">
             <div className="spa-main-hero__content">
             <span className="spa-main-hero__eyebrow">Best Police Coaching Centre in Tamil Nadu</span>
             <h1 className="spa-main-hero__title">
@@ -907,7 +907,7 @@ function SpaMainHero() {
             </div>
             </div>
           </div>
-          <div className="col-lg-5 spa-main-hero__col">
+          <div className="col-lg-5">
             <div className="spa-main-hero__card">
               <img src={academy.logo} alt="Star Police Academy" />
               <h3>{academy.tagline}</h3>
