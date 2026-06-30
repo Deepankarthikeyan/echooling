@@ -6908,21 +6908,43 @@ body.star-site .react-footer-two .footer-top-cta .row {
 }
 
 .exact-home-page .spa-faq-expanded__layout {
-  align-items: flex-start;
+  align-items: stretch;
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(280px, 5fr) minmax(0, 7fr);
+  min-height: calc(100vh - 140px);
 }
 
 .exact-home-page .spa-faq-expanded__sidebar {
+  align-self: start;
+  flex-shrink: 0;
   position: sticky;
   top: 100px;
-  align-self: start;
   z-index: 2;
 }
 
-.exact-home-page .spa-faq-expanded__content {
+.exact-home-page .spa-faq-expanded__scroll {
+  max-height: calc(100vh - 140px);
   min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 10px;
+  scrollbar-color: rgba(58, 87, 184, 0.4) transparent;
+  scrollbar-width: thin;
+}
+
+.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb {
+  background: rgba(58, 87, 184, 0.4);
+  border-radius: 999px;
+}
+
+.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(58, 87, 184, 0.6);
 }
 
 .exact-home-page .spa-faq-expanded__list {
@@ -6977,11 +6999,18 @@ body.star-site .react-footer-two .footer-top-cta .row {
 
   .exact-home-page .spa-faq-expanded__layout {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .exact-home-page .spa-faq-expanded__sidebar {
-    position: static;
     margin-bottom: 8px;
+    position: static;
+  }
+
+  .exact-home-page .spa-faq-expanded__scroll {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .exact-home-page .spa-lizard-process__step.is-left,
