@@ -1413,7 +1413,6 @@ function SpaLatestBlogSection() {
     <div className="react-blog__area blog__area spa-latest-blog graybg-home pt---90 pb---120">
       <div className="container blog__width pb---120">
         <div className="react__title__section text-center">
-          <h6 className="react__subtitle">Section 11</h6>
           <h2 className="react__tittle">Latest Blog Articles</h2>
         </div>
         <div className="row">
@@ -1489,7 +1488,7 @@ function ExactHomeAboutSection() {
           </div>
           <div className="col-lg-6">
             <div className="spa-home-about__content">
-              <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
+              <h6 className="spa-home-about__eyebrow">ABOUT US</h6>
               <h2 className="spa-home-about__title">
                 Tamil Nadu&apos;s Leading
                 <br />
