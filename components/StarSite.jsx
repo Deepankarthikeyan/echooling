@@ -7,13 +7,22 @@ import {
   courses,
   faqs,
   features,
+  facilitiesItems,
+  heroHighlights,
+  latestBlogArticles,
   notificationItems,
+  physicalTrainingItems,
   questionPapers,
+  recruitmentUpdates,
   registrationCourses,
+  selectionProcessSteps,
   stats,
+  studentResults,
+  successStoryCategories,
   terms,
   testimonials,
   trainingSteps,
+  whyChooseFeatures,
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
@@ -802,6 +811,538 @@ function CTA() {
   );
 }
 
+function SpaMainHero() {
+  return (
+    <section
+      className="hero3__area exact-spa-hero spa-main-hero p-relative"
+      style={{ backgroundImage: `url(${academy.heroBackground})` }}
+    >
+      <div className="exact-spa-hero__overlay" />
+      <div className="container p-relative">
+        <div className="row align-items-center g-4">
+          <div className="col-lg-7">
+            <span className="spa-main-hero__eyebrow">Best Police Coaching Centre in Tamil Nadu</span>
+            <h1 className="spa-main-hero__title">
+              Become a Tamil Nadu Police Officer with Expert TNUSRB Coaching
+            </h1>
+            <p className="spa-main-hero__text">
+              Join Star Police Academy – Trusted by Thousands of Police Aspirants Since 2012.
+              We provide complete classroom coaching, physical training, hostel facilities, study
+              materials and mock tests to help you succeed in TNUSRB recruitment.
+            </p>
+            <ul className="spa-main-hero__highlights">
+              {heroHighlights.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="spa-main-hero__actions">
+              <Link className="exact-spa-hero__register-btn" href="/register">
+                Apply Now <ArrowIcon />
+              </Link>
+              <a className="spa-main-hero__btn-outline" href="/assets/images/cta.jpg" download>
+                Download Prospectus
+              </a>
+              <a className="spa-main-hero__btn-outline" href={`tel:${contact.phonePrimary.replace(/\s/g, "")}`}>
+                Call Now
+              </a>
+              <a className="spa-main-hero__btn-whatsapp" href={contact.whatsapp} target="_blank" rel="noreferrer">
+                WhatsApp Admission
+              </a>
+            </div>
+          </div>
+          <div className="col-lg-5">
+            <div className="spa-main-hero__card">
+              <img src={academy.logo} alt="Star Police Academy" />
+              <h3>{academy.tagline}</h3>
+              <p>{academy.aboutIntro}</p>
+              <div className="spa-main-hero__stats">
+                {stats.slice(0, 4).map((item) => (
+                  <div key={item.label}>
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaWhyChooseSection() {
+  return (
+    <section className="spa-hero-band spa-hero-band--why pt---100 pb---100">
+      <div className="container">
+        <div className="row align-items-center g-5">
+          <div className="col-lg-5">
+            <span className="spa-section-eyebrow">Section 1</span>
+            <h2 className="spa-section-title">Why Choose Star Police Academy</h2>
+            <p className="spa-section-text">
+              Star Police Academy has been guiding police aspirants for over a decade with
+              structured classroom coaching, expert trainers, and dedicated physical preparation.
+              Our mission is to prepare every student for every stage of the Tamil Nadu Uniformed
+              Services Recruitment Board (TNUSRB) selection process.
+            </p>
+            <Link className="spa-section-link" href="/about">
+              Learn More <ArrowIcon />
+            </Link>
+          </div>
+          <div className="col-lg-7">
+            <div className="spa-feature-grid">
+              {whyChooseFeatures.map((feature) => (
+                <div className="spa-feature-grid__item" key={feature.label}>
+                  <span aria-hidden="true" className="material-symbols-outlined">{feature.icon}</span>
+                  <strong>{feature.label}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaCoursesHeroSection() {
+  return (
+    <section
+      className="spa-hero-band spa-hero-band--courses pt---100 pb---100"
+      style={{ backgroundImage: "url(/assets/images/breadcrumbs/1.jpg)" }}
+    >
+      <div className="spa-hero-band__overlay" />
+      <div className="container p-relative">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow spa-section-eyebrow--light">Section 2</span>
+          <h2 className="spa-section-title spa-section-title--light">Our Police Coaching Courses</h2>
+          <p className="spa-section-text spa-section-text--light">
+            Complete TNUSRB, SI, Constable, Defence and Central Force coaching under one roof.
+          </p>
+        </div>
+        <div className="row g-4 pt---30">
+          {courses.map((course) => (
+            <div className="col-lg-4 col-md-6" key={course.key}>
+              <article className="spa-course-hero-card">
+                <img src={course.image} alt={course.shortTitle} />
+                <div className="spa-course-hero-card__body">
+                  <h3>{course.shortTitle}</h3>
+                  <p>{course.summary}</p>
+                  <Link href={`/${course.key}`}>Explore Course <ArrowIcon /></Link>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaSelectionProcessSection() {
+  return (
+    <section className="spa-lizard-process pt---120 pb---120">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow">Section 3</span>
+          <h2 className="spa-section-title">TNUSRB Selection Process</h2>
+          <p className="spa-section-text">
+            Understand every stage of the recruitment journey with our step-by-step guide.
+          </p>
+        </div>
+        <div className="spa-lizard-process__track">
+          {selectionProcessSteps.map((step, index) => (
+            <article
+              className={`spa-lizard-process__step${index % 2 === 1 ? " is-right" : " is-left"}`}
+              key={step.step}
+            >
+              <div className="spa-lizard-process__node">
+                <span aria-hidden="true" className="material-symbols-outlined">{step.icon}</span>
+                <em>{step.step}</em>
+              </div>
+              <div className="spa-lizard-process__card">
+                <span className="spa-lizard-process__step-label">Step {step.step}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaPhysicalGallerySection() {
+  const [previewItem, setPreviewItem] = useState(null);
+
+  return (
+    <section className="spa-physical-gallery pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow">Section 4</span>
+          <h2 className="spa-section-title">Police Physical Training</h2>
+          <p className="spa-section-text">
+            Click any training activity to preview. Full PET coaching on our dedicated ground.
+          </p>
+        </div>
+        <div className="spa-physical-gallery__grid">
+          {physicalTrainingItems.map((item) => (
+            <button
+              className="spa-physical-gallery__item"
+              key={item.title}
+              type="button"
+              onClick={() => setPreviewItem(item)}
+            >
+              <img src={item.image} alt={item.title} />
+              <div className="spa-physical-gallery__overlay">
+                <span aria-hidden="true" className="material-symbols-outlined">zoom_in</span>
+                <strong>{item.title}</strong>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+      {previewItem ? (
+        <div
+          className="spa-gallery-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Preview ${previewItem.title}`}
+          onClick={() => setPreviewItem(null)}
+        >
+          <div className="spa-gallery-lightbox__panel" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="spa-gallery-lightbox__close"
+              type="button"
+              aria-label="Close preview"
+              onClick={() => setPreviewItem(null)}
+            >
+              ×
+            </button>
+            <img src={previewItem.image} alt={previewItem.title} />
+            <div className="spa-gallery-lightbox__caption">
+              <h3>{previewItem.title}</h3>
+              <p>{previewItem.description}</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function SpaTestimonialsDualSection() {
+  const [activeQuote, setActiveQuote] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(0);
+
+  useEffect(() => {
+    const quoteTimer = window.setInterval(() => {
+      setActiveQuote((current) => (current + 1) % testimonials.length);
+    }, 5000);
+
+    const categoryTimer = window.setInterval(() => {
+      setActiveCategory((current) => (current + 1) % successStoryCategories.length);
+    }, 3500);
+
+    return () => {
+      window.clearInterval(quoteTimer);
+      window.clearInterval(categoryTimer);
+    };
+  }, []);
+
+  const activeItem = testimonials[activeQuote];
+  const activeCat = successStoryCategories[activeCategory];
+
+  return (
+    <section className="spa-dual-testimonials pt---120 pb---120">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow">Section 5</span>
+          <h2 className="spa-section-title">Student Success Stories</h2>
+        </div>
+        <div className="row g-4 align-items-stretch">
+          <div className="col-lg-7">
+            <div className="spa-dual-testimonials__quote-slider">
+              <div className="spa-dual-testimonials__quote-slide" key={activeQuote}>
+                <TestimonialAvatar name={activeItem.name} size="lg" />
+                <blockquote>
+                  <p>{activeItem.text}</p>
+                  <footer>
+                    <strong>{activeItem.name}</strong>
+                    <span>{activeItem.role}</span>
+                  </footer>
+                </blockquote>
+                <div className="testimonial__ratings">
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star" />
+                  <em className="icon_star_alt" />
+                  <span><em>4.9</em> (14 Reviews)</span>
+                </div>
+              </div>
+              <div className="spa-dual-testimonials__dots" aria-label="Testimonial slides">
+                {testimonials.map((item, index) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    aria-label={`Show testimonial ${index + 1}`}
+                    className={index === activeQuote ? "is-active" : ""}
+                    onClick={() => setActiveQuote(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-5">
+            <div className="spa-dual-testimonials__category-slider">
+              <div className="spa-dual-testimonials__category-slide" key={activeCategory}>
+                <span aria-hidden="true" className="material-symbols-outlined">{activeCat.icon}</span>
+                <h3>{activeCat.label}</h3>
+                <p>Real success stories from our students, parents and selected candidates.</p>
+              </div>
+              <div className="spa-dual-testimonials__category-track">
+                {successStoryCategories.map((cat, index) => (
+                  <button
+                    key={cat.label}
+                    type="button"
+                    className={index === activeCategory ? "is-active" : ""}
+                    onClick={() => setActiveCategory(index)}
+                  >
+                    <span aria-hidden="true" className="material-symbols-outlined">{cat.icon}</span>
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaFacilitiesSliderSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setIsFading(true);
+      window.setTimeout(() => {
+        setActiveIndex((current) => (current + 1) % facilitiesItems.length);
+        setIsFading(false);
+      }, 400);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const activeFacility = facilitiesItems[activeIndex];
+
+  return (
+    <section className="spa-facilities-slider pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow">Section 6</span>
+          <h2 className="spa-section-title">Our Facilities</h2>
+        </div>
+        <div className={`spa-facilities-slider__stage${isFading ? " is-fading" : ""}`}>
+          <div className="spa-facilities-slider__content">
+            <span className="spa-facilities-slider__index">
+              {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
+            </span>
+            <h3>{activeFacility.title}</h3>
+            <p>{activeFacility.text}</p>
+            <div className="spa-facilities-slider__nav">
+              {facilitiesItems.map((item, index) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  className={index === activeIndex ? "is-active" : ""}
+                  aria-label={`Show ${item.title}`}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {item.title}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="spa-facilities-slider__visual">
+            <img src={activeFacility.image} alt={activeFacility.title} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaRecruitmentBlogSection() {
+  const cards = recruitmentUpdates.map((item, index) => ({
+    ...item,
+    author: academy.name,
+    image: item.image || `/assets/images/blog/${index + 1}.jpg`,
+  }));
+
+  return (
+    <div className="react-blog__area blog__area spa-recruitment-blog pt---90 pb---120">
+      <div className="container blog__width pb---120">
+        <div className="react__title__section text-center">
+          <h6 className="react__subtitle">Section 7 — TNUSRB Updates</h6>
+          <h2 className="react__tittle">Latest TNUSRB Recruitment Updates</h2>
+        </div>
+        <div className="row">
+          {cards.map((item) => (
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" key={item.title}>
+              <div className="blog__card mb-50">
+                <div className="blog__thumb w-img p-relative">
+                  <Link className="blog__thumb--image" href={item.href}>
+                    <img src={item.image} alt={item.title} />
+                  </Link>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <div className="blog__card--content-area mb-25">
+                    <span className="blog__card--date">{item.category}</span>
+                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                  </div>
+                  <div className="blog__card--icon d-flex align-items-center">
+                    <div className="blog__card--icon-1">
+                      <UserIcon />
+                      <span>{item.author}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center">
+          <Link href="/notification" className="spa-section-link">
+            View All Updates <ArrowIcon />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpaStudentResultsSection() {
+  return (
+    <section className="spa-student-results pt---100 pb---100">
+      <div className="container">
+        <div className="spa-section-head text-center">
+          <span className="spa-section-eyebrow">Section 8</span>
+          <h2 className="spa-section-title">Student Results</h2>
+          <p className="spa-section-text">Year-wise selection across police departments.</p>
+        </div>
+        <div className="spa-student-results__grid">
+          {studentResults.map((result) => (
+            <article className="spa-student-results__card" key={`${result.year}-${result.department}`}>
+              <span className="spa-student-results__year">{result.year}</span>
+              <strong className="spa-student-results__count">{result.count}</strong>
+              <h3>{result.department}</h3>
+              <span className="spa-student-results__badge">Selected</span>
+            </article>
+          ))}
+        </div>
+        <div className="spa-student-results__departments">
+          {["Police Constable", "Sub Inspector", "Armed Reserve", "Jail Warder"].map((dept) => (
+            <span key={dept}>{dept}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpaFaqExpandedSection() {
+  return (
+    <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
+      <div className="accordion__shape">
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-5">
+            <div className="accordion__wrapper">
+              <div className="accordion__wrapper-1">
+                <h6>Section 10</h6>
+                <h2>
+                  Frequently Asked <br />Questions
+                </h2>
+                <p>{academy.description}</p>
+                <Link href="/faq" className="border-btns">
+                  View FAQ Page <ArrowIcon />
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <div className="spa-faq-expanded__list">
+              {faqs.map((item, index) => (
+                <article className="spa-faq-expanded__item" key={`${item.question}-${index}`}>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpaLatestBlogSection() {
+  const cards = latestBlogArticles.map((item) => ({
+    ...item,
+    author: academy.name,
+  }));
+
+  return (
+    <div className="react-blog__area blog__area spa-latest-blog graybg-home pt---90 pb---120">
+      <div className="container blog__width pb---120">
+        <div className="react__title__section text-center">
+          <h6 className="react__subtitle">Section 11</h6>
+          <h2 className="react__tittle">Latest Blog Articles</h2>
+        </div>
+        <div className="row">
+          {cards.map((item) => (
+            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" key={item.title}>
+              <div className="blog__card mb-50">
+                <div className="blog__thumb w-img p-relative">
+                  <Link className="blog__thumb--image" href={item.href}>
+                    <img src={item.image} alt={item.title} />
+                  </Link>
+                  <em className="b_date">{item.date}</em>
+                </div>
+                <div className="blog__card--content">
+                  <div className="blog__card--content-area mb-25">
+                    <span className="blog__card--date">{item.category}</span>
+                    <h3 className="blog__card--title"><Link href={item.href}>{item.title}</Link></h3>
+                  </div>
+                  <div className="blog__card--icon d-flex align-items-center">
+                    <div className="blog__card--icon-1">
+                      <UserIcon />
+                      <span>{item.author}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ExactHomeHero() {
   return (
     <div
@@ -1325,13 +1866,18 @@ function ExactBlog() {
 function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
-      <ExactHomeHero />
+      <SpaMainHero />
+      <SpaWhyChooseSection />
+      <SpaCoursesHeroSection />
+      <SpaSelectionProcessSection />
+      <SpaPhysicalGallerySection />
+      <SpaTestimonialsDualSection />
+      <SpaFacilitiesSliderSection />
+      <SpaRecruitmentBlogSection />
+      <SpaStudentResultsSection />
       <ExactHomeAboutSection />
-      <ExactWinnerCarousel />
-      <ExactAccordion />
-      <ExactInstructors />
-      <ExactClients />
-      <ExactBlog />
+      <SpaFaqExpandedSection />
+      <SpaLatestBlogSection />
     </div>
   );
 }
