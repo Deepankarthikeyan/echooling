@@ -1270,7 +1270,7 @@ function SpaFaqExpandedSection() {
       <div className="container">
         <div className="row">
           <div className="col-lg-5">
-            <div className="accordion__wrapper">
+            <div className="accordion__wrapper spa-faq-expanded__sidebar">
               <div className="accordion__wrapper-1">
                 <h6>Section 10</h6>
                 <h2>
