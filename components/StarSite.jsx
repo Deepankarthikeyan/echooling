@@ -907,7 +907,7 @@ function SpaMainHero() {
             </div>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-5 spa-main-hero__col">
             <div className="spa-main-hero__card">
               <img src={academy.logo} alt="Star Police Academy" />
               <h3>{academy.tagline}</h3>

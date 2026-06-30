@@ -6291,6 +6291,41 @@ body.star-site .exact-home-page .spa-section-text--light {
   max-width: 620px;
 }
 
+@media (min-width: 992px) {
+  .exact-home-page .spa-main-hero__row {
+    align-items: stretch;
+  }
+
+  .exact-home-page .spa-main-hero__col {
+    display: flex;
+  }
+
+  .exact-home-page .spa-main-hero__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    max-width: 620px;
+  }
+
+  .exact-home-page .spa-main-hero__actions {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  .exact-home-page .spa-main-hero__card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .exact-home-page .spa-main-hero__stats {
+    margin-top: auto;
+  }
+}
+
 .exact-home-page .spa-main-hero__actions {
   display: flex;
   flex-wrap: wrap;
