@@ -6215,6 +6215,37 @@ body.star-site .react-footer-two .footer-top-cta .row {
 
 /* ── SPA Home Page — 11 Section Layout ───────────────────────────── */
 
+.exact-home-page {
+  --spa-section-gap: 100px;
+}
+
+.exact-home-page > section:not(.spa-main-hero),
+.exact-home-page > div {
+  padding-bottom: var(--spa-section-gap) !important;
+  padding-top: var(--spa-section-gap) !important;
+}
+
+.exact-home-page > .spa-main-hero {
+  padding-bottom: var(--spa-section-gap) !important;
+}
+
+.exact-home-page .spa-recruitment-blog > .container.blog__width,
+.exact-home-page .spa-latest-blog > .container.blog__width {
+  padding-bottom: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .exact-home-page {
+    --spa-section-gap: 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  .exact-home-page {
+    --spa-section-gap: 56px;
+  }
+}
+
 .exact-home-page .spa-section-eyebrow {
   color: var(--spa-secondary, #cc0000);
   display: inline-block;
