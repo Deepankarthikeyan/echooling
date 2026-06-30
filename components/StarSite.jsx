@@ -1038,11 +1038,8 @@ function SpaPhysicalGallerySection() {
     <section className="spa-physical-gallery pt---100 pb---100">
       <div className="container">
         <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Section 4</span>
+          <span className="spa-section-eyebrow">Our gallery</span>
           <h2 className="spa-section-title">Police Physical Training</h2>
-          <p className="spa-section-text">
-            Click any training activity to preview. Full PET coaching on our dedicated ground.
-          </p>
         </div>
         <div className="spa-physical-gallery__grid">
           {physicalTrainingItems.map((item) => (
