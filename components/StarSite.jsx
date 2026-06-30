@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   academy,
   contact,
@@ -1031,7 +1032,105 @@ function SpaSelectionProcessSection() {
 }
 
 function SpaPhysicalGallerySection() {
-  const [previewItem, setPreviewItem] = useState(null);
+  const [previewIndex, setPreviewIndex] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const previewItem = previewIndex !== null ? physicalTrainingItems[previewIndex] : null;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (previewIndex === null) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setPreviewIndex(null);
+      }
+      if (event.key === "ArrowLeft") {
+        setPreviewIndex((current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length);
+      }
+      if (event.key === "ArrowRight") {
+        setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [previewIndex]);
+
+  const showPrevious = () => {
+    setPreviewIndex((current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length);
+  };
+
+  const showNext = () => {
+    setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+  };
+
+  const lightbox = previewItem && isMounted
+    ? createPortal(
+      <div
+        className="spa-gallery-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Gallery preview: ${previewItem.title}`}
+        onClick={() => setPreviewIndex(null)}
+      >
+        <button
+          type="button"
+          className="spa-gallery-lightbox__nav spa-gallery-lightbox__nav--prev"
+          aria-label="Previous image"
+          onClick={(event) => {
+            event.stopPropagation();
+            showPrevious();
+          }}
+        >
+          ‹
+        </button>
+        <div className="spa-gallery-lightbox__panel" onClick={(event) => event.stopPropagation()}>
+          <button
+            className="spa-gallery-lightbox__close"
+            type="button"
+            aria-label="Close preview"
+            onClick={() => setPreviewIndex(null)}
+          >
+            ×
+          </button>
+          <div className="spa-gallery-lightbox__image-wrap">
+            <img src={previewItem.image} alt={previewItem.title} />
+          </div>
+          <div className="spa-gallery-lightbox__caption">
+            <span className="spa-gallery-lightbox__counter">
+              {previewIndex + 1} / {physicalTrainingItems.length}
+            </span>
+            <h3>{previewItem.title}</h3>
+            <p>{previewItem.description}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="spa-gallery-lightbox__nav spa-gallery-lightbox__nav--next"
+          aria-label="Next image"
+          onClick={(event) => {
+            event.stopPropagation();
+            showNext();
+          }}
+        >
+          ›
+        </button>
+      </div>,
+      document.body,
+    )
+    : null;
 
   return (
     <section className="spa-physical-gallery pt---100 pb---100">
@@ -1041,12 +1140,12 @@ function SpaPhysicalGallerySection() {
           <p className="spa-physical-gallery__subtitle">Police Physical Training</p>
         </div>
         <div className="spa-physical-gallery__grid">
-          {physicalTrainingItems.map((item) => (
+          {physicalTrainingItems.map((item, index) => (
             <button
               className="spa-physical-gallery__item"
               key={item.title}
               type="button"
-              onClick={() => setPreviewItem(item)}
+              onClick={() => setPreviewIndex(index)}
             >
               <img src={item.image} alt={item.title} />
               <div className="spa-physical-gallery__overlay">
@@ -1057,31 +1156,7 @@ function SpaPhysicalGallerySection() {
           ))}
         </div>
       </div>
-      {previewItem ? (
-        <div
-          className="spa-gallery-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Preview ${previewItem.title}`}
-          onClick={() => setPreviewItem(null)}
-        >
-          <div className="spa-gallery-lightbox__panel" onClick={(event) => event.stopPropagation()}>
-            <button
-              className="spa-gallery-lightbox__close"
-              type="button"
-              aria-label="Close preview"
-              onClick={() => setPreviewItem(null)}
-            >
-              ×
-            </button>
-            <img src={previewItem.image} alt={previewItem.title} />
-            <div className="spa-gallery-lightbox__caption">
-              <h3>{previewItem.title}</h3>
-              <p>{previewItem.description}</p>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      {lightbox}
     </section>
   );
 }
@@ -1127,7 +1202,6 @@ function SpaTestimonialsCardsSection() {
         <div className="react__title__section-all pb---30">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h6>Section 5 — Student Success Stories</h6>
               <h2 className="react__tittle">Testimonials</h2>
             </div>
           </div>
