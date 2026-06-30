@@ -206,7 +206,8 @@
 }
 
 .star-main {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .star-hero {
@@ -6920,23 +6921,8 @@ body.star-site .react-footer-two .footer-top-cta .row {
   z-index: 2;
 }
 
-.exact-home-page .spa-faq-expanded__scroll {
-  max-height: calc(100vh - 120px);
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: 8px;
-  scrollbar-color: rgba(58, 87, 184, 0.35) transparent;
-  scrollbar-width: thin;
-}
-
-.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar {
-  width: 6px;
-}
-
-.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb {
-  background: rgba(58, 87, 184, 0.35);
-  border-radius: 999px;
+.exact-home-page .spa-faq-expanded__content {
+  min-width: 0;
 }
 
 .exact-home-page .spa-faq-expanded__list {
@@ -6996,12 +6982,6 @@ body.star-site .react-footer-two .footer-top-cta .row {
   .exact-home-page .spa-faq-expanded__sidebar {
     position: static;
     margin-bottom: 8px;
-  }
-
-  .exact-home-page .spa-faq-expanded__scroll {
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
   }
 
   .exact-home-page .spa-lizard-process__step.is-left,

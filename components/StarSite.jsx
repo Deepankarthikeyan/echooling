@@ -1281,7 +1281,7 @@ function SpaFaqExpandedSection() {
               </Link>
             </div>
           </aside>
-          <div className="spa-faq-expanded__scroll">
+          <div className="spa-faq-expanded__content">
             <div className="spa-faq-expanded__list">
               {faqs.map((item, index) => (
                 <article className="spa-faq-expanded__item" key={`${item.question}-${index}`}>
