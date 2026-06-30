@@ -6641,6 +6641,24 @@ body.star-site .exact-home-page .spa-course-hero-card__body p {
   background: linear-gradient(180deg, #f2f4f9 0%, #ffffff 100%);
 }
 
+.exact-home-page .spa-physical-gallery__head .spa-section-title {
+  margin-bottom: 10px;
+}
+
+.exact-home-page .spa-physical-gallery__subtitle {
+  color: var(--spa-secondary, #cc0000);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+body.star-site .exact-home-page .spa-physical-gallery__subtitle {
+  color: var(--spa-secondary, #cc0000);
+}
+
 .exact-home-page .spa-physical-gallery__grid {
   display: grid;
   gap: 20px;

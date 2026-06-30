@@ -1037,9 +1037,9 @@ function SpaPhysicalGallerySection() {
   return (
     <section className="spa-physical-gallery pt---100 pb---100">
       <div className="container">
-        <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Our gallery</span>
-          <h2 className="spa-section-title">Police Physical Training</h2>
+        <div className="spa-section-head text-center spa-physical-gallery__head">
+          <h2 className="spa-section-title">Our gallery</h2>
+          <p className="spa-physical-gallery__subtitle">Police Physical Training</p>
         </div>
         <div className="spa-physical-gallery__grid">
           {physicalTrainingItems.map((item) => (
