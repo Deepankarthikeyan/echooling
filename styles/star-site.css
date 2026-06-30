@@ -6746,11 +6746,74 @@ body.star-site .react-footer-two .footer-top-cta .row {
   gap: 48px;
   grid-template-columns: 1fr 1fr;
   margin-top: 40px;
-  transition: opacity 0.4s ease;
 }
 
-.exact-home-page .spa-facilities-slider__stage.is-fading {
-  opacity: 0.3;
+.exact-home-page .spa-facilities-slider__stage.is-transitioning .spa-facilities-slider__content,
+.exact-home-page .spa-facilities-slider__stage.is-transitioning .spa-facilities-slider__visual {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.exact-home-page .spa-facilities-slider__content {
+  animation: spaFacilityContentIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.exact-home-page .spa-facilities-slider__visual {
+  animation: spaFacilityImageIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(3, 21, 82, 0.15);
+  overflow: hidden;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+@keyframes spaFacilityContentIn {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spaFacilityImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.exact-home-page .spa-facilities-slider__progress {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.exact-home-page .spa-facilities-slider__progress button {
+  background: rgba(58, 87, 184, 0.2);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 8px;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  width: 8px;
+}
+
+.exact-home-page .spa-facilities-slider__progress button.is-active {
+  background: var(--spa-primary, #3a57b8);
+  transform: scale(1.05);
+  width: 28px;
 }
 
 .exact-home-page .spa-facilities-slider__index {
@@ -6797,17 +6860,10 @@ body.star-site .react-footer-two .footer-top-cta .row {
   color: #ffffff;
 }
 
-.exact-home-page .spa-facilities-slider__visual {
-  border-radius: 20px;
-  box-shadow: 0 24px 60px rgba(3, 21, 82, 0.15);
-  overflow: hidden;
-}
-
 .exact-home-page .spa-facilities-slider__visual img {
   display: block;
   height: 400px;
   object-fit: cover;
-  transition: opacity 0.4s ease;
   width: 100%;
 }
 

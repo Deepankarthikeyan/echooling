@@ -1128,18 +1128,44 @@ function SpaTestimonialsDualSection() {
 
 function SpaFacilitiesSliderSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const activeIndexRef = useRef(0);
+  const isTransitioningRef = useRef(false);
+  const transitionRef = useRef(null);
+
+  const changeFacility = (nextIndex) => {
+    if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
+      return;
+    }
+
+    isTransitioningRef.current = true;
+    setIsTransitioning(true);
+
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
+
+    transitionRef.current = window.setTimeout(() => {
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+      transitionRef.current = window.setTimeout(() => {
+        isTransitioningRef.current = false;
+        setIsTransitioning(false);
+      }, 500);
+    }, 450);
+  };
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setIsFading(true);
-      window.setTimeout(() => {
-        setActiveIndex((current) => (current + 1) % facilitiesItems.length);
-        setIsFading(false);
-      }, 400);
-    }, 4500);
+      changeFacility((activeIndexRef.current + 1) % facilitiesItems.length);
+    }, 5000);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearInterval(timer);
+      if (transitionRef.current) {
+        window.clearTimeout(transitionRef.current);
+      }
+    };
   }, []);
 
   const activeFacility = facilitiesItems[activeIndex];
@@ -1151,8 +1177,8 @@ function SpaFacilitiesSliderSection() {
           <span className="spa-section-eyebrow">Section 6</span>
           <h2 className="spa-section-title">Our Facilities</h2>
         </div>
-        <div className={`spa-facilities-slider__stage${isFading ? " is-fading" : ""}`}>
-          <div className="spa-facilities-slider__content">
+        <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
+          <div className="spa-facilities-slider__content" key={`content-${activeIndex}`}>
             <span className="spa-facilities-slider__index">
               {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
             </span>
@@ -1165,16 +1191,27 @@ function SpaFacilitiesSliderSection() {
                   type="button"
                   className={index === activeIndex ? "is-active" : ""}
                   aria-label={`Show ${item.title}`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => changeFacility(index)}
                 >
                   {item.title}
                 </button>
               ))}
             </div>
           </div>
-          <div className="spa-facilities-slider__visual">
+          <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
             <img src={activeFacility.image} alt={activeFacility.title} />
           </div>
+        </div>
+        <div className="spa-facilities-slider__progress" aria-hidden="true">
+          {facilitiesItems.map((item, index) => (
+            <button
+              key={`progress-${item.title}`}
+              type="button"
+              className={index === activeIndex ? "is-active" : ""}
+              aria-label={`Go to ${item.title}`}
+              onClick={() => changeFacility(index)}
+            />
+          ))}
         </div>
       </div>
     </section>
