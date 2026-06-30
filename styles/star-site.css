@@ -6451,16 +6451,17 @@ body.star-site .exact-home-page .spa-main-hero__text {
 }
 
 .exact-home-page .spa-course-hero-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid rgba(204, 0, 0, 0.12);
   border-radius: 14px;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .exact-home-page .spa-course-hero-card:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
   transform: translateY(-6px);
 }
 
@@ -6471,11 +6472,12 @@ body.star-site .exact-home-page .spa-main-hero__text {
 }
 
 .exact-home-page .spa-course-hero-card__body {
+  background: #ffffff;
   padding: 20px 22px 24px;
 }
 
 .exact-home-page .spa-course-hero-card__body h3 {
-  color: #ffffff;
+  color: var(--spa-secondary, #cc0000);
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 10px;
@@ -6483,7 +6485,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
 
 body.star-site .exact-home-page .spa-course-hero-card__body h3,
 body.star-site .exact-home-page .spa-course-hero-card__body p {
-  color: #ffffff;
+  color: var(--spa-secondary, #cc0000);
 }
 
 .exact-home-page .spa-course-hero-card__body p {
