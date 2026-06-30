@@ -1184,19 +1184,6 @@ function SpaFacilitiesSliderSection() {
             </span>
             <h3>{activeFacility.title}</h3>
             <p>{activeFacility.text}</p>
-            <div className="spa-facilities-slider__nav">
-              {facilitiesItems.map((item, index) => (
-                <button
-                  key={item.title}
-                  type="button"
-                  className={index === activeIndex ? "is-active" : ""}
-                  aria-label={`Show ${item.title}`}
-                  onClick={() => changeFacility(index)}
-                >
-                  {item.title}
-                </button>
-              ))}
-            </div>
           </div>
           <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
             <img src={activeFacility.image} alt={activeFacility.title} />

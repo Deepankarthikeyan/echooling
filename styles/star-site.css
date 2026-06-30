@@ -6834,30 +6834,7 @@ body.star-site .react-footer-two .footer-top-cta .row {
   color: var(--spa-text-muted, #5b5f64);
   font-size: 16px;
   line-height: 1.75;
-  margin: 0 0 24px;
-}
-
-.exact-home-page .spa-facilities-slider__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.exact-home-page .spa-facilities-slider__nav button {
-  background: #f2f4f9;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  color: var(--spa-text-muted, #5b5f64);
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 8px 14px;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.exact-home-page .spa-facilities-slider__nav button.is-active {
-  background: var(--spa-primary-dark, #031552);
-  color: #ffffff;
+  margin: 0;
 }
 
 .exact-home-page .spa-facilities-slider__visual img {
