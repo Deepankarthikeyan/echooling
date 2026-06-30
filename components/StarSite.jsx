@@ -1203,7 +1203,7 @@ function SpaFacilitiesSliderSection() {
             </Link>
           </div>
           <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
-            <img src={activeFacility.image} alt={activeFacility.title} />
+            <img src={activeFacility.image} alt={activeFacility.title} loading="lazy" />
           </div>
         </div>
         <div className="spa-facilities-slider__progress" aria-hidden="true">
