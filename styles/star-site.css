@@ -206,12 +206,12 @@
 }
 
 .star-main {
-<<<<<<< HEAD
+
   overflow: hidden;
-=======
+ 
   overflow-x: hidden;
   overflow-y: visible;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 }
 
 .star-hero {
@@ -4120,25 +4120,23 @@ body.star-site .exact-home-header .menu-part {
 
 .exact-home-header .logo img,
 .exact-home-header .logo .star-brand-logo {
-<<<<<<< HEAD
-=======
+
   background: transparent;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   max-height: 72px;
   max-width: 240px;
   object-fit: contain;
   width: auto;
 }
 
-<<<<<<< HEAD
+
 body.star-site .react-footer-two .footer-logo img,
 body.star-site .react-footer-two .footer-logo .star-brand-logo {
-=======
+
 body.star-site .star-brand-logo,
 body.star-site .react-footer-two .footer-logo img,
 body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: transparent;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
   display: block;
   max-height: 96px;
   max-width: 260px;
@@ -4146,14 +4144,14 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: auto;
 }
 
-<<<<<<< HEAD
-=======
+
+
 .exact-home-page .spa-main-hero__card img,
 .exact-home-page .spa-home-about__badge-logo {
   background: transparent;
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 .exact-home-menus {
   align-items: center;
   display: flex;
@@ -4182,12 +4180,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   position: relative;
 }
 
-<<<<<<< HEAD
+
 .exact-home-header .react-menus > li > a {
-=======
+
 .exact-home-header .react-menus > li > a,
 .exact-home-header .react-menus > li > .exact-menu-link-row > a {
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -4198,27 +4196,27 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   white-space: nowrap;
 }
 
-<<<<<<< HEAD
+
 .exact-home-header .exact-menu-has-dropdown > a {
-=======
+
 .exact-home-header .exact-menu-link-row {
   display: inline-flex;
 }
 
 .exact-home-header .exact-menu-link-row > a {
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   align-items: center;
   display: inline-flex;
   gap: 4px;
 }
 
-<<<<<<< HEAD
-=======
+
+
 .exact-home-header .exact-menu-dropdown-toggle {
   display: none;
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 .exact-home-header .exact-menu-arrow {
   flex-shrink: 0;
   height: 14px;
@@ -4232,36 +4230,36 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: #ffffff;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 18px 45px rgba(15, 34, 57, 0.14);
-<<<<<<< HEAD
-=======
+
+
   box-sizing: border-box;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   display: block;
   left: 0;
   list-style: none;
   margin: 0;
-<<<<<<< HEAD
+
   min-width: 285px;
   opacity: 0;
   padding: 12px 0;
-=======
+
   max-width: 340px;
   min-width: 300px;
   opacity: 0;
   overflow: hidden;
   padding: 10px 0;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   pointer-events: none;
   position: absolute;
   top: 100%;
   transform: translateY(14px);
   transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
   visibility: hidden;
-<<<<<<< HEAD
+
   z-index: 1000;
 }
 
-=======
+
   width: max-content;
   z-index: 1000;
 }
@@ -4274,7 +4272,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: 100% !important;
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 .exact-home-header .react-menus > li:hover > ul,
 .exact-home-header .react-menus > li:focus-within > ul,
 .exact-home-header .react-menus > li:hover > ul.sub-menu,
@@ -4286,21 +4284,20 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > ul a {
-<<<<<<< HEAD
-=======
+
   box-sizing: border-box;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 14px;
-<<<<<<< HEAD
+
   font-weight: 600;
   line-height: 1.35;
   padding: 10px 20px;
   transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
   white-space: nowrap;
-=======
+
   font-weight: 700;
   line-height: 1.45;
   max-width: 100%;
@@ -4308,7 +4305,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   transition: background-color 180ms ease, color 180ms ease, padding-left 180ms ease;
   white-space: normal;
   word-break: break-word;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 }
 
 .exact-home-header .react-menus > li > ul a:hover {
@@ -4317,13 +4314,13 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   padding-left: 26px;
 }
 
-<<<<<<< HEAD
+
 .exact-home-header .react-menus > li > a {
   transition: color 180ms ease;
 }
 
 .exact-home-header .react-menus > li:hover > a {
-=======
+
 @media (min-width: 992px) {
   .exact-home-header .react-menus > li.exact-menu-has-dropdown:nth-last-child(-n+4) > ul.sub-menu {
     left: auto;
@@ -4338,7 +4335,6 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-header .react-menus > li:hover > a,
 .exact-home-header .react-menus > li:hover > .exact-menu-link-row > a {
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
   color: #2b6cff;
 }
 
@@ -4373,16 +4369,16 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-logins a {
-<<<<<<< HEAD
+
   background: #3270fc;
   border-radius: 6px;
   color: #ffffff;
-=======
+
   background: var(--spa-secondary, #cc0000);
   border: 2px solid var(--spa-secondary, #cc0000);
   border-radius: 6px;
   color: #ffffff !important;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
   font-size: 16px;
   font-weight: 600;
@@ -4391,15 +4387,14 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   padding: 10px 26px;
 }
 
-<<<<<<< HEAD
-=======
+
 .exact-home-header .react-logins a:hover {
   background: var(--spa-secondary-dark, #990000) !important;
   border-color: var(--spa-secondary-dark, #990000) !important;
   color: #ffffff !important;
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 .exact-home-header .react-logins svg {
   height: 16px;
   width: 16px;
@@ -4503,23 +4498,22 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-main-menu nav {
     display: block;
     min-height: 76px;
-<<<<<<< HEAD
-=======
+
     position: relative;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   }
 
   .exact-home-header .menu-toggle {
     justify-content: space-between;
     margin-right: 0;
     min-height: 76px;
-<<<<<<< HEAD
+
     width: 100%;
   }
 
   .exact-home-menus {
     display: none;
-=======
+
     position: relative;
     width: 100%;
     z-index: 100002;
@@ -4569,16 +4563,15 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     display: none !important;
     pointer-events: none;
     visibility: hidden;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   }
 
   .exact-home-menus.is-open {
     background: #ffffff;
-<<<<<<< HEAD
+
     display: block;
     box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
     padding: 18px;
-=======
     border-radius: 0 0 16px 16px;
     box-shadow: 0 18px 42px rgba(15, 34, 57, 0.12);
     display: block !important;
@@ -4594,17 +4587,16 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     visibility: visible;
     z-index: 100001;
     -webkit-overflow-scrolling: touch;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
   }
 
   .exact-home-header .react-menus {
     align-items: stretch;
     display: block !important;
-<<<<<<< HEAD
+
   }
 
   .exact-home-header .react-menus > li {
-=======
+
     margin-bottom: 0;
     position: static !important;
     width: 100% !important;
@@ -4612,19 +4604,19 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
   .exact-home-header .react-menus > li {
     border-bottom: 1px solid #edf1f7;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
     display: block;
     margin: 0;
   }
 
-<<<<<<< HEAD
+
   .exact-home-header .react-menus > li > a {
     padding: 13px 0;
   }
 
   .exact-home-header .exact-menu-has-dropdown > a {
     display: inline-flex;
-=======
+
   .exact-home-header .react-menus > li:last-child {
     border-bottom: 0;
   }
@@ -4667,7 +4659,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
   .exact-home-header .exact-menu-expanded .exact-menu-dropdown-toggle .exact-menu-arrow {
     transform: rotate(180deg);
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   }
 
   .exact-home-header .react-menus > li > ul,
@@ -4675,7 +4667,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     background: #f6f9ff;
     border-radius: 8px;
     box-shadow: none;
-<<<<<<< HEAD
+
     display: block;
     margin: 0 0 10px;
     min-width: 0;
@@ -4684,7 +4676,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     pointer-events: auto;
     position: static;
     transform: none;
-=======
+
     display: none !important;
     margin: 0 0 12px;
     min-width: 0;
@@ -4700,12 +4692,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   .exact-home-header .react-menus > li.exact-menu-expanded > ul.sub-menu {
     display: block !important;
     pointer-events: auto;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
     visibility: visible;
   }
 
   .exact-home-header .react-menus > li > ul a {
-<<<<<<< HEAD
+
     white-space: normal;
   }
 
@@ -4713,7 +4705,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     align-items: flex-start;
     flex-direction: column;
     margin: 16px 0 0;
-=======
+
     font-weight: 700;
     line-height: 1.45;
     padding: 11px 16px;
@@ -4752,7 +4744,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   body.star-site .exact-home-header .react-logins a {
     justify-content: center;
     width: 100%;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   }
 
   .exact-client-arrow {
@@ -4785,12 +4777,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     margin: 0 3px;
   }
 
-<<<<<<< HEAD
+
   .exact-home-header .react-menus > li > a {
-=======
+
   .exact-home-header .react-menus > li > a,
   .exact-home-header .react-menus > li > .exact-menu-link-row > a {
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
     font-size: 14px;
     padding-left: 6px;
     padding-right: 6px;
@@ -6057,8 +6049,7 @@ body.star-site .react-footer-two .footer-top-cta .row {
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
+
 body.star-site .react-footer.react-footer-two {
   margin-top: 100px;
   padding-top: 180px !important;
@@ -6076,7 +6067,7 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   margin-top: 24px;
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 .exact-about-page .feedreact-slider.exact-about-feedback-slider {
   position: relative;
 }
@@ -6145,12 +6136,12 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 }
 
 @media (max-width: 991px) {
-<<<<<<< HEAD
+
   body.star-site .react-footer-two .footer-top-cta {
     left: auto;
     margin-left: auto;
     margin-right: auto;
-=======
+
   body.star-site .react-footer.react-footer-two {
     margin-top: 72px;
     padding-top: 72px !important;
@@ -6162,20 +6153,17 @@ body.star-site .react-footer-two .footer-top > .container + .container {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
     position: relative;
     top: 0;
     transform: none;
     width: 100%;
   }
 
-<<<<<<< HEAD
-=======
+
   body.star-site .react-footer-two .footer-top {
     padding-top: 0;
   }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
   body.star-site .react-footer-two .footer-top > .container:first-child {
     pointer-events: auto;
   }
@@ -6379,8 +6367,7 @@ body.star-site .react-footer-two .footer-top > .container + .container {
     line-height: 36px;
   }
 }
-<<<<<<< HEAD
-=======
+
 
 /* ── SPA Home Page — 11 Section Layout ───────────────────────────── */
 
@@ -6657,7 +6644,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
 .exact-home-page .spa-main-hero__stats strong {
   color: var(--spa-secondary, #cc0000);
   display: block;
-  font-size: 24px;
+  font-size: 50px;
   font-weight: 700;
 }
 
@@ -7888,4 +7875,4 @@ body.star-site .spa-gallery-lightbox__caption p {
     width: 100%;
   }
 }
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+

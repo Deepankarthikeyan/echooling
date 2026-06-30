@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-<<<<<<< HEAD
-=======
+
+
 import { createPortal } from "react-dom";
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 import {
   academy,
   contact,
   courses,
   faqs,
   features,
-<<<<<<< HEAD
+
   notificationItems,
   questionPapers,
   registrationCourses,
@@ -19,7 +19,7 @@ import {
   terms,
   testimonials,
   trainingSteps,
-=======
+
   facilitiesItems,
   heroHighlights,
   latestBlogArticles,
@@ -35,7 +35,7 @@ import {
   testimonials,
   trainingSteps,
   whyChooseFeatures,
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
@@ -299,7 +299,7 @@ function MenuChevronDownIcon() {
   );
 }
 
-<<<<<<< HEAD
+
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -309,7 +309,7 @@ function Header() {
 
   return (
     <header id="react-header" className="react-header react-header-two exact-home-header">
-=======
+
 function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
   const isExpanded = expandedMenu === menuKey;
 
@@ -338,7 +338,7 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, ch
     </li>
   );
 }
-
+  </header>
 function Header() {
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
@@ -365,6 +365,7 @@ function Header() {
     };
   }, [open]);
 
+
   return (
     <header id="react-header" className="react-header react-header-two exact-home-header">
       {open ? (
@@ -375,7 +376,7 @@ function Header() {
           onClick={closeNavigation}
         />
       ) : null}
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
       <div className="menu-part">
         <div className="container">
           <div className="react-main-menu">
@@ -407,7 +408,7 @@ function Header() {
                   <li>
                     <Link href="/about" onClick={closeNavigation}>About</Link>
                   </li>
-<<<<<<< HEAD
+
                   <li className="exact-menu-has-dropdown">
                     <Link href="/courses" onClick={closeNavigation}>
                       Courses <MenuChevronDownIcon />
@@ -443,7 +444,7 @@ function Header() {
                       <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
                     </ul>
                   </li>
-=======
+
                   <NavDropdown
                     label="Courses"
                     href="/courses"
@@ -485,7 +486,7 @@ function Header() {
                     <li><Link href="/questions" onClick={closeNavigation}>Question papers</Link></li>
                     <li><Link href="/ansewrkey" onClick={closeNavigation}>Answer Keys</Link></li>
                   </NavDropdown>
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
                   <li><Link href="/contact" onClick={closeNavigation}>Contact</Link></li>
                   <li><Link href="/register" onClick={closeNavigation}>Register</Link></li>
                 </ul>
@@ -936,8 +937,7 @@ function CTA() {
   );
 }
 
-<<<<<<< HEAD
-=======
+
 function SpaMainHero() {
   return (
     <section
@@ -1582,7 +1582,7 @@ function SpaLatestBlogSection() {
   );
 }
 
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
 function ExactHomeHero() {
   return (
     <div
@@ -1625,11 +1625,11 @@ function ExactHomeAboutSection() {
           </div>
           <div className="col-lg-6">
             <div className="spa-home-about__content">
-<<<<<<< HEAD
+
               <h6 className="spa-home-about__eyebrow">// ABOUT US</h6>
-=======
+
               <h6 className="spa-home-about__eyebrow">ABOUT US</h6>
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+88d
               <h2 className="spa-home-about__title">
                 Tamil Nadu&apos;s Leading
                 <br />
@@ -2110,7 +2110,7 @@ function ExactBlog() {
 function ExactHomePage() {
   return (
     <div className="react-wrapper-inner exact-home-page">
-<<<<<<< HEAD
+
       <ExactHomeHero />
       <ExactHomeAboutSection />
       <ExactWinnerCarousel />
@@ -2118,7 +2118,7 @@ function ExactHomePage() {
       <ExactInstructors />
       <ExactClients />
       <ExactBlog />
-=======
+
       <SpaMainHero />
       <SpaWhyChooseSection />
       <SpaCoursesHeroSection />
@@ -2131,7 +2131,7 @@ function ExactHomePage() {
       <ExactHomeAboutSection />
       <SpaFaqExpandedSection />
       <SpaLatestBlogSection />
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
     </div>
   );
 }

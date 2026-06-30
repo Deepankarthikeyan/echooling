@@ -22,10 +22,9 @@
   },
   "homepage": "https://github.com/Deepankarthikeyan/echooling#readme",
   "dependencies": {
-<<<<<<< HEAD
+
     "cross-env": "^10.1.0",
-=======
->>>>>>> 95b1e363e1276d1cf6a182fed68ed3bd5868688d
+
     "express": "^5.2.1",
     "next": "^16.2.9",
     "react": "^19.2.7",
