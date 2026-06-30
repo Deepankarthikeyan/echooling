@@ -6520,9 +6520,12 @@ body.star-site .exact-home-page .spa-main-hero__text {
   margin: 0 0 10px;
 }
 
-body.star-site .exact-home-page .spa-course-hero-card__body h3,
-body.star-site .exact-home-page .spa-course-hero-card__body p {
+body.star-site .exact-home-page .spa-course-hero-card__body h3 {
   color: var(--spa-secondary, #cc0000);
+}
+
+body.star-site .exact-home-page .spa-course-hero-card__body p {
+  color: var(--spa-primary, #3a57b8);
 }
 
 .exact-home-page .spa-course-hero-card__body p {
