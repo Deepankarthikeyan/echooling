@@ -18,7 +18,6 @@ import {
   selectionProcessSteps,
   stats,
   studentResults,
-  successStoryCategories,
   terms,
   testimonials,
   trainingSteps,
@@ -1035,91 +1034,119 @@ function SpaPhysicalGallerySection() {
   );
 }
 
-function SpaTestimonialsDualSection() {
-  const [activeQuote, setActiveQuote] = useState(0);
-  const [activeCategory, setActiveCategory] = useState(0);
+function SpaTestimonialsCardsSection() {
+  const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
-    const quoteTimer = window.setInterval(() => {
-      setActiveQuote((current) => (current + 1) % testimonials.length);
-    }, 5000);
+    const updateVisibleCount = () => {
+      if (window.innerWidth <= 991) {
+        setVisibleCount(1);
+        return;
+      }
 
-    const categoryTimer = window.setInterval(() => {
-      setActiveCategory((current) => (current + 1) % successStoryCategories.length);
-    }, 3500);
+      if (window.innerWidth <= 1199) {
+        setVisibleCount(2);
+        return;
+      }
 
-    return () => {
-      window.clearInterval(quoteTimer);
-      window.clearInterval(categoryTimer);
+      setVisibleCount(Math.min(3, testimonials.length));
     };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const activeItem = testimonials[activeQuote];
-  const activeCat = successStoryCategories[activeCategory];
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setStartIndex((current) => (current + 1) % testimonials.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
+    const item = testimonials[(startIndex + index) % testimonials.length];
+    return item;
+  });
+
+  const showPrevious = () => {
+    setStartIndex((current) => (current + testimonials.length - 1) % testimonials.length);
+  };
+
+  const showNext = () => {
+    setStartIndex((current) => (current + 1) % testimonials.length);
+  };
 
   return (
-    <section className="spa-dual-testimonials pt---120 pb---120">
+    <section className="student_satisfaction-section spa-testimonials-cards pt---110 pb---120">
       <div className="container">
-        <div className="spa-section-head text-center">
-          <span className="spa-section-eyebrow">Section 5</span>
-          <h2 className="spa-section-title">Student Success Stories</h2>
+        <div className="react__title__section-all pb---30">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h6>Section 5 — Student Success Stories</h6>
+              <h2 className="react__tittle">Testimonials</h2>
+            </div>
+          </div>
         </div>
-        <div className="row g-4 align-items-stretch">
-          <div className="col-lg-7">
-            <div className="spa-dual-testimonials__quote-slider">
-              <div className="spa-dual-testimonials__quote-slide" key={activeQuote}>
-                <TestimonialAvatar name={activeItem.name} size="lg" />
-                <blockquote>
-                  <p>{activeItem.text}</p>
-                  <footer>
-                    <strong>{activeItem.name}</strong>
-                    <span>{activeItem.role}</span>
-                  </footer>
-                </blockquote>
-                <div className="testimonial__ratings">
-                  <em className="icon_star" />
-                  <em className="icon_star" />
-                  <em className="icon_star" />
-                  <em className="icon_star" />
-                  <em className="icon_star_alt" />
-                  <span><em>4.9</em> (14 Reviews)</span>
+        <div className="feedreact-slider exact-about-feedback-slider">
+          <button
+            type="button"
+            className="exact-feedback-arrow exact-feedback-prev"
+            aria-label="Previous testimonial"
+            onClick={showPrevious}
+          >
+            ‹
+          </button>
+          <div className="exact-about-feedback-track">
+            {visibleItems.map((item, index) => (
+              <div className="event__card" key={`${item.name}-${startIndex}-${index}`}>
+                <div className="event__card--content">
+                  <div className="event__card--content-area">
+                    <div className="testimonial__ratings">
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star" />
+                      <em className="icon_star_alt" />
+                      <span> (14 Reviews) </span>
+                    </div>
+                    <div className="parag">{item.text}</div>
+                  </div>
+                  <img className="poly" src="/assets/images/testimonial/poly.png" alt="" />
+                </div>
+                <div className="author-sec">
+                  <div className="icon">
+                    <TestimonialAvatar name={item.name} size="sm" />
+                  </div>
+                  <div className="text">
+                    <h4>{item.name}</h4>
+                    <p>{item.role}</p>
+                  </div>
                 </div>
               </div>
-              <div className="spa-dual-testimonials__dots" aria-label="Testimonial slides">
-                {testimonials.map((item, index) => (
-                  <button
-                    key={item.name}
-                    type="button"
-                    aria-label={`Show testimonial ${index + 1}`}
-                    className={index === activeQuote ? "is-active" : ""}
-                    onClick={() => setActiveQuote(index)}
-                  />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
-          <div className="col-lg-5">
-            <div className="spa-dual-testimonials__category-slider">
-              <div className="spa-dual-testimonials__category-slide" key={activeCategory}>
-                <span aria-hidden="true" className="material-symbols-outlined">{activeCat.icon}</span>
-                <h3>{activeCat.label}</h3>
-                <p>Real success stories from our students, parents and selected candidates.</p>
-              </div>
-              <div className="spa-dual-testimonials__category-track">
-                {successStoryCategories.map((cat, index) => (
-                  <button
-                    key={cat.label}
-                    type="button"
-                    className={index === activeCategory ? "is-active" : ""}
-                    onClick={() => setActiveCategory(index)}
-                  >
-                    <span aria-hidden="true" className="material-symbols-outlined">{cat.icon}</span>
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <button
+            type="button"
+            className="exact-feedback-arrow exact-feedback-next"
+            aria-label="Next testimonial"
+            onClick={showNext}
+          >
+            ›
+          </button>
+        </div>
+        <div className="spa-testimonials-cards__dots" aria-label="Testimonial slides">
+          {testimonials.map((item, index) => (
+            <button
+              key={item.name}
+              type="button"
+              aria-label={`Show testimonial ${index + 1}`}
+              className={index === startIndex ? "is-active" : ""}
+              onClick={() => setStartIndex(index)}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -1910,7 +1937,7 @@ function ExactHomePage() {
       <SpaCoursesHeroSection />
       <SpaSelectionProcessSection />
       <SpaPhysicalGallerySection />
-      <SpaTestimonialsDualSection />
+      <SpaTestimonialsCardsSection />
       <SpaFacilitiesSliderSection />
       <SpaRecruitmentBlogSection />
       <SpaStudentResultsSection />
