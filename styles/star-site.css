@@ -4116,19 +4116,27 @@ body.star-site .exact-home-header .menu-part {
 
 .exact-home-header .logo img,
 .exact-home-header .logo .star-brand-logo {
+  background: transparent;
   max-height: 72px;
   max-width: 240px;
   object-fit: contain;
   width: auto;
 }
 
+body.star-site .star-brand-logo,
 body.star-site .react-footer-two .footer-logo img,
 body.star-site .react-footer-two .footer-logo .star-brand-logo {
+  background: transparent;
   display: block;
   max-height: 96px;
   max-width: 260px;
   object-fit: contain;
   width: auto;
+}
+
+.exact-home-page .spa-main-hero__card img,
+.exact-home-page .spa-home-about__badge-logo {
+  background: transparent;
 }
 
 .exact-home-menus {
