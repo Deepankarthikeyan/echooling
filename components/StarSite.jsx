@@ -420,7 +420,7 @@ function Header() {
                     onClose={closeNavigation}
                   >
                     {courseNavItems.map((item) => (
-                      <li key={item.href}>
+                      <li key={item.label}>
                         <SiteLink href={item.href} onClick={closeNavigation}>{item.label}</SiteLink>
                       </li>
                     ))}
