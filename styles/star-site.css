@@ -7759,6 +7759,140 @@ body.star-site .spa-gallery-lightbox__caption p {
   width: 100%;
 }
 
+/* About Course — image left, content right, auto-fade slider */
+.si-landing-page .si-landing-course-slider__stage {
+  align-items: center;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.si-landing-page .si-landing-course-slider__stage.is-transitioning .si-landing-course-slider__content,
+.si-landing-page .si-landing-course-slider__stage.is-transitioning .si-landing-course-slider__visual {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.si-landing-page .si-landing-course-slider__visual {
+  animation: siCourseSliderImageIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(3, 21, 82, 0.12);
+  overflow: hidden;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  width: 100%;
+}
+
+.si-landing-page .si-landing-course-slider__visual img {
+  display: block;
+  height: 360px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.si-landing-page .si-landing-course-slider__content {
+  animation: siCourseSliderContentIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(3, 21, 82, 0.06);
+  padding: 32px 36px;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+@keyframes siCourseSliderImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(-28px) scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes siCourseSliderContentIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.si-landing-page .si-landing-course-slider__meta {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.si-landing-page .si-landing-course-slider__index {
+  color: var(--spa-secondary, #cc0000);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.si-landing-page .si-landing-course-slider__icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-radius: 12px;
+  color: #ffffff;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.si-landing-page .si-landing-course-slider__icon .material-symbols-outlined {
+  font-size: 26px;
+}
+
+.si-landing-page .si-landing-course-slider__content h3 {
+  color: var(--spa-primary-dark, #031552);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.si-landing-page .si-landing-course-slider__content p {
+  color: var(--spa-text-muted, #5b5f64);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.si-landing-page .si-landing-course-slider__progress {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.si-landing-page .si-landing-course-slider__progress button {
+  background: rgba(58, 87, 184, 0.2);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 8px;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  width: 8px;
+}
+
+.si-landing-page .si-landing-course-slider__progress button.is-active {
+  background: var(--spa-primary, #3a57b8);
+  transform: scale(1.05);
+  width: 28px;
+}
+
 .si-landing-page .spa-course-hero-card.si-landing-topic-card {
   height: 100%;
 }
@@ -7988,5 +8122,21 @@ body.star-site .spa-gallery-lightbox__caption p {
 
   .si-landing-page .si-landing-table__topics {
     grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-course-slider__stage {
+    grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-course-slider__visual {
+    order: -1;
+  }
+
+  .si-landing-page .si-landing-course-slider__visual img {
+    height: 240px;
+  }
+
+  .si-landing-page .si-landing-course-slider__content {
+    padding: 24px;
   }
 }

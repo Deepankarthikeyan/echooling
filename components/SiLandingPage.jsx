@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiCourseTopicsSlider from "./SiCourseTopicsSlider";
 import { academy, contact, stats, testimonials } from "../lib/star-content";
 import {
   siBatches,
@@ -135,18 +136,7 @@ export default function SiLandingPage() {
               Complete preparation for every stage of TNUSRB Sub Inspector recruitment.
             </p>
           </div>
-          <div className="row g-4 pt---30">
-            {siCourseTopics.map((topic) => (
-              <div className="col-lg-4 col-md-6" key={topic.title}>
-                <article className="spa-course-hero-card si-landing-topic-card">
-                  <div className="spa-course-hero-card__body">
-                    <h3>{topic.title}</h3>
-                    <p>{topic.text}</p>
-                  </div>
-                </article>
-              </div>
-            ))}
-          </div>
+          <SiCourseTopicsSlider topics={siCourseTopics} />
         </div>
       </section>
 
