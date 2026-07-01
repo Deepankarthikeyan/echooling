@@ -203,30 +203,32 @@ export default function SiLandingPage() {
         </div>
       </section>
 
-      <section className="spa-home-about pt---100 pb---100">
+      <section className="pt---100 pb---100">
         <div className="container">
-          <div className="row g-4 align-items-start">
-            <div className="col-lg-5">
-              <span className="spa-section-eyebrow">TNUSRB SI Eligibility</span>
-              <h2 className="spa-section-title">Eligibility Criteria</h2>
-              <p className="spa-section-text" style={{ marginLeft: 0, maxWidth: "none" }}>
-                Know the age, education, and reservation norms before you start your SI preparation journey.
-              </p>
-            </div>
-            <div className="col-lg-7">
-              <div className="si-landing-table-wrap">
-                <table className="si-landing-table">
-                  <tbody>
-                    {siEligibilityRows.map((row) => (
-                      <tr key={row.label}>
-                        <th>{row.label}</th>
-                        <td>{row.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+          <div className="spa-section-head text-center">
+            <span className="spa-section-eyebrow">TNUSRB SI Eligibility</span>
+            <h2 className="spa-section-title">Eligibility Criteria</h2>
+            <p className="spa-section-text">
+              Know the age, education, and reservation norms before you start your SI preparation journey.
+            </p>
+          </div>
+          <div className="si-landing-table-wrap pt---30">
+            <table className="si-landing-table">
+              <thead>
+                <tr>
+                  <th scope="col">Criteria</th>
+                  <th scope="col">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {siEligibilityRows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row">{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -240,46 +242,64 @@ export default function SiLandingPage() {
               Daily coaching for every PET event with experienced physical trainers.
             </p>
           </div>
-          <div className="row g-4 pt---30">
-            {siPhysicalEvents.map((event) => (
-              <div className="col-lg-4 col-md-6" key={event.title}>
-                <article className="spa-course-hero-card">
-                  <div className="spa-course-hero-card__body">
-                    <span aria-hidden="true" className="material-symbols-outlined si-landing-icon-title">{event.icon}</span>
-                    <h3>{event.title}</h3>
-                    <p>{event.text}</p>
-                  </div>
-                </article>
-              </div>
-            ))}
+          <div className="si-landing-table-wrap pt---30">
+            <table className="si-landing-table">
+              <thead>
+                <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {siPhysicalEvents.map((event) => (
+                  <tr key={event.title}>
+                    <th scope="row">
+                      <span className="si-landing-table__event">
+                        <span aria-hidden="true" className="material-symbols-outlined">{event.icon}</span>
+                        {event.title}
+                      </span>
+                    </th>
+                    <td>{event.text}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <section className="pt---100 pb---100">
         <div className="container">
-          <div className="row g-4">
-            <div className="col-lg-5">
-              <span className="spa-section-eyebrow">Detailed Syllabus</span>
-              <h2 className="spa-section-title">Police SI Written Exam Syllabus</h2>
-              <p className="spa-section-text" style={{ marginLeft: 0, maxWidth: "none" }}>
-                Topic-wise coverage aligned with TNUSRB Sub Inspector written examination pattern.
-              </p>
-            </div>
-            <div className="col-lg-7">
-              <div className="spa-faq-expanded__list">
+          <div className="spa-section-head text-center">
+            <span className="spa-section-eyebrow">Detailed Syllabus</span>
+            <h2 className="spa-section-title">Police SI Written Exam Syllabus</h2>
+            <p className="spa-section-text">
+              Topic-wise coverage aligned with TNUSRB Sub Inspector written examination pattern.
+            </p>
+          </div>
+          <div className="si-landing-table-wrap pt---30">
+            <table className="si-landing-table si-landing-table--syllabus">
+              <thead>
+                <tr>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Topics Covered</th>
+                </tr>
+              </thead>
+              <tbody>
                 {siSyllabusSections.map((section) => (
-                  <article className="spa-faq-expanded__item" key={section.title}>
-                    <h3>{section.title}</h3>
-                    <ul className="si-landing-bullet-list">
-                      {section.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </article>
+                  <tr key={section.title}>
+                    <th scope="row">{section.title}</th>
+                    <td>
+                      <ul className="si-landing-table__topics">
+                        {section.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
                 ))}
-              </div>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
