@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiCourseTopicsSlider from "./SiCourseTopicsSlider";
+import SiTrainingShowcase from "./SiTrainingShowcase";
 import { academy, contact, stats, testimonials } from "../lib/star-content";
 import {
   siBatches,
@@ -12,13 +13,12 @@ import {
   siHeroHighlights,
   siInternalLinks,
   siLearningModes,
-  siMockTestPoints,
   siPhysicalEvents,
-  siPhysicalProgram,
   siSelectionProcessSteps,
   siStudyMaterials,
   siSyllabusSections,
   siTrainingFlow,
+  siTrainingSpotlights,
   siTrustPoints,
 } from "../lib/si-landing-content";
 
@@ -311,40 +311,16 @@ export default function SiLandingPage() {
         </div>
       </section>
 
-      <section className="pt---100 pb---100">
+      <section className="spa-hero-band spa-hero-band--why pt---100 pb---100">
         <div className="container">
-          <div className="row g-4">
-            <div className="col-lg-6">
-              <article className="spa-course-hero-card si-landing-panel-card">
-                <div className="spa-course-hero-card__body">
-                  <span className="spa-section-eyebrow">Mock Tests</span>
-                  <h3>Regular Mock Tests</h3>
-                  <p>Exam-like practice with analysis, ranking, and mentor feedback after every major test cycle.</p>
-                  <ul className="spa-main-hero__highlights si-landing-checklist">
-                    {siMockTestPoints.map((item) => (
-                      <li key={item}>
-                        <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            </div>
-            <div className="col-lg-6">
-              <article className="spa-course-hero-card si-landing-panel-card si-landing-panel-card--dark">
-                <div className="spa-course-hero-card__body">
-                  <span className="spa-section-eyebrow spa-section-eyebrow--light">Physical Training</span>
-                  <h3>Physical Training Program</h3>
-                  <div className="si-landing-tags">
-                    {siPhysicalProgram.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </div>
+          <div className="spa-section-head text-center">
+            <span className="spa-section-eyebrow">Practice &amp; Fitness</span>
+            <h2 className="spa-section-title">Mock Tests &amp; Physical Training</h2>
+            <p className="spa-section-text">
+              Exam-like mock practice and daily PET coaching — explored one highlight at a time.
+            </p>
           </div>
+          <SiTrainingShowcase items={siTrainingSpotlights} />
         </div>
       </section>
 
