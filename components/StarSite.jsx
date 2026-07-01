@@ -6,6 +6,7 @@ import {
   academy,
   contact,
   courses,
+  courseNavItems,
   faqs,
   features,
   facilitiesItems,
@@ -418,13 +419,11 @@ function Header() {
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                   >
-                    <li><SiteLink href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</SiteLink></li>
-                    <li><SiteLink href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</SiteLink></li>
-                    <li><SiteLink href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</SiteLink></li>
-                    <li><SiteLink href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</SiteLink></li>
-                    <li><SiteLink href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</SiteLink></li>
-                    <li><SiteLink href="/rpf" onClick={closeNavigation}>Railway Protection Force</SiteLink></li>
-                    <li><SiteLink href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</SiteLink></li>
+                    {courseNavItems.map((item) => (
+                      <li key={item.href}>
+                        <SiteLink href={item.href} onClick={closeNavigation}>{item.label}</SiteLink>
+                      </li>
+                    ))}
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
