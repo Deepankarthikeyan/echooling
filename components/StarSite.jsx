@@ -2,10 +2,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import SiLandingPage from "./SiLandingPage";
 import {
   academy,
   contact,
   courses,
+  courseNavItems,
   faqs,
   features,
   facilitiesItems,
@@ -27,13 +29,15 @@ import {
   youtubeVideos,
 } from "../lib/star-content";
 
+const ACTIVE_SITE_ROUTES = new Set(["/", "/police-sub-inspector-coaching"]);
+
 function SiteLink({ href = "/", onClick, children, className, ...rest }) {
   const target = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
-  const isHome = target === "/";
+  const isActiveRoute = ACTIVE_SITE_ROUTES.has(target);
 
-  if (isHome) {
+  if (isActiveRoute) {
     return (
-      <Link href="/" onClick={onClick} className={className} {...rest}>
+      <Link href={target} onClick={onClick} className={className} {...rest}>
         {children}
       </Link>
     );
@@ -165,13 +169,15 @@ const homeBlogCards = notificationItems.slice(0, 4).map((item, index) => ({
   href: item.href,
 }));
 
-function SiteHead({ title }) {
+function SiteHead({ title, description, keywords }) {
   const pageTitle = title ? `${title} | Star Police Academy` : academy.title;
+  const pageDescription = description || academy.description;
 
   return (
     <Head>
       <title>{pageTitle}</title>
-      <meta name="description" content={academy.description} />
+      <meta name="description" content={pageDescription} />
+      {keywords ? <meta name="keywords" content={keywords} /> : null}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="shortcut icon" type="image/x-icon" href={academy.logo} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -418,13 +424,11 @@ function Header() {
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                   >
-                    <li><SiteLink href="/tnusrb" onClick={closeNavigation}>Tamilnadu Police Constable TNUSRB</SiteLink></li>
-                    <li><SiteLink href="/sub-inspector" onClick={closeNavigation}>Tamilnadu Police Sub Inspector</SiteLink></li>
-                    <li><SiteLink href="/indian-army" onClick={closeNavigation}>Agnipath - Indian Army</SiteLink></li>
-                    <li><SiteLink href="/indian-navy" onClick={closeNavigation}>Agnipath - Indian Navy</SiteLink></li>
-                    <li><SiteLink href="/indian-air-force" onClick={closeNavigation}>Indian Air Force</SiteLink></li>
-                    <li><SiteLink href="/rpf" onClick={closeNavigation}>Railway Protection Force</SiteLink></li>
-                    <li><SiteLink href="/capf" onClick={closeNavigation}>CRPF,CISF,SSB,ITBF Course</SiteLink></li>
+                    {courseNavItems.map((item) => (
+                      <li key={item.label}>
+                        <SiteLink href={item.href} onClick={closeNavigation}>{item.label}</SiteLink>
+                      </li>
+                    ))}
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
@@ -938,7 +942,7 @@ function SpaMainHero() {
           </div>
           <div className="col-lg-5 spa-main-hero__col">
             <div className="spa-main-hero__card">
-              {/* <img src={academy.logo} alt="Star Police Academy" /> */}
+              <img src={academy.logo} alt="Star Police Academy" />
               <h3>{academy.tagline}</h3>
               <p>{academy.aboutIntro}</p>
               <div className="spa-main-hero__stats">
@@ -3127,6 +3131,8 @@ function PageContent({ page }) {
       return <YoutubePage />;
     case "toppers":
       return <ToppersPage />;
+    case "si-landing":
+      return <SiLandingPage />;
     case "home":
     default:
       return <HomePage />;
@@ -3135,6 +3141,10 @@ function PageContent({ page }) {
 
 export default function StarSite({ page }) {
   const title = useMemo(() => page?.title || academy.name, [page]);
+  const description = page?.metaDescription;
+  const keywords = page?.type === "si-landing"
+    ? "Police SI Coaching, Sub Inspector Coaching, TNUSRB SI Coaching, Police SI Training, SI Coaching in Tamil Nadu"
+    : undefined;
 
   useEffect(() => {
     document.body.className = "star-site";
@@ -3144,7 +3154,7 @@ export default function StarSite({ page }) {
 
   return (
     <>
-      <SiteHead title={title} />
+      <SiteHead title={title} description={description} keywords={keywords} />
       <Header />
       <main className="react-wrapper star-main">
         <PageContent page={page} />

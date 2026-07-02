@@ -6414,15 +6414,12 @@ body.star-site .exact-home-page .spa-section-text--light {
 body.star-site .exact-home-page .spa-main-hero__text {
   border-left: 3px solid var(--spa-accent-gold, #ffc300);
   color: rgba(255, 255, 255, 0.95);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
   margin: 0 0 18px;
   max-width: 560px;
   padding-left: 14px;
-  background-color: #031552;
-    padding: 15px;
-    border-radius: 15px;
 }
 
 .exact-home-page .spa-main-hero__highlights {
@@ -6498,14 +6495,14 @@ body.star-site .exact-home-page .spa-main-hero__text {
 
 .exact-home-page .spa-main-hero__card h3 {
   color: var(--spa-primary-dark, #031552);
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
   margin: 16px 0 10px;
 }
 
 .exact-home-page .spa-main-hero__card p {
   color: var(--spa-text-muted, #5b5f64);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -6519,13 +6516,13 @@ body.star-site .exact-home-page .spa-main-hero__text {
 .exact-home-page .spa-main-hero__stats strong {
   color: var(--spa-secondary, #cc0000);
   display: block;
-  font-size: 50px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .exact-home-page .spa-main-hero__stats span {
   color: var(--spa-text-muted, #5b5f64);
-  font-size: 20px;
+  font-size: 12px;
 }
 
 /* Section 1 — Why Choose */
@@ -7748,5 +7745,672 @@ body.star-site .spa-gallery-lightbox__caption p {
   .exact-home-page .spa-main-hero__actions a {
     justify-content: center;
     width: 100%;
+  }
+}
+
+/* SI Landing Page — uses exact-home-page typography and spa components */
+.si-landing-page .spa-main-hero__card--photo img {
+  border-radius: 12px;
+  display: block;
+  height: 200px;
+  margin: 0 auto 16px;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* About Course — image left, content right, auto-fade slider */
+.si-landing-page .si-landing-course-slider__stage {
+  align-items: center;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.si-landing-page .si-landing-course-slider__stage.is-transitioning .si-landing-course-slider__content,
+.si-landing-page .si-landing-course-slider__stage.is-transitioning .si-landing-course-slider__visual {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.si-landing-page .si-landing-course-slider__visual {
+  animation: siCourseSliderImageIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(3, 21, 82, 0.12);
+  overflow: hidden;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  width: 100%;
+}
+
+.si-landing-page .si-landing-course-slider__visual img {
+  display: block;
+  height: 360px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.si-landing-page .si-landing-course-slider__content {
+  animation: siCourseSliderContentIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(3, 21, 82, 0.06);
+  padding: 32px 36px;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+@keyframes siCourseSliderImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(-28px) scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes siCourseSliderContentIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.si-landing-page .si-landing-course-slider__meta {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.si-landing-page .si-landing-course-slider__index {
+  color: var(--spa-secondary, #cc0000);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.si-landing-page .si-landing-course-slider__icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-radius: 12px;
+  color: #ffffff;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.si-landing-page .si-landing-course-slider__icon .material-symbols-outlined {
+  font-size: 26px;
+}
+
+.si-landing-page .si-landing-course-slider__content h3 {
+  color: var(--spa-primary-dark, #031552);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.si-landing-page .si-landing-course-slider__content p {
+  color: var(--spa-text-muted, #5b5f64);
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.si-landing-page .si-landing-course-slider__progress {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.si-landing-page .si-landing-course-slider__progress button {
+  background: rgba(58, 87, 184, 0.2);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 8px;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  width: 8px;
+}
+
+.si-landing-page .si-landing-course-slider__progress button.is-active {
+  background: var(--spa-primary, #3a57b8);
+  transform: scale(1.05);
+  width: 28px;
+}
+
+/* Mock Tests & Physical Training — centered one-by-one spotlight */
+.si-landing-page .si-training-showcase__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.si-landing-page .si-training-showcase__filters button {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.16);
+  border-radius: 999px;
+  color: var(--spa-primary-dark, #031552);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 8px;
+  padding: 12px 20px;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.si-landing-page .si-training-showcase__filters button .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.si-landing-page .si-training-showcase__filters button.is-active {
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.si-landing-page .si-training-showcase__spotlight {
+  animation: siTrainingSpotlightIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-radius: 24px;
+  margin: 0 auto;
+  max-width: 760px;
+  min-height: 420px;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.si-landing-page .si-training-showcase__spotlight.is-transitioning {
+  opacity: 0;
+  transform: scale(0.98) translateY(12px);
+}
+
+.si-landing-page .si-training-showcase__spotlight--mock {
+  box-shadow: 0 20px 50px rgba(58, 87, 184, 0.18);
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical {
+  box-shadow: 0 20px 50px rgba(3, 21, 82, 0.22);
+}
+
+.si-landing-page .si-training-showcase__spotlight-bg {
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.si-landing-page .si-training-showcase__spotlight-bg img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.si-landing-page .si-training-showcase__spotlight--mock .si-training-showcase__spotlight-bg {
+  background: linear-gradient(145deg, #f4f7ff 0%, #e8eeff 45%, #dce6ff 100%);
+}
+
+.si-landing-page .si-training-showcase__spotlight-pattern {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(58, 87, 184, 0.16) 0, transparent 42%),
+    radial-gradient(circle at 80% 70%, rgba(204, 0, 0, 0.1) 0, transparent 36%),
+    linear-gradient(135deg, rgba(58, 87, 184, 0.08), rgba(3, 21, 82, 0.04));
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__spotlight-bg::after {
+  background: linear-gradient(180deg, rgba(3, 21, 82, 0.2) 0%, rgba(3, 21, 82, 0.88) 100%);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.si-landing-page .si-training-showcase__spotlight-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+  padding: 48px 36px 40px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.si-landing-page .si-training-showcase__spotlight-top {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.si-landing-page .si-training-showcase__badge {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  text-transform: uppercase;
+}
+
+.si-landing-page .si-training-showcase__spotlight--mock .si-training-showcase__badge {
+  background: rgba(58, 87, 184, 0.1);
+  border-color: rgba(58, 87, 184, 0.16);
+  color: var(--spa-primary, #3a57b8);
+}
+
+.si-landing-page .si-training-showcase__index {
+  color: var(--spa-secondary, #cc0000);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.si-landing-page .si-training-showcase__index em {
+  color: rgba(91, 95, 100, 0.55);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__index {
+  color: #ffffff;
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__index em {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.si-landing-page .si-training-showcase__icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-radius: 20px;
+  color: #ffffff;
+  display: inline-flex;
+  height: 78px;
+  justify-content: center;
+  margin-bottom: 22px;
+  width: 78px;
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__icon {
+  background: linear-gradient(135deg, var(--spa-secondary, #cc0000), #a30000);
+}
+
+.si-landing-page .si-training-showcase__icon .material-symbols-outlined {
+  font-size: 38px;
+}
+
+.si-landing-page .si-training-showcase__spotlight-content h3 {
+  color: var(--spa-primary-dark, #031552);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__spotlight-content h3,
+.si-landing-page .si-training-showcase__spotlight--physical .si-training-showcase__spotlight-content p {
+  color: #ffffff;
+}
+
+.si-landing-page .si-training-showcase__spotlight-content p {
+  color: var(--spa-text-muted, #5b5f64);
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 560px;
+}
+
+@keyframes siTrainingSpotlightIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.si-landing-page .si-training-showcase__rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 28px;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.si-landing-page .si-training-showcase__chip {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 999px;
+  color: var(--spa-primary-dark, #031552);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 8px;
+  padding: 10px 14px;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.si-landing-page .si-training-showcase__chip .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.si-landing-page .si-training-showcase__chip--physical.is-active {
+  background: linear-gradient(135deg, var(--spa-primary-dark, #031552), #0a2a6e);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(3, 21, 82, 0.18);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.si-landing-page .si-training-showcase__chip--mock.is-active {
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(58, 87, 184, 0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.si-landing-page .spa-course-hero-card.si-landing-topic-card {
+  height: 100%;
+}
+
+.si-landing-page .spa-hero-band--courses .spa-feature-grid__item {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.si-landing-page .spa-hero-band--courses .spa-feature-grid__item strong {
+  color: #ffffff;
+}
+
+.si-landing-page .spa-hero-band--courses .spa-feature-grid__item .material-symbols-outlined {
+  background: linear-gradient(135deg, var(--spa-secondary, #cc0000), #a30000);
+}
+
+.si-landing-page .si-landing-feature-band {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.si-landing-page .si-landing-table-wrap {
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(3, 21, 82, 0.08);
+  overflow-x: auto;
+}
+
+.si-landing-page .si-landing-table {
+  border-collapse: collapse;
+  margin: 0;
+  min-width: 640px;
+  width: 100%;
+}
+
+.si-landing-page .si-landing-table thead th {
+  background: linear-gradient(135deg, var(--spa-primary-dark, #031552), #0a2a6e);
+  color: #ffffff;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 16px 22px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.si-landing-page .si-landing-table th,
+.si-landing-page .si-landing-table td {
+  border-bottom: 1px solid #edf1f7;
+  padding: 18px 22px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.si-landing-page .si-landing-table tbody th[scope="row"] {
+  background: #f8faff;
+  color: var(--spa-primary-dark, #031552);
+  font-size: 15px;
+  font-weight: 700;
+  width: 28%;
+}
+
+.si-landing-page .si-landing-table td {
+  color: var(--spa-text-muted, #5b5f64);
+  line-height: 1.65;
+}
+
+.si-landing-page .si-landing-table tbody tr:last-child th,
+.si-landing-page .si-landing-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.si-landing-page .si-landing-table tbody tr:hover td,
+.si-landing-page .si-landing-table tbody tr:hover th[scope="row"] {
+  background: #fff9f9;
+}
+
+.si-landing-page .si-landing-table__event {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.si-landing-page .si-landing-table__event .material-symbols-outlined {
+  background: linear-gradient(135deg, var(--spa-primary, #3a57b8), var(--spa-primary-dark, #031552));
+  border-radius: 8px;
+  color: #ffffff;
+  flex-shrink: 0;
+  font-size: 20px;
+  padding: 8px;
+}
+
+.si-landing-page .si-landing-table__topics {
+  color: var(--spa-text-muted, #5b5f64);
+  display: grid;
+  gap: 6px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.si-landing-page .si-landing-table__topics li {
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.si-landing-page .si-landing-table__topics li::before {
+  color: var(--spa-secondary, #cc0000);
+  content: "•";
+  left: 0;
+  position: absolute;
+}
+
+.si-landing-page .si-landing-table--syllabus tbody th[scope="row"] {
+  width: 24%;
+}
+
+.si-landing-page .si-landing-flow-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.si-landing-page .si-landing-panel-card {
+  height: 100%;
+}
+
+.si-landing-page .si-landing-panel-card--dark {
+  background: linear-gradient(160deg, #031552 0%, #0a2a6e 100%);
+}
+
+.si-landing-page .si-landing-panel-card--dark .spa-course-hero-card__body h3,
+.si-landing-page .si-landing-panel-card--dark .spa-course-hero-card__body p {
+  color: #ffffff;
+}
+
+.si-landing-page .si-landing-checklist {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr;
+  margin-top: 18px;
+}
+
+.si-landing-page .si-landing-checklist--light li {
+  color: var(--spa-text-muted, #5b5f64);
+}
+
+.si-landing-page .si-landing-checklist--light .material-symbols-outlined {
+  color: var(--spa-secondary, #cc0000);
+}
+
+.si-landing-page .si-landing-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.si-landing-page .si-landing-tags span {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+}
+
+.si-landing-page .si-landing-testimonials {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.si-landing-page .si-landing-batch-mode {
+  color: var(--spa-secondary, #cc0000);
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.si-landing-page .si-landing-final-cta__panel {
+  border-radius: 20px;
+  margin-bottom: 0;
+}
+
+.si-landing-page .si-landing-final-cta__panel p {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+  margin: 12px 0 0;
+}
+
+.si-landing-page .si-landing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+  padding-top: 20px;
+}
+
+.si-landing-page .si-landing-links a {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .si-landing-page .spa-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .si-landing-page .spa-feature-grid,
+  .si-landing-page .si-landing-feature-band,
+  .si-landing-page .si-landing-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .spa-main-hero__highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-table__topics {
+    grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-course-slider__stage {
+    grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-course-slider__visual {
+    order: -1;
+  }
+
+  .si-landing-page .si-landing-course-slider__visual img {
+    height: 240px;
+  }
+
+  .si-landing-page .si-landing-course-slider__content {
+    padding: 24px;
+  }
+
+  .si-landing-page .si-training-showcase__spotlight-content {
+    min-height: 360px;
+    padding: 32px 22px 28px;
+  }
+
+  .si-landing-page .si-training-showcase__spotlight {
+    min-height: 360px;
+  }
+
+  .si-landing-page .si-training-showcase__rail {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+
+  .si-landing-page .si-training-showcase__chip {
+    flex: 0 0 auto;
   }
 }
