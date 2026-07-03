@@ -28,16 +28,15 @@ import {
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
-
-const ACTIVE_SITE_ROUTES = new Set(["/", "/police-sub-inspector-coaching"]);
+import { resolveStarRoute } from "../lib/star-routes";
 
 function SiteLink({ href = "/", onClick, children, className, ...rest }) {
-  const target = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
-  const isActiveRoute = ACTIVE_SITE_ROUTES.has(target);
+  const pathname = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
+  const isNavigable = resolveStarRoute(pathname) !== null;
 
-  if (isActiveRoute) {
+  if (isNavigable) {
     return (
-      <Link href={target} onClick={onClick} className={className} {...rest}>
+      <Link href={href} onClick={onClick} className={className} {...rest}>
         {children}
       </Link>
     );
