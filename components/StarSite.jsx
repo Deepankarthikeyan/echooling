@@ -65,10 +65,34 @@ const aboutLearningIcons = [
 ];
 
 const aboutCounterItems = [
-  { icon: "/assets/images/counter/1.png", value: stats[0].value, suffix: "+", label: stats[0].label },
-  { icon: "/assets/images/counter/2.png", value: stats[1].value.replace("+", ""), suffix: "+", label: stats[1].label },
-  { icon: "/assets/images/counter/3.png", value: stats[2].value.replace("+", ""), suffix: "+", label: stats[2].label },
-  { icon: "/assets/images/counter/4.png", value: stats[3].value.replace("+", ""), suffix: "+", label: stats[3].label },
+  {
+    icon: "/assets/images/counter/1.png",
+    value: stats[0].value,
+    suffix: "+",
+    label: stats[0].label,
+    detail: "Over a decade of trusted TNUSRB, SI and police exam coaching in Vellore.",
+  },
+  {
+    icon: "/assets/images/counter/2.png",
+    value: stats[1].value.replace("+", ""),
+    suffix: "+",
+    label: stats[1].label,
+    detail: "Aspirants trained with classroom guidance, tests and physical preparation.",
+  },
+  {
+    icon: "/assets/images/counter/3.png",
+    value: stats[2].value.replace("+", ""),
+    suffix: "+",
+    label: stats[2].label,
+    detail: "Students supported into police, SI and defence service selections.",
+  },
+  {
+    icon: "/assets/images/counter/4.png",
+    value: stats[3].value.replace("+", ""),
+    suffix: "+",
+    label: stats[3].label,
+    detail: "Subject experts and trainers from across Tamil Nadu on our faculty.",
+  },
 ];
 
 const aboutLearningCards = [
@@ -2419,6 +2443,58 @@ function EchoolingCta() {
   );
 }
 
+function StatsFlipCard({ icon, value, suffix, label, detail }) {
+  const [flipped, setFlipped] = useState(false);
+
+  const toggleFlip = () => {
+    setFlipped((current) => !current);
+  };
+
+  return (
+    <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+      <button
+        type="button"
+        className={`spa-flip-card ${flipped ? "is-flipped" : ""}`}
+        aria-pressed={flipped}
+        aria-label={`${label}: ${value}${suffix}. Tap to flip for details.`}
+        onClick={toggleFlip}
+        onBlur={() => setFlipped(false)}
+      >
+        <div className="spa-flip-card__inner">
+          <div className="spa-flip-card__face spa-flip-card__front">
+            <img src={icon} alt="" />
+            <div className="spa-flip-card__value">
+              <strong>{value}</strong>
+              <em>{suffix}</em>
+            </div>
+            <span>{label}</span>
+          </div>
+          <div className="spa-flip-card__face spa-flip-card__back">
+            <div className="spa-flip-card__value">
+              <strong>{value}</strong>
+              <em>{suffix}</em>
+            </div>
+            <span>{label}</span>
+            <p>{detail}</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  );
+}
+
+function AboutStatsFlipSection() {
+  return (
+    <div className="spa-about-flip-stats">
+      <div className="row g-4">
+        {aboutCounterItems.map((item) => (
+          <StatsFlipCard key={item.label} {...item} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return <ExactHomePage />;
 }
@@ -2469,16 +2545,6 @@ function AboutIntroPageSection() {
                 comprehensive training for Police Exams coaching in Vellore, dedicated for TNUSRB PC, Army, Navy,
                 Air Force, SI and PC exams.
               </p>
-              <div className="spa-about-intro__highlights">
-                <div className="spa-about-intro__highlight">
-                  <span aria-hidden="true" className="material-symbols-outlined">emoji_events</span>
-                  <strong>{stats[3].value} {stats[3].label}</strong>
-                </div>
-                <div className="spa-about-intro__highlight">
-                  <span aria-hidden="true" className="material-symbols-outlined">groups</span>
-                  <strong>{stats[2].value} {stats[2].label}</strong>
-                </div>
-              </div>
               <div className="spa-about-intro__actions">
                 <SiteLink href="/courses" className="spa-about-intro__btn">
                   Read More <ArrowIcon />
@@ -2494,6 +2560,7 @@ function AboutIntroPageSection() {
             </div>
           </div>
         </div>
+        <AboutStatsFlipSection />
       </div>
     </section>
   );
@@ -2667,26 +2734,6 @@ function AboutFeedbackSection() {
           >
             ›
           </button>
-        </div>
-      </div>
-      <div className="count__area2 pb---100">
-        <div className="container">
-          <ul className="row">
-            {aboutCounterItems.map((item) => (
-              <li className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6" key={item.label}>
-                <div className="count__content">
-                  <div className="icon">
-                    <img src={item.icon} alt={item.label} />
-                  </div>
-                  <div className="text">
-                    <span className="count__content-title counter">{item.value}</span>
-                    <em>{item.suffix}</em>
-                    <p className="count__content">{item.label}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>

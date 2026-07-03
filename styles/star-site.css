@@ -5961,39 +5961,121 @@ body.star-site .react-footer-two .copyright > .container {
   margin-bottom: 24px;
 }
 
-.exact-about-page .spa-about-intro__highlights {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 28px;
+.exact-about-page .spa-about-flip-stats {
+  margin-top: 56px;
 }
 
-.exact-about-page .spa-about-intro__highlight {
+.exact-about-page .spa-flip-card {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1100px;
+  text-align: left;
+}
+
+.exact-about-page .spa-flip-card__inner {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.exact-about-page .spa-flip-card:hover .spa-flip-card__inner,
+.exact-about-page .spa-flip-card:focus-visible .spa-flip-card__inner,
+.exact-about-page .spa-flip-card.is-flipped .spa-flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.exact-about-page .spa-flip-card__face {
+  position: absolute;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: #f8fafc;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 22px;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.exact-about-page .spa-flip-card__front {
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
   border: 1px solid #e2e8f0;
 }
 
-.exact-about-page .spa-about-intro__highlight .material-symbols-outlined {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(252, 74, 26, 0.12);
-  color: #fc4a1a;
-  font-size: 22px;
+.exact-about-page .spa-flip-card__back {
+  transform: rotateY(180deg);
+  background: linear-gradient(145deg, #0b1f3f 0%, #132f5d 100%);
+  color: #fff;
+  text-align: center;
 }
 
-.exact-about-page .spa-about-intro__highlight strong {
+.exact-about-page .spa-flip-card__front img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.exact-about-page .spa-flip-card__value {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+}
+
+.exact-about-page .spa-flip-card__value strong {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 800;
+  color: #0b1f3f;
+}
+
+.exact-about-page .spa-flip-card__value em {
+  margin-bottom: 6px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  color: #fc4a1a;
+}
+
+.exact-about-page .spa-flip-card__front > span,
+.exact-about-page .spa-flip-card__back > span {
   font-size: 14px;
-  line-height: 1.4;
-  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #475569;
+}
+
+.exact-about-page .spa-flip-card__back .spa-flip-card__value strong,
+.exact-about-page .spa-flip-card__back .spa-flip-card__value em {
+  color: #fff;
+}
+
+.exact-about-page .spa-flip-card__back > span {
+  color: #f7b733;
+}
+
+.exact-about-page .spa-flip-card__back p {
+  margin: 0;
+  max-width: 220px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.exact-about-page .spa-flip-card:focus-visible {
+  outline: 3px solid rgba(252, 74, 26, 0.45);
+  outline-offset: 4px;
+  border-radius: 24px;
 }
 
 .exact-about-page .spa-about-intro__actions {
@@ -6075,8 +6157,9 @@ body.star-site .react-footer-two .copyright > .container {
     font-size: 34px;
   }
 
-  .exact-about-page .spa-about-intro__highlights {
-    grid-template-columns: 1fr;
+  .exact-about-page .spa-flip-card,
+  .exact-about-page .spa-flip-card__inner {
+    min-height: 200px;
   }
 
   .exact-about-page .spa-about-intro__badge {
