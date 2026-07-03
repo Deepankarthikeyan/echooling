@@ -2644,17 +2644,12 @@ function AboutInstructorsSection() {
 }
 
 function AboutFeedbackSection() {
-  const [startIndex, setStartIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth <= 991) {
-        setVisibleCount(1);
-        return;
-      }
-
-      setVisibleCount(Math.min(3, testimonials.length));
+      setVisibleCount(window.innerWidth <= 767 ? 1 : 2);
     };
 
     updateVisibleCount();
@@ -2662,81 +2657,98 @@ function AboutFeedbackSection() {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
-    const item = testimonials[(startIndex + index) % testimonials.length];
-    return item;
-  });
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [visibleCount]);
+
+  const totalSlides = Math.ceil(testimonials.length / visibleCount);
+  const visibleItems = testimonials.slice(
+    slideIndex * visibleCount,
+    slideIndex * visibleCount + visibleCount
+  );
 
   const showPrevious = () => {
-    setStartIndex((current) => (current + testimonials.length - 1) % testimonials.length);
+    setSlideIndex((current) => (current - 1 + totalSlides) % totalSlides);
   };
 
   const showNext = () => {
-    setStartIndex((current) => (current + 1) % testimonials.length);
+    setSlideIndex((current) => (current + 1) % totalSlides);
   };
 
   return (
-    <div className="student_satisfaction-section pt---110 pb---120">
+    <section className="spa-about-feedback pt---110 pb---120">
+      <div className="spa-about-feedback__glow" aria-hidden="true" />
       <div className="container">
-        <div className="react__title__section-all pb---30">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <h6>Student Satisfaction</h6>
-              <h2 className="react__tittle">
-                Student Community <br />Feedback
-              </h2>
-            </div>
-          </div>
+        <div className="spa-about-feedback__header text-center">
+          <span className="spa-about-feedback__eyebrow">Student Satisfaction</span>
+          <h2 className="spa-about-feedback__title">
+            Student Community <br />Feedback
+          </h2>
+          <p className="spa-about-feedback__subtitle">
+            Real stories from aspirants who trained with Star Police Academy.
+          </p>
         </div>
-        <div className="feedreact-slider exact-about-feedback-slider">
+
+        <div className="spa-about-feedback__slider">
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-prev"
-            aria-label="Previous testimonial"
+            className="spa-about-feedback__arrow spa-about-feedback__arrow--prev"
+            aria-label="Previous testimonials"
             onClick={showPrevious}
           >
             ‹
           </button>
-          <div className="exact-about-feedback-track">
-            {visibleItems.map((item, index) => (
-              <div className="event__card" key={`${item.name}-${startIndex}-${index}`}>
-                <div className="event__card--content">
-                  <div className="event__card--content-area">
-                    <div className="testimonial__ratings">
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star_alt" />
-                      <span> (14 Reviews) </span>
-                    </div>
-                    <div className="parag">{item.text}</div>
-                  </div>
-                  <img className="poly" src="/assets/images/testimonial/poly.png" alt="" />
+
+          <div className="spa-about-feedback__track">
+            {visibleItems.map((item) => (
+              <article className="spa-about-feedback__card" key={item.name}>
+                <div className="spa-about-feedback__quote" aria-hidden="true">“</div>
+                <div className="spa-about-feedback__rating">
+                  <span className="spa-about-feedback__stars" aria-hidden="true">
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star_alt" />
+                  </span>
+                  <span className="spa-about-feedback__reviews">14 Reviews</span>
                 </div>
-                <div className="author-sec">
-                  <div className="icon">
-                    <TestimonialAvatar name={item.name} size="sm" />
-                  </div>
-                  <div className="text">
-                    <h4>{item.name}</h4>
-                    <p>{item.role}</p>
+                <p className="spa-about-feedback__text">{item.text}</p>
+                <div className="spa-about-feedback__author">
+                  <TestimonialAvatar name={item.name} size="sm" />
+                  <div>
+                    <strong>{item.name}</strong>
+                    <span>{item.role}</span>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
+
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-next"
-            aria-label="Next testimonial"
+            className="spa-about-feedback__arrow spa-about-feedback__arrow--next"
+            aria-label="Next testimonials"
             onClick={showNext}
           >
             ›
           </button>
         </div>
+
+        <div className="spa-about-feedback__dots" role="tablist" aria-label="Testimonial slides">
+          {Array.from({ length: totalSlides }, (_, index) => (
+            <button
+              key={`feedback-slide-${index}`}
+              type="button"
+              className={`spa-about-feedback__dot ${slideIndex === index ? "is-active" : ""}`}
+              aria-label={`Go to testimonial slide ${index + 1}`}
+              aria-selected={slideIndex === index}
+              onClick={() => setSlideIndex(index)}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
