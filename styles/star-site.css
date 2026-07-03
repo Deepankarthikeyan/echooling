@@ -5751,6 +5751,350 @@ body.star-site .react-footer-two .copyright > .container {
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
 }
 
+.exact-about-page .spa-about-intro {
+  position: relative;
+  overflow: hidden;
+}
+
+.exact-about-page .spa-about-intro__container {
+  position: relative;
+  z-index: 1;
+}
+
+.exact-about-page .spa-about-intro__visual {
+  position: relative;
+  min-height: 520px;
+}
+
+.exact-about-page .spa-about-intro__main-photo {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.18);
+}
+
+.exact-about-page .spa-about-intro__main-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 20, 45, 0.05) 35%, rgba(8, 20, 45, 0.55) 100%);
+  pointer-events: none;
+}
+
+.exact-about-page .spa-about-intro__main-photo img {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.exact-about-page .spa-about-intro__experience {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f7b733, #fc4a1a);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 16px 30px rgba(252, 74, 26, 0.35);
+}
+
+.exact-about-page .spa-about-intro__experience strong {
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.exact-about-page .spa-about-intro__experience span {
+  margin-top: 6px;
+  max-width: 78px;
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.exact-about-page .spa-about-intro__founder-card {
+  position: absolute;
+  right: 18px;
+  bottom: 28px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px 12px 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.exact-about-page .spa-about-intro__founder-card img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(252, 74, 26, 0.35);
+}
+
+.exact-about-page .spa-about-intro__founder-card strong,
+.exact-about-page .spa-about-intro__founder-card span {
+  display: block;
+}
+
+.exact-about-page .spa-about-intro__founder-card strong {
+  font-size: 15px;
+  line-height: 1.3;
+  color: #0f172a;
+}
+
+.exact-about-page .spa-about-intro__founder-card span {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.exact-about-page .spa-about-intro__badge {
+  position: absolute;
+  top: 24px;
+  right: -10px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: #0b1f3f;
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(11, 31, 63, 0.28);
+}
+
+.exact-about-page .spa-about-intro__badge img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  padding: 4px;
+}
+
+.exact-about-page .spa-about-intro__badge strong,
+.exact-about-page .spa-about-intro__badge span {
+  display: block;
+}
+
+.exact-about-page .spa-about-intro__badge strong {
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
+.exact-about-page .spa-about-intro__badge span {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.exact-about-page .spa-about-intro__accent {
+  position: absolute;
+  top: 42px;
+  left: -28px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252, 74, 26, 0.18) 0%, rgba(252, 74, 26, 0) 72%);
+  pointer-events: none;
+}
+
+.exact-about-page .spa-about-intro__content {
+  padding-left: 12px;
+}
+
+.exact-about-page .spa-about-intro__eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fc4a1a;
+}
+
+.exact-about-page .spa-about-intro__title {
+  margin: 0 0 18px;
+  font-size: 46px;
+  line-height: 1.12;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.exact-about-page .spa-about-intro__title em {
+  font-style: normal;
+  color: #0b1f3f;
+}
+
+.exact-about-page .spa-about-intro__lead,
+.exact-about-page .spa-about-intro__text,
+.exact-about-page .spa-about-intro__guide {
+  color: #475569;
+  line-height: 1.8;
+}
+
+.exact-about-page .spa-about-intro__lead {
+  margin-bottom: 16px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.exact-about-page .spa-about-intro__text {
+  margin-bottom: 24px;
+}
+
+.exact-about-page .spa-about-intro__highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.exact-about-page .spa-about-intro__highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.exact-about-page .spa-about-intro__highlight .material-symbols-outlined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(252, 74, 26, 0.12);
+  color: #fc4a1a;
+  font-size: 22px;
+}
+
+.exact-about-page .spa-about-intro__highlight strong {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #0f172a;
+}
+
+.exact-about-page .spa-about-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 24px;
+  margin-bottom: 18px;
+}
+
+.exact-about-page .spa-about-intro__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fc4a1a, #f7b733);
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 14px 28px rgba(252, 74, 26, 0.28);
+}
+
+.exact-about-page .spa-about-intro__btn:hover {
+  transform: translateY(-1px);
+}
+
+.exact-about-page .spa-about-intro__support em,
+.exact-about-page .spa-about-intro__support a {
+  display: block;
+}
+
+.exact-about-page .spa-about-intro__support em {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-style: normal;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.exact-about-page .spa-about-intro__support a {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0b1f3f;
+}
+
+.exact-about-page .spa-about-intro__guide {
+  margin: 0;
+}
+
+.exact-about-page .spa-about-intro__guide a {
+  font-weight: 700;
+  color: #fc4a1a;
+}
+
+@media (max-width: 991px) {
+  .exact-about-page .spa-about-intro__visual {
+    min-height: auto;
+    margin-bottom: 28px;
+  }
+
+  .exact-about-page .spa-about-intro__content {
+    padding-left: 0;
+  }
+
+  .exact-about-page .spa-about-intro__badge {
+    right: 12px;
+  }
+
+  .exact-about-page .spa-about-intro__founder-card {
+    right: 12px;
+    left: 12px;
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .exact-about-page .spa-about-intro__title {
+    font-size: 34px;
+  }
+
+  .exact-about-page .spa-about-intro__highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .exact-about-page .spa-about-intro__badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: -34px 18px 0;
+  }
+
+  .exact-about-page .spa-about-intro__founder-card {
+    position: relative;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    margin: 16px 18px 0;
+  }
+}
+
 /* Home + About: every section container gets the same inset padding */
 body.star-site .exact-home-page > * > .container,
 body.star-site .exact-about-page > * > .container,
@@ -5781,6 +6125,7 @@ body.star-site .exact-home-page .react_populars_topics .item__inner {
 
 /* About page — same 1200px column, reduced side space on all sections */
 body.star-site .exact-about-page .react-breadcrumbs .breadcrumbs-inner .container,
+body.star-site .exact-about-page .spa-about-intro > .container,
 body.star-site .exact-about-page .about__area_one > .container,
 body.star-site .exact-about-page .react_populars_topics_about > .container,
 body.star-site .exact-about-page .react_populars_topics_about .exact-coaching-title-wrap,

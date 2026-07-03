@@ -2425,45 +2425,77 @@ function HomePage() {
 
 function AboutIntroPageSection() {
   return (
-    <div className="about__area about__area_one p-relative pt---100 pb---120">
-      <div className="container">
-        <div className="row">
+    <section className="spa-about-intro pt---100 pb---120">
+      <div className="container spa-about-intro__container">
+        <div className="row align-items-center g-4">
           <div className="col-lg-6">
-            <div className="about__image">
-              <img src="/assets/images/about/ab.png" alt="Star Police Academy" />
-              <img className="react__shape__ab" src="/assets/images/about/badge.png" alt="Best Academy badge" />
+            <div className="spa-about-intro__visual">
+              <div className="spa-about-intro__main-photo">
+                <img
+                  src="/assets/images/about/home/classroom.jpg"
+                  alt="Star Police Academy classroom coaching session"
+                />
+                <div className="spa-about-intro__experience">
+                  <strong>{stats[0].value}+</strong>
+                  <span>{stats[0].label}</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__founder-card">
+                <img src="/assets/images/about/home/founder.jpg" alt={academy.founder} />
+                <div>
+                  <strong>{academy.founder}</strong>
+                  <span>{academy.founderRole}</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__badge">
+                <img src={academy.logo} alt="Star Police Academy logo" />
+                <div>
+                  <strong>STAR POLICE ACADEMY</strong>
+                  <span>NO. 1 IN TAMIL NADU</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__accent" aria-hidden="true" />
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about__content">
-              <h2 className="about__title">
+            <div className="spa-about-intro__content">
+              <h6 className="spa-about-intro__eyebrow">WELCOME</h6>
+              <h2 className="spa-about-intro__title">
                 Welcome to <br /> <em>Star Police Academy</em>
               </h2>
-              <p className="about__paragraph">{academy.aboutIntro}</p>
-              <p className="about__paragraph2">
-                Have questions? <SiteLink href="/contact">Get Free Guide</SiteLink>
-              </p>
-              <p>
+              <p className="spa-about-intro__lead">{academy.aboutIntro}</p>
+              <p className="spa-about-intro__text">
                 Star Police Academy is an organisation with state of the art competence to provide relevant and
                 comprehensive training for Police Exams coaching in Vellore, dedicated for TNUSRB PC, Army, Navy,
                 Air Force, SI and PC exams.
               </p>
-              <ul>
-                <li>
-                  <SiteLink href="/courses" className="more-about">
-                    Read More <ArrowIcon />
-                  </SiteLink>
-                </li>
-                <li className="last-li">
+              <div className="spa-about-intro__highlights">
+                <div className="spa-about-intro__highlight">
+                  <span aria-hidden="true" className="material-symbols-outlined">emoji_events</span>
+                  <strong>{stats[3].value} {stats[3].label}</strong>
+                </div>
+                <div className="spa-about-intro__highlight">
+                  <span aria-hidden="true" className="material-symbols-outlined">groups</span>
+                  <strong>{stats[2].value} {stats[2].label}</strong>
+                </div>
+              </div>
+              <div className="spa-about-intro__actions">
+                <SiteLink href="/courses" className="spa-about-intro__btn">
+                  Read More <ArrowIcon />
+                </SiteLink>
+                <div className="spa-about-intro__support">
                   <em>Get Support</em>
                   <a href={`mailto:${contact.email}`}>{contact.email}</a>
-                </li>
-              </ul>
+                </div>
+              </div>
+              <p className="spa-about-intro__guide">
+                Have questions? <SiteLink href="/contact">Get Free Guide</SiteLink>
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
