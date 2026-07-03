@@ -28,16 +28,15 @@ import {
   winnerCarouselItems,
   youtubeVideos,
 } from "../lib/star-content";
-
-const ACTIVE_SITE_ROUTES = new Set(["/", "/police-sub-inspector-coaching"]);
+import { resolveStarRoute } from "../lib/star-routes";
 
 function SiteLink({ href = "/", onClick, children, className, ...rest }) {
-  const target = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
-  const isActiveRoute = ACTIVE_SITE_ROUTES.has(target);
+  const pathname = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
+  const isNavigable = resolveStarRoute(pathname) !== null;
 
-  if (isActiveRoute) {
+  if (isNavigable) {
     return (
-      <Link href={target} onClick={onClick} className={className} {...rest}>
+      <Link href={href} onClick={onClick} className={className} {...rest}>
         {children}
       </Link>
     );
@@ -66,10 +65,34 @@ const aboutLearningIcons = [
 ];
 
 const aboutCounterItems = [
-  { icon: "/assets/images/counter/1.png", value: stats[0].value, suffix: "+", label: stats[0].label },
-  { icon: "/assets/images/counter/2.png", value: stats[1].value.replace("+", ""), suffix: "+", label: stats[1].label },
-  { icon: "/assets/images/counter/3.png", value: stats[2].value.replace("+", ""), suffix: "+", label: stats[2].label },
-  { icon: "/assets/images/counter/4.png", value: stats[3].value.replace("+", ""), suffix: "+", label: stats[3].label },
+  {
+    icon: "/assets/images/counter/1.png",
+    value: stats[0].value,
+    suffix: "+",
+    label: stats[0].label,
+    detail: "Over a decade of trusted TNUSRB, SI and police exam coaching in Vellore.",
+  },
+  {
+    icon: "/assets/images/counter/2.png",
+    value: stats[1].value.replace("+", ""),
+    suffix: "+",
+    label: stats[1].label,
+    detail: "Aspirants trained with classroom guidance, tests and physical preparation.",
+  },
+  {
+    icon: "/assets/images/counter/3.png",
+    value: stats[2].value.replace("+", ""),
+    suffix: "+",
+    label: stats[2].label,
+    detail: "Students supported into police, SI and defence service selections.",
+  },
+  {
+    icon: "/assets/images/counter/4.png",
+    value: stats[3].value.replace("+", ""),
+    suffix: "+",
+    label: stats[3].label,
+    detail: "Subject experts and trainers from across Tamil Nadu on our faculty.",
+  },
 ];
 
 const aboutLearningCards = [
@@ -1006,7 +1029,7 @@ function SpaCoursesHeroSection() {
           <span className="spa-section-eyebrow spa-section-eyebrow--light">Star Police Academy</span>
           <h2 className="spa-section-title spa-section-title--light">Our Police Coaching Courses</h2>
           <p className="spa-section-text spa-section-text--light">
-            Complete TNUSRB, SI, Constable, Defence and Central Force coaching under one roof.
+            Complete TNUSRB, SI, Police Constable, SSC - CRPF, CISF, BSF, SSB, ITBF, RPF, Defence, Navy, and Air Force coaching under one roof.
           </p>
         </div>
         <div className="row g-4 pt---30">
@@ -2420,51 +2443,126 @@ function EchoolingCta() {
   );
 }
 
+function StatsFlipCard({ icon, value, suffix, label, detail }) {
+  const [flipped, setFlipped] = useState(false);
+
+  const toggleFlip = () => {
+    setFlipped((current) => !current);
+  };
+
+  return (
+    <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+      <button
+        type="button"
+        className={`spa-flip-card ${flipped ? "is-flipped" : ""}`}
+        aria-pressed={flipped}
+        aria-label={`${label}: ${value}${suffix}. Tap to flip for details.`}
+        onClick={toggleFlip}
+        onBlur={() => setFlipped(false)}
+      >
+        <div className="spa-flip-card__inner">
+          <div className="spa-flip-card__face spa-flip-card__front">
+            <img src={icon} alt="" />
+            <div className="spa-flip-card__value">
+              <strong>{value}</strong>
+              <em>{suffix}</em>
+            </div>
+            <span>{label}</span>
+          </div>
+          <div className="spa-flip-card__face spa-flip-card__back">
+            <div className="spa-flip-card__value">
+              <strong>{value}</strong>
+              <em>{suffix}</em>
+            </div>
+            <span>{label}</span>
+            <p>{detail}</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  );
+}
+
+function AboutStatsFlipSection() {
+  return (
+    <div className="spa-about-flip-stats">
+      <div className="row g-4">
+        {aboutCounterItems.map((item) => (
+          <StatsFlipCard key={item.label} {...item} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return <ExactHomePage />;
 }
 
 function AboutIntroPageSection() {
   return (
-    <div className="about__area about__area_one p-relative pt---100 pb---120">
-      <div className="container">
-        <div className="row">
+    <section className="spa-about-intro pt---100 pb---120">
+      <div className="container spa-about-intro__container">
+        <div className="row align-items-center g-4">
           <div className="col-lg-6">
-            <div className="about__image">
-              <img src="/assets/images/about/ab.png" alt="Star Police Academy" />
-              <img className="react__shape__ab" src="/assets/images/about/badge.png" alt="Best Academy badge" />
+            <div className="spa-about-intro__visual">
+              <div className="spa-about-intro__main-photo">
+                <img
+                  src="/assets/images/about/home/classroom.jpg"
+                  alt="Star Police Academy classroom coaching session"
+                />
+                <div className="spa-about-intro__experience">
+                  <strong>{stats[0].value}+</strong>
+                  <span>{stats[0].label}</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__founder-card">
+                <img src="/assets/images/about/home/founder.jpg" alt={academy.founder} />
+                <div>
+                  <strong>{academy.founder}</strong>
+                  <span>{academy.founderRole}</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__badge">
+                <img src={academy.logo} alt="Star Police Academy logo" />
+                <div>
+                  <strong>STAR POLICE ACADEMY</strong>
+                  <span>NO. 1 IN TAMIL NADU</span>
+                </div>
+              </div>
+              <div className="spa-about-intro__accent" aria-hidden="true" />
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about__content">
-              <h2 className="about__title">
+            <div className="spa-about-intro__content">
+              <h6 className="spa-about-intro__eyebrow">WELCOME</h6>
+              <h2 className="spa-about-intro__title">
                 Welcome to <br /> <em>Star Police Academy</em>
               </h2>
-              <p className="about__paragraph">{academy.aboutIntro}</p>
-              <p className="about__paragraph2">
-                Have questions? <SiteLink href="/contact">Get Free Guide</SiteLink>
-              </p>
-              <p>
+              <p className="spa-about-intro__lead">{academy.aboutIntro}</p>
+              <p className="spa-about-intro__text">
                 Star Police Academy is an organisation with state of the art competence to provide relevant and
                 comprehensive training for Police Exams coaching in Vellore, dedicated for TNUSRB PC, Army, Navy,
                 Air Force, SI and PC exams.
               </p>
-              <ul>
-                <li>
-                  <SiteLink href="/courses" className="more-about">
-                    Read More <ArrowIcon />
-                  </SiteLink>
-                </li>
-                <li className="last-li">
+              <div className="spa-about-intro__actions">
+                <SiteLink href="/courses" className="spa-about-intro__btn">
+                  Read More <ArrowIcon />
+                </SiteLink>
+                <div className="spa-about-intro__support">
                   <em>Get Support</em>
                   <a href={`mailto:${contact.email}`}>{contact.email}</a>
-                </li>
-              </ul>
+                </div>
+              </div>
+              <p className="spa-about-intro__guide">
+                Have questions? <SiteLink href="/contact">Get Free Guide</SiteLink>
+              </p>
             </div>
           </div>
         </div>
+        <AboutStatsFlipSection />
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -2546,17 +2644,12 @@ function AboutInstructorsSection() {
 }
 
 function AboutFeedbackSection() {
-  const [startIndex, setStartIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth <= 991) {
-        setVisibleCount(1);
-        return;
-      }
-
-      setVisibleCount(Math.min(3, testimonials.length));
+      setVisibleCount(window.innerWidth <= 767 ? 1 : 2);
     };
 
     updateVisibleCount();
@@ -2564,101 +2657,98 @@ function AboutFeedbackSection() {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
-    const item = testimonials[(startIndex + index) % testimonials.length];
-    return item;
-  });
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [visibleCount]);
+
+  const totalSlides = Math.ceil(testimonials.length / visibleCount);
+  const visibleItems = testimonials.slice(
+    slideIndex * visibleCount,
+    slideIndex * visibleCount + visibleCount
+  );
 
   const showPrevious = () => {
-    setStartIndex((current) => (current + testimonials.length - 1) % testimonials.length);
+    setSlideIndex((current) => (current - 1 + totalSlides) % totalSlides);
   };
 
   const showNext = () => {
-    setStartIndex((current) => (current + 1) % testimonials.length);
+    setSlideIndex((current) => (current + 1) % totalSlides);
   };
 
   return (
-    <div className="student_satisfaction-section pt---110 pb---120">
+    <section className="spa-about-feedback pt---110 pb---120">
+      <div className="spa-about-feedback__glow" aria-hidden="true" />
       <div className="container">
-        <div className="react__title__section-all pb---30">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <h6>Student Satisfaction</h6>
-              <h2 className="react__tittle">
-                Student Community <br />Feedback
-              </h2>
-            </div>
-          </div>
+        <div className="spa-about-feedback__header text-center">
+          <span className="spa-about-feedback__eyebrow">Student Satisfaction</span>
+          <h2 className="spa-about-feedback__title">
+            Student Community <br />Feedback
+          </h2>
+          <p className="spa-about-feedback__subtitle">
+            Real stories from aspirants who trained with Star Police Academy.
+          </p>
         </div>
-        <div className="feedreact-slider exact-about-feedback-slider">
+
+        <div className="spa-about-feedback__slider">
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-prev"
-            aria-label="Previous testimonial"
+            className="spa-about-feedback__arrow spa-about-feedback__arrow--prev"
+            aria-label="Previous testimonials"
             onClick={showPrevious}
           >
             ‹
           </button>
-          <div className="exact-about-feedback-track">
-            {visibleItems.map((item, index) => (
-              <div className="event__card" key={`${item.name}-${startIndex}-${index}`}>
-                <div className="event__card--content">
-                  <div className="event__card--content-area">
-                    <div className="testimonial__ratings">
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star" />
-                      <em className="icon_star_alt" />
-                      <span> (14 Reviews) </span>
-                    </div>
-                    <div className="parag">{item.text}</div>
-                  </div>
-                  <img className="poly" src="/assets/images/testimonial/poly.png" alt="" />
+
+          <div className="spa-about-feedback__track">
+            {visibleItems.map((item) => (
+              <article className="spa-about-feedback__card" key={item.name}>
+                <div className="spa-about-feedback__quote" aria-hidden="true">“</div>
+                <div className="spa-about-feedback__rating">
+                  <span className="spa-about-feedback__stars" aria-hidden="true">
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star" />
+                    <em className="icon_star_alt" />
+                  </span>
+                  <span className="spa-about-feedback__reviews">14 Reviews</span>
                 </div>
-                <div className="author-sec">
-                  <div className="icon">
-                    <TestimonialAvatar name={item.name} size="sm" />
-                  </div>
-                  <div className="text">
-                    <h4>{item.name}</h4>
-                    <p>{item.role}</p>
+                <p className="spa-about-feedback__text">{item.text}</p>
+                <div className="spa-about-feedback__author">
+                  <TestimonialAvatar name={item.name} size="sm" />
+                  <div>
+                    <strong>{item.name}</strong>
+                    <span>{item.role}</span>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
+
           <button
             type="button"
-            className="exact-feedback-arrow exact-feedback-next"
-            aria-label="Next testimonial"
+            className="spa-about-feedback__arrow spa-about-feedback__arrow--next"
+            aria-label="Next testimonials"
             onClick={showNext}
           >
             ›
           </button>
         </div>
-      </div>
-      <div className="count__area2 pb---100">
-        <div className="container">
-          <ul className="row">
-            {aboutCounterItems.map((item) => (
-              <li className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6" key={item.label}>
-                <div className="count__content">
-                  <div className="icon">
-                    <img src={item.icon} alt={item.label} />
-                  </div>
-                  <div className="text">
-                    <span className="count__content-title counter">{item.value}</span>
-                    <em>{item.suffix}</em>
-                    <p className="count__content">{item.label}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+
+        <div className="spa-about-feedback__dots" role="tablist" aria-label="Testimonial slides">
+          {Array.from({ length: totalSlides }, (_, index) => (
+            <button
+              key={`feedback-slide-${index}`}
+              type="button"
+              className={`spa-about-feedback__dot ${slideIndex === index ? "is-active" : ""}`}
+              aria-label={`Go to testimonial slide ${index + 1}`}
+              aria-selected={slideIndex === index}
+              onClick={() => setSlideIndex(index)}
+            />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
