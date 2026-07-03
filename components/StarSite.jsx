@@ -1103,7 +1103,14 @@ function QuestionPapersPage() {
   );
 }
 
+const defaultNotificationPreview = {
+  title: "SPA Test Schedule",
+  href: "https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf",
+};
+
 function NotificationPage() {
+  const [preview, setPreview] = useState(defaultNotificationPreview);
+
   return (
     <>
       <Breadcrumb title="Recruitment Notification" />
@@ -1113,14 +1120,12 @@ function NotificationPage() {
             <div className="col-lg-9 mb-4 mb-lg-0">
               <div className="star-notification-intro">
                 <div className="star-notification-video">
-                  <a
-                    aria-label="Watch Star Police Academy intro video"
-                    href="https://www.youtube.com/watch?v=1ppfH0p_UYM"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    ▶
-                  </a>
+                  <iframe
+                    title="Star Police Academy intro video"
+                    src="https://www.youtube.com/embed/1ppfH0p_UYM"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
                 </div>
                 <div className="star-notification-copy">
                   <p>
@@ -1157,16 +1162,29 @@ function NotificationPage() {
             </div>
           </div>
 
-          <div className="star-schedule-frame">
-            <iframe
-              title="SPA Test Schedule"
-              src="https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf#toolbar=0"
-            />
+          <div className="star-schedule-preview">
+            <div className="star-schedule-preview__head">
+              <h2>Document Preview</h2>
+              <p>{preview.title}</p>
+            </div>
+            <div className="star-schedule-frame">
+              <iframe
+                key={preview.href}
+                title={preview.title}
+                src={`${preview.href}#toolbar=0`}
+              />
+            </div>
           </div>
 
           <div className="star-notification-list">
-            {notificationItems.map((item) => (
-              <article className="star-notification-card" key={`${item.title}-${item.date}`}>
+            {notificationItems.map((item) => {
+              const isActive = preview.href === item.href;
+
+              return (
+              <article
+                className={`star-notification-card${isActive ? " is-preview-active" : ""}`}
+                key={`${item.title}-${item.date}`}
+              >
                 <div className="star-notification-main">
                   <span>{item.category}</span>
                   <h3>{item.title}</h3>
@@ -1177,12 +1195,20 @@ function NotificationPage() {
                   <p>
                     <strong>Date:</strong> {item.date}
                   </p>
+                  <button
+                    type="button"
+                    className="star-notification-preview-btn"
+                    onClick={() => setPreview({ title: item.title, href: item.href })}
+                  >
+                    Show Preview
+                  </button>
                   <a href={item.href} target="_blank" rel="noreferrer">
                     Download Now
                   </a>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -756,13 +756,20 @@
 }
 
 .star-notification-video {
-  align-items: center;
-  background:
-    linear-gradient(rgba(15, 34, 57, 0.45), rgba(15, 34, 57, 0.45)),
-    url("https://www.starpoliceacademy.in/img/content/contact-info.jpg") center/cover;
-  display: flex;
-  justify-content: center;
+  background: #020f3a;
   min-height: 330px;
+  overflow: hidden;
+  position: relative;
+}
+
+.star-notification-video iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  min-height: 330px;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .star-notification-video a {
@@ -849,12 +856,38 @@
   margin: 18px 0 0;
 }
 
+.star-schedule-preview {
+  margin: 70px 0 40px;
+}
+
+.star-schedule-preview__head {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.star-schedule-preview__head h2 {
+  color: #0f2239;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.star-schedule-preview__head p {
+  color: #0b4eb3;
+  font-weight: 800;
+  margin: 0;
+}
+
 .star-schedule-frame {
   background: #f4f7fb;
   border: 1px solid rgba(15, 34, 57, 0.08);
   box-shadow: 0 14px 34px rgba(15, 34, 57, 0.08);
   height: 760px;
-  margin: 70px 0 40px;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -875,6 +908,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 230px;
   margin-bottom: 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.star-notification-card.is-preview-active {
+  box-shadow: 0 16px 40px rgba(11, 78, 179, 0.18);
+  outline: 2px solid rgba(11, 78, 179, 0.35);
+  transform: translateY(-2px);
 }
 
 .star-notification-main {
@@ -935,6 +975,26 @@
   min-width: 150px;
   padding: 13px 16px;
   text-transform: uppercase;
+}
+
+.star-notification-preview-btn {
+  background: #f7c948;
+  border: 0;
+  color: #0f2239;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  justify-content: center;
+  margin-bottom: 10px;
+  min-width: 150px;
+  padding: 13px 16px;
+  text-transform: uppercase;
+}
+
+.star-notification-preview-btn:hover {
+  background: #0f2239;
+  color: #ffffff;
 }
 
 .star-notification-download a:hover {
