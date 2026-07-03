@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   academy,
   contact,
@@ -8,6 +9,7 @@ import {
   faqs,
   features,
   notificationItems,
+  physicalTrainingItems,
   questionPapers,
   registrationCourses,
   socialLinks,
@@ -423,7 +425,7 @@ function FeatureCards() {
                 <span className="star-card-icon">{feature.title.charAt(0)}</span>
                 <h4>{feature.title}</h4>
                 <p>{feature.text}</p>
-                <Link href="/about">Read More</Link>
+                <Link href={feature.title === "Gallery" ? "/#gallery" : "/about"}>Read More</Link>
               </div>
             </div>
           ))}
@@ -605,6 +607,142 @@ function CTA() {
   );
 }
 
+function PhysicalGallerySection() {
+  const [previewIndex, setPreviewIndex] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const previewItem = previewIndex !== null ? physicalTrainingItems[previewIndex] : null;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (previewIndex === null) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setPreviewIndex(null);
+      }
+      if (event.key === "ArrowLeft") {
+        setPreviewIndex(
+          (current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [previewIndex]);
+
+  const showPrevious = () => {
+    setPreviewIndex(
+      (current) => (current - 1 + physicalTrainingItems.length) % physicalTrainingItems.length,
+    );
+  };
+
+  const showNext = () => {
+    setPreviewIndex((current) => (current + 1) % physicalTrainingItems.length);
+  };
+
+  const lightbox =
+    previewItem && isMounted
+      ? createPortal(
+          <div
+            className="star-gallery-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Gallery preview: ${previewItem.title}`}
+            onClick={() => setPreviewIndex(null)}
+          >
+            <button
+              type="button"
+              className="star-gallery-lightbox__nav star-gallery-lightbox__nav--prev"
+              aria-label="Previous image"
+              onClick={(event) => {
+                event.stopPropagation();
+                showPrevious();
+              }}
+            >
+              ‹
+            </button>
+            <div className="star-gallery-lightbox__panel" onClick={(event) => event.stopPropagation()}>
+              <button
+                className="star-gallery-lightbox__close"
+                type="button"
+                aria-label="Close preview"
+                onClick={() => setPreviewIndex(null)}
+              >
+                ×
+              </button>
+              <div className="star-gallery-lightbox__image-wrap">
+                <img src={previewItem.image} alt={previewItem.title} />
+              </div>
+              <div className="star-gallery-lightbox__caption">
+                <span className="star-gallery-lightbox__counter">
+                  {previewIndex + 1} / {physicalTrainingItems.length}
+                </span>
+                <h3>{previewItem.title}</h3>
+                <p>{previewItem.description}</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="star-gallery-lightbox__nav star-gallery-lightbox__nav--next"
+              aria-label="Next image"
+              onClick={(event) => {
+                event.stopPropagation();
+                showNext();
+              }}
+            >
+              ›
+            </button>
+          </div>,
+          document.body,
+        )
+      : null;
+
+  return (
+    <section className="star-physical-gallery pt---100 pb---100" id="gallery">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Police Physical Training"
+          title="Our Gallery"
+          text="Click any photo to show preview."
+        />
+        <div className="star-physical-gallery__grid">
+          {physicalTrainingItems.map((item, index) => (
+            <button
+              className="star-physical-gallery__item"
+              key={item.title}
+              type="button"
+              onClick={() => setPreviewIndex(index)}
+            >
+              <img src={item.image} alt={item.title} />
+              <div className="star-physical-gallery__overlay">
+                <span aria-hidden="true">+</span>
+                <strong>{item.title}</strong>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+      {lightbox}
+    </section>
+  );
+}
+
 function HomePage() {
   return (
     <>
@@ -613,6 +751,7 @@ function HomePage() {
       <AboutBlock />
       <CourseGrid limit={6} />
       <StatsBlock />
+      <PhysicalGallerySection />
       <TrainingSteps />
       <Testimonials />
       <FAQList limit={3} />
