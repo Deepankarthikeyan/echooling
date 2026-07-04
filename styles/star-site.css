@@ -7157,14 +7157,14 @@ body.star-site .exact-home-page .spa-main-hero__text {
 
 .exact-home-page .spa-main-hero__card h3 {
   color: var(--spa-primary-dark, #031552);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   margin: 16px 0 10px;
 }
 
 .exact-home-page .spa-main-hero__card p {
   color: var(--spa-text-muted, #5b5f64);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -7178,13 +7178,13 @@ body.star-site .exact-home-page .spa-main-hero__text {
 .exact-home-page .spa-main-hero__stats strong {
   color: var(--spa-secondary, #cc0000);
   display: block;
-  font-size: 24px;
+  font-size: 48px;
   font-weight: 700;
 }
 
 .exact-home-page .spa-main-hero__stats span {
   color: var(--spa-text-muted, #5b5f64);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 /* Section 1 — Why Choose */
