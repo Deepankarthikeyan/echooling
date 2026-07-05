@@ -375,10 +375,20 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, ch
 function Header() {
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
+  const [dropdownPaused, setDropdownPaused] = useState(false);
 
   const closeNavigation = () => {
     setOpen(false);
     setExpandedMenu(null);
+    setDropdownPaused(true);
+
+    if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
+
+  const resumeDropdowns = () => {
+    setDropdownPaused(false);
   };
 
   const toggleSubmenu = (menuKey) => {
@@ -399,7 +409,10 @@ function Header() {
   }, [open]);
 
   return (
-    <header id="react-header" className="react-header react-header-two exact-home-header">
+    <header
+      id="react-header"
+      className={`react-header react-header-two exact-home-header${dropdownPaused ? " is-dropdown-paused" : ""}`}
+    >
       {open ? (
         <button
           type="button"
@@ -432,7 +445,11 @@ function Header() {
                 </button>
               </div>
               <div className={`react-inner-menus exact-home-menus ${open ? "is-open" : ""}`}>
-                <ul id="backmenu" className="react-menus react-sub-shadow">
+                <ul
+                  id="backmenu"
+                  className="react-menus react-sub-shadow"
+                  onMouseLeave={resumeDropdowns}
+                >
                   <li>
                     <SiteLink href="/" onClick={closeNavigation}>Home</SiteLink>
                   </li>

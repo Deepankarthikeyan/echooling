@@ -4235,13 +4235,21 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li:hover > ul,
-.exact-home-header .react-menus > li:focus-within > ul,
-.exact-home-header .react-menus > li:hover > ul.sub-menu,
-.exact-home-header .react-menus > li:focus-within > ul.sub-menu {
+.exact-home-header .react-menus > li:hover > ul.sub-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
   visibility: visible;
+}
+
+.exact-home-header.is-dropdown-paused .react-menus > li:hover > ul,
+.exact-home-header.is-dropdown-paused .react-menus > li:hover > ul.sub-menu,
+.exact-home-header.is-dropdown-paused .react-menus > li:focus-within > ul,
+.exact-home-header.is-dropdown-paused .react-menus > li:focus-within > ul.sub-menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  visibility: hidden;
 }
 
 .exact-home-header .react-menus > li > ul a {
