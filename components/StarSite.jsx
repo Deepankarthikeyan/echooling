@@ -1209,7 +1209,7 @@ function SpaPhysicalGallerySection() {
       <div className="container">
         <div className="spa-section-head text-center spa-physical-gallery__head">
           <h2 className="spa-section-title">Our gallery</h2>
-          <p className="spa-physical-gallery__subtitle">Police Physical Training</p>
+          <p className="spa-physical-gallery__subtitle">Classroom Coaching &amp; Physical Training</p>
         </div>
         <div className="spa-physical-gallery__grid">
           {physicalTrainingItems.map((item, index) => (
