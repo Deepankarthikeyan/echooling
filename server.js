@@ -19,6 +19,7 @@ function serveFile(server, route, file) {
   });
 }
 
+
 app.prepare().then(() => {
   const server = express();
 
