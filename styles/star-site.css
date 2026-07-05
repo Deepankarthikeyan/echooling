@@ -7911,6 +7911,7 @@ body.star-site .spa-gallery-lightbox__caption p {
 
 .exact-home-page .spa-facilities-slider__shell {
   margin-top: 40px;
+  padding: 0 56px;
   position: relative;
 }
 
@@ -7919,6 +7920,7 @@ body.star-site .spa-gallery-lightbox__caption p {
   display: grid;
   gap: 36px;
   grid-template-columns: 1.2fr 0.8fr;
+  padding: 0 40px;
 }
 
 .exact-home-page .spa-facilities-slider__stage.is-transitioning .spa-facilities-slider__content,
@@ -8127,11 +8129,11 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 .exact-home-page .spa-facilities-slider__arrow--prev {
-  left: -26px;
+  left: 0;
 }
 
 .exact-home-page .spa-facilities-slider__arrow--next {
-  right: -26px;
+  right: 0;
 }
 
 /* Section 8 — Student Results */
@@ -8358,8 +8360,13 @@ body.star-site .spa-gallery-lightbox__caption p {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .exact-home-page .spa-facilities-slider__shell {
+    padding: 0 40px;
+  }
+
   .exact-home-page .spa-facilities-slider__stage {
     grid-template-columns: 1fr;
+    padding: 0 32px;
   }
 
   .exact-home-page .spa-facilities-slider__arrow--prev {
@@ -8445,6 +8452,14 @@ body.star-site .spa-gallery-lightbox__caption p {
 
   .exact-home-page .spa-facilities-slider__highlights {
     grid-template-columns: 1fr;
+  }
+
+  .exact-home-page .spa-facilities-slider__shell {
+    padding: 0 20px;
+  }
+
+  .exact-home-page .spa-facilities-slider__stage {
+    padding: 0 24px;
   }
 
   .exact-home-page .spa-facilities-slider__arrow {
