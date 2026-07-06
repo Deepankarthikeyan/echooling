@@ -1209,7 +1209,7 @@ function SpaPhysicalGallerySection() {
       <div className="container">
         <div className="spa-section-head text-center spa-physical-gallery__head">
           <h2 className="spa-section-title">Our gallery</h2>
-          <p className="spa-physical-gallery__subtitle">Police Physical Training</p>
+          <p className="spa-physical-gallery__subtitle">Classroom Coaching &amp; Physical Training</p>
         </div>
         <div className="spa-physical-gallery__grid">
           {physicalTrainingItems.map((item, index) => (
@@ -1337,6 +1337,8 @@ function SpaTestimonialsCardsSection() {
   );
 }
 
+const FACILITIES_AUTO_PLAY_MS = 20000;
+
 function SpaFacilitiesSliderSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -1366,17 +1368,28 @@ function SpaFacilitiesSliderSection() {
     }, 450);
   };
 
+  const showPreviousFacility = () => {
+    changeFacility((activeIndexRef.current + facilitiesItems.length - 1) % facilitiesItems.length);
+  };
+
+  const showNextFacility = () => {
+    changeFacility((activeIndexRef.current + 1) % facilitiesItems.length);
+  };
+
   useEffect(() => {
     const timer = window.setInterval(() => {
-      changeFacility((activeIndexRef.current + 1) % facilitiesItems.length);
-    }, 5000);
+      showNextFacility();
+    }, FACILITIES_AUTO_PLAY_MS);
 
     return () => {
       window.clearInterval(timer);
-      if (transitionRef.current) {
-        window.clearTimeout(transitionRef.current);
-      }
     };
+  }, [activeIndex]);
+
+  useEffect(() => () => {
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
   }, []);
 
   const activeFacility = facilitiesItems[activeIndex];
@@ -1387,34 +1400,52 @@ function SpaFacilitiesSliderSection() {
         <div className="spa-section-head text-center">
           <h2 className="spa-section-title">Our Facilities</h2>
         </div>
-        <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
-          <div className="spa-facilities-slider__content" key={`content-${activeIndex}`}>
-            <div className="spa-facilities-slider__meta">
-              <span className="spa-facilities-slider__index">
-                {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
-              </span>
-              <span className="spa-facilities-slider__icon" aria-hidden="true">
-                <span className="material-symbols-outlined">{activeFacility.icon}</span>
-              </span>
+        <div className="spa-facilities-slider__shell">
+          <button
+            type="button"
+            className="spa-facilities-slider__arrow spa-facilities-slider__arrow--prev"
+            aria-label="Previous facility"
+            onClick={showPreviousFacility}
+          >
+            ‹
+          </button>
+          <div className={`spa-facilities-slider__stage${isTransitioning ? " is-transitioning" : ""}`}>
+            <div className="spa-facilities-slider__content" key={`content-${activeIndex}`}>
+              <div className="spa-facilities-slider__meta">
+                <span className="spa-facilities-slider__index">
+                  {String(activeIndex + 1).padStart(2, "0")} / {String(facilitiesItems.length).padStart(2, "0")}
+                </span>
+                <span className="spa-facilities-slider__icon" aria-hidden="true">
+                  <span className="material-symbols-outlined">{activeFacility.icon}</span>
+                </span>
+              </div>
+              <h3>{activeFacility.title}</h3>
+              <p className="spa-facilities-slider__lead">{activeFacility.text}</p>
+              <p className="spa-facilities-slider__details">{activeFacility.details}</p>
+              <ul className="spa-facilities-slider__highlights">
+                {activeFacility.highlights.map((item) => (
+                  <li key={item}>
+                    <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <SiteLink className="spa-facilities-slider__cta" href="/contact">
+                Book a Campus Visit <ArrowIcon />
+              </SiteLink>
             </div>
-            <h3>{activeFacility.title}</h3>
-            <p className="spa-facilities-slider__lead">{activeFacility.text}</p>
-            <p className="spa-facilities-slider__details">{activeFacility.details}</p>
-            <ul className="spa-facilities-slider__highlights">
-              {activeFacility.highlights.map((item) => (
-                <li key={item}>
-                  <span aria-hidden="true" className="material-symbols-outlined">check_circle</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <SiteLink className="spa-facilities-slider__cta" href="/contact">
-              Book a Campus Visit <ArrowIcon />
-            </SiteLink>
+            <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
+              <img src={activeFacility.image} alt={activeFacility.title} loading="lazy" />
+            </div>
           </div>
-          <div className="spa-facilities-slider__visual" key={`visual-${activeIndex}`}>
-            <img src={activeFacility.image} alt={activeFacility.title} loading="lazy" />
-          </div>
+          <button
+            type="button"
+            className="spa-facilities-slider__arrow spa-facilities-slider__arrow--next"
+            aria-label="Next facility"
+            onClick={showNextFacility}
+          >
+            ›
+          </button>
         </div>
         <div className="spa-facilities-slider__progress" aria-hidden="true">
           {facilitiesItems.map((item, index) => (
