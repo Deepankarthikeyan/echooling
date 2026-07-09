@@ -4,6 +4,11 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import SiLandingPage from "./SiLandingPage";
+import ArmyLandingPage from "./ArmyLandingPage";
+import NavyLandingPage from "./NavyLandingPage";
+import AirForceLandingPage from "./AirForceLandingPage";
+import RpfLandingPage from "./RpfLandingPage";
+import CapfLandingPage from "./CapfLandingPage";
 import {
   academy,
   contact,
@@ -647,7 +652,6 @@ function Header() {
                     <li><SiteLink href="/ansewrkey" onClick={closeNavigation}>Answer Keys</SiteLink></li>
                   </NavDropdown>
                   <li><SiteLink href="/contact" onClick={closeNavigation}>Contact</SiteLink></li>
-                  <li><SiteLink href="/register" onClick={closeNavigation}>Register</SiteLink></li>
                 </ul>
                 <div className="searchbar-part">
                   <div className="search-form">
@@ -816,13 +820,24 @@ function SectionTitle({ eyebrow, title, text, center = true }) {
 
 function ExactBreadcrumb({ title }) {
   return (
-    <div className="react-breadcrumbs">
-      <div className="breadcrumbs-wrap">
-        <img className="desktop" src="/assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs" />
-        <img className="mobile" src="/assets/images/breadcrumbs/1.jpg" alt="Breadcrumbs" />
+    <div className="react-breadcrumbs exact-about-breadcrumb">
+      <div
+        className="breadcrumbs-wrap"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(3, 21, 82, 0.82) 0%, rgba(4, 28, 107, 0.68) 50%, rgba(2, 15, 58, 0.82) 100%), url(${academy.heroBackground})`,
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          minHeight: "560px",
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
+        <div className="breadcrumbs-overlay" />
         <div className="breadcrumbs-inner">
           <div className="container">
             <div className="breadcrumbs-text">
+              <span className="breadcrumbs-eyebrow">Best Coaching Centre in Tamil Nadu</span>
               <h1 className="breadcrumbs-title">{title}</h1>
               <div className="back-nav">
                 <ul>
@@ -3047,13 +3062,50 @@ function CourseDetailPage({ courseKey }) {
   );
 }
 
+const topperGalleryImages = [
+  "/assets/images/service/top1.jpg",
+  "/assets/images/service/top3.jpg",
+  "/assets/images/service/top4.jpg",
+  "/assets/images/service/top5.jpg",
+  "/assets/images/service/top1.jpg",
+  "/assets/images/service/top3.jpg",
+  "/assets/images/service/top4.jpg",
+  "/assets/images/service/top5.jpg",
+];
+
 function ToppersPage() {
   return (
     <>
       <Breadcrumb title="Toppers and Achievers" />
-      <CourseGrid limit={4} />
-      <Testimonials />
-      <CTA />
+      <section className="star-section pt---100 pb---70">
+        <div className="container">
+          <div className="text-center mb---40">
+            <p className="mb---10" style={{ color: "#a66b2d", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              //Our Toppers and Achievers//
+            </p>
+            <h1 className="mb---20" style={{ fontSize: "2.4rem", lineHeight: 1.2 }}>
+              “Being with a WINNER, make you a WINNER”.
+            </h1>
+          </div>
+          <div className="row g-3 justify-content-center">
+            {topperGalleryImages.map((image, index) => (
+              <div className="col-6 col-sm-4 col-lg-3" key={`${image}-${index}`}>
+                <img
+                  src={image}
+                  alt={`Star Police Academy topper ${index + 1}`}
+                  style={{ width: "100%", height: "220px", objectFit: "cover", borderRadius: "16px" }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt---40">
+            <SiteLink href="/contact" className="react-btn">
+              Contact Us
+            </SiteLink>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
@@ -3064,34 +3116,67 @@ function FormMessage({ message }) {
 
 function ContactForm() {
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send your message right now.");
+      }
+
+      setMessage(result.message || "Your message has been sent successfully.");
+      setFormData({ name: "", email: "", subject: "", phone: "", message: "" });
+    } catch (error) {
+      setMessage(error.message || "Unable to send your message right now.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <form
-      className="star-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setMessage("Thank you. Your enquiry is ready to be sent to Star Police Academy.");
-      }}
-    >
+    <form className="star-form" onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-md-6">
-          <input required type="text" placeholder="Name" />
+          <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
         </div>
         <div className="col-md-6">
-          <input required type="email" placeholder="Email" />
+          <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
         </div>
         <div className="col-md-6">
-          <input required type="text" placeholder="Subject" />
+          <input required type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" />
         </div>
         <div className="col-md-6">
-          <input type="tel" placeholder="Phone" />
+          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" />
         </div>
         <div className="col-12">
-          <textarea required placeholder="Message *" rows={6} />
+          <textarea required name="message" value={formData.message} onChange={handleChange} placeholder="Message *" rows={6} />
         </div>
         <div className="col-12">
-          <button type="submit" className="react-btn">
-            Send Message →
+          <button type="submit" className="react-btn" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message →"}
           </button>
           <FormMessage message={message} />
         </div>
@@ -3260,12 +3345,172 @@ function RegisterPage() {
   );
 }
 
+const materialsItems = [
+  {
+    title: "TARGET காக்கிசட்டை 2026",
+    description: "Our Dedicated intensive Programme for, TNUSRB Sub Inspector (Taluk, AR, TSP)",
+    image: "https://www.starpoliceacademy.in/img/books/a1.jpg",
+    href: "https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf",
+  },
+  {
+    title: "Tamil Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "BIOLOGY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/t1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "BIOLOGY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "BIOLOGY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/b1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "CHEMISTRY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "CHEMISTRY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/c1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "ECONOMICS Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "ECONOMICS Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/e1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "GEOGRAPHY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "GEOGRAPHY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/g1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "HISTORY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "HISTORY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/h1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "HISTORY Book TNUSRB SUB INSPECTOR & POLICE II",
+    description: "HISTORY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/h2.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "INDIAN POLITY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "INDIAN POLITY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/i1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "PHYSICS Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "PHYSICS Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/p1.jpg",
+    href: "tel:+919363459430",
+  },
+  {
+    title: "PHYCHOLOGY Book TNUSRB SUB INSPECTOR & POLICE",
+    description: "PHYCHOLOGY Book Back Questions book by star police academy",
+    image: "https://www.starpoliceacademy.in/img/books/py1.jpg",
+    href: "tel:+919363459430",
+  },
+];
+
+function MaterialsPage() {
+  return (
+    <>
+      <Breadcrumb title="Training Materials" />
+      <section className="star-section pt---100 pb---100">
+        <div className="container">
+          <div className="text-center mb---40">
+            <p className="mb---10" style={{ color: "#a66b2d", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              TRAINING MATERIALS
+            </p>
+            <h1 className="mb---15" style={{ fontSize: "2.4rem", lineHeight: 1.2 }}>
+              Training Materials
+            </h1>
+            <p className="mb---0" style={{ color: "#5b6472", maxWidth: "720px", margin: "0 auto" }}>
+              By Star Police Academy
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {materialsItems.map((item) => (
+              <div className="col-lg-6" key={item.title}>
+                <article className="star-card" style={{ overflow: "hidden", height: "100%" }}>
+                  <img src={item.image} alt={item.title} style={{ width: "100%", height: "260px", objectFit: "cover" }} />
+                  <div style={{ padding: "24px" }}>
+                    <h3 className="mb---10">{item.title}</h3>
+                    <p style={{ color: "#5b6472", marginBottom: "16px" }}>{item.description}</p>
+                    <a href={item.href} target="_blank" rel="noreferrer" className="react-btn">
+                      Get It Now
+                    </a>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function FAQPage() {
   return (
     <>
       <Breadcrumb title="Frequently Asked Questions" />
       <FAQList />
       <CTA />
+    </>
+  );
+}
+
+function AnswerKeysPage() {
+  return (
+    <>
+      <Breadcrumb title="Answer Keys" />
+      <section className="star-question-papers pt---70 pb---100">
+        <div className="container">
+          <SectionTitle eyebrow="Answer Keys" title="Solved Answer Keys" />
+          <div className="text-center mb---40" style={{ maxWidth: "720px", margin: "0 auto 32px" }}>
+            <p style={{ color: "#5b6472", marginBottom: 0 }}>
+              Download the latest solved answer keys for SI & Police exam practice and revision.
+            </p>
+          </div>
+          <div className="star-question-list">
+            {questionPapers.map((paper) => (
+              <article className="star-question-card" key={`answer-key-${paper.title}-${paper.testNo}-${paper.date}`}>
+                <div className="star-question-main">
+                  <span className="star-question-category">{paper.category}</span>
+                  <h3>{paper.title}</h3>
+                  <strong>{paper.testNo}</strong>
+                  <p>{paper.description}</p>
+                </div>
+                <div className="star-question-action">
+                  <span>
+                    Date : <strong>{paper.date}</strong>
+                  </span>
+                  <a
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      background: "#c62828",
+                      color: "#fff",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      textDecoration: "none",
+                      display: "inline-block",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Download Now
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
@@ -3290,7 +3535,20 @@ function QuestionPapersPage() {
                   <span>
                     Date : <strong>{paper.date}</strong>
                   </span>
-                  <a href={contact.whatsapp} target="_blank" rel="noreferrer">
+                  <a
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      background: "#c62828",
+                      color: "#fff",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      textDecoration: "none",
+                      display: "inline-block",
+                      fontWeight: 600,
+                    }}
+                  >
                     Download Now
                   </a>
                 </div>
@@ -3428,6 +3686,10 @@ function PageContent({ page }) {
       return <RegisterPage />;
     case "contact":
       return <ContactPage />;
+    case "materials":
+      return <MaterialsPage />;
+    case "answer-keys":
+      return <AnswerKeysPage />;
     case "faq":
       return <FAQPage />;
     case "questions":
@@ -3440,6 +3702,16 @@ function PageContent({ page }) {
       return <ToppersPage />;
     case "si-landing":
       return <SiLandingPage />;
+    case "army-landing":
+      return <ArmyLandingPage />;
+    case "navy-landing":
+      return <NavyLandingPage />;
+    case "air-force-landing":
+      return <AirForceLandingPage />;
+    case "rpf-landing":
+      return <RpfLandingPage />;
+    case "capf-landing":
+      return <CapfLandingPage />;
     case "home":
     default:
       return <HomePage />;
