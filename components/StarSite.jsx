@@ -828,7 +828,7 @@ function ExactBreadcrumb({ title }) {
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          minHeight: "560px",
+          minHeight: "320px",
           overflow: "hidden",
           position: "relative",
         }}

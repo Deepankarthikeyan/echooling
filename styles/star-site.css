@@ -6445,8 +6445,8 @@ body.star-site .exact-about-page .react-breadcrumbs.exact-about-breadcrumb .brea
   background-size: cover;
   display: flex;
   justify-content: center;
-  min-height: 560px;
-  padding: 140px 0 120px;
+  min-height: 320px;
+  padding: 72px 0 64px;
   position: relative;
 }
 
@@ -6821,6 +6821,34 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   color: #64748b;
   font-size: 13px;
   margin-top: 2px;
+}
+
+.exact-about-page .spa-about-feedback__author .spa-user-avatar--sm {
+  align-items: center;
+  border-width: 3px;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  place-items: center;
+  position: relative;
+}
+
+.exact-about-page .spa-about-feedback__author .spa-user-avatar--sm .material-symbols-outlined {
+  align-items: center;
+  display: flex;
+  font-size: 26px;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
 }
 
 .exact-about-page .spa-about-feedback__arrow {
