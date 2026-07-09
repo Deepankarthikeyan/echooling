@@ -4140,6 +4140,13 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: transparent;
 }
 
+.exact-home-page .spa-main-hero__card img {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  width: auto;
+}
+
 .exact-home-menus {
   align-items: center;
   display: flex;
@@ -4307,14 +4314,15 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-header .search-form {
   align-items: center;
+  background: transparent !important;
   display: flex;
   position: relative;
 }
 
 .exact-home-header .search-form .search-btn {
   align-items: center;
-  background: #f4f5f5;
-  border: 1px solid #dfe2e5;
+  background: transparent;
+  border: 0;
   border-radius: 50%;
   color: var(--spa-primary, #00306e);
   cursor: pointer;
@@ -4322,15 +4330,15 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   height: 42px;
   justify-content: center;
   padding: 0;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   width: 42px;
 }
 
 .exact-home-header .search-form .search-btn:hover,
 .exact-home-header.is-search-open .search-form .search-btn {
-  background: var(--spa-primary, #00306e);
-  border-color: var(--spa-primary, #00306e);
-  color: #ffffff;
+  background: transparent;
+  border-color: transparent;
+  color: var(--spa-secondary, #cc0000);
 }
 
 .exact-home-header .search-form .search-btn svg {
@@ -4339,9 +4347,9 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header__search-panel {
-  background: #ffffff;
+  background: transparent;
   border-bottom: 1px solid #e8eaed;
-  box-shadow: 0 10px 24px rgba(15, 18, 22, 0.08);
+  box-shadow: none;
   left: 0;
   max-height: 0;
   opacity: 0;
@@ -4375,7 +4383,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header__search-form .search-input {
-  background: #f4f5f5;
+  background: transparent;
   border: 1px solid #dfe2e5;
   border-radius: 8px;
   color: #0f1216;
@@ -4386,12 +4394,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   min-height: 46px;
   outline: none;
   padding: 10px 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.exact-home-header__search-form .search-input:focus {
-  border-color: var(--spa-primary, #00306e);
-  box-shadow: 0 0 0 3px rgba(0, 48, 110, 0.12);
+  transition: border-color 0.2s ease;
 }
 
 .exact-home-header__search-submit,
@@ -4440,8 +4443,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   padding: 0;
 }
 
+.exact-home-header__search-form .search-input:focus {
+  border-color: var(--spa-primary, #00306e);
+}
+
 .exact-home-header__search-results button {
-  background: #f8f9fb;
+  background: transparent;
   border: 1px solid transparent;
   border-radius: 8px;
   color: #0f1216;
@@ -4450,12 +4457,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   font-size: 15px;
   padding: 10px 14px;
   text-align: left;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
   width: 100%;
 }
 
 .exact-home-header__search-results button:hover {
-  background: #ffffff;
+  background: transparent;
   border-color: #dfe2e5;
   color: var(--spa-primary, #00306e);
 }
@@ -7336,8 +7343,16 @@ body.star-site .exact-home-page .spa-main-hero__text {
   text-align: center;
 }
 
+.exact-home-page .spa-main-hero__card-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
 .exact-home-page .spa-main-hero__card img {
-  max-width: 140px;
+  margin: 0 auto 4px;
+  max-width: 170px;
 }
 
 .exact-home-page .spa-main-hero__card h3 {
