@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 
 export default function SiTrainingShowcase({ items }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -8,6 +9,7 @@ export default function SiTrainingShowcase({ items }) {
   const activeIndexRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const transitionRef = useRef(null);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   const changeItem = (nextIndex) => {
     if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
@@ -31,18 +33,21 @@ export default function SiTrainingShowcase({ items }) {
     }, 350);
   };
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      changeItem((activeIndexRef.current + 1) % items.length);
-    }, 4500);
+  const showPrevious = () => {
+    changeItem((activeIndexRef.current + items.length - 1) % items.length);
+  };
 
-    return () => {
-      window.clearInterval(timer);
-      if (transitionRef.current) {
-        window.clearTimeout(transitionRef.current);
-      }
-    };
-  }, [items.length]);
+  const showNext = () => {
+    changeItem((activeIndexRef.current + 1) % items.length);
+  };
+
+  useAutoSliderInterval(showNext, isPaused, [items.length]);
+
+  useEffect(() => () => {
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
+  }, []);
 
   const activeItem = items[activeIndex];
   const mockCount = items.filter((item) => item.group === "mock").length;
@@ -72,32 +77,50 @@ export default function SiTrainingShowcase({ items }) {
         </button>
       </div>
 
-      <div
-        className={`si-training-showcase__spotlight si-training-showcase__spotlight--${activeItem.group}${isTransitioning ? " is-transitioning" : ""}`}
-        aria-live="polite"
-        key={`spotlight-${activeIndex}`}
-      >
-        <div className="si-training-showcase__spotlight-bg" aria-hidden="true">
-          {activeItem.image ? (
-            <img src={activeItem.image} alt="" loading="lazy" />
-          ) : (
-            <span className="si-training-showcase__spotlight-pattern" />
-          )}
-        </div>
-        <div className="si-training-showcase__spotlight-content">
-          <div className="si-training-showcase__spotlight-top">
-            <span className="si-training-showcase__badge">{activeItem.groupLabel}</span>
-            <span className="si-training-showcase__index">
-              {String(activeIndex + 1).padStart(2, "0")}
-              <em>/{String(items.length).padStart(2, "0")}</em>
-            </span>
+      <div className="si-training-showcase__shell" {...pauseProps}>
+        <button
+          type="button"
+          className="si-training-showcase__arrow si-training-showcase__arrow--prev"
+          aria-label="Previous training highlight"
+          onClick={showPrevious}
+        >
+          ‹
+        </button>
+        <div
+          className={`si-training-showcase__spotlight si-training-showcase__spotlight--${activeItem.group}${isTransitioning ? " is-transitioning" : ""}`}
+          aria-live="polite"
+          key={`spotlight-${activeIndex}`}
+        >
+          <div className="si-training-showcase__spotlight-bg" aria-hidden="true">
+            {activeItem.image ? (
+              <img src={activeItem.image} alt="" loading="lazy" />
+            ) : (
+              <span className="si-training-showcase__spotlight-pattern" />
+            )}
           </div>
-          <span className="si-training-showcase__icon" aria-hidden="true">
-            <span className="material-symbols-outlined">{activeItem.icon}</span>
-          </span>
-          <h3>{activeItem.title}</h3>
-          <p>{activeItem.text}</p>
+          <div className="si-training-showcase__spotlight-content">
+            <div className="si-training-showcase__spotlight-top">
+              <span className="si-training-showcase__badge">{activeItem.groupLabel}</span>
+              <span className="si-training-showcase__index">
+                {String(activeIndex + 1).padStart(2, "0")}
+                <em>/{String(items.length).padStart(2, "0")}</em>
+              </span>
+            </div>
+            <span className="si-training-showcase__icon" aria-hidden="true">
+              <span className="material-symbols-outlined">{activeItem.icon}</span>
+            </span>
+            <h3>{activeItem.title}</h3>
+            <p>{activeItem.text}</p>
+          </div>
         </div>
+        <button
+          type="button"
+          className="si-training-showcase__arrow si-training-showcase__arrow--next"
+          aria-label="Next training highlight"
+          onClick={showNext}
+        >
+          ›
+        </button>
       </div>
 
       <div className="si-training-showcase__rail" aria-label="Training highlights">

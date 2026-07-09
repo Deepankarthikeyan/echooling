@@ -5291,7 +5291,43 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 .exact-home-page .spa-winner-carousel__stage {
   margin: 0 auto;
   max-width: 1248px;
-  padding: 0 24px;
+  padding: 0 72px;
+  position: relative;
+}
+
+.exact-home-page .spa-winner-carousel__arrow {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(3, 21, 82, 0.1);
+  color: var(--spa-primary-dark, #031552);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 28px;
+  height: 52px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  width: 52px;
+  z-index: 3;
+}
+
+.exact-home-page .spa-winner-carousel__arrow:hover {
+  background: var(--spa-primary-dark, #031552);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.exact-home-page .spa-winner-carousel__arrow--prev {
+  left: 12px;
+}
+
+.exact-home-page .spa-winner-carousel__arrow--next {
+  right: 12px;
 }
 
 .exact-home-page .spa-winner-carousel__viewport {
@@ -5443,7 +5479,21 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 @media (max-width: 767px) {
   .exact-home-page .spa-winner-carousel__stage {
-    padding: 0 16px;
+    padding: 0 52px;
+  }
+
+  .exact-home-page .spa-winner-carousel__arrow {
+    font-size: 22px;
+    height: 42px;
+    width: 42px;
+  }
+
+  .exact-home-page .spa-winner-carousel__arrow--prev {
+    left: 4px;
+  }
+
+  .exact-home-page .spa-winner-carousel__arrow--next {
+    right: 4px;
   }
 
   .exact-home-page .spa-winner-carousel__track {
@@ -8834,6 +8884,46 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 /* About Course — image left, content right, auto-fade slider */
+.si-landing-page .si-landing-course-slider__shell {
+  padding: 0 56px;
+  position: relative;
+}
+
+.si-landing-page .si-landing-course-slider__arrow {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(3, 21, 82, 0.1);
+  color: var(--spa-primary-dark, #031552);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 28px;
+  height: 52px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  width: 52px;
+  z-index: 2;
+}
+
+.si-landing-page .si-landing-course-slider__arrow:hover {
+  background: var(--spa-primary-dark, #031552);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.si-landing-page .si-landing-course-slider__arrow--prev {
+  left: 0;
+}
+
+.si-landing-page .si-landing-course-slider__arrow--next {
+  right: 0;
+}
+
 .si-landing-page .si-landing-course-slider__stage {
   align-items: center;
   display: grid;
@@ -8968,6 +9058,47 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 /* Mock Tests & Physical Training — centered one-by-one spotlight */
+.si-landing-page .si-training-showcase__shell {
+  margin-top: 24px;
+  padding: 0 56px;
+  position: relative;
+}
+
+.si-landing-page .si-training-showcase__arrow {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(58, 87, 184, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(3, 21, 82, 0.1);
+  color: var(--spa-primary-dark, #031552);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 28px;
+  height: 52px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  width: 52px;
+  z-index: 3;
+}
+
+.si-landing-page .si-training-showcase__arrow:hover {
+  background: var(--spa-primary-dark, #031552);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.si-landing-page .si-training-showcase__arrow--prev {
+  left: 0;
+}
+
+.si-landing-page .si-training-showcase__arrow--next {
+  right: 0;
+}
+
 .si-landing-page .si-training-showcase__filters {
   display: flex;
   flex-wrap: wrap;
@@ -9449,6 +9580,18 @@ body.star-site .spa-gallery-lightbox__caption p {
 
   .si-landing-page .si-landing-table__topics {
     grid-template-columns: 1fr;
+  }
+
+  .si-landing-page .si-landing-course-slider__shell,
+  .si-landing-page .si-training-showcase__shell {
+    padding: 0 44px;
+  }
+
+  .si-landing-page .si-landing-course-slider__arrow,
+  .si-landing-page .si-training-showcase__arrow {
+    font-size: 22px;
+    height: 42px;
+    width: 42px;
   }
 
   .si-landing-page .si-landing-course-slider__stage {
