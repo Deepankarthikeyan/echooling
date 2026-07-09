@@ -185,7 +185,7 @@ body.star-site .exact-home-page .about2__area .about__title,
 body.star-site .exact-home-page .accordion__wrapper-1 h2,
 body.star-site .exact-home-page .instructors_lefts h2,
 body.star-site .exact-home-page .react-menus > li > a,
-body.star-site .exact-home-header .phone-part a,
+body.star-site .exact-home-header .search-form .search-btn,
 body.star-site .react__title__section-all h2,
 body.star-site .about2__area h2 {
   color: var(--spa-text-alt) !important;
@@ -220,10 +220,6 @@ body.star-site .exact-home-page .hero3__title em,
 body.star-site .exact-home-page .about2__area .about__title em {
   color: var(--spa-accent-teal) !important;
   font-style: normal;
-}
-
-body.star-site .exact-home-header .phone-part svg {
-  color: var(--spa-primary) !important;
 }
 
 body.star-site .exact-home-page .react_populars_topics .item__inner a:hover,

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import SiLandingPage from "./SiLandingPage";
@@ -192,6 +193,65 @@ const homeBlogCards = notificationItems.slice(0, 4).map((item, index) => ({
   href: item.href,
 }));
 
+const headerSearchEntries = [
+  { label: "Home", href: "/", terms: ["home"] },
+  { label: "About Star Police Academy", href: "/about", terms: ["about", "academy"] },
+  { label: "Courses", href: "/courses", terms: ["courses", "coaching", "training"] },
+  { label: "Contact", href: "/contact", terms: ["contact", "office", "vellore"] },
+  { label: "Register", href: "/register", terms: ["register", "apply", "admission", "enroll"] },
+  { label: "Notifications", href: "/notification", terms: ["notification", "news", "recruitment", "current affairs"] },
+  { label: "Toppers and Achievers", href: "/toppers", terms: ["toppers", "achievers", "results"] },
+  { label: "Training Materials", href: "/materials", terms: ["materials", "study", "notes"] },
+  { label: "Question Papers", href: "/questions", terms: ["questions", "papers", "exam", "test"] },
+  { label: "Answer Keys", href: "/ansewrkey", terms: ["answer", "keys"] },
+  { label: "FAQ", href: "/faq", terms: ["faq", "help"] },
+  { label: "YouTube Channel", href: "/youtube", terms: ["youtube", "videos"] },
+  { label: "Test Batches", href: "/test-batch", terms: ["test batch", "mock"] },
+  ...courseNavItems.map((item) => ({
+    label: item.label,
+    href: item.href,
+    terms: [item.label],
+  })),
+  ...courses.map((course) => ({
+    label: course.shortTitle || course.title,
+    href: `/${course.key}`,
+    terms: [course.title, course.shortTitle, course.summary, course.key],
+  })),
+];
+
+function getHeaderSearchMatches(query, limit = 6) {
+  const normalized = query.trim().toLowerCase();
+  if (!normalized) {
+    return [];
+  }
+
+  return headerSearchEntries
+    .map((entry) => {
+      const haystack = [entry.label, ...(entry.terms || [])].join(" ").toLowerCase();
+      let score = 0;
+
+      if (entry.label.toLowerCase().includes(normalized)) {
+        score += 4;
+      }
+
+      if (haystack.includes(normalized)) {
+        score += 3;
+      }
+
+      normalized.split(/\s+/).forEach((word) => {
+        if (word.length > 2 && haystack.includes(word)) {
+          score += 1;
+        }
+      });
+
+      return { entry, score };
+    })
+    .filter((result) => result.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .slice(0, limit)
+    .map((result) => result.entry);
+}
+
 function SiteHead({ title, description, keywords }) {
   const pageTitle = title ? `${title} | Star Police Academy` : academy.title;
   const pageDescription = description || academy.description;
@@ -373,9 +433,14 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, ch
 }
 
 function Header() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [dropdownPaused, setDropdownPaused] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef(null);
+  const searchResults = useMemo(() => getHeaderSearchMatches(searchQuery), [searchQuery]);
 
   const closeNavigation = () => {
     setOpen(false);
@@ -384,6 +449,29 @@ function Header() {
 
     if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
+    }
+  };
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
+
+  const openSearch = () => {
+    setSearchOpen(true);
+  };
+
+  const navigateToSearchResult = (href) => {
+    router.push(href);
+    closeSearch();
+    closeNavigation();
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    const [firstMatch] = getHeaderSearchMatches(searchQuery, 1);
+    if (firstMatch) {
+      navigateToSearchResult(firstMatch.href);
     }
   };
 
@@ -408,11 +496,74 @@ function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!searchOpen) {
+      return undefined;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      searchInputRef.current?.focus();
+    });
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        closeSearch();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [searchOpen]);
+
   return (
     <header
       id="react-header"
-      className={`react-header react-header-two exact-home-header${dropdownPaused ? " is-dropdown-paused" : ""}`}
+      className={`react-header react-header-two exact-home-header${dropdownPaused ? " is-dropdown-paused" : ""}${searchOpen ? " is-search-open" : ""}`}
     >
+      <div className={`exact-home-header__search-panel${searchOpen ? " is-open" : ""}`} aria-hidden={!searchOpen}>
+        <div className="container">
+          <form className="exact-home-header__search-form" onSubmit={handleSearchSubmit}>
+            <SearchIcon />
+            <input
+              ref={searchInputRef}
+              type="search"
+              className="search-input"
+              placeholder="Search courses, pages, training..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              aria-label="Search site"
+            />
+            <button type="submit" className="exact-home-header__search-submit">
+              Search
+            </button>
+            <button
+              type="button"
+              className="exact-home-header__search-close"
+              aria-label="Close search"
+              onClick={closeSearch}
+            >
+              ×
+            </button>
+          </form>
+          {searchResults.length > 0 ? (
+            <ul className="exact-home-header__search-results">
+              {searchResults.map((result) => (
+                <li key={`${result.href}-${result.label}`}>
+                  <button type="button" onClick={() => navigateToSearchResult(result.href)}>
+                    {result.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : searchQuery.trim() ? (
+            <p className="exact-home-header__search-empty">No matching pages found.</p>
+          ) : null}
+        </div>
+      </div>
       {open ? (
         <button
           type="button"
@@ -499,10 +650,16 @@ function Header() {
                   <li><SiteLink href="/register" onClick={closeNavigation}>Register</SiteLink></li>
                 </ul>
                 <div className="searchbar-part">
-                  <div className="phone-part">
-                    <a href={`tel:${contact.phonePrimary.replace(/\s/g, "")}`}>
-                      <PhoneIcon /> {contact.phonePrimary}
-                    </a>
+                  <div className="search-form">
+                    <button
+                      type="button"
+                      className="search-btn"
+                      aria-label={searchOpen ? "Close search" : "Open search"}
+                      aria-expanded={searchOpen}
+                      onClick={() => (searchOpen ? closeSearch() : openSearch())}
+                    >
+                      <SearchIcon />
+                    </button>
                   </div>
                   <div className="react-logins">
                     <SiteLink href="/register" onClick={closeNavigation}>
