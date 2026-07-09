@@ -3418,7 +3418,7 @@ function MaterialsPage() {
   return (
     <>
       <Breadcrumb title="Training Materials" />
-      <section className="star-section pt---100 pb---100">
+      <section className="star-section star-materials-page pt---100 pb---100">
         <div className="container">
           <div className="text-center mb---40">
             <p className="mb---10" style={{ color: "#a66b2d", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
