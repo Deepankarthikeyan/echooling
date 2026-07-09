@@ -323,6 +323,27 @@
   transform: translateY(-4px);
 }
 
+.star-materials-page .star-card .react-btn {
+  align-items: center;
+  background: var(--spa-secondary, #cc0000) !important;
+  border: 2px solid var(--spa-secondary, #cc0000) !important;
+  border-radius: 6px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 22px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.star-materials-page .star-card .react-btn:hover {
+  background: var(--spa-secondary-dark, #990000) !important;
+  border-color: var(--spa-secondary-dark, #990000) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
 .star-feature-card h4,
 .star-course-card h3,
 .star-step h4 {
