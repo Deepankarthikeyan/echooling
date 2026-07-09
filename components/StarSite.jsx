@@ -1193,72 +1193,6 @@ function SpaWhyChooseSection() {
   );
 }
 
-const featuredTrainingPromoCards = [
-  {
-    key: "tnusrb-course",
-    category: courses[0].shortTitle,
-    title: courses[0].shortTitle,
-    text: courses[0].summary,
-    href: `/${courses[0].key}`,
-    cta: "Explore Course",
-    showAuthor: false,
-  },
-  {
-    key: "tnusrb-updates",
-    category: recruitmentUpdates[0].category,
-    title: recruitmentUpdates[0].title,
-    text: "Stay updated with the latest TNUSRB notifications, exam schedules and academy announcements.",
-    href: recruitmentUpdates[0].href,
-    cta: "View Updates",
-    showAuthor: true,
-  },
-  {
-    key: "recruitment",
-    category: latestBlogArticles[0].category,
-    title: latestBlogArticles[0].title,
-    text: "Get the latest recruitment notifications, eligibility details and application guidance from Star Police Academy.",
-    href: latestBlogArticles[0].href,
-    cta: "Read More",
-    showAuthor: true,
-  },
-];
-
-function SpaFeaturedTrainingSection() {
-  return (
-    <section className="spa-featured-training pt---100 pb---100">
-      <div className="container">
-        <div className="spa-featured-training__banner">
-          <img
-            src={academy.featuredTrainingImage}
-            alt="Star Police Academy trainees in physical training and parade formation"
-            loading="lazy"
-          />
-        </div>
-        <div className="row g-4 spa-featured-training__cards">
-          {featuredTrainingPromoCards.map((card) => (
-            <div className="col-lg-4 col-md-6" key={card.key}>
-              <article className="spa-featured-training__card">
-                <span className="spa-featured-training__category">{card.category}</span>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
-                {card.showAuthor ? (
-                  <div className="spa-featured-training__author">
-                    <UserIcon />
-                    <span>{academy.name}</span>
-                  </div>
-                ) : null}
-                <SiteLink className="spa-featured-training__btn" href={card.href}>
-                  {card.cta} <ArrowIcon />
-                </SiteLink>
-              </article>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function SpaCoursesHeroSection() {
   return (
     <section
@@ -1275,7 +1209,7 @@ function SpaCoursesHeroSection() {
           </p>
         </div>
         <div className="row g-4 pt---30">
-          {courses.slice(1).map((course) => (
+          {courses.map((course) => (
             <div className="col-lg-4 col-md-6" key={course.key}>
               <article className="spa-course-hero-card">
                 <img src={course.image} alt={course.shortTitle} />
@@ -2380,15 +2314,16 @@ function ExactHomePage() {
     <div className="react-wrapper-inner exact-home-page">
       <SpaMainHero />
       <SpaWhyChooseSection />
-      <SpaFeaturedTrainingSection />
       <SpaCoursesHeroSection />
       <SpaSelectionProcessSection />
       <SpaPhysicalGallerySection />
       <SpaTestimonialsCardsSection />
       <SpaFacilitiesSliderSection />
+      <SpaRecruitmentBlogSection />
       <SpaStudentResultsSection />
       <ExactHomeAboutSection />
       <SpaFaqExpandedSection />
+      <SpaLatestBlogSection />
     </div>
   );
 }
