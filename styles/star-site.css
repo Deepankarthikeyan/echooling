@@ -7996,6 +7996,29 @@ body.star-site .spa-gallery-lightbox__caption p {
   padding-top: 18px;
 }
 
+.exact-home-page .spa-testimonial-card__author .spa-user-avatar--sm {
+  align-items: center;
+  border-width: 3px;
+  display: inline-grid;
+  flex-shrink: 0;
+  justify-items: center;
+  place-items: center;
+}
+
+.exact-home-page .spa-testimonial-card__author .spa-user-avatar--sm .material-symbols-outlined {
+  display: block;
+  font-size: 26px;
+  line-height: 1;
+  margin: 0;
+}
+
+.exact-home-page .spa-testimonial-card__author-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 56px;
+}
+
 .exact-home-page .spa-testimonial-card__author strong {
   color: var(--spa-primary-dark, #031552);
   display: block;

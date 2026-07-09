@@ -1475,7 +1475,7 @@ function SpaTestimonialsCardsSection() {
                 <p className="spa-testimonial-card__text">{item.text}</p>
                 <div className="spa-testimonial-card__author">
                   <TestimonialAvatar name={item.name} size="sm" />
-                  <div>
+                  <div className="spa-testimonial-card__author-meta">
                     <strong>{item.name}</strong>
                     <span>{item.role}</span>
                   </div>
