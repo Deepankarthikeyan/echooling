@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 
 export default function SiCourseTopicsSlider({ topics }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -8,6 +9,7 @@ export default function SiCourseTopicsSlider({ topics }) {
   const activeIndexRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const transitionRef = useRef(null);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   const changeTopic = (nextIndex) => {
     if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
@@ -31,42 +33,63 @@ export default function SiCourseTopicsSlider({ topics }) {
     }, 450);
   };
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      changeTopic((activeIndexRef.current + 1) % topics.length);
-    }, 5000);
+  const showPrevious = () => {
+    changeTopic((activeIndexRef.current + topics.length - 1) % topics.length);
+  };
 
-    return () => {
-      window.clearInterval(timer);
-      if (transitionRef.current) {
-        window.clearTimeout(transitionRef.current);
-      }
-    };
-  }, [topics.length]);
+  const showNext = () => {
+    changeTopic((activeIndexRef.current + 1) % topics.length);
+  };
+
+  useAutoSliderInterval(showNext, isPaused, [topics.length]);
+
+  useEffect(() => () => {
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
+  }, []);
 
   const activeTopic = topics[activeIndex];
 
   return (
     <div className="si-landing-course-slider pt---30">
-      <div
-        className={`si-landing-course-slider__stage${isTransitioning ? " is-transitioning" : ""}`}
-        aria-live="polite"
-      >
-        <div className="si-landing-course-slider__visual" key={`visual-${activeIndex}`}>
-          <img src={activeTopic.image} alt={activeTopic.title} loading="lazy" />
-        </div>
-        <div className="si-landing-course-slider__content" key={`content-${activeIndex}`}>
-          <div className="si-landing-course-slider__meta">
-            <span className="si-landing-course-slider__index">
-              {String(activeIndex + 1).padStart(2, "0")} / {String(topics.length).padStart(2, "0")}
-            </span>
-            <span className="si-landing-course-slider__icon" aria-hidden="true">
-              <span className="material-symbols-outlined">{activeTopic.icon}</span>
-            </span>
+      <div className="si-landing-course-slider__shell" {...pauseProps}>
+        <button
+          type="button"
+          className="si-landing-course-slider__arrow si-landing-course-slider__arrow--prev"
+          aria-label="Previous course topic"
+          onClick={showPrevious}
+        >
+          ‹
+        </button>
+        <div
+          className={`si-landing-course-slider__stage${isTransitioning ? " is-transitioning" : ""}`}
+          aria-live="polite"
+        >
+          <div className="si-landing-course-slider__visual" key={`visual-${activeIndex}`}>
+            <img src={activeTopic.image} alt={activeTopic.title} loading="lazy" />
           </div>
-          <h3>{activeTopic.title}</h3>
-          <p>{activeTopic.text}</p>
+          <div className="si-landing-course-slider__content" key={`content-${activeIndex}`}>
+            <div className="si-landing-course-slider__meta">
+              <span className="si-landing-course-slider__index">
+                {String(activeIndex + 1).padStart(2, "0")} / {String(topics.length).padStart(2, "0")}
+              </span>
+              <span className="si-landing-course-slider__icon" aria-hidden="true">
+                <span className="material-symbols-outlined">{activeTopic.icon}</span>
+              </span>
+            </div>
+            <h3>{activeTopic.title}</h3>
+            <p>{activeTopic.text}</p>
+          </div>
         </div>
+        <button
+          type="button"
+          className="si-landing-course-slider__arrow si-landing-course-slider__arrow--next"
+          aria-label="Next course topic"
+          onClick={showNext}
+        >
+          ›
+        </button>
       </div>
       <div className="si-landing-course-slider__progress" role="tablist" aria-label="Course topics">
         {topics.map((topic, index) => (

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { AUTO_SLIDER_INTERVAL_MS, useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 import SiLandingPage from "./SiLandingPage";
 import ArmyLandingPage from "./ArmyLandingPage";
 import NavyLandingPage from "./NavyLandingPage";
@@ -1407,13 +1408,10 @@ function SpaPhysicalGallerySection() {
   );
 }
 
-const FACILITIES_AUTO_PLAY_MS = 20000;
-const TESTIMONIALS_AUTO_PLAY_MS = 20000;
-
 function SpaTestimonialsCardsSection() {
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
-  const [isPaused, setIsPaused] = useState(false);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -1432,7 +1430,7 @@ function SpaTestimonialsCardsSection() {
 
     const timer = window.setInterval(() => {
       setStartIndex((current) => (current + 1) % testimonials.length);
-    }, TESTIMONIALS_AUTO_PLAY_MS);
+    }, AUTO_SLIDER_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
   }, [isPaused]);
@@ -1460,11 +1458,7 @@ function SpaTestimonialsCardsSection() {
             </div>
           </div>
         </div>
-        <div
-          className="spa-testimonials-cards__slider"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="spa-testimonials-cards__slider" {...pauseProps}>
           <button
             type="button"
             className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--prev"
@@ -1529,6 +1523,7 @@ function SpaFacilitiesSliderSection() {
   const activeIndexRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const transitionRef = useRef(null);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   const changeFacility = (nextIndex) => {
     if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
@@ -1560,15 +1555,7 @@ function SpaFacilitiesSliderSection() {
     changeFacility((activeIndexRef.current + 1) % facilitiesItems.length);
   };
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      showNextFacility();
-    }, FACILITIES_AUTO_PLAY_MS);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [activeIndex]);
+  useAutoSliderInterval(showNextFacility, isPaused, [facilitiesItems.length]);
 
   useEffect(() => () => {
     if (transitionRef.current) {
@@ -1584,7 +1571,7 @@ function SpaFacilitiesSliderSection() {
         <div className="spa-section-head text-center">
           <h2 className="spa-section-title">Our Facilities</h2>
         </div>
-        <div className="spa-facilities-slider__shell">
+        <div className="spa-facilities-slider__shell" {...pauseProps}>
           <button
             type="button"
             className="spa-facilities-slider__arrow spa-facilities-slider__arrow--prev"
@@ -1993,8 +1980,8 @@ function ExactCourseCard({ course, index }) {
 function ExactWinnerCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
-  const [isPaused, setIsPaused] = useState(false);
   const trackRef = useRef(null);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   const slideCount = winnerCarouselItems.length;
   const maxIndex = Math.max(0, slideCount - cardsPerView);
@@ -2034,17 +2021,15 @@ function ExactWinnerCarousel() {
     }
   }, [activeIndex, cardsPerView]);
 
-  useEffect(() => {
-    if (isPaused) {
-      return undefined;
-    }
+  const showPreviousWinner = () => {
+    setActiveIndex((current) => (current <= 0 ? maxIndex : current - 1));
+  };
 
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1));
-    }, 1000);
+  const showNextWinner = () => {
+    setActiveIndex((current) => (current >= maxIndex ? 0 : current + 1));
+  };
 
-    return () => window.clearInterval(timer);
-  }, [isPaused, maxIndex]);
+  useAutoSliderInterval(showNextWinner, isPaused, [maxIndex]);
 
   return (
     <section className="spa-winner-carousel pt---120 pb---100">
@@ -2053,11 +2038,15 @@ function ExactWinnerCarousel() {
           &ldquo;Being With A <span>WINNER</span>, Make You A <span>WINNER</span>.&rdquo;
         </h2>
       </div>
-      <div
-        className="spa-winner-carousel__stage"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <div className="spa-winner-carousel__stage" {...pauseProps}>
+        <button
+          type="button"
+          className="spa-winner-carousel__arrow spa-winner-carousel__arrow--prev"
+          aria-label="Previous winner slide"
+          onClick={showPreviousWinner}
+        >
+          ‹
+        </button>
         <div className="spa-winner-carousel__viewport" style={{ "--spa-cards-per-view": cardsPerView }}>
           <div className="spa-winner-carousel__track" ref={trackRef}>
             {winnerCarouselItems.map((item, index) => (
@@ -2081,6 +2070,14 @@ function ExactWinnerCarousel() {
             ))}
           </div>
         </div>
+        <button
+          type="button"
+          className="spa-winner-carousel__arrow spa-winner-carousel__arrow--next"
+          aria-label="Next winner slide"
+          onClick={showNextWinner}
+        >
+          ›
+        </button>
         <div className="spa-winner-carousel__dots" aria-label="Carousel pagination">
           {Array.from({ length: maxIndex + 1 }, (_, index) => (
             <button
@@ -2211,14 +2208,17 @@ function ExactInstructors() {
 
 function ExactClients() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveTestimonial((current) => (current + 1) % testimonials.length);
-    }, 4500);
+  const showPrevious = () => {
+    setActiveTestimonial((current) => (current + testimonials.length - 1) % testimonials.length);
+  };
 
-    return () => window.clearInterval(timer);
-  }, []);
+  const showNext = () => {
+    setActiveTestimonial((current) => (current + 1) % testimonials.length);
+  };
+
+  useAutoSliderInterval(showNext, isPaused, [testimonials.length]);
 
   const activeItem = testimonials[activeTestimonial];
 
@@ -2229,13 +2229,13 @@ function ExactClients() {
           <h6 className="react__subtitle">Student Community Feedback</h6>
           <h2 className="react__tittle">What our clients say about</h2>
         </div>
-        <div className="exact-client-slider-wrap">
+        <div className="exact-client-slider-wrap" {...pauseProps}>
           <div className="client-slider exact-client-slider">
             <button
               type="button"
               className="exact-client-arrow exact-client-prev"
               aria-label="Previous testimonial"
-              onClick={() => setActiveTestimonial((current) => (current + testimonials.length - 1) % testimonials.length)}
+              onClick={showPrevious}
             >
               ‹
             </button>
@@ -2263,7 +2263,7 @@ function ExactClients() {
               type="button"
               className="exact-client-arrow exact-client-next"
               aria-label="Next testimonial"
-              onClick={() => setActiveTestimonial((current) => (current + 1) % testimonials.length)}
+              onClick={showNext}
             >
               ›
             </button>
@@ -2878,6 +2878,7 @@ function AboutInstructorsSection() {
 function AboutFeedbackSection() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
+  const { isPaused, pauseProps } = useAutoSliderPause();
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -2907,6 +2908,8 @@ function AboutFeedbackSection() {
     setSlideIndex((current) => (current + 1) % totalSlides);
   };
 
+  useAutoSliderInterval(showNext, isPaused, [totalSlides]);
+
   return (
     <section className="spa-about-feedback pt---110 pb---120">
       <div className="spa-about-feedback__glow" aria-hidden="true" />
@@ -2921,7 +2924,7 @@ function AboutFeedbackSection() {
           </p>
         </div>
 
-        <div className="spa-about-feedback__slider">
+        <div className="spa-about-feedback__slider" {...pauseProps}>
           <button
             type="button"
             className="spa-about-feedback__arrow spa-about-feedback__arrow--prev"
