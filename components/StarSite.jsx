@@ -1392,9 +1392,13 @@ function SpaPhysicalGallerySection() {
   );
 }
 
+const FACILITIES_AUTO_PLAY_MS = 20000;
+const TESTIMONIALS_AUTO_PLAY_MS = 20000;
+
 function SpaTestimonialsCardsSection() {
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -1407,12 +1411,16 @@ function SpaTestimonialsCardsSection() {
   }, []);
 
   useEffect(() => {
+    if (isPaused) {
+      return undefined;
+    }
+
     const timer = window.setInterval(() => {
       setStartIndex((current) => (current + 1) % testimonials.length);
-    }, 4500);
+    }, TESTIMONIALS_AUTO_PLAY_MS);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isPaused]);
 
   const visibleItems = Array.from({ length: visibleCount }, (_, index) => {
     const item = testimonials[(startIndex + index) % testimonials.length];
@@ -1437,7 +1445,11 @@ function SpaTestimonialsCardsSection() {
             </div>
           </div>
         </div>
-        <div className="spa-testimonials-cards__slider">
+        <div
+          className="spa-testimonials-cards__slider"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <button
             type="button"
             className="spa-testimonials-cards__arrow spa-testimonials-cards__arrow--prev"
@@ -1495,8 +1507,6 @@ function SpaTestimonialsCardsSection() {
     </section>
   );
 }
-
-const FACILITIES_AUTO_PLAY_MS = 20000;
 
 function SpaFacilitiesSliderSection() {
   const [activeIndex, setActiveIndex] = useState(0);

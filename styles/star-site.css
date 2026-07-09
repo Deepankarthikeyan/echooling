@@ -7966,6 +7966,11 @@ body.star-site .spa-gallery-lightbox__caption p {
   margin-top: 8px;
 }
 
+.exact-home-page .spa-testimonial-card .testimonial__ratings em.icon_star,
+.exact-home-page .spa-testimonial-card .testimonial__ratings em.icon_star_alt {
+  color: #ffc300;
+}
+
 .exact-home-page .spa-testimonial-card .testimonial__ratings span {
   color: var(--spa-text-muted, #5b5f64);
   font-size: 12px;
