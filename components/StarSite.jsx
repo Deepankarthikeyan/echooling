@@ -825,11 +825,11 @@ function ExactBreadcrumb({ title }) {
         className="breadcrumbs-wrap"
         style={{
           backgroundImage: `linear-gradient(180deg, rgba(3, 21, 82, 0.82) 0%, rgba(4, 28, 107, 0.68) 50%, rgba(2, 15, 58, 0.82) 100%), url(${academy.heroBackground})`,
-          backgroundPosition: "center center",
+          backgroundPosition: "center 38%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          minHeight: "320px",
-          overflow: "hidden",
+          minHeight: "380px",
+          overflow: "visible",
           position: "relative",
         }}
       >
