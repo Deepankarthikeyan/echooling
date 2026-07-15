@@ -1122,7 +1122,7 @@ function SpaMainHero() {
   return (
     <section
       className="hero3__area exact-spa-hero spa-main-hero p-relative"
-      style={{ backgroundImage: `url(${academy.heroBackground})` }}
+      style={{ backgroundImage: `url(${academy.homeHeroBackground || academy.heroBackground})` }}
     >
       <div className="exact-spa-hero__overlay" />
       <div className="container p-relative">
