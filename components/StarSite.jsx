@@ -427,7 +427,23 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, li
             {labelContent}
           </SiteLink>
         ) : (
-          <span className="exact-menu-label">{labelContent}</span>
+          <span
+            className="exact-menu-label"
+            role="button"
+            tabIndex={0}
+            onClick={(event) => {
+              event.preventDefault();
+              onToggle(menuKey);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onToggle(menuKey);
+              }
+            }}
+          >
+            {labelContent}
+          </span>
         )}
         <button
           type="button"
@@ -642,6 +658,7 @@ function Header() {
                     label="Notifications"
                     href="/notification"
                     menuKey="notifications"
+                    linkable={false}
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}

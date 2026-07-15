@@ -4253,7 +4253,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
-  cursor: default;
+  cursor: pointer;
 }
 
 .exact-home-header .exact-menu-link-row {
