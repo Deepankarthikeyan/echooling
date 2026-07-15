@@ -6124,19 +6124,21 @@ body.star-site .react-footer-two .copyright > .container {
   width: 118px;
   height: 118px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #f7b733, #fc4a1a);
-  color: #fff;
+  background: var(--spa-secondary, #cc0000);
+  color: #ffffff;
   text-align: center;
-  box-shadow: 0 16px 30px rgba(252, 74, 26, 0.35);
+  box-shadow: 0 16px 30px rgba(204, 0, 0, 0.35);
 }
 
 .exact-about-page .spa-about-intro__experience strong {
+  color: #ffffff;
   font-size: 34px;
   line-height: 1;
   font-weight: 700;
 }
 
 .exact-about-page .spa-about-intro__experience span {
+  color: #ffffff;
   margin-top: 6px;
   max-width: 78px;
   font-size: 11px;
