@@ -10,6 +10,7 @@ import NavyLandingPage from "./NavyLandingPage";
 import AirForceLandingPage from "./AirForceLandingPage";
 import RpfLandingPage from "./RpfLandingPage";
 import CapfLandingPage from "./CapfLandingPage";
+import TnusrbLandingPage from "./TnusrbLandingPage";
 import {
   academy,
   contact,
@@ -3705,6 +3706,8 @@ function PageContent({ page }) {
       return <ToppersPage />;
     case "si-landing":
       return <SiLandingPage />;
+    case "tnusrb-landing":
+      return <TnusrbLandingPage />;
     case "army-landing":
       return <ArmyLandingPage />;
     case "navy-landing":
@@ -3726,7 +3729,9 @@ export default function StarSite({ page }) {
   const description = page?.metaDescription;
   const keywords = page?.type === "si-landing"
     ? "Police SI Coaching, Sub Inspector Coaching, TNUSRB SI Coaching, Police SI Training, SI Coaching in Tamil Nadu"
-    : undefined;
+    : page?.type === "tnusrb-landing"
+      ? "TNUSRB Coaching, Police Constable Coaching, TNUSRB PC Coaching, Police Constable Training, PC Coaching in Tamil Nadu"
+      : undefined;
 
   useEffect(() => {
     document.body.className = "star-site";
