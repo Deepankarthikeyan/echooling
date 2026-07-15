@@ -45,7 +45,7 @@ function TestimonialAvatar({ name }) {
 
 export default function TnusrbLandingPage() {
   return (
-    <div className="react-wrapper-inner exact-home-page si-landing-page">
+    <div className="react-wrapper-inner exact-home-page si-landing-page tnusrb-landing-page">
       <section
         className="hero3__area exact-spa-hero spa-main-hero p-relative"
         style={{ backgroundImage: `url(${academy.heroBackground})` }}

@@ -8953,6 +8953,39 @@ body.star-site .spa-gallery-lightbox__caption p {
   width: 100%;
 }
 
+/* TNUSRB landing — compact hero photo card */
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo {
+  padding: 20px 18px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo img {
+  margin: 0 auto 10px;
+  max-height: 150px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo h3 {
+  font-size: 20px;
+  margin: 8px 0 6px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats {
+  gap: 8px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats strong {
+  font-size: 32px;
+}
+
+.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats span {
+  font-size: 14px;
+}
+
 /* About Course — image left, content right, auto-fade slider */
 .si-landing-page .si-landing-course-slider__shell {
   padding: 0 56px;
