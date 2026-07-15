@@ -3201,7 +3201,14 @@ function ContactPage() {
                   <span>⌂</span>
                   <div>
                     <h3>Address</h3>
-                    <p>{contact.address}</p>
+                    <p>
+                      {contact.addressLines.map((line) => (
+                        <span key={line}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </p>
                   </div>
                 </div>
                 <div className="star-contact-info-item">
@@ -3244,8 +3251,9 @@ function ContactPage() {
           <div className="star-contact-map">
             <iframe
               title="Star Police Academy location map"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(contact.address)}&output=embed`}
+              src={contact.mapEmbedUrl}
               loading="lazy"
+              allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
