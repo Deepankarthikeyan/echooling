@@ -8946,11 +8946,10 @@ body.star-site .spa-gallery-lightbox__caption p {
 .exact-home-page.si-landing-page .spa-main-hero__card--photo img {
   border-radius: 12px;
   display: block;
-  height: 220px;
+  height: auto;
   margin: 0 auto 16px;
   max-width: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  object-fit: contain;
   width: 100%;
 }
 
