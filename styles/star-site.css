@@ -4913,7 +4913,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
 .exact-home-page .hero3__area.exact-spa-hero {
   align-items: center;
-  background-position: center;
+  background-position: center 35%;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -4921,6 +4921,16 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   overflow: hidden;
   padding: 140px 0 120px;
   position: relative;
+}
+
+.exact-home-page .spa-main-hero .exact-spa-hero__overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(3, 21, 82, 0.88) 0%,
+    rgba(4, 28, 107, 0.62) 42%,
+    rgba(2, 15, 58, 0.28) 72%,
+    rgba(2, 15, 58, 0.12) 100%
+  );
 }
 
 .exact-home-page .exact-spa-hero__overlay {
