@@ -2744,7 +2744,7 @@ function AboutIntroPageSection() {
                   alt="Star Police Academy classroom coaching session"
                 />
                 <div className="spa-about-intro__experience">
-                  <strong>{stats[0].value}+</strong>
+                  <strong>{stats[0].value}</strong>
                   <span>{stats[0].label}</span>
                 </div>
               </div>
