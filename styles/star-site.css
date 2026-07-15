@@ -957,7 +957,7 @@
 .star-notification-download a {
   background: var(--spa-secondary, #cc0000);
   border: 2px solid var(--spa-secondary, #cc0000);
-  color: #ffffff;
+  color: #ffffff !important;
   display: inline-flex;
   font-size: 13px;
   font-weight: 900;
@@ -971,7 +971,7 @@
 .star-notification-download a:hover {
   background: var(--spa-secondary-dark, #990000);
   border-color: var(--spa-secondary-dark, #990000);
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .star-youtube-page {
