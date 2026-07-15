@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { AUTO_SLIDER_INTERVAL_MS, useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
+import { buildPageSeo } from "../lib/star-seo";
 import SiLandingPage from "./SiLandingPage";
 import ArmyLandingPage from "./ArmyLandingPage";
 import NavyLandingPage from "./NavyLandingPage";
@@ -259,17 +259,55 @@ function getHeaderSearchMatches(query, limit = 6) {
     .map((result) => result.entry);
 }
 
-function SiteHead({ title, description, keywords }) {
-  const pageTitle = title ? `${title} | Star Police Academy` : academy.title;
-  const pageDescription = description || academy.description;
+function SiteHead({ seo }) {
+  if (!seo) {
+    return null;
+  }
 
   return (
     <Head>
-      <title>{pageTitle}</title>
-      <meta name="description" content={pageDescription} />
-      {keywords ? <meta name="keywords" content={keywords} /> : null}
+      <title>{seo.pageTitle}</title>
+      <meta name="description" content={seo.description} />
+      {seo.keywords ? <meta name="keywords" content={seo.keywords} /> : null}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="shortcut icon" type="image/x-icon" href={academy.logo} />
+      <meta name="author" content={seo.author} />
+      <meta name="geo.region" content={seo.geoRegion} />
+      <meta name="geo.placename" content={seo.geoPlace} />
+      <meta name="language" content={seo.language} />
+      <link rel="shortcut icon" type="image/x-icon" href={seo.favicon} />
+      <link rel="canonical" href={seo.canonicalUrl} />
+      <meta property="og:title" content={seo.ogTitle} />
+      <meta property="og:description" content={seo.ogDescription} />
+      <meta property="og:type" content={seo.ogType} />
+      <meta property="og:url" content={seo.ogUrl} />
+      <meta property="og:image" content={seo.ogImage} />
+      <meta property="og:logo" content={seo.ogLogo} />
+      <meta name="twitter:card" content={seo.twitterCard} />
+      <meta name="twitter:title" content={seo.twitterTitle} />
+      <meta name="twitter:description" content={seo.twitterDescription} />
+      <meta name="twitter:image" content={seo.twitterImage} />
+      {seo.gaId ? (
+        <>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${seo.gaId}`} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${seo.gaId}');
+              `,
+            }}
+          />
+        </>
+      ) : null}
+      {seo.schemas.map((schema, index) => (
+        <script
+          key={`schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
@@ -1743,8 +1781,8 @@ function SpaFaqExpandedSection() {
   return (
     <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
       <div className="accordion__shape">
-        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
-        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="Decorative FAQ section shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="Decorative FAQ background accent" />
       </div>
       <div className="container">
         <div className="spa-faq-expanded__layout">
@@ -1923,7 +1961,7 @@ function ExactPopularTopics() {
             <div className="col-md-3" key={topic.title}>
               <div className="item__inner">
                 <div className="icon">
-                  <img src={topic.icon} alt="Icon" />
+                  <img src={topic.icon} alt={`${topic.title} topic icon`} />
                 </div>
                 <div className="react-content">
                   <h3 className="react-title"><SiteLink href="/courses">{topic.title}</SiteLink></h3>
@@ -1945,11 +1983,11 @@ function ExactAboutSection() {
         <div className="row">
           <div className="col-lg-6">
             <div className="about__image">
-              <img className="react__shape__11" src="/assets/images/about/dot.png" alt="Shape" />
-              <img className="react__shape__1" src="/assets/images/about/shape_02.png" alt="Shape" />
-              <img src="/assets/images/about/about22.png" alt="About" />
-              <img className="react__shape__2" src="/assets/images/about/shape_01.png" alt="Shape" />
-              <img className="react__shape__33" src="/assets/images/about/shape_03.png" alt="Shape" />
+              <img className="react__shape__11" src="/assets/images/about/dot.png" alt="Decorative dotted background pattern" />
+              <img className="react__shape__1" src="/assets/images/about/shape_02.png" alt="Decorative about section accent shape" />
+              <img src="/assets/images/about/about22.png" alt="Star Police Academy about section illustration" />
+              <img className="react__shape__2" src="/assets/images/about/shape_01.png" alt="Decorative about section background shape" />
+              <img className="react__shape__33" src="/assets/images/about/shape_03.png" alt="Decorative about section graphic accent" />
             </div>
           </div>
           <div className="col-lg-6">
@@ -2135,8 +2173,8 @@ function ExactAccordion() {
   return (
     <div className="accordion__area p-relative pt---110">
       <div className="accordion__shape">
-        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
-        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="Decorative FAQ section shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="Decorative FAQ background accent" />
       </div>
       <div className="container">
         <div className="row">
@@ -2284,7 +2322,7 @@ function ExactClients() {
                   <em className="icon_star_alt" />
                   <span><em>4.9</em> (14 Reviews)</span>
                 </div>
-                <img className="comma" src="/assets/images/testimonial/coma.png" alt="quote" />
+                <img className="comma" src="/assets/images/testimonial/coma.png" alt="Testimonial quotation mark graphic" />
               </div>
             </div>
             <button
@@ -2376,9 +2414,9 @@ function EchoolingHero() {
     <section className="echooling-hero">
       <div className="container">
         <div className="echooling-hero-stage">
-          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/hero/04.png" alt="" />
-          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/hero/shape_03.png" alt="" />
-          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/hero/shape_05.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/hero/04.png" alt="Decorative hero background shape" />
+          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/hero/shape_03.png" alt="Decorative hero accent shape" />
+          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/hero/shape_05.png" alt="Decorative hero accent graphic" />
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="echooling-hero-copy">
@@ -2387,7 +2425,7 @@ function EchoolingHero() {
                   <br />
                   <span>New Today</span>
                 </h1>
-                <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="" />
+                <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="Decorative title underline graphic" />
                 <form
                   className="echooling-search"
                   onSubmit={(event) => {
@@ -2470,7 +2508,7 @@ function EchoolingTopics() {
           {homeTopics.map((topic) => (
             <div className="col-lg-3 col-sm-6" key={topic.title}>
               <SiteLink href="/courses" className="echooling-topic-card">
-                <img src={topic.icon} alt="" />
+                <img src={topic.icon} alt={`${topic.title} course icon`} />
                 <h3>{topic.title}</h3>
                 <p>{topic.courses}</p>
               </SiteLink>
@@ -2671,7 +2709,7 @@ function EchoolingTestimonials() {
         <div className="echooling-blog-strip">
           {homeBlogCards.map((item) => (
             <article key={item.title}>
-              <img src={item.image} alt="" />
+              <img src={item.image} alt={item.title} />
               <div className="echooling-blog-date">{item.date}</div>
               <span>{item.category}</span>
               <h3>{item.title}</h3>
@@ -2722,7 +2760,7 @@ function StatsFlipCard({ icon, value, suffix, label, detail }) {
       >
         <div className="spa-flip-card__inner">
           <div className="spa-flip-card__face spa-flip-card__front">
-            <img src={icon} alt="" />
+            <img src={icon} alt={`${label} statistic icon`} />
             <div className="spa-flip-card__value">
               <strong>{value}</strong>
               <em>{suffix}</em>
@@ -3759,14 +3797,8 @@ function PageContent({ page }) {
   }
 }
 
-export default function StarSite({ page }) {
-  const title = useMemo(() => page?.title || academy.name, [page]);
-  const description = page?.metaDescription;
-  const keywords = page?.type === "si-landing"
-    ? "Police SI Coaching, Sub Inspector Coaching, TNUSRB SI Coaching, Police SI Training, SI Coaching in Tamil Nadu"
-    : page?.type === "tnusrb-landing"
-      ? "TNUSRB Coaching, Police Constable Coaching, TNUSRB PC Coaching, Police Constable Training, PC Coaching in Tamil Nadu"
-      : undefined;
+export default function StarSite({ page, pathname = "/" }) {
+  const seo = useMemo(() => buildPageSeo(page, pathname), [page, pathname]);
 
   useEffect(() => {
     document.body.className = "star-site";
@@ -3776,7 +3808,7 @@ export default function StarSite({ page }) {
 
   return (
     <>
-      <SiteHead title={title} description={description} keywords={keywords} />
+      <SiteHead seo={seo} />
       <Header />
       <main className="react-wrapper star-main">
         <PageContent page={page} />
