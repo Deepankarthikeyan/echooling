@@ -3564,10 +3564,10 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage() {
+function NotificationPage({ pageTitle = "Recruitment Notification" }) {
   return (
     <>
-      <Breadcrumb title="Recruitment Notification" />
+      <Breadcrumb title={pageTitle} />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3698,7 +3698,7 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage />;
+      return <NotificationPage pageTitle={page.title} />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
