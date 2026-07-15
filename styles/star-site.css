@@ -8955,27 +8955,36 @@ body.star-site .spa-gallery-lightbox__caption p {
 
 /* TNUSRB landing — compact hero photo card */
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo {
-  padding: 20px 18px;
+  overflow: hidden;
+  padding: 0 0 16px;
 }
 
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo img {
-  margin: 0 auto 10px;
-  max-height: 150px;
+  border-radius: 16px 16px 0 0;
+  height: 150px;
+  margin: 0 0 10px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
 }
 
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo h3 {
   font-size: 20px;
   margin: 8px 0 6px;
+  padding: 0 18px;
 }
 
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo p {
   font-size: 14px;
   line-height: 1.5;
   margin-bottom: 12px;
+  padding: 0 18px;
 }
 
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats {
   gap: 8px;
+  padding: 0 18px;
 }
 
 .exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats strong {
