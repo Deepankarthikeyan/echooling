@@ -409,16 +409,25 @@ function MenuChevronDownIcon() {
   );
 }
 
-function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, linkable = true, children }) {
   const isExpanded = expandedMenu === menuKey;
+  const labelContent = (
+    <>
+      {label}
+      <MenuChevronDownIcon />
+    </>
+  );
 
   return (
     <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
       <div className="exact-menu-link-row">
-        <SiteLink href={href} onClick={onClose}>
-          {label}
-          <MenuChevronDownIcon />
-        </SiteLink>
+        {linkable ? (
+          <SiteLink href={href} onClick={onClose}>
+            {labelContent}
+          </SiteLink>
+        ) : (
+          <span className="exact-menu-label">{labelContent}</span>
+        )}
         <button
           type="button"
           className="exact-menu-dropdown-toggle"
@@ -617,6 +626,7 @@ function Header() {
                     label="Courses"
                     href="/courses"
                     menuKey="courses"
+                    linkable={false}
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
