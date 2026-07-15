@@ -84,7 +84,7 @@ export default function TnusrbLandingPage() {
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
                 <img
-                  src="/assets/images/courses/course-tnusrb-constable.png"
+                  src="https://www.starpoliceacademy.in/img/service/service-04.jpg"
                   alt="TNUSRB Police Constable coaching at Star Police Academy"
                 />
                 <h3>Best TNUSRB Police Constable Coaching Centre in Tamil Nadu</h3>

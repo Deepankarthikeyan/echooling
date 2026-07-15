@@ -4178,7 +4178,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: transparent;
 }
 
-.exact-home-page .spa-main-hero__card img {
+.exact-home-page .spa-main-hero__card:not(.spa-main-hero__card--photo) img {
   display: block;
   margin: 0 auto;
   object-fit: contain;
@@ -7575,7 +7575,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
   width: 100%;
 }
 
-.exact-home-page .spa-main-hero__card img {
+.exact-home-page .spa-main-hero__card:not(.spa-main-hero__card--photo) img {
   margin: 0 auto 4px;
   max-width: 170px;
 }
@@ -8942,14 +8942,15 @@ body.star-site .spa-gallery-lightbox__caption p {
   }
 }
 
-/* SI Landing Page — uses exact-home-page typography and spa components */
-.si-landing-page .spa-main-hero__card--photo img {
+/* SI / TNUSRB landing pages — hero photo card */
+.exact-home-page.si-landing-page .spa-main-hero__card--photo img {
   border-radius: 12px;
   display: block;
-  height: 200px;
+  height: 220px;
   margin: 0 auto 16px;
   max-width: 100%;
   object-fit: cover;
+  object-position: center 30%;
   width: 100%;
 }
 
