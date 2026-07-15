@@ -4214,7 +4214,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > a {
+.exact-home-header .react-menus > li > .exact-menu-link-row > a,
+.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -4225,11 +4226,16 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   white-space: nowrap;
 }
 
+.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
+  cursor: pointer;
+}
+
 .exact-home-header .exact-menu-link-row {
   display: inline-flex;
 }
 
-.exact-home-header .exact-menu-link-row > a {
+.exact-home-header .exact-menu-link-row > a,
+.exact-home-header .exact-menu-link-row > .exact-menu-label {
   align-items: center;
   display: inline-flex;
   gap: 4px;
@@ -4327,12 +4333,14 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > a {
+.exact-home-header .react-menus > li > .exact-menu-link-row > a,
+.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
   transition: color 180ms ease;
 }
 
 .exact-home-header .react-menus > li:hover > a,
-.exact-home-header .react-menus > li:hover > .exact-menu-link-row > a {
+.exact-home-header .react-menus > li:hover > .exact-menu-link-row > a,
+.exact-home-header .react-menus > li:hover > .exact-menu-link-row > .exact-menu-label {
   color: #2b6cff;
 }
 
@@ -4750,13 +4758,15 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     justify-content: space-between;
   }
 
-  .exact-home-header .exact-menu-link-row > a {
+  .exact-home-header .exact-menu-link-row > a,
+  .exact-home-header .exact-menu-link-row > .exact-menu-label {
     display: block;
     flex: 1;
     padding: 14px 0;
   }
 
-  .exact-home-header .exact-menu-link-row > a .exact-menu-arrow {
+  .exact-home-header .exact-menu-link-row > a .exact-menu-arrow,
+  .exact-home-header .exact-menu-link-row > .exact-menu-label .exact-menu-arrow {
     display: none;
   }
 
@@ -4894,7 +4904,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 
   .exact-home-header .react-menus > li > a,
-  .exact-home-header .react-menus > li > .exact-menu-link-row > a {
+  .exact-home-header .react-menus > li > .exact-menu-link-row > a,
+  .exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
     font-size: 14px;
     padding-left: 6px;
     padding-right: 6px;
