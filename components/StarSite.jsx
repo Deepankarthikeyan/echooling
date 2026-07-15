@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AUTO_SLIDER_INTERVAL_MS, useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 import SiLandingPage from "./SiLandingPage";
+import TnusrbLandingPage from "./TnusrbLandingPage";
 import ArmyLandingPage from "./ArmyLandingPage";
 import NavyLandingPage from "./NavyLandingPage";
 import AirForceLandingPage from "./AirForceLandingPage";
@@ -3705,6 +3706,8 @@ function PageContent({ page }) {
       return <ToppersPage />;
     case "si-landing":
       return <SiLandingPage />;
+    case "tnusrb-landing":
+      return <TnusrbLandingPage />;
     case "army-landing":
       return <ArmyLandingPage />;
     case "navy-landing":
@@ -3726,7 +3729,9 @@ export default function StarSite({ page }) {
   const description = page?.metaDescription;
   const keywords = page?.type === "si-landing"
     ? "Police SI Coaching, Sub Inspector Coaching, TNUSRB SI Coaching, Police SI Training, SI Coaching in Tamil Nadu"
-    : undefined;
+    : page?.type === "tnusrb-landing"
+      ? "TNUSRB Coaching, Police Constable Coaching, TNUSRB Constable, Police Constable Exam Coaching, TNUSRB PC Coaching Tamil Nadu"
+      : undefined;
 
   useEffect(() => {
     document.body.className = "star-site";
