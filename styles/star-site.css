@@ -8957,10 +8957,11 @@ body.star-site .spa-gallery-lightbox__caption p {
   border-radius: 12px;
   display: block;
   flex-shrink: 0;
-  height: 200px;
+  height: auto;
   margin: 0 auto 16px;
+  max-height: none;
   max-width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
 }
 
@@ -8969,7 +8970,7 @@ body.star-site .spa-gallery-lightbox__caption p {
   font-size: clamp(18px, 2vw, 22px);
   hyphens: auto;
   line-height: 1.35;
-  margin: 12px 0 10px;
+  margin: 0 0 12px;
   overflow: visible;
   word-wrap: break-word;
 }
