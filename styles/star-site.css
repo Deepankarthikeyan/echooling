@@ -867,12 +867,6 @@
   color: #ffffff !important;
 }
 
-body.star-site .star-notification-counter h2,
-body.star-site .star-notification-counter h5,
-body.star-site .star-notification-counter p {
-  color: #ffffff !important;
-}
-
 .star-notification-counter h2 {
   font-size: 70px;
   line-height: 1;
@@ -923,10 +917,6 @@ body.star-site .star-notification-counter p {
   font-weight: 900;
   margin-bottom: 10px;
   text-transform: uppercase;
-}
-
-body.star-site .star-notification-main span {
-  color: var(--spa-secondary, #cc0000) !important;
 }
 
 .star-notification-main h3 {
@@ -981,22 +971,6 @@ body.star-site .star-notification-main span {
 .star-notification-download a:hover {
   background: var(--spa-secondary-dark, #990000);
   border-color: var(--spa-secondary-dark, #990000);
-  color: #ffffff !important;
-}
-
-body.star-site .star-notification-download a,
-body.star-site .star-notification-download a:hover,
-body.star-site .star-notification-download a:focus,
-body.star-site .star-notification-download a:active {
-  background: var(--spa-secondary, #cc0000) !important;
-  border: 2px solid var(--spa-secondary, #cc0000) !important;
-  color: #ffffff !important;
-}
-
-body.star-site .star-notification-download a:hover,
-body.star-site .star-notification-download a:focus {
-  background: var(--spa-secondary-dark, #990000) !important;
-  border-color: var(--spa-secondary-dark, #990000) !important;
   color: #ffffff !important;
 }
 
@@ -4204,7 +4178,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   background: transparent;
 }
 
-.exact-home-page .spa-main-hero__card:not(.spa-main-hero__card--photo) img {
+.exact-home-page .spa-main-hero__card img {
   display: block;
   margin: 0 auto;
   object-fit: contain;
@@ -4240,8 +4214,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
+.exact-home-header .react-menus > li > .exact-menu-link-row > a {
   color: #0f1216;
   display: block;
   font-family: var(--spa-body-font, "Montserrat", sans-serif);
@@ -4252,16 +4225,11 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   white-space: nowrap;
 }
 
-.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
-  cursor: pointer;
-}
-
 .exact-home-header .exact-menu-link-row {
   display: inline-flex;
 }
 
-.exact-home-header .exact-menu-link-row > a,
-.exact-home-header .exact-menu-link-row > .exact-menu-label {
+.exact-home-header .exact-menu-link-row > a {
   align-items: center;
   display: inline-flex;
   gap: 4px;
@@ -4359,14 +4327,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .react-menus > li > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > a,
-.exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
+.exact-home-header .react-menus > li > .exact-menu-link-row > a {
   transition: color 180ms ease;
 }
 
 .exact-home-header .react-menus > li:hover > a,
-.exact-home-header .react-menus > li:hover > .exact-menu-link-row > a,
-.exact-home-header .react-menus > li:hover > .exact-menu-link-row > .exact-menu-label {
+.exact-home-header .react-menus > li:hover > .exact-menu-link-row > a {
   color: #2b6cff;
 }
 
@@ -4784,15 +4750,13 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
     justify-content: space-between;
   }
 
-  .exact-home-header .exact-menu-link-row > a,
-  .exact-home-header .exact-menu-link-row > .exact-menu-label {
+  .exact-home-header .exact-menu-link-row > a {
     display: block;
     flex: 1;
     padding: 14px 0;
   }
 
-  .exact-home-header .exact-menu-link-row > a .exact-menu-arrow,
-  .exact-home-header .exact-menu-link-row > .exact-menu-label .exact-menu-arrow {
+  .exact-home-header .exact-menu-link-row > a .exact-menu-arrow {
     display: none;
   }
 
@@ -4930,8 +4894,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   }
 
   .exact-home-header .react-menus > li > a,
-  .exact-home-header .react-menus > li > .exact-menu-link-row > a,
-  .exact-home-header .react-menus > li > .exact-menu-link-row > .exact-menu-label {
+  .exact-home-header .react-menus > li > .exact-menu-link-row > a {
     font-size: 14px;
     padding-left: 6px;
     padding-right: 6px;
@@ -6135,21 +6098,19 @@ body.star-site .react-footer-two .copyright > .container {
   width: 118px;
   height: 118px;
   border-radius: 50%;
-  background: var(--spa-secondary, #cc0000);
-  color: #ffffff;
+  background: linear-gradient(145deg, #ff4d4d 0%, #cc0000 55%, #990000 100%);
+  color: #fff;
   text-align: center;
   box-shadow: 0 16px 30px rgba(204, 0, 0, 0.35);
 }
 
 .exact-about-page .spa-about-intro__experience strong {
-  color: #ffffff;
   font-size: 34px;
   line-height: 1;
   font-weight: 700;
 }
 
 .exact-about-page .spa-about-intro__experience span {
-  color: #ffffff;
   margin-top: 6px;
   max-width: 78px;
   font-size: 11px;
@@ -7624,7 +7585,7 @@ body.star-site .exact-home-page .spa-main-hero__text {
   width: 100%;
 }
 
-.exact-home-page .spa-main-hero__card:not(.spa-main-hero__card--photo) img {
+.exact-home-page .spa-main-hero__card img {
   margin: 0 auto 4px;
   max-width: 170px;
 }
@@ -8991,57 +8952,63 @@ body.star-site .spa-gallery-lightbox__caption p {
   }
 }
 
-/* SI / TNUSRB landing pages — hero photo card */
-.exact-home-page.si-landing-page .spa-main-hero__card--photo img {
+/* SI Landing Page — uses exact-home-page typography and spa components */
+.si-landing-page .spa-main-hero__card--photo img {
   border-radius: 12px;
   display: block;
   height: auto;
-  margin: 0 auto 16px;
+  margin: 0;
+  max-height: 100%;
   max-width: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-/* TNUSRB landing — compact hero photo card */
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo {
-  overflow: hidden;
-  padding: 0 0 16px;
-}
-
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo img {
-  border-radius: 16px 16px 0 0;
-  height: 220px;
-  margin: 0 0 10px;
-  max-height: none;
-  object-fit: cover;
-  object-position: center top;
+.si-landing-page .spa-main-hero__card-visual {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
   width: 100%;
 }
 
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo h3 {
-  font-size: 20px;
-  margin: 8px 0 6px;
-  padding: 0 18px;
+.si-landing-page .spa-main-hero__card--photo h3 {
+  flex-shrink: 0;
+  font-size: clamp(18px, 2vw, 22px);
+  hyphens: auto;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  overflow: visible;
+  word-wrap: break-word;
 }
 
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo p {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 12px;
-  padding: 0 18px;
+.si-landing-page .spa-main-hero__card--photo p {
+  flex-shrink: 0;
 }
 
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats {
-  gap: 8px;
-  padding: 0 18px;
+@media (min-width: 992px) {
+  .si-landing-page .spa-main-hero__row {
+    align-items: stretch;
+  }
+
+  .si-landing-page .spa-main-hero__card--photo {
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .si-landing-page .spa-main-hero__card-visual {
+    flex: 1;
+    margin-bottom: 12px;
+    min-height: 0;
+  }
+
+  .si-landing-page .spa-main-hero__card--photo .spa-main-hero__stats {
+    margin-top: auto;
+  }
 }
 
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats strong {
-  font-size: 32px;
-}
-
-.exact-home-page.tnusrb-landing-page .spa-main-hero__card--photo .spa-main-hero__stats span {
-  font-size: 14px;
+.si-landing-page .spa-main-hero.hero3__area.exact-spa-hero {
+  overflow: visible;
 }
 
 /* About Course — image left, content right, auto-fade slider */

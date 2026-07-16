@@ -1,16 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
+import { buildPageSeo } from "../lib/star-seo";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { buildPageSeo } from "../lib/star-seo";
+import { AUTO_SLIDER_INTERVAL_MS, useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 import SiLandingPage from "./SiLandingPage";
+import TnusrbLandingPage from "./TnusrbLandingPage";
 import ArmyLandingPage from "./ArmyLandingPage";
 import NavyLandingPage from "./NavyLandingPage";
 import AirForceLandingPage from "./AirForceLandingPage";
 import RpfLandingPage from "./RpfLandingPage";
 import CapfLandingPage from "./CapfLandingPage";
-import TnusrbLandingPage from "./TnusrbLandingPage";
 import {
   academy,
   contact,
@@ -75,7 +76,7 @@ const aboutLearningIcons = [
 const aboutCounterItems = [
   {
     icon: "/assets/images/counter/1.png",
-    value: stats[0].value,
+    value: stats[0].value.replace("+", ""),
     suffix: "+",
     label: stats[0].label,
     detail: "Over a decade of trusted TNUSRB, SI and police exam coaching in Vellore.",
@@ -260,54 +261,41 @@ function getHeaderSearchMatches(query, limit = 6) {
 }
 
 function SiteHead({ seo }) {
-  if (!seo) {
-    return null;
-  }
-
   return (
     <Head>
-      <title>{seo.pageTitle}</title>
+      <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      {seo.keywords ? <meta name="keywords" content={seo.keywords} /> : null}
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="keywords" content={seo.keywords} />
       <meta name="author" content={seo.author} />
       <meta name="geo.region" content={seo.geoRegion} />
-      <meta name="geo.placename" content={seo.geoPlace} />
+      <meta name="geo.placename" content={seo.geoPlaceName} />
       <meta name="language" content={seo.language} />
-      <link rel="shortcut icon" type="image/x-icon" href={seo.favicon} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="canonical" href={seo.canonicalUrl} />
-      <meta property="og:title" content={seo.ogTitle} />
-      <meta property="og:description" content={seo.ogDescription} />
+      <link rel="shortcut icon" type="image/x-icon" href={seo.favicon} />
+
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
       <meta property="og:type" content={seo.ogType} />
-      <meta property="og:url" content={seo.ogUrl} />
+      <meta property="og:url" content={seo.canonicalUrl} />
       <meta property="og:image" content={seo.ogImage} />
-      <meta property="og:logo" content={seo.ogLogo} />
-      <meta name="twitter:card" content={seo.twitterCard} />
-      <meta name="twitter:title" content={seo.twitterTitle} />
-      <meta name="twitter:description" content={seo.twitterDescription} />
-      <meta name="twitter:image" content={seo.twitterImage} />
-      {seo.gaId ? (
-        <>
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${seo.gaId}`} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${seo.gaId}');
-              `,
-            }}
-          />
-        </>
-      ) : null}
+      <meta property="og:site_name" content={seo.siteName} />
+      <meta property="og:logo" content={seo.logo} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.ogImage} />
+
       {seo.schemas.map((schema, index) => (
         <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           key={`schema-${index}`}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
+
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
@@ -448,41 +436,16 @@ function MenuChevronDownIcon() {
   );
 }
 
-function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, linkable = true, children }) {
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
   const isExpanded = expandedMenu === menuKey;
-  const labelContent = (
-    <>
-      {label}
-      <MenuChevronDownIcon />
-    </>
-  );
 
   return (
     <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
       <div className="exact-menu-link-row">
-        {linkable ? (
-          <SiteLink href={href} onClick={onClose}>
-            {labelContent}
-          </SiteLink>
-        ) : (
-          <span
-            className="exact-menu-label"
-            role="button"
-            tabIndex={0}
-            onClick={(event) => {
-              event.preventDefault();
-              onToggle(menuKey);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                onToggle(menuKey);
-              }
-            }}
-          >
-            {labelContent}
-          </span>
-        )}
+        <SiteLink href={href} onClick={onClose}>
+          {label}
+          <MenuChevronDownIcon />
+        </SiteLink>
         <button
           type="button"
           className="exact-menu-dropdown-toggle"
@@ -681,7 +644,6 @@ function Header() {
                     label="Courses"
                     href="/courses"
                     menuKey="courses"
-                    linkable={false}
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
@@ -696,7 +658,6 @@ function Header() {
                     label="Notifications"
                     href="/notification"
                     menuKey="notifications"
-                    linkable={false}
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
@@ -1781,8 +1742,8 @@ function SpaFaqExpandedSection() {
   return (
     <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
       <div className="accordion__shape">
-        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="Decorative FAQ section shape" />
-        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="Decorative FAQ background accent" />
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
       </div>
       <div className="container">
         <div className="spa-faq-expanded__layout">
@@ -1961,7 +1922,7 @@ function ExactPopularTopics() {
             <div className="col-md-3" key={topic.title}>
               <div className="item__inner">
                 <div className="icon">
-                  <img src={topic.icon} alt={`${topic.title} topic icon`} />
+                  <img src={topic.icon} alt="Icon" />
                 </div>
                 <div className="react-content">
                   <h3 className="react-title"><SiteLink href="/courses">{topic.title}</SiteLink></h3>
@@ -1983,11 +1944,11 @@ function ExactAboutSection() {
         <div className="row">
           <div className="col-lg-6">
             <div className="about__image">
-              <img className="react__shape__11" src="/assets/images/about/dot.png" alt="Decorative dotted background pattern" />
-              <img className="react__shape__1" src="/assets/images/about/shape_02.png" alt="Decorative about section accent shape" />
-              <img src="/assets/images/about/about22.png" alt="Star Police Academy about section illustration" />
-              <img className="react__shape__2" src="/assets/images/about/shape_01.png" alt="Decorative about section background shape" />
-              <img className="react__shape__33" src="/assets/images/about/shape_03.png" alt="Decorative about section graphic accent" />
+              <img className="react__shape__11" src="/assets/images/about/dot.png" alt="Shape" />
+              <img className="react__shape__1" src="/assets/images/about/shape_02.png" alt="Shape" />
+              <img src="/assets/images/about/about22.png" alt="About" />
+              <img className="react__shape__2" src="/assets/images/about/shape_01.png" alt="Shape" />
+              <img className="react__shape__33" src="/assets/images/about/shape_03.png" alt="Shape" />
             </div>
           </div>
           <div className="col-lg-6">
@@ -2173,8 +2134,8 @@ function ExactAccordion() {
   return (
     <div className="accordion__area p-relative pt---110">
       <div className="accordion__shape">
-        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="Decorative FAQ section shape" />
-        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="Decorative FAQ background accent" />
+        <img className="accordion__shape-1" src="/assets/images/acc.png" alt="shape" />
+        <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="shape" />
       </div>
       <div className="container">
         <div className="row">
@@ -2322,7 +2283,7 @@ function ExactClients() {
                   <em className="icon_star_alt" />
                   <span><em>4.9</em> (14 Reviews)</span>
                 </div>
-                <img className="comma" src="/assets/images/testimonial/coma.png" alt="Testimonial quotation mark graphic" />
+                <img className="comma" src="/assets/images/testimonial/coma.png" alt="quote" />
               </div>
             </div>
             <button
@@ -2414,9 +2375,9 @@ function EchoolingHero() {
     <section className="echooling-hero">
       <div className="container">
         <div className="echooling-hero-stage">
-          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/hero/04.png" alt="Decorative hero background shape" />
-          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/hero/shape_03.png" alt="Decorative hero accent shape" />
-          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/hero/shape_05.png" alt="Decorative hero accent graphic" />
+          <img className="echooling-hero-shape echooling-hero-shape-one" src="/assets/images/hero/04.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-two" src="/assets/images/hero/shape_03.png" alt="" />
+          <img className="echooling-hero-shape echooling-hero-shape-three" src="/assets/images/hero/shape_05.png" alt="" />
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="echooling-hero-copy">
@@ -2425,7 +2386,7 @@ function EchoolingHero() {
                   <br />
                   <span>New Today</span>
                 </h1>
-                <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="Decorative title underline graphic" />
+                <img className="echooling-title-line" src="/assets/images/banner2/line_01.png" alt="" />
                 <form
                   className="echooling-search"
                   onSubmit={(event) => {
@@ -2508,7 +2469,7 @@ function EchoolingTopics() {
           {homeTopics.map((topic) => (
             <div className="col-lg-3 col-sm-6" key={topic.title}>
               <SiteLink href="/courses" className="echooling-topic-card">
-                <img src={topic.icon} alt={`${topic.title} course icon`} />
+                <img src={topic.icon} alt={topic.title} />
                 <h3>{topic.title}</h3>
                 <p>{topic.courses}</p>
               </SiteLink>
@@ -2760,7 +2721,7 @@ function StatsFlipCard({ icon, value, suffix, label, detail }) {
       >
         <div className="spa-flip-card__inner">
           <div className="spa-flip-card__face spa-flip-card__front">
-            <img src={icon} alt={`${label} statistic icon`} />
+            <img src={icon} alt={label} />
             <div className="spa-flip-card__value">
               <strong>{value}</strong>
               <em>{suffix}</em>
@@ -3267,14 +3228,7 @@ function ContactPage() {
                   <span>⌂</span>
                   <div>
                     <h3>Address</h3>
-                    <p>
-                      {contact.addressLines.map((line) => (
-                        <span key={line}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </p>
+                    <p>{contact.address}</p>
                   </div>
                 </div>
                 <div className="star-contact-info-item">
@@ -3317,9 +3271,8 @@ function ContactPage() {
           <div className="star-contact-map">
             <iframe
               title="Star Police Academy location map"
-              src={contact.mapEmbedUrl}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(contact.address)}&output=embed`}
               loading="lazy"
-              allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
@@ -3638,10 +3591,10 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage({ pageTitle = "Recruitment Notification" }) {
+function NotificationPage() {
   return (
     <>
-      <Breadcrumb title={pageTitle} />
+      <Breadcrumb title="Recruitment Notification" />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3772,7 +3725,7 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage pageTitle={page.title} />;
+      return <NotificationPage />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
@@ -3797,8 +3750,8 @@ function PageContent({ page }) {
   }
 }
 
-export default function StarSite({ page, pathname = "/" }) {
-  const seo = useMemo(() => buildPageSeo(page, pathname), [page, pathname]);
+export default function StarSite({ page, path = "/" }) {
+  const seo = useMemo(() => buildPageSeo(page, path), [page, path]);
 
   useEffect(() => {
     document.body.className = "star-site";

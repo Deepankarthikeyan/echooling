@@ -3,8 +3,8 @@ import SiCourseTopicsSlider from "./SiCourseTopicsSlider";
 import SiTrainingShowcase from "./SiTrainingShowcase";
 import { academy, contact, stats, testimonials } from "../lib/star-content";
 import {
-  tnusrbAboutParagraphs,
   tnusrbBatches,
+  tnusrbCourse,
   tnusrbCourseFeatures,
   tnusrbCourseTopics,
   tnusrbEligibilityRows,
@@ -14,6 +14,7 @@ import {
   tnusrbHeroHighlights,
   tnusrbInternalLinks,
   tnusrbLearningModes,
+  powerOfConstableSection,
   tnusrbPhysicalEvents,
   tnusrbSelectionProcessSteps,
   tnusrbStudyMaterials,
@@ -45,7 +46,7 @@ function TestimonialAvatar({ name }) {
 
 export default function TnusrbLandingPage() {
   return (
-    <div className="react-wrapper-inner exact-home-page si-landing-page tnusrb-landing-page">
+    <div className="react-wrapper-inner exact-home-page si-landing-page">
       <section
         className="hero3__area exact-spa-hero spa-main-hero p-relative"
         style={{ backgroundImage: `url(${academy.heroBackground})` }}
@@ -55,13 +56,12 @@ export default function TnusrbLandingPage() {
           <div className="row g-4 spa-main-hero__row">
             <div className="col-lg-7 spa-main-hero__col">
               <div className="spa-main-hero__content">
-                <span className="spa-main-hero__eyebrow">TNUSRB PC Coaching · Tamil Nadu</span>
+                <span className="spa-main-hero__eyebrow">TNUSRB Constable Coaching · Tamil Nadu</span>
                 <h1 className="spa-main-hero__title">
-                  Tamilnadu Police Constable TNUSRB Coaching
+                  {tnusrbCourse.title}
                 </h1>
                 <p className="spa-main-hero__text">
-                  Become a Tamil Nadu Police Constable with expert coaching, complete syllabus
-                  coverage, physical training, mock exams, and personal mentorship.
+                  {tnusrbCourse.summary}
                 </p>
                 <ul className="spa-main-hero__highlights">
                   {tnusrbHeroHighlights.map((item) => (
@@ -83,11 +83,13 @@ export default function TnusrbLandingPage() {
             </div>
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
-                <img
-                  src="/assets/images/courses/course-tnusrb-constable.png"
-                  alt="TNUSRB Police Constable coaching at Star Police Academy"
-                />
                 <h3>Best TNUSRB Police Constable Coaching Centre in Tamil Nadu</h3>
+                <div className="spa-main-hero__card-visual">
+                  <img
+                    src={tnusrbCourse.image}
+                    alt={tnusrbCourse.shortTitle}
+                  />
+                </div>
                 <p>Written exam · PET · Certificate verification · Medical · Final selection support</p>
                 <div className="spa-main-hero__stats">
                   {stats.slice(0, 4).map((item) => (
@@ -132,12 +134,25 @@ export default function TnusrbLandingPage() {
         <div className="container">
           <div className="spa-section-head text-center">
             <span className="spa-section-eyebrow">About Course</span>
-            <h2 className="spa-section-title">Tamilnadu Police Constable TNUSRB Coaching Course</h2>
+            <h2 className="spa-section-title">Explore our {tnusrbCourse.shortTitle} Course</h2>
             <p className="spa-section-text">
-              Complete preparation for every stage of TNUSRB Police Constable recruitment.
+              {tnusrbCourse.summary}
             </p>
           </div>
           <SiCourseTopicsSlider topics={tnusrbCourseTopics} />
+          <div className="row justify-content-center pt---50">
+            <div className="col-lg-10">
+              <article className="spa-course-hero-card">
+                <div className="spa-course-hero-card__body">
+                  <span className="spa-section-eyebrow">{powerOfConstableSection.title}</span>
+                  <h3>{powerOfConstableSection.title}</h3>
+                  {powerOfConstableSection.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -197,10 +212,10 @@ export default function TnusrbLandingPage() {
       <section className="pt---100 pb---100">
         <div className="container">
           <div className="spa-section-head text-center">
-            <span className="spa-section-eyebrow">TNUSRB PC Eligibility</span>
+            <span className="spa-section-eyebrow">TNUSRB Constable Eligibility</span>
             <h2 className="spa-section-title">Eligibility Criteria</h2>
             <p className="spa-section-text">
-              Know the age, education, and reservation norms before you start your PC preparation journey.
+              Know the age, education, and reservation norms before you start your constable preparation journey.
             </p>
           </div>
           <div className="si-landing-table-wrap pt---30">
@@ -370,7 +385,7 @@ export default function TnusrbLandingPage() {
             <div className="row">
               <div className="col-md-12 text-center">
                 <span className="spa-section-eyebrow">Student Success</span>
-                <h2 className="react__tittle">Our Successful PC Candidates</h2>
+                <h2 className="react__tittle">Our Successful Constable Candidates</h2>
               </div>
             </div>
           </div>
@@ -463,8 +478,8 @@ export default function TnusrbLandingPage() {
 
       <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
         <div className="accordion__shape">
-          <img className="accordion__shape-1" src="/assets/images/acc.png" alt="Decorative FAQ section shape" />
-          <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="Decorative FAQ background accent" />
+          <img className="accordion__shape-1" src="/assets/images/acc.png" alt="" aria-hidden="true" />
+          <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="" aria-hidden="true" />
         </div>
         <div className="container">
           <div className="spa-faq-expanded__layout">
