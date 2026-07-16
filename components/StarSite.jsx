@@ -67,6 +67,44 @@ function SiteLink({ href = "/", onClick, children, className, ...rest }) {
   );
 }
 
+function normalizeNavPath(path) {
+  if (!path) {
+    return "/";
+  }
+
+  const value = path.split("?")[0].split("#")[0];
+  if (!value || value === "/index") {
+    return "/";
+  }
+
+  return value.length > 1 && value.endsWith("/") ? value.slice(0, -1) : value;
+}
+
+function isNavPathMatch(currentPath, targetPath) {
+  const current = normalizeNavPath(currentPath);
+  const target = normalizeNavPath(targetPath);
+
+  if (target === "/") {
+    return current === "/";
+  }
+
+  return current === target || current.startsWith(`${target}/`);
+}
+
+function navLinkClassName(currentPath, href) {
+  return isNavPathMatch(currentPath, href) ? "react-current-page" : undefined;
+}
+
+function isNavSectionActive(currentPath, paths) {
+  return paths.some((path) => isNavPathMatch(currentPath, path));
+}
+
+const headerNavSections = {
+  courses: ["/courses", "/training", ...courseNavItems.map((item) => item.href)],
+  notifications: ["/notification", "/youtube", "/test-batch"],
+  training: ["/toppers", "/materials", "/questions", "/ansewrkey"],
+};
+
 const aboutLearningIcons = [
   "/assets/images/topics/icon.png",
   "/assets/images/topics/icon2.png",
@@ -436,13 +474,13 @@ function MenuChevronDownIcon() {
   );
 }
 
-function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, children }) {
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, isActive, children }) {
   const isExpanded = expandedMenu === menuKey;
 
   return (
-    <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}`}>
+    <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}${isActive ? " menu-active" : ""}`}>
       <div className="exact-menu-link-row">
-        <SiteLink href={href} onClick={onClose}>
+        <SiteLink href={href} onClick={onClose} className={isActive ? "react-current-page" : undefined}>
           {label}
           <MenuChevronDownIcon />
         </SiteLink>
@@ -467,6 +505,7 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, ch
 
 function Header() {
   const router = useRouter();
+  const currentPath = normalizeNavPath(router.asPath);
   const [open, setOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [dropdownPaused, setDropdownPaused] = useState(false);
@@ -634,11 +673,15 @@ function Header() {
                   className="react-menus react-sub-shadow"
                   onMouseLeave={resumeDropdowns}
                 >
-                  <li>
-                    <SiteLink href="/" onClick={closeNavigation}>Home</SiteLink>
+                  <li className={isNavPathMatch(currentPath, "/") ? "menu-active" : undefined}>
+                    <SiteLink href="/" onClick={closeNavigation} className={navLinkClassName(currentPath, "/")}>
+                      Home
+                    </SiteLink>
                   </li>
-                  <li>
-                    <SiteLink href="/about" onClick={closeNavigation}>About</SiteLink>
+                  <li className={isNavPathMatch(currentPath, "/about") ? "menu-active" : undefined}>
+                    <SiteLink href="/about" onClick={closeNavigation} className={navLinkClassName(currentPath, "/about")}>
+                      About
+                    </SiteLink>
                   </li>
                   <NavDropdown
                     label="Courses"
@@ -647,10 +690,17 @@ function Header() {
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
+                    isActive={isNavSectionActive(currentPath, headerNavSections.courses)}
                   >
                     {courseNavItems.map((item) => (
-                      <li key={item.label}>
-                        <SiteLink href={item.href} onClick={closeNavigation}>{item.label}</SiteLink>
+                      <li key={item.label} className={isNavPathMatch(currentPath, item.href) ? "menu-active" : undefined}>
+                        <SiteLink
+                          href={item.href}
+                          onClick={closeNavigation}
+                          className={navLinkClassName(currentPath, item.href)}
+                        >
+                          {item.label}
+                        </SiteLink>
                       </li>
                     ))}
                   </NavDropdown>
@@ -661,10 +711,35 @@ function Header() {
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
+                    isActive={isNavSectionActive(currentPath, headerNavSections.notifications)}
                   >
-                    <li><SiteLink href="/notification" onClick={closeNavigation}>Current Affairs</SiteLink></li>
-                    <li><SiteLink href="/youtube" onClick={closeNavigation}>Youtube Channel</SiteLink></li>
-                    <li><SiteLink href="/test-batch" onClick={closeNavigation}>Test Batches</SiteLink></li>
+                    <li className={isNavPathMatch(currentPath, "/notification") ? "menu-active" : undefined}>
+                      <SiteLink
+                        href="/notification"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/notification")}
+                      >
+                        Current Affairs
+                      </SiteLink>
+                    </li>
+                    <li className={isNavPathMatch(currentPath, "/youtube") ? "menu-active" : undefined}>
+                      <SiteLink
+                        href="/youtube"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/youtube")}
+                      >
+                        Youtube Channel
+                      </SiteLink>
+                    </li>
+                    <li className={isNavPathMatch(currentPath, "/test-batch") ? "menu-active" : undefined}>
+                      <SiteLink
+                        href="/test-batch"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/test-batch")}
+                      >
+                        Test Batches
+                      </SiteLink>
+                    </li>
                   </NavDropdown>
                   <NavDropdown
                     label="Training"
@@ -673,13 +748,34 @@ function Header() {
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
+                    isActive={isNavSectionActive(currentPath, headerNavSections.training)}
                   >
-                    <li><SiteLink href="/toppers" onClick={closeNavigation}>Toppers and Achievers</SiteLink></li>
-                    <li><SiteLink href="/materials" onClick={closeNavigation}>Training Materials</SiteLink></li>
-                    <li><SiteLink href="/questions" onClick={closeNavigation}>Question papers</SiteLink></li>
-                    <li><SiteLink href="/ansewrkey" onClick={closeNavigation}>Answer Keys</SiteLink></li>
+                    <li className={isNavPathMatch(currentPath, "/toppers") ? "menu-active" : undefined}>
+                      <SiteLink href="/toppers" onClick={closeNavigation} className={navLinkClassName(currentPath, "/toppers")}>
+                        Toppers and Achievers
+                      </SiteLink>
+                    </li>
+                    <li className={isNavPathMatch(currentPath, "/materials") ? "menu-active" : undefined}>
+                      <SiteLink href="/materials" onClick={closeNavigation} className={navLinkClassName(currentPath, "/materials")}>
+                        Training Materials
+                      </SiteLink>
+                    </li>
+                    <li className={isNavPathMatch(currentPath, "/questions") ? "menu-active" : undefined}>
+                      <SiteLink href="/questions" onClick={closeNavigation} className={navLinkClassName(currentPath, "/questions")}>
+                        Question papers
+                      </SiteLink>
+                    </li>
+                    <li className={isNavPathMatch(currentPath, "/ansewrkey") ? "menu-active" : undefined}>
+                      <SiteLink href="/ansewrkey" onClick={closeNavigation} className={navLinkClassName(currentPath, "/ansewrkey")}>
+                        Answer Keys
+                      </SiteLink>
+                    </li>
                   </NavDropdown>
-                  <li><SiteLink href="/contact" onClick={closeNavigation}>Contact</SiteLink></li>
+                  <li className={isNavPathMatch(currentPath, "/contact") ? "menu-active" : undefined}>
+                    <SiteLink href="/contact" onClick={closeNavigation} className={navLinkClassName(currentPath, "/contact")}>
+                      Contact
+                    </SiteLink>
+                  </li>
                 </ul>
                 <div className="searchbar-part">
                   <div className="search-form">

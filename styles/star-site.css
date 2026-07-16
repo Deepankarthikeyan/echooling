@@ -4336,6 +4336,19 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   color: #2b6cff;
 }
 
+.exact-home-header .react-menus > li > a.react-current-page,
+.exact-home-header .react-menus > li > .exact-menu-link-row > a.react-current-page,
+.exact-home-header .react-menus > li.menu-active > a,
+.exact-home-header .react-menus > li.menu-active > .exact-menu-link-row > a,
+.exact-home-header .react-menus > li > ul a.react-current-page {
+  color: var(--spa-secondary, #cc0000);
+}
+
+.exact-home-header .react-menus > li > ul a.react-current-page:hover {
+  background: rgba(204, 0, 0, 0.08);
+  color: var(--spa-secondary, #cc0000);
+}
+
 .exact-home-header .searchbar-part {
   align-items: center;
   display: flex;

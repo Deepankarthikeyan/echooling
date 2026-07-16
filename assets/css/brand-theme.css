@@ -308,6 +308,11 @@ body.star-site .react-blog__area.graybg-home .blog__card--title a {
 }
 
 /* Mobile menu active link */
+body.star-site .react-header .react-menus li ul li a.react-current-page,
+body.star-site .react-header .react-menus li ul li.menu-active > a {
+  color: var(--spa-secondary, #cc0000) !important;
+}
+
 body.star-site .react-header .react-menus li ul li a:hover {
   color: var(--spa-primary) !important;
 }
