@@ -1758,7 +1758,7 @@ function SpaFaqExpandedSection() {
               </SiteLink>
             </div>
           </aside>
-          <div className="spa-faq-expanded__scroll" tabIndex={0} aria-label="FAQ answers">
+          <div className="spa-faq-expanded__scroll" aria-label="FAQ answers">
             <div className="spa-faq-expanded__list">
               {faqs.map((item, index) => (
                 <article className="spa-faq-expanded__item" key={`${item.question}-${index}`}>

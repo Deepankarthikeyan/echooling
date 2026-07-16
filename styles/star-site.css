@@ -5374,7 +5374,7 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 .exact-home-page .spa-winner-carousel__track {
   display: flex;
   gap: 24px;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -7334,6 +7334,7 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 
 .exact-home-page {
   --spa-section-gap: 100px;
+  overflow-x: clip;
 }
 
 .exact-home-page > section:not(.spa-main-hero),
@@ -8696,7 +8697,8 @@ body.star-site .spa-gallery-lightbox__caption p {
 
 /* Section 10 — FAQ Expanded */
 .exact-home-page .spa-faq-expanded {
-  overflow: visible;
+  overflow: hidden;
+  position: relative;
 }
 
 .exact-home-page .spa-faq-expanded__layout {
@@ -8704,7 +8706,7 @@ body.star-site .spa-gallery-lightbox__caption p {
   display: grid;
   gap: 40px;
   grid-template-columns: minmax(280px, 5fr) minmax(0, 7fr);
-  min-height: calc(100vh - 140px);
+  min-height: auto;
 }
 
 .exact-home-page .spa-faq-expanded__sidebar {
@@ -8716,27 +8718,11 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 .exact-home-page .spa-faq-expanded__scroll {
-  max-height: calc(100vh - 140px);
+  max-height: none;
   min-width: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: 10px;
-  scrollbar-color: rgba(58, 87, 184, 0.4) transparent;
-  scrollbar-width: thin;
-}
-
-.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar {
-  width: 6px;
-}
-
-.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb {
-  background: rgba(58, 87, 184, 0.4);
-  border-radius: 999px;
-}
-
-.exact-home-page .spa-faq-expanded__scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(58, 87, 184, 0.6);
+  overflow: visible;
+  overscroll-behavior: auto;
+  padding-right: 0;
 }
 
 .exact-home-page .spa-faq-expanded__list {
