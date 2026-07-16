@@ -9010,6 +9010,21 @@ body.star-site .spa-gallery-lightbox__caption p {
   overflow: visible;
 }
 
+@media (min-width: 992px) {
+  .si-landing-page .spa-main-hero__row {
+    align-items: flex-start;
+  }
+
+  .si-landing-page .spa-main-hero__content {
+    height: auto;
+  }
+
+  .si-landing-page .spa-main-hero__actions {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
 /* About Course — image left, content right, auto-fade slider */
 .si-landing-page .si-landing-course-slider__shell {
   padding: 0 56px;
