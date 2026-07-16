@@ -25,37 +25,37 @@ const navyCourseTopics = [
     title: "Navy Recruitment Overview",
     text: "Understand the recruitment stages, eligibility norms, documentation needs, and the service expectations for Indian Navy aspirants.",
     icon: "badge",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
   {
     title: "Written Exam Preparation",
     text: "Get guided support for general awareness, reasoning, arithmetic, and current affairs required for the written test.",
     icon: "menu_book",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
   {
     title: "Physical Fitness & Drill",
     text: "Focus on stamina, endurance, and physical conditioning needed for fitness rounds and service readiness.",
     icon: "fitness_center",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
   {
     title: "Medical & Eligibility Readiness",
     text: "Stay prepared for medical standards, document verification, and other guideline-based checks in the recruitment process.",
     icon: "health_and_safety",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
   {
     title: "Leadership & Personality Traits",
     text: "Develop confidence, professionalism, and communication that support success in naval service and interviews.",
     icon: "record_voice_over",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
   {
     title: "Online Study Resources",
     text: "Access updated notes, practice sets, and online learning support for revision and steady preparation.",
     icon: "computer",
-    image: "/assets/images/courses/course-indian-navy.png",
+    image: "/assets/images/courses/course-indian-navy.jpg",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function NavyLandingPage() {
             </div>
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
-                <img src="/assets/images/courses/course-indian-navy.png" alt="Indian Navy coaching" />
+                <img src="/assets/images/courses/course-indian-navy.jpg" alt="Indian Navy coaching" />
                 <h3>Indian Navy Coaching Support</h3>
                 <p>Written exam · Physical training · Medical readiness · Online resources</p>
                 <div className="spa-main-hero__stats">

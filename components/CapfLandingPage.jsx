@@ -25,37 +25,37 @@ const capfCourseTopics = [
     title: "CAPF Recruitment Overview",
     text: "Understand the recruitment stages, eligibility norms, documentation needs, and service expectations for CAPF aspirants.",
     icon: "badge",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
   {
     title: "Written Exam Preparation",
     text: "Get guided support for general awareness, reasoning, arithmetic, and current affairs required for the written exam.",
     icon: "menu_book",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
   {
     title: "Physical Fitness & Drill",
     text: "Focus on stamina, endurance, and physical conditioning needed for fitness rounds and service readiness.",
     icon: "fitness_center",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
   {
     title: "Medical & Eligibility Readiness",
     text: "Stay prepared for medical standards, document verification, and other official checks.",
     icon: "health_and_safety",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
   {
     title: "Leadership & Personality Traits",
     text: "Develop confidence, professionalism, and communication that support success in CAPF interviews and service.",
     icon: "record_voice_over",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
   {
     title: "Online Study Resources",
     text: "Access updated notes, practice sets, and online learning support for revision and steady preparation.",
     icon: "computer",
-    image: "/assets/images/courses/course-rpf.png",
+    image: "/assets/images/courses/course-capf.jpg",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function CapfLandingPage() {
             </div>
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
-                <img src="/assets/images/courses/course-rpf.png" alt="CAPF coaching" />
+                <img src="/assets/images/courses/course-capf.jpg" alt="CAPF coaching" />
                 <h3>CAPF Coaching Support</h3>
                 <p>Written exam · Physical training · Medical readiness · Online resources</p>
                 <div className="spa-main-hero__stats">

@@ -788,7 +788,7 @@
   align-items: center;
   background:
     linear-gradient(rgba(15, 34, 57, 0.45), rgba(15, 34, 57, 0.45)),
-    url("https://www.starpoliceacademy.in/img/content/contact-info.jpg") center/cover;
+    url("/assets/images/contact/contact-info.jpg") center/cover;
   display: flex;
   justify-content: center;
   min-height: 330px;

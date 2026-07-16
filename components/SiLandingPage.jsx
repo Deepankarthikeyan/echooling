@@ -82,7 +82,7 @@ export default function SiLandingPage() {
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
                 <img
-                  src="https://www.starpoliceacademy.in/img/service/service-01.jpg"
+                  src="/assets/images/service/service-01.jpg"
                   alt="Police Sub Inspector coaching at Star Police Academy"
                 />
                 <h3>Best Police SI Coaching Centre in Tamil Nadu</h3>

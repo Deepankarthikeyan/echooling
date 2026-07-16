@@ -25,37 +25,37 @@ const armyCourseTopics = [
     title: "Agnipath Selection Overview",
     text: "Understand the recruitment stages, eligibility, documentation, and service expectations before you begin your army preparation journey.",
     icon: "badge",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
   {
     title: "Written Exam Preparation",
     text: "Build strong fundamentals in general knowledge, reasoning, arithmetic, and current affairs with guided study material and revision plans.",
     icon: "menu_book",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
   {
     title: "Physical Fitness & Drill",
     text: "Improve running stamina, endurance, push-ups, and overall physical readiness through structured training schedules.",
     icon: "fitness_center",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
   {
     title: "Medical & Eligibility Readiness",
     text: "Stay prepared for medical standards, document verification, and other eligibility checks required at various selection stages.",
     icon: "health_and_safety",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
   {
     title: "Leadership & Personality Traits",
     text: "Develop discipline, confidence, communication, and temperament required for a strong service career in the armed forces.",
     icon: "record_voice_over",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
   {
     title: "Online Study Resources",
     text: "Access updated notes, video guidance, practice questions, and revision support through online learning resources.",
     icon: "computer",
-    image: "/assets/images/courses/course-indian-army.png",
+    image: "/assets/images/courses/course-indian-army.jpg",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function ArmyLandingPage() {
             </div>
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
-                <img src="/assets/images/courses/course-indian-army.png" alt="Indian Army Agnipath coaching" />
+                <img src="/assets/images/courses/course-indian-army.jpg" alt="Indian Army Agnipath coaching" />
                 <h3>Indian Army Agnipath Coaching Support</h3>
                 <p>Written exam · Physical training · Medical readiness · Online resources</p>
                 <div className="spa-main-hero__stats">

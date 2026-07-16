@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
     "prebuild": "node scripts/prepare-public.js",
+    "optimize:images": "node scripts/optimize-images.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "test": "npm run build"
@@ -27,5 +28,8 @@
     "nodemailer": "^9.0.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }
