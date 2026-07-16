@@ -172,8 +172,12 @@ body.star-site .star-eyebrow {
 }
 
 body.star-site .exact-home-header .react-menus > li:hover > a,
+body.star-site .exact-home-header .react-menus > li:hover > .exact-menu-link-row > a,
 body.star-site .exact-home-header .react-menus li a:hover,
 body.star-site .exact-home-header .react-menus li a.react-current-page,
+body.star-site .exact-home-header .react-menus > li.menu-active > a,
+body.star-site .exact-home-header .react-menus > li.menu-active > .exact-menu-link-row > a,
+body.star-site .exact-home-header .react-menus > li > ul a.react-current-page,
 body.star-site .react-header .react-menus li a:hover {
   color: var(--spa-secondary) !important;
 }
