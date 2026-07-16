@@ -3070,7 +3070,7 @@ function FormMessage({ message }) {
 }
 
 async function submitContactViaFormSubmit(formData) {
-  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contact.email)}`, {
+  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contact.formEmail)}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -3083,6 +3083,7 @@ async function submitContactViaFormSubmit(formData) {
       phone: formData.phone,
       message: formData.message,
       _subject: `[Contact Form] ${formData.subject}`,
+      _replyto: formData.email,
       _template: "table",
     }),
   });

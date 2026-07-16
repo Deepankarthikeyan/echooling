@@ -17,7 +17,7 @@ module.exports = async function contactHandler(request, response) {
     const statusCode = error.statusCode || 500;
     const message =
       statusCode === 500
-        ? `We could not send your message right now. Please contact the academy directly at ${contact.email}.`
+        ? `We could not send your message right now. Please contact the academy directly at ${contact.formEmail}.`
         : error.message;
 
     response.status(statusCode).json({ success: false, message });
