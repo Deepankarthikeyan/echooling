@@ -84,10 +84,12 @@ export default function TnusrbLandingPage() {
             <div className="col-lg-5 spa-main-hero__col">
               <div className="spa-main-hero__card spa-main-hero__card--photo">
                 <h3>Best TNUSRB Police Constable Coaching Centre in Tamil Nadu</h3>
-                <img
-                  src={tnusrbCourse.image}
-                  alt={tnusrbCourse.shortTitle}
-                />
+                <div className="spa-main-hero__card-visual">
+                  <img
+                    src={tnusrbCourse.image}
+                    alt={tnusrbCourse.shortTitle}
+                  />
+                </div>
                 <p>Written exam · PET · Certificate verification · Medical · Final selection support</p>
                 <div className="spa-main-hero__stats">
                   {stats.slice(0, 4).map((item) => (
