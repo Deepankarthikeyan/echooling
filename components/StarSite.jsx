@@ -2365,7 +2365,6 @@ function ExactHomePage() {
       <SpaStudentResultsSection />
       <ExactHomeAboutSection />
       <SpaFaqExpandedSection />
-      <SpaLatestBlogSection />
     </div>
   );
 }
