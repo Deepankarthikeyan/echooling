@@ -3112,7 +3112,7 @@ function AboutFeedbackSection() {
 function AboutPage() {
   return (
     <div className="react-wrapper-inner exact-about-page">
-      <ExactBreadcrumb title="About Us" />
+      <ExactBreadcrumb title="About Star Police Academy" />
       <AboutIntroPageSection />
       <AboutLearningSection />
       <AboutInstructorsSection />
