@@ -3031,7 +3031,7 @@ const topperGalleryImages = [
 function ToppersPage() {
   return (
     <>
-      <Breadcrumb title="Toppers and Achievers" />
+      <ExactBreadcrumb title="Toppers and Achievers" />
       <section className="star-section pt---100 pb---70">
         <div className="container">
           <div className="text-center mb---40">
@@ -3143,7 +3143,7 @@ function ContactForm() {
 function ContactPage() {
   return (
     <>
-      <Breadcrumb title="Contact Us" />
+      <ExactBreadcrumb title="Contact Us" />
       <section className="star-contact star-contact-screen pt---100 pb---100">
         <div className="container">
           <div className="row align-items-start">
@@ -3372,7 +3372,7 @@ const materialsItems = [
 function MaterialsPage() {
   return (
     <>
-      <Breadcrumb title="Training Materials" />
+      <ExactBreadcrumb title="Training Materials" />
       <section className="star-section star-materials-page pt---100 pb---100">
         <div className="container">
           <div className="text-center mb---40">
@@ -3422,7 +3422,7 @@ function FAQPage() {
 function AnswerKeysPage() {
   return (
     <>
-      <Breadcrumb title="Answer Keys" />
+      <ExactBreadcrumb title="Answer Keys" />
       <section className="star-question-papers pt---70 pb---100">
         <div className="container">
           <SectionTitle eyebrow="Answer Keys" title="Solved Answer Keys" />
@@ -3473,7 +3473,7 @@ function AnswerKeysPage() {
 function QuestionPapersPage() {
   return (
     <>
-      <Breadcrumb title="Questions Paper" />
+      <ExactBreadcrumb title="Questions Paper" />
       <section className="star-question-papers pt---70 pb---100">
         <div className="container">
           <SectionTitle eyebrow="Question papers" title="Police Training Question papers" />
@@ -3519,7 +3519,7 @@ function QuestionPapersPage() {
 function NotificationPage() {
   return (
     <>
-      <Breadcrumb title="Recruitment Notification" />
+      <ExactBreadcrumb title="Recruitment Notification" />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3606,7 +3606,7 @@ function NotificationPage() {
 function YoutubePage() {
   return (
     <>
-      <Breadcrumb title="Our Recent Videos" />
+      <ExactBreadcrumb title="Our Recent Videos" />
       <section className="star-youtube-page pt---100 pb---100">
         <div className="container">
           <div className="row">
