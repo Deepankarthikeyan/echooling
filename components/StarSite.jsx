@@ -3069,6 +3069,67 @@ function FormMessage({ message }) {
   return message ? <p className="star-form-message">{message}</p> : null;
 }
 
+async function submitContactViaFormSubmit(formData) {
+  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contact.email)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      phone: formData.phone,
+      message: formData.message,
+      _subject: `[Contact Form] ${formData.subject}`,
+      _template: "table",
+    }),
+  });
+
+  let result;
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("Unable to send your message right now. Please try again or contact the academy directly.");
+  }
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.message || "Unable to send your message right now.");
+  }
+
+  return { success: true, message: "Your message has been sent successfully." };
+}
+
+async function submitContactForm(formData) {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  let result;
+  try {
+    result = await response.json();
+  } catch {
+    return submitContactViaFormSubmit(formData);
+  }
+
+  if (response.ok && result.success) {
+    return result;
+  }
+
+  if (response.status === 400) {
+    throw new Error(result.message || "Please fill in the required fields.");
+  }
+
+  try {
+    return await submitContactViaFormSubmit(formData);
+  } catch (fallbackError) {
+    throw new Error(result.message || fallbackError.message || "Unable to send your message right now.");
+  }
+}
+
 function ContactForm() {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -3091,17 +3152,7 @@ function ContactForm() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || "Unable to send your message right now.");
-      }
-
+      const result = await submitContactForm(formData);
       setMessage(result.message || "Your message has been sent successfully.");
       setFormData({ name: "", email: "", subject: "", phone: "", message: "" });
     } catch (error) {
