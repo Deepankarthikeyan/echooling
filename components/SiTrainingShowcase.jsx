@@ -1,18 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAutoSliderInterval, useAutoSliderPause } from "../lib/useAutoSlider";
 
 export default function SiTrainingShowcase({ items }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const mockItems = useMemo(() => items.filter((item) => item.group === "mock"), [items]);
+  const physicalItems = useMemo(() => items.filter((item) => item.group === "physical"), [items]);
+
+  const [activeGroup, setActiveGroup] = useState("mock");
+  const [activeIndexInGroup, setActiveIndexInGroup] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const activeIndexRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const transitionRef = useRef(null);
   const { isPaused, pauseProps } = useAutoSliderPause();
 
+  const visibleItems = activeGroup === "mock" ? mockItems : physicalItems;
+  const activeItem = visibleItems[activeIndexInGroup] || visibleItems[0];
+
   const changeItem = (nextIndex) => {
-    if (nextIndex === activeIndexRef.current || isTransitioningRef.current) {
+    if (!visibleItems.length || nextIndex === activeIndexRef.current || isTransitioningRef.current) {
       return;
     }
 
@@ -25,7 +32,7 @@ export default function SiTrainingShowcase({ items }) {
 
     transitionRef.current = window.setTimeout(() => {
       activeIndexRef.current = nextIndex;
-      setActiveIndex(nextIndex);
+      setActiveIndexInGroup(nextIndex);
       transitionRef.current = window.setTimeout(() => {
         isTransitioningRef.current = false;
         setIsTransitioning(false);
@@ -33,15 +40,50 @@ export default function SiTrainingShowcase({ items }) {
     }, 350);
   };
 
+  const switchGroup = (group) => {
+    if (group === activeGroup) {
+      return;
+    }
+
+    activeIndexRef.current = 0;
+    setActiveGroup(group);
+    setActiveIndexInGroup(0);
+    isTransitioningRef.current = false;
+    setIsTransitioning(false);
+
+    if (transitionRef.current) {
+      window.clearTimeout(transitionRef.current);
+    }
+  };
+
   const showPrevious = () => {
-    changeItem((activeIndexRef.current + items.length - 1) % items.length);
+    if (!visibleItems.length) {
+      return;
+    }
+
+    changeItem((activeIndexRef.current + visibleItems.length - 1) % visibleItems.length);
   };
 
   const showNext = () => {
-    changeItem((activeIndexRef.current + 1) % items.length);
+    if (!visibleItems.length) {
+      return;
+    }
+
+    changeItem((activeIndexRef.current + 1) % visibleItems.length);
   };
 
-  useAutoSliderInterval(showNext, isPaused, [items.length]);
+  useEffect(() => {
+    activeIndexRef.current = activeIndexInGroup;
+  }, [activeIndexInGroup, activeGroup]);
+
+  useEffect(() => {
+    if (activeIndexInGroup >= visibleItems.length) {
+      activeIndexRef.current = 0;
+      setActiveIndexInGroup(0);
+    }
+  }, [activeIndexInGroup, visibleItems.length]);
+
+  useAutoSliderInterval(showNext, isPaused, [visibleItems.length, activeGroup]);
 
   useEffect(() => () => {
     if (transitionRef.current) {
@@ -49,8 +91,9 @@ export default function SiTrainingShowcase({ items }) {
     }
   }, []);
 
-  const activeItem = items[activeIndex];
-  const mockCount = items.filter((item) => item.group === "mock").length;
+  if (!activeItem) {
+    return null;
+  }
 
   return (
     <div className="si-training-showcase pt---30">
@@ -58,9 +101,9 @@ export default function SiTrainingShowcase({ items }) {
         <button
           type="button"
           role="tab"
-          aria-selected={activeItem.group === "mock"}
-          className={activeItem.group === "mock" ? "is-active" : ""}
-          onClick={() => changeItem(0)}
+          aria-selected={activeGroup === "mock"}
+          className={activeGroup === "mock" ? "is-active" : ""}
+          onClick={() => switchGroup("mock")}
         >
           <span aria-hidden="true" className="material-symbols-outlined">quiz</span>
           Mock Tests
@@ -68,9 +111,9 @@ export default function SiTrainingShowcase({ items }) {
         <button
           type="button"
           role="tab"
-          aria-selected={activeItem.group === "physical"}
-          className={activeItem.group === "physical" ? "is-active" : ""}
-          onClick={() => changeItem(mockCount)}
+          aria-selected={activeGroup === "physical"}
+          className={activeGroup === "physical" ? "is-active" : ""}
+          onClick={() => switchGroup("physical")}
         >
           <span aria-hidden="true" className="material-symbols-outlined">fitness_center</span>
           Physical Training
@@ -89,21 +132,17 @@ export default function SiTrainingShowcase({ items }) {
         <div
           className={`si-training-showcase__spotlight si-training-showcase__spotlight--${activeItem.group}${isTransitioning ? " is-transitioning" : ""}`}
           aria-live="polite"
-          key={`spotlight-${activeIndex}`}
+          key={`spotlight-${activeGroup}-${activeIndexInGroup}`}
         >
           <div className="si-training-showcase__spotlight-bg" aria-hidden="true">
-            {activeItem.image ? (
-              <img src={activeItem.image} alt={activeItem.title} loading="lazy" />
-            ) : (
-              <span className="si-training-showcase__spotlight-pattern" />
-            )}
+            <span className={`si-training-showcase__spotlight-pattern si-training-showcase__spotlight-pattern--${activeItem.group}`} />
           </div>
           <div className="si-training-showcase__spotlight-content">
             <div className="si-training-showcase__spotlight-top">
               <span className="si-training-showcase__badge">{activeItem.groupLabel}</span>
               <span className="si-training-showcase__index">
-                {String(activeIndex + 1).padStart(2, "0")}
-                <em>/{String(items.length).padStart(2, "0")}</em>
+                {String(activeIndexInGroup + 1).padStart(2, "0")}
+                <em>/{String(visibleItems.length).padStart(2, "0")}</em>
               </span>
             </div>
             <span className="si-training-showcase__icon" aria-hidden="true">
@@ -124,12 +163,12 @@ export default function SiTrainingShowcase({ items }) {
       </div>
 
       <div className="si-training-showcase__rail" aria-label="Training highlights">
-        {items.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <button
             key={item.title}
             type="button"
-            className={`si-training-showcase__chip si-training-showcase__chip--${item.group}${index === activeIndex ? " is-active" : ""}`}
-            aria-current={index === activeIndex ? "true" : undefined}
+            className={`si-training-showcase__chip si-training-showcase__chip--${item.group}${index === activeIndexInGroup ? " is-active" : ""}`}
+            aria-current={index === activeIndexInGroup ? "true" : undefined}
             aria-label={`Show ${item.title}`}
             onClick={() => changeItem(index)}
           >
