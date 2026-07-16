@@ -11,7 +11,6 @@ import {
   siFaqs,
   siFeeHighlights,
   siHeroHighlights,
-  siInternalLinks,
   siLearningModes,
   siPhysicalEvents,
   siSelectionProcessSteps,
@@ -488,35 +487,6 @@ export default function SiLandingPage() {
           </div>
         </div>
       </div>
-
-      <section className="si-landing-final-cta pt---100 pb---120">
-        <div className="container">
-          <div className="footer-top-cta si-landing-final-cta__panel">
-            <div className="row align-items-center">
-              <div className="col-lg-8">
-                <h4>Star Police Academy</h4>
-                <h3>
-                  Start Your Journey Towards Becoming a Police Sub Inspector
-                </h3>
-                <p>
-                  Join thousands of successful aspirants who have trusted Star Police Academy for
-                  TNUSRB SI exam preparation with expert guidance and physical training.
-                </p>
-              </div>
-              <div className="col-lg-4 text-right">
-                <Link className="exact-spa-hero__register-btn" href="/register">
-                  Book a Free Demo Class <ArrowIcon />
-                </Link>
-              </div>
-            </div>
-            <div className="si-landing-links">
-              {siInternalLinks.map((link) => (
-                <Link key={link.label} href={link.href}>{link.label}</Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
