@@ -75,7 +75,7 @@ const aboutLearningIcons = [
 const aboutCounterItems = [
   {
     icon: "/assets/images/counter/1.png",
-    value: stats[0].value,
+    value: stats[0].value.replace("+", ""),
     suffix: "+",
     label: stats[0].label,
     detail: "Over a decade of trusted TNUSRB, SI and police exam coaching in Vellore.",
@@ -2745,7 +2745,7 @@ function AboutIntroPageSection() {
                   alt="Star Police Academy classroom coaching session"
                 />
                 <div className="spa-about-intro__experience">
-                  <strong>{stats[0].value}+</strong>
+                  <strong>{stats[0].value}</strong>
                   <span>{stats[0].label}</span>
                 </div>
               </div>
