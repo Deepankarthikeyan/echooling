@@ -3115,7 +3115,6 @@ function AboutPage() {
       <ExactBreadcrumb title="About Star Police Academy" />
       <AboutIntroPageSection />
       <AboutLearningSection />
-      <AboutInstructorsSection />
       <AboutFeedbackSection />
     </div>
   );
