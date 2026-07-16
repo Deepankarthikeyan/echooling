@@ -8956,11 +8956,45 @@ body.star-site .spa-gallery-lightbox__caption p {
 .si-landing-page .spa-main-hero__card--photo img {
   border-radius: 12px;
   display: block;
+  flex-shrink: 0;
   height: 200px;
   margin: 0 auto 16px;
   max-width: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+.si-landing-page .spa-main-hero__card--photo h3 {
+  flex-shrink: 0;
+  font-size: clamp(18px, 2vw, 22px);
+  hyphens: auto;
+  line-height: 1.35;
+  margin: 12px 0 10px;
+  overflow: visible;
+  word-wrap: break-word;
+}
+
+.si-landing-page .spa-main-hero__card--photo p {
+  flex-shrink: 0;
+}
+
+@media (min-width: 992px) {
+  .si-landing-page .spa-main-hero__row {
+    align-items: flex-start;
+  }
+
+  .si-landing-page .spa-main-hero__card--photo {
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .si-landing-page .spa-main-hero__card--photo .spa-main-hero__stats {
+    margin-top: 16px;
+  }
+}
+
+.si-landing-page .spa-main-hero.hero3__area.exact-spa-hero {
+  overflow: visible;
 }
 
 /* About Course — image left, content right, auto-fade slider */
