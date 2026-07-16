@@ -478,8 +478,8 @@ export default function TnusrbLandingPage() {
 
       <div className="accordion__area spa-faq-expanded p-relative pt---110 pb---100">
         <div className="accordion__shape">
-          <img className="accordion__shape-1" src="/assets/images/acc.png" alt="" />
-          <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="" />
+          <img className="accordion__shape-1" src="/assets/images/acc.png" alt="" aria-hidden="true" />
+          <img className="accordion__shape-1a" src="/assets/images/banner2/shape_01.png" alt="" aria-hidden="true" />
         </div>
         <div className="container">
           <div className="spa-faq-expanded__layout">

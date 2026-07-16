@@ -10,7 +10,8 @@ function routeFromSlug(slug) {
 }
 
 export async function getServerSideProps({ params }) {
-  const page = resolveStarRoute(routeFromSlug(params?.slug));
+  const path = routeFromSlug(params?.slug);
+  const page = resolveStarRoute(path);
 
   if (!page) {
     return {
@@ -21,10 +22,11 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       page,
+      path,
     },
   };
 }
 
-export default function CatchAllStarPage({ page }) {
-  return <StarSite page={page} />;
+export default function CatchAllStarPage({ page, path }) {
+  return <StarSite page={page} path={path} />;
 }

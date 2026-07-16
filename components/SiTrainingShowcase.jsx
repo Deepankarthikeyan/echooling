@@ -93,7 +93,7 @@ export default function SiTrainingShowcase({ items }) {
         >
           <div className="si-training-showcase__spotlight-bg" aria-hidden="true">
             {activeItem.image ? (
-              <img src={activeItem.image} alt="" loading="lazy" />
+              <img src={activeItem.image} alt={activeItem.title} loading="lazy" />
             ) : (
               <span className="si-training-showcase__spotlight-pattern" />
             )}

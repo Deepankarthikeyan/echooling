@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { buildPageSeo } from "../lib/star-seo";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -259,17 +260,42 @@ function getHeaderSearchMatches(query, limit = 6) {
     .map((result) => result.entry);
 }
 
-function SiteHead({ title, description, keywords }) {
-  const pageTitle = title ? `${title} | Star Police Academy` : academy.title;
-  const pageDescription = description || academy.description;
-
+function SiteHead({ seo }) {
   return (
     <Head>
-      <title>{pageTitle}</title>
-      <meta name="description" content={pageDescription} />
-      {keywords ? <meta name="keywords" content={keywords} /> : null}
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <meta name="keywords" content={seo.keywords} />
+      <meta name="author" content={seo.author} />
+      <meta name="geo.region" content={seo.geoRegion} />
+      <meta name="geo.placename" content={seo.geoPlaceName} />
+      <meta name="language" content={seo.language} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="shortcut icon" type="image/x-icon" href={academy.logo} />
+      <link rel="canonical" href={seo.canonicalUrl} />
+      <link rel="shortcut icon" type="image/x-icon" href={seo.favicon} />
+
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:type" content={seo.ogType} />
+      <meta property="og:url" content={seo.canonicalUrl} />
+      <meta property="og:image" content={seo.ogImage} />
+      <meta property="og:site_name" content={seo.siteName} />
+      <meta property="og:logo" content={seo.logo} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.ogImage} />
+
+      {seo.schemas.map((schema, index) => (
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          key={`schema-${index}`}
+          type="application/ld+json"
+        />
+      ))}
+
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
@@ -2443,7 +2469,7 @@ function EchoolingTopics() {
           {homeTopics.map((topic) => (
             <div className="col-lg-3 col-sm-6" key={topic.title}>
               <SiteLink href="/courses" className="echooling-topic-card">
-                <img src={topic.icon} alt="" />
+                <img src={topic.icon} alt={topic.title} />
                 <h3>{topic.title}</h3>
                 <p>{topic.courses}</p>
               </SiteLink>
@@ -2644,7 +2670,7 @@ function EchoolingTestimonials() {
         <div className="echooling-blog-strip">
           {homeBlogCards.map((item) => (
             <article key={item.title}>
-              <img src={item.image} alt="" />
+              <img src={item.image} alt={item.title} />
               <div className="echooling-blog-date">{item.date}</div>
               <span>{item.category}</span>
               <h3>{item.title}</h3>
@@ -2695,7 +2721,7 @@ function StatsFlipCard({ icon, value, suffix, label, detail }) {
       >
         <div className="spa-flip-card__inner">
           <div className="spa-flip-card__face spa-flip-card__front">
-            <img src={icon} alt="" />
+            <img src={icon} alt={label} />
             <div className="spa-flip-card__value">
               <strong>{value}</strong>
               <em>{suffix}</em>
@@ -3724,14 +3750,8 @@ function PageContent({ page }) {
   }
 }
 
-export default function StarSite({ page }) {
-  const title = useMemo(() => page?.title || academy.name, [page]);
-  const description = page?.metaDescription;
-  const keywords = page?.type === "si-landing"
-    ? "Police SI Coaching, Sub Inspector Coaching, TNUSRB SI Coaching, Police SI Training, SI Coaching in Tamil Nadu"
-    : page?.type === "tnusrb-landing"
-      ? "TNUSRB Coaching, Police Constable Coaching, TNUSRB Constable, Police Constable Exam Coaching, TNUSRB PC Coaching Tamil Nadu"
-      : undefined;
+export default function StarSite({ page, path = "/" }) {
+  const seo = useMemo(() => buildPageSeo(page, path), [page, path]);
 
   useEffect(() => {
     document.body.className = "star-site";
@@ -3741,7 +3761,7 @@ export default function StarSite({ page }) {
 
   return (
     <>
-      <SiteHead title={title} description={description} keywords={keywords} />
+      <SiteHead seo={seo} />
       <Header />
       <main className="react-wrapper star-main">
         <PageContent page={page} />
