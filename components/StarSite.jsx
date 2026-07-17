@@ -101,7 +101,14 @@ function isNavSectionActive(currentPath, paths) {
 
 const headerNavSections = {
   courses: ["/courses", "/training", ...courseNavItems.map((item) => item.href)],
-  notifications: ["/notification", "/youtube", "/test-batch"],
+  notifications: [
+    "/star-police-academy-current-affairs",
+    "/star-police-academy-youtube",
+    "/star-police-academy-test-batches",
+    "/notification",
+    "/youtube",
+    "/test-batch",
+  ],
   training: ["/toppers", "/materials", "/questions", "/ansewrkey"],
 };
 
@@ -561,36 +568,57 @@ function Header() {
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
-                    href="/notification"
+                    href="/star-police-academy-current-affairs"
                     menuKey="notifications"
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                     isActive={isNavSectionActive(currentPath, headerNavSections.notifications)}
                   >
-                    <li className={isNavPathMatch(currentPath, "/notification") ? "menu-active" : undefined}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-current-affairs") ||
+                        isNavPathMatch(currentPath, "/notification")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
                       <SiteLink
-                        href="/notification"
+                        href="/star-police-academy-current-affairs"
                         onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/notification")}
+                        className={navLinkClassName(currentPath, "/star-police-academy-current-affairs")}
                       >
                         Current Affairs
                       </SiteLink>
                     </li>
-                    <li className={isNavPathMatch(currentPath, "/youtube") ? "menu-active" : undefined}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-youtube") ||
+                        isNavPathMatch(currentPath, "/youtube")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
                       <SiteLink
-                        href="/youtube"
+                        href="/star-police-academy-youtube"
                         onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/youtube")}
+                        className={navLinkClassName(currentPath, "/star-police-academy-youtube")}
                       >
                         Youtube Channel
                       </SiteLink>
                     </li>
-                    <li className={isNavPathMatch(currentPath, "/test-batch") ? "menu-active" : undefined}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-test-batches") ||
+                        isNavPathMatch(currentPath, "/test-batch")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
                       <SiteLink
-                        href="/test-batch"
+                        href="/star-police-academy-test-batches"
                         onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/test-batch")}
+                        className={navLinkClassName(currentPath, "/star-police-academy-test-batches")}
                       >
                         Test Batches
                       </SiteLink>
@@ -632,13 +660,6 @@ function Header() {
                     </SiteLink>
                   </li>
                 </ul>
-                <div className="searchbar-part">
-                  <div className="react-logins">
-                    <SiteLink href="/register" onClick={closeNavigation}>
-                      Apply Now <ArrowIcon />
-                    </SiteLink>
-                  </div>
-                </div>
               </div>
             </nav>
           </div>
