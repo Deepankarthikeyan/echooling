@@ -71,8 +71,8 @@ export default function TnusrbLandingPage() {
                   ))}
                 </ul>
                 <div className="spa-main-hero__actions">
-                  <Link className="exact-spa-hero__register-btn" href="/register">
-                    Join Now <ArrowIcon />
+                  <Link className="exact-spa-hero__register-btn" href="/contact-us">
+                    Contact Us <ArrowIcon />
                   </Link>
                   <a className="spa-main-hero__btn-outline" href={`tel:${contact.phonePrimary.replace(/\s/g, "")}`}>
                     Call {contact.phonePrimary}
