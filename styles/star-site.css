@@ -4281,17 +4281,19 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 }
 
 .exact-home-header .exact-menu-courses-dropdown > ul.sub-menu {
-  max-width: 360px;
-  min-width: 320px;
-  overflow: visible;
-  width: 360px;
+  max-width: 400px !important;
+  min-width: 400px !important;
+  overflow: visible !important;
+  width: 400px !important;
 }
 
-.exact-home-header .exact-menu-courses-dropdown > ul.sub-menu a {
+.exact-home-header .exact-menu-courses-dropdown > ul.sub-menu > li > a {
+  display: block;
   line-height: 1.5;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   text-align: left;
-  white-space: normal;
+  white-space: normal !important;
+  width: 100%;
   word-break: normal;
 }
 
