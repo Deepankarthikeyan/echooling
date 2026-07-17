@@ -1360,14 +1360,31 @@
 }
 
 .star-contact-map__pin {
-  height: 52px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   left: 50%;
   pointer-events: none;
   position: absolute;
   top: 54%;
   transform: translate(-50%, -100%);
-  width: 40px;
   z-index: 2;
+}
+
+.star-contact-map__pin-label {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(15, 34, 57, 0.18);
+  color: #0f2239;
+  font-family: var(--spa-body-font, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  max-width: 220px;
+  padding: 10px 14px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .star-contact-map__pin svg {
@@ -1715,14 +1732,19 @@
   }
 
   .star-contact-map__pin {
-    height: 44px;
     top: 58%;
-    width: 34px;
   }
 
   .star-contact-map__pin svg {
     height: 44px;
     width: 34px;
+  }
+
+  .star-contact-map__pin-label {
+    font-size: 12px;
+    max-width: 180px;
+    padding: 8px 12px;
+    white-space: normal;
   }
 
   .star-notification-copy {
