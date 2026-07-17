@@ -3326,15 +3326,6 @@ function ContactPage() {
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
-            <div className="star-contact-map__pin" aria-hidden="true">
-              <svg viewBox="0 0 36 48" role="img" aria-label="Star Police Academy location pin">
-                <path
-                  d="M18 0C8.06 0 0 8.06 0 18c0 12.15 18 30 18 30s18-17.85 18-30C36 8.06 27.94 0 18 0z"
-                  fill="#ea4335"
-                />
-                <circle cx="18" cy="18" r="7.5" fill="#ffffff" />
-              </svg>
-            </div>
           </div>
         </div>
       </section>

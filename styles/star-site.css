@@ -1301,7 +1301,6 @@
   height: 460px;
   margin-top: 95px;
   overflow: hidden;
-  position: relative;
   width: 100%;
 }
 
@@ -1309,24 +1308,6 @@
   border: 0;
   height: 100%;
   width: 100%;
-}
-
-.star-contact-map__pin {
-  height: 48px;
-  left: 50%;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -100%);
-  width: 36px;
-  z-index: 2;
-}
-
-.star-contact-map__pin svg {
-  display: block;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.28));
-  height: 48px;
-  width: 36px;
 }
 
 .star-form input,
