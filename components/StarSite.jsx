@@ -109,7 +109,16 @@ const headerNavSections = {
     "/youtube",
     "/test-batch",
   ],
-  training: ["/toppers", "/materials", "/questions", "/ansewrkey"],
+  training: [
+    "/star-police-academy-toppers-and-achievers",
+    "/star-police-academy-training-materials",
+    "/star-police-academy-question-papers",
+    "/star-police-academy-answer-keys",
+    "/toppers",
+    "/materials",
+    "/questions",
+    "/ansewrkey",
+  ],
 };
 
 const aboutLearningIcons = [
@@ -626,30 +635,74 @@ function Header() {
                   </NavDropdown>
                   <NavDropdown
                     label="Training"
-                    href="/training"
+                    href="/star-police-academy-toppers-and-achievers"
                     menuKey="training"
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
                     onClose={closeNavigation}
                     isActive={isNavSectionActive(currentPath, headerNavSections.training)}
                   >
-                    <li className={isNavPathMatch(currentPath, "/toppers") ? "menu-active" : undefined}>
-                      <SiteLink href="/toppers" onClick={closeNavigation} className={navLinkClassName(currentPath, "/toppers")}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-toppers-and-achievers") ||
+                        isNavPathMatch(currentPath, "/toppers")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
+                      <SiteLink
+                        href="/star-police-academy-toppers-and-achievers"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/star-police-academy-toppers-and-achievers")}
+                      >
                         Toppers and Achievers
                       </SiteLink>
                     </li>
-                    <li className={isNavPathMatch(currentPath, "/materials") ? "menu-active" : undefined}>
-                      <SiteLink href="/materials" onClick={closeNavigation} className={navLinkClassName(currentPath, "/materials")}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-training-materials") ||
+                        isNavPathMatch(currentPath, "/materials")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
+                      <SiteLink
+                        href="/star-police-academy-training-materials"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/star-police-academy-training-materials")}
+                      >
                         Training Materials
                       </SiteLink>
                     </li>
-                    <li className={isNavPathMatch(currentPath, "/questions") ? "menu-active" : undefined}>
-                      <SiteLink href="/questions" onClick={closeNavigation} className={navLinkClassName(currentPath, "/questions")}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-question-papers") ||
+                        isNavPathMatch(currentPath, "/questions")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
+                      <SiteLink
+                        href="/star-police-academy-question-papers"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/star-police-academy-question-papers")}
+                      >
                         Question papers
                       </SiteLink>
                     </li>
-                    <li className={isNavPathMatch(currentPath, "/ansewrkey") ? "menu-active" : undefined}>
-                      <SiteLink href="/ansewrkey" onClick={closeNavigation} className={navLinkClassName(currentPath, "/ansewrkey")}>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-answer-keys") ||
+                        isNavPathMatch(currentPath, "/ansewrkey")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
+                      <SiteLink
+                        href="/star-police-academy-answer-keys"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/star-police-academy-answer-keys")}
+                      >
                         Answer Keys
                       </SiteLink>
                     </li>
