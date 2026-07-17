@@ -3554,7 +3554,6 @@ function FAQPage() {
     <>
       <Breadcrumb title="Frequently Asked Questions" />
       <FAQList />
-      <CTA />
     </>
   );
 }
