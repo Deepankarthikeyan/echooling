@@ -788,7 +788,7 @@ function Footer() {
             </div>
             <div className="col-lg-4 md-mb-30">
               <div className="footer-widget footer-widget-3">
-                <h3 className="footer-title">Useful Links</h3>
+                <h3 className="footer-title">Courses</h3>
                 <div className="footer-menu">
                   <ul>
                     {courseNavItems.map((item) => (
