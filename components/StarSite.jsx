@@ -426,7 +426,9 @@ function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, is
   const isExpanded = expandedMenu === menuKey;
 
   return (
-    <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}${isActive ? " menu-active" : ""}`}>
+    <li
+      className={`exact-menu-has-dropdown${menuKey === "courses" ? " exact-menu-courses-dropdown" : ""} ${isExpanded ? "exact-menu-expanded" : ""}${isActive ? " menu-active" : ""}`}
+    >
       <div className="exact-menu-link-row">
         <SiteLink
           href={href}
@@ -745,7 +747,7 @@ function Footer() {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 md-mb-30">
+            <div className="col-lg-4 md-mb-30">
               <div className="footer-widget footer-widget-1">
                 <div className="footer-logo white">
                   <SiteLink href="/" className="logo-text">
@@ -765,7 +767,7 @@ function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 md-mb-30">
+            <div className="col-lg-4 md-mb-30">
               <div className="footer-widget footer-widget-2">
                 <h3 className="footer-title">About Us</h3>
                 <div className="footer-menu">
@@ -784,7 +786,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 md-mb-30">
+            <div className="col-lg-4 md-mb-30">
               <div className="footer-widget footer-widget-3">
                 <h3 className="footer-title">Useful Links</h3>
                 <div className="footer-menu">
@@ -795,27 +797,6 @@ function Footer() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="footer-widget footer-widget-4">
-                <h3 className="footer-title">Newsletter</h3>
-                <div className="footer3__form">
-                  <p>
-                    Get the latest Star Police Academy news <br />
-                    delivered to your inbox
-                  </p>
-                  <form
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                    }}
-                  >
-                    <input type="email" placeholder="Enter your email" />
-                    <button className="footer3__form-1" type="submit">
-                      <i className="arrow_right" />
-                    </button>
-                  </form>
                 </div>
               </div>
             </div>

@@ -4280,6 +4280,21 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
   width: 100% !important;
 }
 
+.exact-home-header .exact-menu-courses-dropdown > ul.sub-menu {
+  max-width: 360px;
+  min-width: 320px;
+  overflow: visible;
+  width: 360px;
+}
+
+.exact-home-header .exact-menu-courses-dropdown > ul.sub-menu a {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-align: left;
+  white-space: normal;
+  word-break: normal;
+}
+
 .exact-home-header .react-menus > li:hover > ul,
 .exact-home-header .react-menus > li:hover > ul.sub-menu {
   opacity: 1;
@@ -4824,6 +4839,12 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo {
 
   .exact-home-header .react-menus > li > ul.sub-menu > li {
     width: 100% !important;
+  }
+
+  .exact-home-header .exact-menu-courses-dropdown > ul.sub-menu {
+    max-width: none;
+    min-width: 0;
+    width: 100%;
   }
 
   body.star-site .exact-home-header .searchbar-part {
