@@ -1147,12 +1147,11 @@
 }
 
 .star-breadcrumbs {
-  background: linear-gradient(135deg, rgba(15, 34, 57, 0.94), rgba(13, 58, 104, 0.9));
-  min-height: 360px;
+  min-height: 380px;
 }
 
 .star-breadcrumbs .breadcrumbs-wrap {
-  min-height: 360px;
+  min-height: 380px;
 }
 
 .star-breadcrumbs .breadcrumbs-title,

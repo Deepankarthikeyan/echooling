@@ -844,21 +844,22 @@ function SectionTitle({ eyebrow, title, text, center = true }) {
   );
 }
 
+function pageBannerBackgroundStyle() {
+  return {
+    backgroundImage: `linear-gradient(180deg, rgba(3, 21, 82, 0.82) 0%, rgba(4, 28, 107, 0.68) 50%, rgba(2, 15, 58, 0.82) 100%), url(${academy.homeHeroBackground || academy.heroBackground})`,
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    minHeight: "380px",
+    overflow: "visible",
+    position: "relative",
+  };
+}
+
 function ExactBreadcrumb({ title }) {
   return (
     <div className="react-breadcrumbs exact-about-breadcrumb">
-      <div
-        className="breadcrumbs-wrap"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(3, 21, 82, 0.82) 0%, rgba(4, 28, 107, 0.68) 50%, rgba(2, 15, 58, 0.82) 100%), url(${academy.heroBackground})`,
-          backgroundPosition: "center 38%",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          minHeight: "380px",
-          overflow: "visible",
-          position: "relative",
-        }}
-      >
+      <div className="breadcrumbs-wrap" style={pageBannerBackgroundStyle()}>
         <div className="breadcrumbs-overlay" />
         <div className="breadcrumbs-inner">
           <div className="container">
@@ -883,8 +884,9 @@ function ExactBreadcrumb({ title }) {
 
 function Breadcrumb({ title }) {
   return (
-    <div className="react-breadcrumbs star-breadcrumbs">
-      <div className="breadcrumbs-wrap">
+    <div className="react-breadcrumbs star-breadcrumbs exact-about-breadcrumb">
+      <div className="breadcrumbs-wrap" style={pageBannerBackgroundStyle()}>
+        <div className="breadcrumbs-overlay" />
         <div className="breadcrumbs-inner">
           <div className="container">
             <div className="breadcrumbs-text">
