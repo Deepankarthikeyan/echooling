@@ -770,12 +770,16 @@ function Footer() {
                 <h3 className="footer-title">About Us</h3>
                 <div className="footer-menu">
                   <ul>
+                    <li><SiteLink href="/">Home</SiteLink></li>
                     <li><SiteLink href="/about">About</SiteLink></li>
-                    <li><SiteLink href="/courses">Courses</SiteLink></li>
-                    <li><SiteLink href="/notification">Notifications</SiteLink></li>
-                    <li><SiteLink href="/toppers">Toppers</SiteLink></li>
-                    <li><SiteLink href="/training">Training</SiteLink></li>
-                    <li><SiteLink href="/contact">Contact</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-current-affairs">Current Affairs</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-youtube">Youtube Channel</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-test-batches">Test Batches</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-toppers-and-achievers">Toppers and Achievers</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-training-materials">Training Materials</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-question-papers">Question papers</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-answer-keys">Answer Keys</SiteLink></li>
+                    <li><SiteLink href="/contact-us">Contact Us</SiteLink></li>
                   </ul>
                 </div>
               </div>
@@ -785,12 +789,11 @@ function Footer() {
                 <h3 className="footer-title">Useful Links</h3>
                 <div className="footer-menu">
                   <ul>
-                    <li><SiteLink href="/tnusrb">TNUSRB Constable</SiteLink></li>
-                    <li><SiteLink href="/sub-inspector">Sub Inspector</SiteLink></li>
-                    <li><SiteLink href="/materials">Training Materials</SiteLink></li>
-                    <li><SiteLink href="/notification">News & Updates</SiteLink></li>
-                    <li><SiteLink href="/faq">FAQ</SiteLink></li>
-                    <li><SiteLink href="/register">Register</SiteLink></li>
+                    {courseNavItems.map((item) => (
+                      <li key={item.href}>
+                        <SiteLink href={item.href}>{item.label}</SiteLink>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
