@@ -3326,6 +3326,17 @@ function ContactPage() {
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
+            <div className="star-contact-map__location-card">
+              <span className="star-contact-map__location-label">{contact.mapCoordinates.label}</span>
+              <p>
+                {contact.addressLines.map((line) => (
+                  <span key={line}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </p>
+            </div>
             <div className="star-contact-map__pin" aria-hidden="true">
               <svg viewBox="0 0 36 48" role="img" aria-label="Star Police Academy location pin">
                 <path
