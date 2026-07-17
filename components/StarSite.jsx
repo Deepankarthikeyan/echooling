@@ -3326,7 +3326,19 @@ function ContactPage() {
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
-            <div className="star-contact-map__location-card">
+            <a
+              className="star-contact-map__open"
+              href={contact.mapShareUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Star Police Academy location in Google Maps"
+            />
+            <a
+              className="star-contact-map__location-card"
+              href={contact.mapShareUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="star-contact-map__location-label">{contact.mapCoordinates.label}</span>
               <p>
                 {contact.addressLines.map((line) => (
@@ -3336,7 +3348,7 @@ function ContactPage() {
                   </span>
                 ))}
               </p>
-            </div>
+            </a>
             <div className="star-contact-map__pin" aria-hidden="true">
               <svg viewBox="0 0 36 48" role="img" aria-label="Star Police Academy location pin">
                 <path
@@ -3346,6 +3358,14 @@ function ContactPage() {
                 <circle cx="18" cy="18" r="7.5" fill="#ffffff" />
               </svg>
             </div>
+            <a
+              className="star-contact-map__cta"
+              href={contact.mapShareUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open in Google Maps
+            </a>
           </div>
         </div>
       </section>
