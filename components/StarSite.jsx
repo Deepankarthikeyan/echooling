@@ -406,13 +406,25 @@ function MenuChevronDownIcon() {
   );
 }
 
-function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, isActive, children }) {
+function NavDropdown({ label, href, menuKey, expandedMenu, onToggle, onClose, isActive, disableNavigation = false, children }) {
   const isExpanded = expandedMenu === menuKey;
 
   return (
     <li className={`exact-menu-has-dropdown ${isExpanded ? "exact-menu-expanded" : ""}${isActive ? " menu-active" : ""}`}>
       <div className="exact-menu-link-row">
-        <SiteLink href={href} onClick={onClose} className={isActive ? "react-current-page" : undefined}>
+        <SiteLink
+          href={href}
+          onClick={(event) => {
+            if (disableNavigation) {
+              event.preventDefault();
+              onToggle(menuKey);
+              return;
+            }
+
+            onClose();
+          }}
+          className={isActive ? "react-current-page" : undefined}
+        >
           {label}
           <MenuChevronDownIcon />
         </SiteLink>
@@ -528,6 +540,7 @@ function Header() {
                   <NavDropdown
                     label="Courses"
                     href="/courses"
+                    disableNavigation
                     menuKey="courses"
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
@@ -614,8 +627,8 @@ function Header() {
                     </li>
                   </NavDropdown>
                   <li className={isNavPathMatch(currentPath, "/contact") ? "menu-active" : undefined}>
-                    <SiteLink href="/contact" onClick={closeNavigation} className={navLinkClassName(currentPath, "/contact")}>
-                      Contact
+                    <SiteLink href="/contact-us" onClick={closeNavigation} className={navLinkClassName(currentPath, "/contact-us")}>
+                      Contact Us
                     </SiteLink>
                   </li>
                 </ul>
