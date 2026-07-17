@@ -738,8 +738,8 @@ function Footer() {
                 </h3>
               </div>
               <div className="col-lg-5 text-right">
-                <SiteLink href="/register">
-                  Apply Now <ArrowIcon />
+                <SiteLink href="/contact-us">
+                  Contact Us <ArrowIcon />
                 </SiteLink>
               </div>
             </div>
@@ -921,7 +921,7 @@ function Hero() {
             </h1>
             <p>{academy.heroSlides[0].text}</p>
             <div className="star-hero-actions">
-              <SiteLink href="/register" className="react-btn">
+              <SiteLink href={academy.heroSlides[0].href || "/contact-us"} className="react-btn">
                 {academy.heroSlides[0].cta}
               </SiteLink>
               <SiteLink href="/courses" className="react-btn-border">
@@ -1174,8 +1174,8 @@ function SpaMainHero() {
               ))}
             </ul>
             <div className="spa-main-hero__actions">
-              <SiteLink className="exact-spa-hero__register-btn" href="/register">
-                Apply Now <ArrowIcon />
+              <SiteLink className="exact-spa-hero__register-btn" href="/contact-us">
+                Contact Us <ArrowIcon />
               </SiteLink>
             </div>
             </div>
@@ -3427,7 +3427,7 @@ function RegistrationForm() {
       <textarea placeholder="Full Address" rows={5} />
       <input required type="text" placeholder="Type the word *" />
       <button type="submit" className="react-btn">
-        Apply Now
+        Submit Application
       </button>
       <FormMessage message={message} />
     </form>
