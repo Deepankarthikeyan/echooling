@@ -4335,9 +4335,9 @@ body.star-site .exact-home-header .menu-part {
 .exact-home-header .logo img,
 .exact-home-header .logo .star-brand-logo {
   background: transparent;
-  height: 72px;
-  max-height: 72px;
-  max-width: 260px;
+  height: 64px;
+  max-height: 64px;
+  max-width: 230px;
   object-fit: contain;
   width: auto;
 }
@@ -5119,8 +5119,8 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo--footer {
 
   .exact-home-header .logo img,
   .exact-home-header .logo .star-brand-logo {
-    height: 72px;
-    max-width: 240px;
+    height: 64px;
+    max-width: 210px;
   }
 
   .exact-home-header .menu-toggle {
