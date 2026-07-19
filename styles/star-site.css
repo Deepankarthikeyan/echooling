@@ -4316,6 +4316,12 @@ body.star-site .exact-home-header .menu-part {
   background-image: none !important;
 }
 
+.exact-home-header .logo .logo-text {
+  align-items: center;
+  display: inline-flex;
+  padding: 10px 16px 10px 6px;
+}
+
 .exact-home-header .logo .logo-text::before,
 .exact-home-header .logo .logo-text::after,
 .react-footer-two .footer-logo::before,
@@ -4864,6 +4870,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo--footer {
     position: relative;
   }
 
+  .exact-home-header .logo .logo-text {
+    padding: 8px 10px 8px 4px;
+  }
+
   .exact-home-header .menu-toggle {
     justify-content: space-between;
     margin-right: 0;
@@ -5103,6 +5113,10 @@ body.star-site .react-footer-two .footer-logo .star-brand-logo--footer {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
+  .exact-home-header .logo .logo-text {
+    padding: 8px 12px 8px 4px;
+  }
+
   .exact-home-header .logo img,
   .exact-home-header .logo .star-brand-logo {
     height: 72px;
