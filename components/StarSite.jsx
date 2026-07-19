@@ -527,8 +527,8 @@ function Header() {
                       className="star-brand-logo"
                       src={academy.logo}
                       alt="Star Police Academy Vellore logo"
-                      width={300}
-                      height={200}
+                      width={160}
+                      height={160}
                       fetchPriority="high"
                     />
                   </SiteLink>
@@ -762,8 +762,8 @@ function Footer() {
                       className="star-brand-logo star-brand-logo--footer"
                       src={academy.footerLogo}
                       alt="Star Police Academy Vellore logo"
-                      width={280}
-                      height={187}
+                      width={160}
+                      height={160}
                       loading="lazy"
                     />
                   </SiteLink>
