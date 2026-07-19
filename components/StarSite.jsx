@@ -756,7 +756,7 @@ function Footer() {
           <div className="row">
             <div className="col-lg-4 md-mb-30">
               <div className="footer-widget footer-widget-1">
-                <div className="footer-logo white">
+                <div className="footer-logo">
                   <SiteLink href="/" className="logo-text">
                     <img
                       className="star-brand-logo star-brand-logo--footer"
@@ -945,7 +945,6 @@ function Hero() {
           </div>
           <div className="col-lg-5">
             <div className="star-hero-card">
-              <img src={academy.logo} alt="Star Police Academy" />
               <h3>{academy.tagline}</h3>
               <p>{academy.description}</p>
               <ul>
@@ -1196,9 +1195,6 @@ function SpaMainHero() {
           </div>
           <div className="col-lg-5 spa-main-hero__col">
             <div className="spa-main-hero__card">
-              <div className="spa-main-hero__card-logo">
-                <img src={academy.logo} alt="Star Police Academy" />
-              </div>
               <h3>{academy.tagline}</h3>
               <p>{academy.aboutIntro}</p>
               <div className="spa-main-hero__stats">
@@ -1866,7 +1862,6 @@ function ExactHomeAboutSection() {
                 />
               </div>
               <div className="spa-home-about__badge">
-                <img className="spa-home-about__badge-logo" src={academy.logo} alt="Star Police Academy crest" />
                 <strong className="spa-home-about__badge-title">STAR POLICE ACADEMY</strong>
                 <span className="spa-home-about__badge-tagline">NO. 1 POLICE ACADEMY IN TAMIL NADU</span>
               </div>
@@ -2796,7 +2791,6 @@ function AboutIntroPageSection() {
                 </div>
               </div>
               <div className="spa-about-intro__badge">
-                <img src={academy.logo} alt="Star Police Academy logo" />
                 <div>
                   <strong>STAR POLICE ACADEMY</strong>
                   <span>NO. 1 IN TAMIL NADU</span>

@@ -4310,6 +4310,22 @@ body.star-site .exact-home-header .menu-part {
   margin-right: 24px;
 }
 
+.exact-home-header .logo .logo-text,
+.react-footer-two .footer-logo .logo-text {
+  background: none !important;
+  background-image: none !important;
+}
+
+.exact-home-header .logo .logo-text::before,
+.exact-home-header .logo .logo-text::after,
+.react-footer-two .footer-logo::before,
+.react-footer-two .footer-logo::after,
+.react-footer-two .footer-logo .logo-text::before,
+.react-footer-two .footer-logo .logo-text::after {
+  content: none !important;
+  display: none !important;
+}
+
 .exact-home-header .logo img,
 .exact-home-header .logo .star-brand-logo {
   background: transparent;
@@ -4318,6 +4334,11 @@ body.star-site .exact-home-header .menu-part {
   max-width: 300px;
   object-fit: contain;
   width: auto;
+}
+
+.exact-home-header .logo img:not(.star-brand-logo),
+.react-footer-two .footer-logo img:not(.star-brand-logo) {
+  display: none !important;
 }
 
 body.star-site .star-brand-logo,
