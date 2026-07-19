@@ -19,6 +19,13 @@ function copyEntry(sourceName, targetName = sourceName) {
 }
 
 function writeSitemap() {
+  const rootSitemapPath = path.join(rootDir, "sitemap.xml");
+
+  if (fs.existsSync(rootSitemapPath)) {
+    fs.copyFileSync(rootSitemapPath, path.join(publicDir, "sitemap.xml"));
+    return;
+  }
+
   const urls = knownRoutes
     .map((route) => `  <url><loc>${SITE_URL}${route === "/" ? "" : route}</loc></url>`)
     .join("\n");
@@ -28,7 +35,7 @@ function writeSitemap() {
 }
 
 function writeRobots() {
-  const robots = `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`;
+  const robots = `User-agent: *\nAllow: /\n\nSitemap: https://starpoliceacademy.in/sitemap.xml\n`;
   fs.writeFileSync(path.join(publicDir, "robots.txt"), robots, "utf8");
 }
 
