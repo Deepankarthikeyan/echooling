@@ -887,34 +887,6 @@
   overflow: hidden;
 }
 
-.star-notification-section-title {
-  color: #0f2239;
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 28px;
-  text-align: center;
-  text-transform: capitalize;
-}
-
-.star-notification--test-batch .star-notification-section-title + .star-notification-list {
-  margin-bottom: 48px;
-}
-
-.star-notification-new-badge {
-  background: #e53935;
-  border-radius: 4px;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  margin-left: 8px;
-  padding: 4px 8px;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
 .star-schedule-frame iframe {
   border: 0;
   height: 100%;
