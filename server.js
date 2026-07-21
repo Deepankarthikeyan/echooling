@@ -45,6 +45,7 @@ app.prepare().then(() => {
   });
 
   serveDirectory(server, "/assets", "assets");
+  serveDirectory(server, "/documents", "documents");
   serveDirectory(server, "/echooling-rtl/assets", "echooling-rtl/assets");
   serveDirectory(server, "/echooling-rtl/landing/assets", "echooling-rtl/landing/assets");
   serveDirectory(server, "/echooling-rtl/landing/landing/assets", "echooling-rtl/landing/landing/assets");

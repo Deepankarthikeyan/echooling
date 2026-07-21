@@ -45,6 +45,7 @@ if (fs.existsSync(publicDir)) {
 
 fs.mkdirSync(publicDir, { recursive: true });
 copyEntry("assets");
+copyEntry("documents");
 copyEntry("style.css");
 copyEntry("variables.css");
 writeSitemap();

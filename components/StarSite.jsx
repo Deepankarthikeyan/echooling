@@ -23,6 +23,7 @@ import {
   heroHighlights,
   latestBlogArticles,
   notificationItems,
+  schedulePdfUrl,
   physicalTrainingItems,
   questionPapers,
   recruitmentUpdates,
@@ -3480,7 +3481,7 @@ const materialsItems = [
     title: "TARGET காக்கிசட்டை 2026",
     description: "Our Dedicated intensive Programme for, TNUSRB Sub Inspector (Taluk, AR, TSP)",
     image: "/assets/images/books/a1.jpg",
-    href: "https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf",
+    href: schedulePdfUrl,
   },
   {
     title: "Tamil Book TNUSRB SUB INSPECTOR & POLICE",
@@ -3747,7 +3748,7 @@ function NotificationPage() {
           <div className="star-schedule-frame">
             <iframe
               title="SPA Test Schedule"
-              src="https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf#toolbar=0"
+              src={`${schedulePdfUrl}#toolbar=0`}
             />
           </div>
 
