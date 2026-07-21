@@ -22,8 +22,11 @@ import {
   facilitiesItems,
   heroHighlights,
   latestBlogArticles,
+  currentAffairsItems,
+  dailyOnlineTest,
   notificationItems,
   schedulePdfUrl,
+  testBatchItems,
   physicalTrainingItems,
   questionPapers,
   recruitmentUpdates,
@@ -107,8 +110,10 @@ const headerNavSections = {
     "/star-police-academy-youtube",
     "/star-police-academy-test-batches",
     "/notification",
+    "/current-affairs",
     "/youtube",
     "/test-batch",
+    "/test-batches",
   ],
   training: [
     "/star-police-academy-toppers-and-achievers",
@@ -247,10 +252,45 @@ const homeInstructors = [
   },
 ];
 
+const currentYear = new Date().getFullYear();
+
+function formatNotificationSubtitle(item, year = currentYear) {
+  if (!item.subtitleTemplate) {
+    return item.subtitle || "";
+  }
+
+  if (item.appendYearToSubtitle) {
+    return `${item.subtitleTemplate} ${year}`;
+  }
+
+  return `${item.subtitleTemplate} - ${year}`;
+}
+
+function formatNotificationTitle(item, year = currentYear) {
+  if (item.title) {
+    return item.title;
+  }
+
+  if (item.appendYearToTitle) {
+    return `${item.titleBase} ${year}`;
+  }
+
+  return item.titleBase;
+}
+
+function formatLatestTestDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  return `Latest Test ${year}/${month}/${day}`;
+}
+
 const homeBlogCards = notificationItems.slice(0, 4).map((item, index) => ({
   date: item.date,
   category: item.category,
-  title: item.title,
+  title: formatNotificationTitle(item),
   image: courses[index]?.image || `/assets/images/blog/${index + 1}.jpg`,
   author: academy.name,
   href: item.href,
@@ -3691,91 +3731,145 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage() {
+function NotificationIntro() {
+  return (
+    <div className="row">
+      <div className="col-lg-9 mb-4 mb-lg-0">
+        <div className="star-notification-intro">
+          <div className="star-notification-video">
+            <a
+              aria-label="Watch Star Police Academy intro video"
+              href="https://www.youtube.com/watch?v=1ppfH0p_UYM"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ▶
+            </a>
+          </div>
+          <div className="star-notification-copy">
+            <p>
+              Direct Recruitment of Sub-Inspectors of Police (Taluk, AR & TSP) - 2023.
+              <br />
+              <br />
+              The TNUSRB SI notification 2023 Notification will be issued soon at the
+              official website tnusrb.tn.gov.in.
+              <br />
+              <br />
+              The online application process will be conducted from ? at the official
+              website.
+            </p>
+            <div className="star-notification-support">
+              <span>☏</span>
+              <div>
+                <h3>“Being With A WINNER", Make You A WINNER”.</h3>
+                <strong>{contact.phonePrimary}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-3">
+        <div className="star-notification-counter">
+          <h2>12</h2>
+          <h5>Years Of Experience</h5>
+          <p>
+            1000+ Job Placement
+            <br />
+            Join US
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NotificationCard({ item }) {
+  const title = formatNotificationTitle(item);
+  const subtitle = formatNotificationSubtitle(item);
+  const actionLabel = item.actionLabel || "Download Now";
+  const dateLabel = item.useLatestDate ? formatLatestTestDate() : item.date;
+
+  return (
+    <article className="star-notification-card">
+      <div className="star-notification-main">
+        <span>{item.category}</span>
+        <h3>{title}</h3>
+        {subtitle ? <p className="star-notification-subtitle">{subtitle}</p> : null}
+        <p>{item.description}</p>
+      </div>
+      <div className="star-notification-download">
+        <p>
+          {item.useLatestDate ? (
+            <strong>{dateLabel}</strong>
+          ) : (
+            <>
+              <strong>Date:</strong> {dateLabel}
+            </>
+          )}
+        </p>
+        <a href={item.href} target="_blank" rel="noreferrer">
+          {actionLabel}
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function NotificationCardList({ items }) {
+  return (
+    <div className="star-notification-list">
+      {items.map((item) => (
+        <NotificationCard
+          item={item}
+          key={`${item.titleBase || item.title}-${item.date || "latest"}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function CurrentAffairsPage() {
   return (
     <>
       <ExactBreadcrumb title="Recruitment Notification" />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-9 mb-4 mb-lg-0">
-              <div className="star-notification-intro">
-                <div className="star-notification-video">
-                  <a
-                    aria-label="Watch Star Police Academy intro video"
-                    href="https://www.youtube.com/watch?v=1ppfH0p_UYM"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    ▶
-                  </a>
-                </div>
-                <div className="star-notification-copy">
-                  <p>
-                    Direct Recruitment of Sub-Inspectors of Police (Taluk, AR & TSP) - 2023.
-                    <br />
-                    <br />
-                    The TNUSRB SI notification 2023 Notification will be issued soon at the
-                    official website tnusrb.tn.gov.in.
-                    <br />
-                    <br />
-                    The online application process will be conducted from ? at the official
-                    website.
-                  </p>
-                  <div className="star-notification-support">
-                    <span>☏</span>
-                    <div>
-                      <h3>“Being With A WINNER", Make You A WINNER”.</h3>
-                      <strong>{contact.phonePrimary}</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="star-notification-counter">
-                <h2>14+</h2>
-                <h5>Years Of Experience</h5>
-                <p>
-                  1000+ Job Placement
-                  <br />
-                  Join US
-                </p>
-              </div>
-            </div>
-          </div>
+          <NotificationIntro />
 
           <div className="star-schedule-frame">
-            <iframe
-              title="SPA Test Schedule"
-              src={`${schedulePdfUrl}#toolbar=0`}
-            />
+            <iframe title="SPA Test Schedule" src={`${schedulePdfUrl}#toolbar=0`} />
           </div>
 
-          <div className="star-notification-list">
-            {notificationItems.map((item) => (
-              <article className="star-notification-card" key={`${item.title}-${item.date}`}>
-                <div className="star-notification-main">
-                  <span>{item.category}</span>
-                  <h3>{item.title}</h3>
-                  <p className="star-notification-subtitle">{item.subtitle}</p>
-                  <p>{item.description}</p>
-                </div>
-                <div className="star-notification-download">
-                  <p>
-                    <strong>Date:</strong> {item.date}
-                  </p>
-                  <a href={item.href} target="_blank" rel="noreferrer">
-                    Download Now
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+          <NotificationCardList items={currentAffairsItems} />
         </div>
       </section>
     </>
   );
+}
+
+function TestBatchesPage() {
+  return (
+    <>
+      <ExactBreadcrumb title="Test Batch" />
+      <section className="star-notification star-notification--test-batch pt---80 pb---100">
+        <div className="container">
+          <h2 className="star-notification-section-title">
+            Daily online Test <span className="star-notification-new-badge">NEW</span>
+          </h2>
+
+          <NotificationCardList items={[dailyOnlineTest]} />
+
+          <h2 className="star-notification-section-title">Test batch</h2>
+
+          <NotificationCardList items={testBatchItems} />
+        </div>
+      </section>
+    </>
+  );
+}
+
+function NotificationPage() {
+  return <CurrentAffairsPage />;
 }
 
 function YoutubePage() {
@@ -3825,7 +3919,10 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage />;
+    case "current-affairs":
+      return <CurrentAffairsPage />;
+    case "test-batches":
+      return <TestBatchesPage />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
