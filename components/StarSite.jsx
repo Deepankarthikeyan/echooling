@@ -3691,6 +3691,27 @@ function QuestionPapersPage() {
   );
 }
 
+const testBatchPaths = new Set([
+  "/test-batch",
+  "/test-batch.php",
+  "/test-batches",
+  "/star-police-academy-test-batches",
+]);
+
+function resolveNotificationBannerTitle(path = "/", page) {
+  if (page?.bannerTitle) {
+    return page.bannerTitle;
+  }
+
+  const cleanPath = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+
+  if (testBatchPaths.has(cleanPath)) {
+    return "Test Batch";
+  }
+
+  return "Recruitment Notification";
+}
+
 function NotificationPage({ bannerTitle = "Recruitment Notification" }) {
   return (
     <>
@@ -3804,7 +3825,7 @@ function YoutubePage() {
   );
 }
 
-function PageContent({ page }) {
+function PageContent({ page, path = "/" }) {
   switch (page.type) {
     case "about":
       return <AboutPage />;
@@ -3825,7 +3846,9 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage bannerTitle={page.bannerTitle} />;
+      return (
+        <NotificationPage bannerTitle={resolveNotificationBannerTitle(path, page)} />
+      );
     case "youtube":
       return <YoutubePage />;
     case "toppers":
@@ -3864,7 +3887,7 @@ export default function StarSite({ page, path = "/" }) {
       <SiteHead seo={seo} />
       <Header />
       <main className="react-wrapper star-main">
-        <PageContent page={page} />
+        <PageContent page={page} path={path} />
       </main>
       <Footer />
       <div id="backscrollUp" className="home">
