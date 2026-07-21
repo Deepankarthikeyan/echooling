@@ -3740,7 +3740,7 @@ function NotificationPage() {
             </div>
             <div className="col-lg-3">
               <div className="star-notification-counter">
-                <h2>12</h2>
+                <h2>14+</h2>
                 <h5>Years Of Experience</h5>
                 <p>
                   1000+ Job Placement
