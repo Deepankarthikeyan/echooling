@@ -36,15 +36,8 @@ import {
   whyChooseFeatures,
   winnerCarouselItems,
   youtubeVideos,
-  socialLinks,
 } from "../lib/star-content";
 import { resolveStarRoute } from "../lib/star-routes";
-
-const footerSocialLinks = [
-  { label: "Facebook", href: socialLinks.find((link) => link.label === "Facebook")?.href, iconClass: "social_facebook" },
-  { label: "X", href: socialLinks.find((link) => link.label === "X")?.href, iconClass: "social_twitter" },
-  { label: "YouTube", href: socialLinks.find((link) => link.label === "YouTube")?.href, iconClass: "social_youtube" },
-].filter((link) => link.href);
 
 function SiteLink({ href = "/", onClick, children, className, ...rest }) {
   const pathname = typeof href === "string" ? href.split("?")[0].split("#")[0] : href;
@@ -838,13 +831,21 @@ function Footer() {
           <div className="react-copy-right">
             <ul className="social-links">
               <li className="follow">Follow us</li>
-              {footerSocialLinks.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noreferrer" aria-label={link.label}>
-                    <span aria-hidden="true" className={link.iconClass} />
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="#" aria-label="Facebook">
+                  <span aria-hidden="true" className="social_facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="Twitter">
+                  <span aria-hidden="true" className="social_twitter" />
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="LinkedIn">
+                  <span aria-hidden="true" className="social_linkedin" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -3485,7 +3486,7 @@ const materialsItems = [
     title: "TARGET காக்கிசட்டை 2026",
     description: "Our Dedicated intensive Programme for, TNUSRB Sub Inspector (Taluk, AR, TSP)",
     image: "/assets/images/books/a1.jpg",
-    href: contact.whatsapp,
+    href: "https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf",
   },
   {
     title: "Tamil Book TNUSRB SUB INSPECTOR & POLICE",
@@ -3763,7 +3764,7 @@ function NotificationPage({ pageTitle = "Recruitment Notification" }) {
                     <strong>Date:</strong> {item.date}
                   </p>
                   <a href={item.href} target="_blank" rel="noreferrer">
-                    Request on WhatsApp
+                    Download Now
                   </a>
                 </div>
               </article>
