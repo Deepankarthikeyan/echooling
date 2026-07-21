@@ -6849,6 +6849,36 @@ body.star-site .react-breadcrumbs.exact-about-breadcrumb .back-nav a {
   opacity: 0.95;
 }
 
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .breadcrumbs-inner,
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .breadcrumbs-text,
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .breadcrumbs-title,
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .back-nav,
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .back-nav ul {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
+}
+
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .breadcrumbs-text {
+  align-items: center;
+  flex-direction: column;
+}
+
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .breadcrumbs-title {
+  display: block;
+  width: 100%;
+}
+
+body.star-site .react-breadcrumbs.exact-test-batches-breadcrumb .back-nav ul {
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* About coaching — full-width gray headband, h6 above h2, 1200px cards overlapping below */
 body.star-site .exact-about-page .react_populars_topics.react_populars_topics2.react_populars_topics_about {
   padding-left: 0 !important;

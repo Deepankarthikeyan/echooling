@@ -871,9 +871,13 @@ function pageBannerBackgroundStyle() {
   };
 }
 
-function ExactBreadcrumb({ title }) {
+function ExactBreadcrumb({ title, className = "" }) {
+  const breadcrumbClassName = ["react-breadcrumbs", "exact-about-breadcrumb", className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className="react-breadcrumbs exact-about-breadcrumb">
+    <div className={breadcrumbClassName}>
       <div className="breadcrumbs-wrap" style={pageBannerBackgroundStyle()}>
         <div className="breadcrumbs-overlay" />
         <div className="breadcrumbs-inner">
@@ -3713,9 +3717,14 @@ function resolveNotificationBannerTitle(path = "/", page) {
 }
 
 function NotificationPage({ bannerTitle = "Recruitment Notification" }) {
+  const isTestBatches = bannerTitle === "Test Batches";
+
   return (
     <>
-      <ExactBreadcrumb title={bannerTitle} />
+      <ExactBreadcrumb
+        title={bannerTitle}
+        className={isTestBatches ? "exact-test-batches-breadcrumb" : ""}
+      />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
