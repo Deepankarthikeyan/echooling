@@ -39,13 +39,22 @@ function writeRobots() {
   fs.writeFileSync(path.join(publicDir, "robots.txt"), robots, "utf8");
 }
 
+function copySchedulePdf() {
+  const sourcePath = path.join(rootDir, "documents", "SPA Test Schedule.pdf");
+  const targetPath = path.join(publicDir, "SPA Test Schedule.pdf");
+
+  if (fs.existsSync(sourcePath)) {
+    fs.copyFileSync(sourcePath, targetPath);
+  }
+}
+
 if (fs.existsSync(publicDir)) {
   fs.rmSync(publicDir, { recursive: true, force: true });
 }
 
 fs.mkdirSync(publicDir, { recursive: true });
 copyEntry("assets");
-copyEntry("documents");
+copySchedulePdf();
 copyEntry("style.css");
 copyEntry("variables.css");
 writeSitemap();

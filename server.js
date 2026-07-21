@@ -45,7 +45,8 @@ app.prepare().then(() => {
   });
 
   serveDirectory(server, "/assets", "assets");
-  serveDirectory(server, "/documents", "documents");
+  serveFile(server, "/SPA%20Test%20Schedule.pdf", path.join("documents", "SPA Test Schedule.pdf"));
+  serveFile(server, "/SPA Test Schedule.pdf", path.join("documents", "SPA Test Schedule.pdf"));
   serveDirectory(server, "/echooling-rtl/assets", "echooling-rtl/assets");
   serveDirectory(server, "/echooling-rtl/landing/assets", "echooling-rtl/landing/assets");
   serveDirectory(server, "/echooling-rtl/landing/landing/assets", "echooling-rtl/landing/landing/assets");
