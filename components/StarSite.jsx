@@ -3706,7 +3706,7 @@ function resolveNotificationBannerTitle(path = "/", page) {
   const cleanPath = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
 
   if (testBatchPaths.has(cleanPath)) {
-    return "Test Batch";
+    return "Test Batches";
   }
 
   return "Recruitment Notification";
