@@ -618,7 +618,7 @@ function Header() {
                         onClick={closeNavigation}
                         className={navLinkClassName(currentPath, "/star-police-academy-current-affairs")}
                       >
-                        Current Affairs
+                        Recruitment Notification
                       </SiteLink>
                     </li>
                     <li
@@ -801,7 +801,7 @@ function Footer() {
                   <ul>
                     <li><SiteLink href="/">Home</SiteLink></li>
                     <li><SiteLink href="/about">About</SiteLink></li>
-                    <li><SiteLink href="/star-police-academy-current-affairs">Current Affairs</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-current-affairs">Recruitment Notification</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-youtube">Youtube Channel</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-test-batches">Test Batches</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-toppers-and-achievers">Toppers and Achievers</SiteLink></li>
@@ -3821,7 +3821,7 @@ function PageContent({ page }) {
       return <FAQPage />;
     case "questions":
       return <QuestionPapersPage />;
-    case "current-affairs":
+    case "notification":
     case "test-batches":
       return <NotificationPage pageTitle={page.title} />;
     case "youtube":
