@@ -102,15 +102,15 @@ function isNavSectionActive(currentPath, paths) {
 const headerNavSections = {
   courses: ["/courses", "/training", ...courseNavItems.map((item) => item.href)],
   notifications: [
-    "/star-police-academy-current-affairs",
-    "/current-affairs",
-    "/star-police-academy-youtube",
     "/star-police-academy-test-batches",
     "/test-batches",
+    "/star-police-academy-youtube",
     "/notification",
     "/notifications",
     "/youtube",
     "/test-batch",
+    "/star-police-academy-current-affairs",
+    "/current-affairs",
   ],
   training: [
     "/star-police-academy-toppers-and-achievers",
@@ -589,7 +589,7 @@ function Header() {
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
-                    href="/star-police-academy-current-affairs"
+                    href="/star-police-academy-test-batches"
                     menuKey="notifications"
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
@@ -598,18 +598,18 @@ function Header() {
                   >
                     <li
                       className={
-                        isNavPathMatch(currentPath, "/star-police-academy-current-affairs") ||
-                        isNavPathMatch(currentPath, "/notification")
+                        isNavPathMatch(currentPath, "/notification") ||
+                        isNavPathMatch(currentPath, "/notifications")
                           ? "menu-active"
                           : undefined
                       }
                     >
                       <SiteLink
-                        href="/star-police-academy-current-affairs"
+                        href="/notification"
                         onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/star-police-academy-current-affairs")}
+                        className={navLinkClassName(currentPath, "/notification")}
                       >
-                        Current Affairs
+                        Recruitment Notification
                       </SiteLink>
                     </li>
                     <li
@@ -791,7 +791,7 @@ function Footer() {
                   <ul>
                     <li><SiteLink href="/">Home</SiteLink></li>
                     <li><SiteLink href="/about">About</SiteLink></li>
-                    <li><SiteLink href="/star-police-academy-current-affairs">Current Affairs</SiteLink></li>
+                    <li><SiteLink href="/notification">Recruitment Notification</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-youtube">Youtube Channel</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-test-batches">Test Batches</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-toppers-and-achievers">Toppers and Achievers</SiteLink></li>
@@ -3827,7 +3827,6 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-    case "current-affairs":
     case "test-batches":
       return <NotificationPage pageTitle={page.title} />;
     case "youtube":
