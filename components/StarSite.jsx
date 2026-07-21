@@ -601,10 +601,7 @@ function Header() {
                         isNavPathMatch(currentPath, "/star-police-academy-current-affairs") ||
                         isNavPathMatch(currentPath, "/current-affairs") ||
                         isNavPathMatch(currentPath, "/notification") ||
-                        isNavPathMatch(currentPath, "/notifications") ||
-                        isNavPathMatch(currentPath, "/star-police-academy-test-batches") ||
-                        isNavPathMatch(currentPath, "/test-batch") ||
-                        isNavPathMatch(currentPath, "/test-batches")
+                        isNavPathMatch(currentPath, "/notifications")
                           ? "menu-active"
                           : undefined
                       }
@@ -631,6 +628,23 @@ function Header() {
                         className={navLinkClassName(currentPath, "/star-police-academy-youtube")}
                       >
                         Youtube Channel
+                      </SiteLink>
+                    </li>
+                    <li
+                      className={
+                        isNavPathMatch(currentPath, "/star-police-academy-test-batches") ||
+                        isNavPathMatch(currentPath, "/test-batch") ||
+                        isNavPathMatch(currentPath, "/test-batches")
+                          ? "menu-active"
+                          : undefined
+                      }
+                    >
+                      <SiteLink
+                        href="/star-police-academy-test-batches"
+                        onClick={closeNavigation}
+                        className={navLinkClassName(currentPath, "/star-police-academy-test-batches")}
+                      >
+                        Test Batches
                       </SiteLink>
                     </li>
                   </NavDropdown>
@@ -782,6 +796,7 @@ function Footer() {
                     <li><SiteLink href="/about">About</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-current-affairs">Current Affairs</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-youtube">Youtube Channel</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-test-batches">Test Batches</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-toppers-and-achievers">Toppers and Achievers</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-training-materials">Training Materials</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-question-papers">Question papers</SiteLink></li>
@@ -3815,6 +3830,7 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "current-affairs":
+    case "test-batches":
       return <NotificationPage pageTitle={page.title} />;
     case "youtube":
       return <YoutubePage />;
