@@ -3696,10 +3696,10 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage({ pageTitle = "Recruitment Notification" }) {
+function NotificationPage() {
   return (
     <>
-      <ExactBreadcrumb title={pageTitle} />
+      <Breadcrumb title="Recruitment Notification" />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3739,7 +3739,7 @@ function NotificationPage({ pageTitle = "Recruitment Notification" }) {
             </div>
             <div className="col-lg-3">
               <div className="star-notification-counter">
-                <h2>14+</h2>
+                <h2>12</h2>
                 <h5>Years Of Experience</h5>
                 <p>
                   1000+ Job Placement
@@ -3831,7 +3831,7 @@ function PageContent({ page }) {
       return <QuestionPapersPage />;
     case "current-affairs":
     case "test-batches":
-      return <NotificationPage pageTitle={page.title} />;
+      return <NotificationPage />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
