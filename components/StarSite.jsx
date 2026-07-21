@@ -3691,10 +3691,10 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage() {
+function NotificationPage({ bannerTitle = "Recruitment Notification" }) {
   return (
     <>
-      <ExactBreadcrumb title="Recruitment Notification" />
+      <ExactBreadcrumb title={bannerTitle} />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3825,7 +3825,7 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage />;
+      return <NotificationPage bannerTitle={page.bannerTitle} />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
