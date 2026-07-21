@@ -102,15 +102,15 @@ function isNavSectionActive(currentPath, paths) {
 const headerNavSections = {
   courses: ["/courses", "/training", ...courseNavItems.map((item) => item.href)],
   notifications: [
-    "/star-police-academy-test-batches",
-    "/test-batches",
+    "/star-police-academy-current-affairs",
+    "/current-affairs",
     "/star-police-academy-youtube",
     "/notification",
     "/notifications",
     "/youtube",
     "/test-batch",
-    "/star-police-academy-current-affairs",
-    "/current-affairs",
+    "/test-batches",
+    "/star-police-academy-test-batches",
   ],
   training: [
     "/star-police-academy-toppers-and-achievers",
@@ -589,7 +589,7 @@ function Header() {
                   </NavDropdown>
                   <NavDropdown
                     label="Notifications"
-                    href="/star-police-academy-test-batches"
+                    href="/star-police-academy-current-affairs"
                     menuKey="notifications"
                     expandedMenu={expandedMenu}
                     onToggle={toggleSubmenu}
@@ -598,18 +598,23 @@ function Header() {
                   >
                     <li
                       className={
+                        isNavPathMatch(currentPath, "/star-police-academy-current-affairs") ||
+                        isNavPathMatch(currentPath, "/current-affairs") ||
                         isNavPathMatch(currentPath, "/notification") ||
-                        isNavPathMatch(currentPath, "/notifications")
+                        isNavPathMatch(currentPath, "/notifications") ||
+                        isNavPathMatch(currentPath, "/star-police-academy-test-batches") ||
+                        isNavPathMatch(currentPath, "/test-batch") ||
+                        isNavPathMatch(currentPath, "/test-batches")
                           ? "menu-active"
                           : undefined
                       }
                     >
                       <SiteLink
-                        href="/notification"
+                        href="/star-police-academy-current-affairs"
                         onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/notification")}
+                        className={navLinkClassName(currentPath, "/star-police-academy-current-affairs")}
                       >
-                        Recruitment Notification
+                        Current Affairs
                       </SiteLink>
                     </li>
                     <li
@@ -626,22 +631,6 @@ function Header() {
                         className={navLinkClassName(currentPath, "/star-police-academy-youtube")}
                       >
                         Youtube Channel
-                      </SiteLink>
-                    </li>
-                    <li
-                      className={
-                        isNavPathMatch(currentPath, "/star-police-academy-test-batches") ||
-                        isNavPathMatch(currentPath, "/test-batch")
-                          ? "menu-active"
-                          : undefined
-                      }
-                    >
-                      <SiteLink
-                        href="/star-police-academy-test-batches"
-                        onClick={closeNavigation}
-                        className={navLinkClassName(currentPath, "/star-police-academy-test-batches")}
-                      >
-                        Test Batches
                       </SiteLink>
                     </li>
                   </NavDropdown>
@@ -791,9 +780,8 @@ function Footer() {
                   <ul>
                     <li><SiteLink href="/">Home</SiteLink></li>
                     <li><SiteLink href="/about">About</SiteLink></li>
-                    <li><SiteLink href="/notification">Recruitment Notification</SiteLink></li>
+                    <li><SiteLink href="/star-police-academy-current-affairs">Current Affairs</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-youtube">Youtube Channel</SiteLink></li>
-                    <li><SiteLink href="/star-police-academy-test-batches">Test Batches</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-toppers-and-achievers">Toppers and Achievers</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-training-materials">Training Materials</SiteLink></li>
                     <li><SiteLink href="/star-police-academy-question-papers">Question papers</SiteLink></li>
@@ -1714,7 +1702,7 @@ function SpaRecruitmentBlogSection() {
           ))}
         </div>
         <div className="text-center">
-          <SiteLink href="/notification" className="spa-section-link">
+          <SiteLink href="/star-police-academy-current-affairs" className="spa-section-link">
             View All Updates <ArrowIcon />
           </SiteLink>
         </div>
@@ -3826,8 +3814,7 @@ function PageContent({ page }) {
       return <FAQPage />;
     case "questions":
       return <QuestionPapersPage />;
-    case "notification":
-    case "test-batches":
+    case "current-affairs":
       return <NotificationPage pageTitle={page.title} />;
     case "youtube":
       return <YoutubePage />;
