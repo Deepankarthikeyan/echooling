@@ -3750,13 +3750,6 @@ function NotificationPage({ pageTitle = "Recruitment Notification" }) {
             </div>
           </div>
 
-          <div className="star-schedule-frame">
-            <iframe
-              title="SPA Test Schedule"
-              src="https://www.starpoliceacademy.in/SPA%20Test%20Schedule.pdf#toolbar=0"
-            />
-          </div>
-
           <div className="star-notification-list">
             {notificationItems.map((item) => (
               <article className="star-notification-card" key={`${item.title}-${item.date}`}>
