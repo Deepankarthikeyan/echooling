@@ -103,9 +103,12 @@ const headerNavSections = {
   courses: ["/courses", "/training", ...courseNavItems.map((item) => item.href)],
   notifications: [
     "/star-police-academy-current-affairs",
+    "/current-affairs",
     "/star-police-academy-youtube",
     "/star-police-academy-test-batches",
+    "/test-batches",
     "/notification",
+    "/notifications",
     "/youtube",
     "/test-batch",
   ],
@@ -3690,10 +3693,10 @@ function QuestionPapersPage() {
   );
 }
 
-function NotificationPage() {
+function NotificationPage({ pageTitle = "Recruitment Notification" }) {
   return (
     <>
-      <ExactBreadcrumb title="Recruitment Notification" />
+      <ExactBreadcrumb title={pageTitle} />
       <section className="star-notification pt---80 pb---100">
         <div className="container">
           <div className="row">
@@ -3824,7 +3827,9 @@ function PageContent({ page }) {
     case "questions":
       return <QuestionPapersPage />;
     case "notification":
-      return <NotificationPage />;
+    case "current-affairs":
+    case "test-batches":
+      return <NotificationPage pageTitle={page.title} />;
     case "youtube":
       return <YoutubePage />;
     case "toppers":
