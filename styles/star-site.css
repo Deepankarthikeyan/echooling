@@ -1268,6 +1268,28 @@
   margin: 0;
 }
 
+.star-contact-lines {
+  display: grid;
+  gap: 4px;
+}
+
+.star-contact-line {
+  align-items: baseline;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+.star-contact-line__label {
+  color: #26384d;
+  font-weight: 600;
+}
+
+.star-contact-line__value {
+  color: #26384d;
+  word-break: break-word;
+}
+
 .star-contact-form-panel {
   padding-left: 54px;
 }

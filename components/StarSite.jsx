@@ -3298,13 +3298,20 @@ function ContactPage() {
                   <span>☎</span>
                   <div>
                     <h3>Contact</h3>
-                    <p>
-                      Mobile1: {contact.phonePrimary}
-                      <br />
-                      Mobile2: {contact.phoneSecondary}
-                      <br />
-                      Email: {contact.email}
-                    </p>
+                    <div className="star-contact-lines">
+                      <div className="star-contact-line">
+                        <span className="star-contact-line__label">Mobile1:</span>
+                        <span className="star-contact-line__value">{contact.phonePrimary}</span>
+                      </div>
+                      <div className="star-contact-line">
+                        <span className="star-contact-line__label">Mobile2:</span>
+                        <span className="star-contact-line__value">{contact.phoneSecondary}</span>
+                      </div>
+                      <div className="star-contact-line">
+                        <span className="star-contact-line__label">Email:</span>
+                        <span className="star-contact-line__value">{contact.email}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="star-contact-info-item">
