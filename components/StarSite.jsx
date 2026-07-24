@@ -3299,9 +3299,11 @@ function ContactPage() {
                   <div>
                     <h3>Contact</h3>
                     <p>
-                      <span className="star-contact-detail-line">Mobile1: {contact.phonePrimary}</span>
+                      Mobile:
                       <br />
-                      <span className="star-contact-detail-line">Mobile2: {contact.phoneSecondary}</span>
+                      {contact.phonePrimary}
+                      <br />
+                      {contact.phoneSecondary}
                       <br />
                       <span className="star-contact-detail-line">Email: {contact.email}</span>
                     </p>
