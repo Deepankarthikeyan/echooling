@@ -1268,6 +1268,11 @@
   margin: 0;
 }
 
+.star-contact-detail-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .star-contact-form-panel {
   padding-left: 54px;
 }
