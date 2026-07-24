@@ -3303,7 +3303,7 @@ function ContactPage() {
                       <br />
                       Mobile2: {contact.phoneSecondary}
                       <br />
-                      Mail: {contact.email}
+                      Email: {contact.email}
                     </p>
                   </div>
                 </div>
