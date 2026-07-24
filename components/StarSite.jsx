@@ -3299,9 +3299,9 @@ function ContactPage() {
                   <div>
                     <h3>Contact</h3>
                     <p>
-                      Mobile: {contact.phonePrimary}
+                      Mobile1: {contact.phonePrimary}
                       <br />
-                      Office: {contact.phoneSecondary}
+                      Mobile2: {contact.phoneSecondary}
                       <br />
                       Mail: {contact.email}
                     </p>
