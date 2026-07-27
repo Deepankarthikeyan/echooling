@@ -3104,6 +3104,54 @@ function CourseDetailPage({ courseKey }) {
   );
 }
 
+function getAchieverInitials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.replace(/\./g, "").charAt(0))
+    .join("")
+    .toUpperCase();
+}
+
+function AchieverImage({ achiever }) {
+  const extensions = ["jpg", "jpeg", "png", "webp"];
+  const candidates = useMemo(() => {
+    const values = [];
+
+    if (achiever.image) {
+      values.push(achiever.image);
+    }
+
+    extensions.forEach((extension) => {
+      values.push(`${achiever.imageBase}.${extension}`);
+    });
+
+    return [...new Set(values)];
+  }, [achiever]);
+
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const hasImage = candidateIndex < candidates.length;
+  const src = hasImage ? candidates[candidateIndex] : "";
+
+  if (!hasImage) {
+    return (
+      <div className="star-toppers-gallery__placeholder" aria-hidden="true">
+        <span>{getAchieverInitials(achiever.name)}</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={`${achiever.name} - ${achiever.post}`}
+      loading="lazy"
+      onError={() => setCandidateIndex((current) => current + 1)}
+    />
+  );
+}
+
 function ToppersPage() {
   return (
     <>
@@ -3143,11 +3191,7 @@ function ToppersPage() {
             {toppersAchievers2026.map((achiever) => (
               <div className="col-6 col-md-4 col-lg-3" key={achiever.registerNo}>
                 <article className="star-toppers-gallery__card">
-                  <img
-                    src={achiever.image}
-                    alt={`${achiever.name} - ${achiever.post}`}
-                    loading="lazy"
-                  />
+                  <AchieverImage achiever={achiever} />
                   <div className="star-toppers-gallery__caption">
                     <strong>{achiever.name}</strong>
                     <span>{achiever.post}</span>

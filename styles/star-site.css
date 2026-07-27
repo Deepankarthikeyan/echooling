@@ -10149,6 +10149,23 @@ body.star-site .spa-gallery-lightbox__caption p {
   width: 100%;
 }
 
+.star-toppers-gallery__placeholder {
+  align-items: center;
+  background: linear-gradient(160deg, #031552 0%, #0a2a6e 55%, #c41e3a 100%);
+  color: #ffffff;
+  display: flex;
+  height: 260px;
+  justify-content: center;
+  width: 100%;
+}
+
+.star-toppers-gallery__placeholder span {
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .star-toppers-gallery__caption {
   display: grid;
   gap: 4px;

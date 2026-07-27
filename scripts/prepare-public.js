@@ -1,11 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 const { knownRoutes } = require("../lib/star-routes");
+const { execFileSync } = require("child_process");
 
 const SITE_URL = "https://www.starpoliceacademy.in";
 
 const rootDir = path.join(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
+
+function buildAchieverImageMap() {
+  execFileSync(process.execPath, [path.join(__dirname, "build-achiever-image-map.js")], {
+    cwd: rootDir,
+    stdio: "inherit",
+  });
+}
 
 function copyEntry(sourceName, targetName = sourceName) {
   const sourcePath = path.join(rootDir, sourceName);
@@ -42,6 +50,8 @@ function writeRobots() {
 if (fs.existsSync(publicDir)) {
   fs.rmSync(publicDir, { recursive: true, force: true });
 }
+
+buildAchieverImageMap();
 
 fs.mkdirSync(publicDir, { recursive: true });
 copyEntry("assets");
