@@ -33,6 +33,7 @@ import {
   studentResults,
   terms,
   testimonials,
+  toppersAchievers2026,
   trainingSteps,
   whyChooseFeatures,
   winnerCarouselItems,
@@ -3103,50 +3104,66 @@ function CourseDetailPage({ courseKey }) {
   );
 }
 
-const topperGalleryImages = [
-  "/assets/images/service/top1.jpg",
-  "/assets/images/service/top3.jpg",
-  "/assets/images/service/top4.jpg",
-  "/assets/images/service/top5.jpg",
-  "/assets/images/service/top1.jpg",
-  "/assets/images/service/top3.jpg",
-  "/assets/images/service/top4.jpg",
-  "/assets/images/service/top5.jpg",
-];
-
 function ToppersPage() {
   return (
     <>
       <ExactBreadcrumb title="Toppers and Achievers" />
-      <section className="star-section pt---100 pb---70">
+      <section className="star-toppers-page pt---100 pb---100">
         <div className="container">
-          <div className="text-center mb---40">
-            <p className="mb---10" style={{ color: "#a66b2d", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-              //Our Toppers and Achievers//
-            </p>
-            <h1 className="mb---20" style={{ fontSize: "2.4rem", lineHeight: 1.2 }}>
-              “Being with a WINNER, make you a WINNER”.
-            </h1>
+          <div className="star-toppers-page__head text-center mb---50">
+            <p className="star-toppers-page__eyebrow">//Our Toppers and Achievers//</p>
+            <h1 className="star-toppers-page__title">TNUSRB – SUB INSPECTOR –2026</h1>
+            <h2 className="star-toppers-page__subtitle">STATE 1ST RANK – SUB-INSPECTOR</h2>
           </div>
-          <div className="row g-3 justify-content-center">
-            {topperGalleryImages.map((image, index) => (
-              <div className="col-6 col-sm-4 col-lg-3" key={`${image}-${index}`}>
-                <img
-                  src={image}
-                  alt={`Star Police Academy topper ${index + 1}`}
-                  style={{ width: "100%", height: "220px", objectFit: "cover", borderRadius: "16px" }}
-                />
+
+          <div className="star-toppers-table-wrap mb---60">
+            <table className="star-toppers-table">
+              <thead>
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Post</th>
+                  <th scope="col">Register No.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {toppersAchievers2026.map((achiever) => (
+                  <tr key={achiever.registerNo}>
+                    <td data-label="S.No">{achiever.serialNo}</td>
+                    <td data-label="Name">{achiever.name}</td>
+                    <td data-label="Post">{achiever.post}</td>
+                    <td data-label="Register No.">{achiever.registerNo}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="row g-4 justify-content-center star-toppers-gallery">
+            {toppersAchievers2026.map((achiever) => (
+              <div className="col-6 col-md-4 col-lg-3" key={achiever.registerNo}>
+                <article className="star-toppers-gallery__card">
+                  <img
+                    src={achiever.image}
+                    alt={`${achiever.name} - ${achiever.post}`}
+                    loading="lazy"
+                  />
+                  <div className="star-toppers-gallery__caption">
+                    <strong>{achiever.name}</strong>
+                    <span>{achiever.post}</span>
+                  </div>
+                </article>
               </div>
             ))}
           </div>
-          <div className="text-center mt---40">
+
+          <div className="text-center mt---50">
             <SiteLink href="/contact" className="react-btn">
               Contact Us
             </SiteLink>
           </div>
         </div>
       </section>
-
     </>
   );
 }
