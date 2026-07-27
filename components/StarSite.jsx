@@ -2945,7 +2945,6 @@ function AboutFacultySection() {
               </div>
               <div className="spa-about-faculty__content">
                 <h3>{member.name}</h3>
-                <p>{member.role}</p>
               </div>
             </article>
           ))}
