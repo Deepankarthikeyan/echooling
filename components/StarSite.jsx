@@ -3172,29 +3172,6 @@ function ToppersPage() {
             <h2 className="star-toppers-page__subtitle">STATE 1ST RANK – SUB-INSPECTOR</h2>
           </div>
 
-          <div className="star-toppers-table-wrap mb---60">
-            <table className="star-toppers-table">
-              <thead>
-                <tr>
-                  <th scope="col">S.No</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Post</th>
-                  <th scope="col">Register No.</th>
-                </tr>
-              </thead>
-              <tbody>
-                {toppersAchievers2026.map((achiever) => (
-                  <tr key={achiever.registerNo}>
-                    <td data-label="S.No">{achiever.serialNo}</td>
-                    <td data-label="Name">{achiever.name}</td>
-                    <td data-label="Post">{achiever.post}</td>
-                    <td data-label="Register No.">{achiever.registerNo}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
           <div className="star-toppers-showcase">
             <div className="star-toppers-showcase__header">
               <span className="star-toppers-showcase__badge">STATE 1ST RANK</span>
