@@ -10137,8 +10137,15 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 /* Toppers and Achievers page */
+.star-toppers-page__head {
+  background: #041c6b;
+  border-radius: 24px 24px 0 0;
+  margin-bottom: 0;
+  padding: 42px 24px 36px;
+}
+
 .star-toppers-page__eyebrow {
-  color: #a66b2d;
+  color: #f7c948;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -10147,7 +10154,7 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 .star-toppers-page__title {
-  color: var(--spa-primary-dark, #031552);
+  color: #ffffff;
   font-family: var(--spa-headline-font, "Livvic", sans-serif);
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
@@ -10156,7 +10163,7 @@ body.star-site .spa-gallery-lightbox__caption p {
 }
 
 .star-toppers-page__subtitle {
-  color: #c41e3a;
+  color: #f7c948;
   font-family: var(--spa-headline-font, "Livvic", sans-serif);
   font-size: clamp(1.2rem, 2.2vw, 1.8rem);
   font-weight: 700;
@@ -10168,10 +10175,10 @@ body.star-site .spa-gallery-lightbox__caption p {
 .star-toppers-showcase {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.04) 75%, transparent 75%, transparent),
-    linear-gradient(160deg, #031552 0%, #0a2a6e 48%, #031552 100%);
+    #041c6b;
   background-size: 28px 28px, auto;
-  border-radius: 24px;
-  box-shadow: 0 24px 50px rgba(3, 21, 82, 0.22);
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 24px 50px rgba(4, 28, 107, 0.28);
   overflow: hidden;
   padding: 28px 24px 34px;
 }

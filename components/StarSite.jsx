@@ -3199,7 +3199,7 @@ function ToppersPage() {
       <ExactBreadcrumb title="Toppers and Achievers" />
       <section className="star-toppers-page pt---100 pb---100">
         <div className="container">
-          <div className="star-toppers-page__head text-center mb---50">
+          <div className="star-toppers-page__head text-center">
             <p className="star-toppers-page__eyebrow">//Our Toppers and Achievers//</p>
             <h1 className="star-toppers-page__title">TNUSRB – SUB INSPECTOR –2026</h1>
             <h2 className="star-toppers-page__subtitle">STATE 1ST RANK – SUB-INSPECTOR</h2>
