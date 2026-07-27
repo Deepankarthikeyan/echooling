@@ -3114,6 +3114,13 @@ function getAchieverInitials(name) {
     .toUpperCase();
 }
 
+function encodeAssetPath(assetPath) {
+  return assetPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+}
+
 function AchieverImage({ achiever }) {
   const extensions = ["jpg", "jpeg", "png", "webp"];
   const candidates = useMemo(() => {
@@ -3132,7 +3139,7 @@ function AchieverImage({ achiever }) {
 
   const [candidateIndex, setCandidateIndex] = useState(0);
   const hasImage = candidateIndex < candidates.length;
-  const src = hasImage ? candidates[candidateIndex] : "";
+  const src = hasImage ? encodeAssetPath(candidates[candidateIndex]) : "";
 
   if (!hasImage) {
     return (

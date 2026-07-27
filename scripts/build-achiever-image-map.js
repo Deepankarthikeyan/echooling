@@ -17,6 +17,17 @@ const achieverNames = [
   "ILAKKIYA. G",
 ];
 
+const achieverImageStems = [
+  "vignesh waran s",
+  "vignesh m",
+  "jeyaraj p",
+  "mageshwaran e",
+  "chandru r",
+  "clindon f",
+  "jeevakarunya s",
+  "ilakkiya g",
+];
+
 function slugifyName(name) {
   return name
     .toLowerCase()
@@ -25,8 +36,12 @@ function slugifyName(name) {
     .replace(/^-+|-+$/g, "");
 }
 
+function normalizeKey(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 function findAchieverImageDir() {
-  const candidates = ["acheivers", "achievers"];
+  const candidates = ["achievers", "acheivers"];
 
   for (const folderName of candidates) {
     const dirPath = path.join(rootDir, "assets", "images", folderName);
@@ -51,6 +66,15 @@ function matchFileForSerial(files, serialNo, name) {
   const serial = String(serialNo);
   const paddedSerial = serial.padStart(2, "0");
   const slug = slugifyName(name);
+  const imageStem = achieverImageStems[serialNo - 1];
+  const stemKey = imageStem ? normalizeKey(imageStem) : "";
+
+  if (stemKey) {
+    const stemMatch = files.find((file) => normalizeKey(path.parse(file).name) === stemKey);
+    if (stemMatch) {
+      return stemMatch;
+    }
+  }
 
   const exactMatches = [
     `${serial}.jpg`,
