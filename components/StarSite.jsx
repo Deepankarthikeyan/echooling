@@ -3121,7 +3121,7 @@ function encodeAssetPath(assetPath) {
     .join("/");
 }
 
-function AchieverImage({ achiever }) {
+function AchieverImage({ achiever, className = "" }) {
   const extensions = ["jpg", "jpeg", "png", "webp"];
   const candidates = useMemo(() => {
     const values = [];
@@ -3143,7 +3143,7 @@ function AchieverImage({ achiever }) {
 
   if (!hasImage) {
     return (
-      <div className="star-toppers-gallery__placeholder" aria-hidden="true">
+      <div className={`star-toppers-showcase__placeholder ${className}`.trim()} aria-hidden="true">
         <span>{getAchieverInitials(achiever.name)}</span>
       </div>
     );
@@ -3151,6 +3151,7 @@ function AchieverImage({ achiever }) {
 
   return (
     <img
+      className={className}
       src={src}
       alt={`${achiever.name} - ${achiever.post}`}
       loading="lazy"
@@ -3194,18 +3195,25 @@ function ToppersPage() {
             </table>
           </div>
 
-          <div className="row g-4 justify-content-center star-toppers-gallery">
-            {toppersAchievers2026.map((achiever) => (
-              <div className="col-6 col-md-4 col-lg-3" key={achiever.registerNo}>
-                <article className="star-toppers-gallery__card">
-                  <AchieverImage achiever={achiever} />
-                  <div className="star-toppers-gallery__caption">
+          <div className="star-toppers-showcase">
+            <div className="star-toppers-showcase__header">
+              <span className="star-toppers-showcase__badge">STATE 1ST RANK</span>
+              <span className="star-toppers-showcase__role">SUB-INSPECTOR</span>
+            </div>
+            <div className="star-toppers-showcase__grid">
+              {toppersAchievers2026.map((achiever) => (
+                <article className="star-toppers-showcase__card" key={achiever.registerNo}>
+                  <div className="star-toppers-showcase__photo">
+                    <AchieverImage achiever={achiever} />
+                  </div>
+                  <div className="star-toppers-showcase__label">
                     <strong>{achiever.name}</strong>
                     <span>{achiever.post}</span>
                   </div>
+                  <p className="star-toppers-showcase__register">{achiever.registerNo}</p>
                 </article>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt---50">
