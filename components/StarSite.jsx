@@ -20,6 +20,7 @@ import {
   faqs,
   features,
   facilitiesItems,
+  facultyMembers,
   heroHighlights,
   latestBlogArticles,
   notificationItems,
@@ -361,6 +362,13 @@ function UserIcon() {
       <circle cx="12" cy="7" r="4" />
     </svg>
   );
+}
+
+function encodeAssetPath(assetPath) {
+  return assetPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
 }
 
 function InstructorPortrait({ instructor }) {
@@ -2915,6 +2923,38 @@ function AboutInstructorsSection() {
   );
 }
 
+function AboutFacultySection() {
+  return (
+    <section className="spa-about-faculty pt---110 pb---80">
+      <div className="container">
+        <div className="spa-about-faculty__header text-center">
+          <span className="spa-about-faculty__eyebrow">Expert Faculty</span>
+          <h2 className="spa-about-faculty__title">
+            Meet Our <br />Faculty Team
+          </h2>
+          <p className="spa-about-faculty__subtitle">
+            Experienced teachers guiding TNUSRB, SI and police aspirants with subject expertise and exam-focused coaching.
+          </p>
+        </div>
+
+        <div className="spa-about-faculty__grid">
+          {facultyMembers.map((member) => (
+            <article className="spa-about-faculty__card" key={member.name}>
+              <div className="spa-about-faculty__photo">
+                <img src={encodeAssetPath(member.image)} alt={member.name} loading="lazy" />
+              </div>
+              <div className="spa-about-faculty__content">
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AboutFeedbackSection() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
@@ -3033,6 +3073,7 @@ function AboutPage() {
       <ExactBreadcrumb title="About Star Police Academy" />
       <AboutIntroPageSection />
       <AboutLearningSection />
+      <AboutFacultySection />
       <AboutFeedbackSection />
     </div>
   );
@@ -3112,13 +3153,6 @@ function getAchieverInitials(name) {
     .map((part) => part.replace(/\./g, "").charAt(0))
     .join("")
     .toUpperCase();
-}
-
-function encodeAssetPath(assetPath) {
-  return assetPath
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/");
 }
 
 function AchieverImage({ achiever, className = "" }) {

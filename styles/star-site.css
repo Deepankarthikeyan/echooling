@@ -7046,6 +7046,93 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
+.exact-about-page .spa-about-faculty {
+  background: #ffffff;
+}
+
+.exact-about-page .spa-about-faculty__header {
+  margin-bottom: 42px;
+}
+
+.exact-about-page .spa-about-faculty__eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(11, 31, 63, 0.08);
+  color: #0b1f3f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.exact-about-page .spa-about-faculty__title {
+  margin: 0 0 14px;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.exact-about-page .spa-about-faculty__subtitle {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.exact-about-page .spa-about-faculty__grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  justify-content: center;
+}
+
+.exact-about-page .spa-about-faculty__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  text-align: center;
+}
+
+.exact-about-page .spa-about-faculty__photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  overflow: hidden;
+}
+
+.exact-about-page .spa-about-faculty__photo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+}
+
+.exact-about-page .spa-about-faculty__content {
+  padding: 22px 20px 24px;
+}
+
+.exact-about-page .spa-about-faculty__content h3 {
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.exact-about-page .spa-about-faculty__content p {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .exact-about-page .spa-about-feedback__glow {
   position: absolute;
   top: -120px;
@@ -7511,6 +7598,10 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   }
 
   .exact-about-page .spa-about-feedback__title {
+    font-size: 32px;
+  }
+
+  .exact-about-page .spa-about-faculty__title {
     font-size: 32px;
   }
 
