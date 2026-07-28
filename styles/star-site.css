@@ -7122,7 +7122,25 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   font-size: 22px;
   font-weight: 700;
   line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.exact-about-page .spa-about-faculty__detail {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
   margin: 0 0 8px;
+  text-align: left;
+}
+
+.exact-about-page .spa-about-faculty__detail:last-child {
+  margin-bottom: 0;
+}
+
+.exact-about-page .spa-about-faculty__detail strong {
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .exact-about-page .spa-about-faculty__content p {

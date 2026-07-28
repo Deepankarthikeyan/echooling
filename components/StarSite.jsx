@@ -2945,6 +2945,12 @@ function AboutFacultySection() {
               </div>
               <div className="spa-about-faculty__content">
                 <h3>{member.name}</h3>
+                <p className="spa-about-faculty__detail">
+                  <strong>Qualification:</strong> {member.qualification}
+                </p>
+                <p className="spa-about-faculty__detail">
+                  <strong>Designation:</strong> {member.designation}
+                </p>
               </div>
             </article>
           ))}
