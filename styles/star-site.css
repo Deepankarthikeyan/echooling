@@ -7084,10 +7084,11 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 }
 
 .exact-about-page .spa-about-faculty__grid {
-  display: grid;
-  gap: 28px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
-  justify-content: center;
+  margin-top: 0;
+}
+
+.exact-about-page .spa-about-faculty__grid > [class*="col-"] {
+  display: flex;
 }
 
 .exact-about-page .spa-about-faculty__card {
@@ -7095,8 +7096,12 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 24px;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   text-align: center;
+  width: 100%;
 }
 
 .exact-about-page .spa-about-faculty__photo {
@@ -7114,6 +7119,9 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 }
 
 .exact-about-page .spa-about-faculty__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 22px 20px 24px;
 }
 
@@ -7621,6 +7629,19 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 
   .exact-about-page .spa-about-faculty__title {
     font-size: 32px;
+  }
+
+  .exact-about-page .spa-about-faculty__subtitle {
+    font-size: 15px;
+    padding: 0 12px;
+  }
+
+  .exact-about-page .spa-about-faculty__content h3 {
+    font-size: 20px;
+  }
+
+  .exact-about-page .spa-about-faculty__detail {
+    font-size: 13px;
   }
 
   .exact-about-page .spa-about-feedback__track {

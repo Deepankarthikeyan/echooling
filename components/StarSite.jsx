@@ -2937,22 +2937,24 @@ function AboutFacultySection() {
           </p>
         </div>
 
-        <div className="spa-about-faculty__grid">
+        <div className="row g-4 spa-about-faculty__grid justify-content-center">
           {facultyMembers.map((member) => (
-            <article className="spa-about-faculty__card" key={member.name}>
-              <div className="spa-about-faculty__photo">
-                <img src={encodeAssetPath(member.image)} alt={member.name} loading="lazy" />
-              </div>
-              <div className="spa-about-faculty__content">
-                <h3>{member.name}</h3>
-                <p className="spa-about-faculty__detail">
-                  <strong>Qualification:</strong> {member.qualification}
-                </p>
-                <p className="spa-about-faculty__detail">
-                  <strong>Designation:</strong> {member.designation}
-                </p>
-              </div>
-            </article>
+            <div className="col-xl-3 col-lg-4 col-md-6 col-12" key={member.name}>
+              <article className="spa-about-faculty__card">
+                <div className="spa-about-faculty__photo">
+                  <img src={encodeAssetPath(member.image)} alt={member.name} loading="lazy" />
+                </div>
+                <div className="spa-about-faculty__content">
+                  <h3>{member.name}</h3>
+                  <p className="spa-about-faculty__detail">
+                    <strong>Qualification:</strong> {member.qualification}
+                  </p>
+                  <p className="spa-about-faculty__detail">
+                    <strong>Designation:</strong> {member.designation}
+                  </p>
+                </div>
+              </article>
+            </div>
           ))}
         </div>
       </div>
