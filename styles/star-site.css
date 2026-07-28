@@ -7119,15 +7119,17 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 }
 
 .exact-about-page .spa-about-faculty__content {
+  align-items: center;
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 18px 20px 20px;
+  text-align: center;
 }
 
 .exact-about-page .spa-about-faculty__content h3 {
   color: #0f172a;
-  font-size: 20px;
+  font-size: clamp(17px, 1.4vw + 14px, 20px);
   font-weight: 700;
   line-height: 1.25;
   margin: 0 0 8px;
@@ -7135,11 +7137,12 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 
 .exact-about-page .spa-about-faculty__detail {
   color: #475569;
-  font-size: 14px;
+  font-size: clamp(11px, 0.9vw + 10px, 14px);
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0 0 6px;
-  text-align: left;
+  max-width: 100%;
+  text-align: center;
 }
 
 .exact-about-page .spa-about-faculty__detail:last-child {
@@ -7644,11 +7647,12 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   }
 
   .exact-about-page .spa-about-faculty__content h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .exact-about-page .spa-about-faculty__detail {
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.4;
   }
 
   .exact-about-page .spa-about-feedback__track {
@@ -7717,6 +7721,19 @@ body.star-site .react-footer-two .footer-top > .container + .container {
 
   .exact-about-page .react_populars_topics_about .item__inner {
     padding: 30px 24px 28px;
+  }
+
+  .exact-about-page .spa-about-faculty__content h3 {
+    font-size: 16px;
+  }
+
+  .exact-about-page .spa-about-faculty__detail {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .exact-about-page .spa-about-faculty__content {
+    padding: 14px 14px 16px;
   }
 
   .exact-about-page .student_satisfaction-section.pt---110 {
