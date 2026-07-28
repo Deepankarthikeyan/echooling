@@ -20,6 +20,7 @@ import {
   faqs,
   features,
   facilitiesItems,
+  facultyMembers,
   heroHighlights,
   latestBlogArticles,
   notificationItems,
@@ -33,6 +34,7 @@ import {
   studentResults,
   terms,
   testimonials,
+  toppersAchievers2026,
   trainingSteps,
   whyChooseFeatures,
   winnerCarouselItems,
@@ -360,6 +362,13 @@ function UserIcon() {
       <circle cx="12" cy="7" r="4" />
     </svg>
   );
+}
+
+function encodeAssetPath(assetPath) {
+  return assetPath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
 }
 
 function InstructorPortrait({ instructor }) {
@@ -2914,6 +2923,43 @@ function AboutInstructorsSection() {
   );
 }
 
+function AboutFacultySection() {
+  return (
+    <section className="spa-about-faculty pt---110 pb---80">
+      <div className="container">
+        <div className="spa-about-faculty__header text-center">
+          <span className="spa-about-faculty__eyebrow">Expert Faculty</span>
+          <h2 className="spa-about-faculty__title">
+            Meet Our <br />Faculty Team
+          </h2>
+          <p className="spa-about-faculty__subtitle">
+            Experienced teachers guiding TNUSRB, SI and police aspirants with subject expertise and exam-focused coaching.
+          </p>
+        </div>
+
+        <div className="spa-about-faculty__grid">
+          {facultyMembers.map((member) => (
+            <article className="spa-about-faculty__card" key={member.name}>
+              <div className="spa-about-faculty__photo">
+                <img src={encodeAssetPath(member.image)} alt={member.name} loading="lazy" />
+              </div>
+              <div className="spa-about-faculty__content">
+                <h3>{member.name}</h3>
+                <p className="spa-about-faculty__detail">
+                  <strong>Qualification:</strong> {member.qualification}
+                </p>
+                <p className="spa-about-faculty__detail">
+                  <strong>Designation:</strong> {member.designation}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AboutFeedbackSection() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(2);
@@ -3032,6 +3078,7 @@ function AboutPage() {
       <ExactBreadcrumb title="About Star Police Academy" />
       <AboutIntroPageSection />
       <AboutLearningSection />
+      <AboutFacultySection />
       <AboutFeedbackSection />
     </div>
   );
@@ -3103,50 +3150,95 @@ function CourseDetailPage({ courseKey }) {
   );
 }
 
-const topperGalleryImages = [
-  "/assets/images/service/top1.jpg",
-  "/assets/images/service/top3.jpg",
-  "/assets/images/service/top4.jpg",
-  "/assets/images/service/top5.jpg",
-  "/assets/images/service/top1.jpg",
-  "/assets/images/service/top3.jpg",
-  "/assets/images/service/top4.jpg",
-  "/assets/images/service/top5.jpg",
-];
+function getAchieverInitials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.replace(/\./g, "").charAt(0))
+    .join("")
+    .toUpperCase();
+}
+
+function AchieverImage({ achiever, className = "" }) {
+  const extensions = ["jpg", "jpeg", "png", "webp"];
+  const candidates = useMemo(() => {
+    const values = [];
+
+    if (achiever.image) {
+      values.push(achiever.image);
+    }
+
+    extensions.forEach((extension) => {
+      values.push(`${achiever.imageBase}.${extension}`);
+    });
+
+    return [...new Set(values)];
+  }, [achiever]);
+
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const hasImage = candidateIndex < candidates.length;
+  const src = hasImage ? encodeAssetPath(candidates[candidateIndex]) : "";
+
+  if (!hasImage) {
+    return (
+      <div className={`star-toppers-showcase__placeholder ${className}`.trim()} aria-hidden="true">
+        <span>{getAchieverInitials(achiever.name)}</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      className={className}
+      src={src}
+      alt={`${achiever.name} - ${achiever.post}`}
+      loading="lazy"
+      onError={() => setCandidateIndex((current) => current + 1)}
+    />
+  );
+}
 
 function ToppersPage() {
   return (
     <>
       <ExactBreadcrumb title="Toppers and Achievers" />
-      <section className="star-section pt---100 pb---70">
+      <section className="star-toppers-page pt---100 pb---100">
         <div className="container">
-          <div className="text-center mb---40">
-            <p className="mb---10" style={{ color: "#a66b2d", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-              //Our Toppers and Achievers//
-            </p>
-            <h1 className="mb---20" style={{ fontSize: "2.4rem", lineHeight: 1.2 }}>
-              “Being with a WINNER, make you a WINNER”.
-            </h1>
+          <div className="star-toppers-page__head text-center mb---50">
+            <p className="star-toppers-page__eyebrow">//Our Toppers and Achievers//</p>
+            <h1 className="star-toppers-page__title">TNUSRB – SUB INSPECTOR –2026</h1>
+            <h2 className="star-toppers-page__subtitle">STATE 1ST RANK – SUB-INSPECTOR</h2>
           </div>
-          <div className="row g-3 justify-content-center">
-            {topperGalleryImages.map((image, index) => (
-              <div className="col-6 col-sm-4 col-lg-3" key={`${image}-${index}`}>
-                <img
-                  src={image}
-                  alt={`Star Police Academy topper ${index + 1}`}
-                  style={{ width: "100%", height: "220px", objectFit: "cover", borderRadius: "16px" }}
-                />
-              </div>
-            ))}
+
+          <div className="star-toppers-showcase">
+            <div className="star-toppers-showcase__header">
+              <span className="star-toppers-showcase__badge">STATE 1ST RANK</span>
+              <span className="star-toppers-showcase__role">SUB-INSPECTOR</span>
+            </div>
+            <div className="star-toppers-showcase__grid">
+              {toppersAchievers2026.map((achiever) => (
+                <article className="star-toppers-showcase__card" key={achiever.registerNo}>
+                  <div className="star-toppers-showcase__photo">
+                    <AchieverImage achiever={achiever} />
+                  </div>
+                  <div className="star-toppers-showcase__label">
+                    <strong>{achiever.name}</strong>
+                    <span>{achiever.post}</span>
+                  </div>
+                  <p className="star-toppers-showcase__register">{achiever.registerNo}</p>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="text-center mt---40">
+
+          <div className="text-center mt---50">
             <SiteLink href="/contact" className="react-btn">
               Contact Us
             </SiteLink>
           </div>
         </div>
       </section>
-
     </>
   );
 }

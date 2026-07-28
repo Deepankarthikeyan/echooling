@@ -7046,6 +7046,111 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
+.exact-about-page .spa-about-faculty {
+  background: #ffffff;
+}
+
+.exact-about-page .spa-about-faculty__header {
+  margin-bottom: 42px;
+}
+
+.exact-about-page .spa-about-faculty__eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(11, 31, 63, 0.08);
+  color: #0b1f3f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.exact-about-page .spa-about-faculty__title {
+  margin: 0 0 14px;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.exact-about-page .spa-about-faculty__subtitle {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.exact-about-page .spa-about-faculty__grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  justify-content: center;
+}
+
+.exact-about-page .spa-about-faculty__card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  text-align: center;
+}
+
+.exact-about-page .spa-about-faculty__photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  overflow: hidden;
+}
+
+.exact-about-page .spa-about-faculty__photo img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+}
+
+.exact-about-page .spa-about-faculty__content {
+  padding: 22px 20px 24px;
+}
+
+.exact-about-page .spa-about-faculty__content h3 {
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.exact-about-page .spa-about-faculty__detail {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.exact-about-page .spa-about-faculty__detail:last-child {
+  margin-bottom: 0;
+}
+
+.exact-about-page .spa-about-faculty__detail strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.exact-about-page .spa-about-faculty__content p {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .exact-about-page .spa-about-feedback__glow {
   position: absolute;
   top: -120px;
@@ -7511,6 +7616,10 @@ body.star-site .react-footer-two .footer-top > .container + .container {
   }
 
   .exact-about-page .spa-about-feedback__title {
+    font-size: 32px;
+  }
+
+  .exact-about-page .spa-about-faculty__title {
     font-size: 32px;
   }
 
@@ -10042,5 +10151,187 @@ body.star-site .spa-gallery-lightbox__caption p {
 
   .si-landing-page .si-training-showcase__chip {
     flex: 0 0 auto;
+  }
+}
+
+/* Toppers and Achievers page */
+.star-toppers-page__eyebrow {
+  color: #a66b2d;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.star-toppers-page__title {
+  color: var(--spa-primary-dark, #031552);
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.star-toppers-page__subtitle {
+  color: #c41e3a;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.star-toppers-showcase {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.04) 75%, transparent 75%, transparent),
+    linear-gradient(160deg, #031552 0%, #0a2a6e 48%, #031552 100%);
+  background-size: 28px 28px, auto;
+  border-radius: 24px;
+  box-shadow: 0 24px 50px rgba(3, 21, 82, 0.22);
+  overflow: hidden;
+  padding: 28px 24px 34px;
+}
+
+.star-toppers-showcase__header {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.star-toppers-showcase__badge {
+  background: #f7c948;
+  border: 2px solid #031552;
+  border-radius: 999px;
+  color: #031552;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  padding: 10px 18px;
+  text-transform: uppercase;
+}
+
+.star-toppers-showcase__role {
+  color: #ffffff;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.star-toppers-showcase__grid {
+  display: grid;
+  gap: 28px 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.star-toppers-showcase__card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.star-toppers-showcase__photo {
+  background: #ffffff;
+  border: 4px solid #f7c948;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  height: 210px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.star-toppers-showcase__photo img,
+.star-toppers-showcase__placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+}
+
+.star-toppers-showcase__placeholder {
+  align-items: center;
+  background: linear-gradient(160deg, #0a2a6e 0%, #031552 100%);
+  color: #f7c948;
+  display: flex;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  justify-content: center;
+}
+
+.star-toppers-showcase__label {
+  background: #f7c948;
+  border: 2px solid #031552;
+  border-radius: 999px;
+  margin-top: -18px;
+  max-width: 100%;
+  padding: 10px 14px 8px;
+  position: relative;
+  width: calc(100% - 8px);
+  z-index: 1;
+}
+
+.star-toppers-showcase__label strong,
+.star-toppers-showcase__label span {
+  color: #031552;
+  display: block;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.star-toppers-showcase__label strong {
+  font-size: clamp(0.72rem, 1.1vw, 0.92rem);
+  font-weight: 800;
+}
+
+.star-toppers-showcase__label span {
+  font-size: clamp(0.62rem, 0.95vw, 0.78rem);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.star-toppers-showcase__register {
+  color: #e31b23;
+  font-family: var(--spa-headline-font, "Livvic", sans-serif);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin: 12px 0 0;
+}
+
+@media (max-width: 991px) {
+  .star-toppers-showcase__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .star-toppers-showcase__photo {
+    height: 240px;
+  }
+}
+
+@media (max-width: 575px) {
+  .star-toppers-showcase {
+    padding: 22px 16px 28px;
+  }
+
+  .star-toppers-showcase__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .star-toppers-showcase__photo {
+    height: 220px;
   }
 }
